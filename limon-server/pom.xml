@@ -101,7 +101,20 @@
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.3.2</version>
 		</dependency>
-		
+
+        <dependency>
+			<groupId>com.taskadapter</groupId>
+			<artifactId>trello-java-wrapper</artifactId>
+			<version>0.13</version>
+		</dependency>
+
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+		</dependency>
+
+
 		<!-- pagehelper 分页插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
