@@ -1,5 +1,7 @@
 package com.aircjm.project.card.service.impl;
 
+import com.aircjm.project.card.vo.request.GetCardRequest;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.julienvey.trello.Trello;
 import com.julienvey.trello.domain.Board;
 import com.julienvey.trello.domain.Card;
@@ -36,5 +38,17 @@ public class CardServiceImpl implements CardService {
         Card card = trello.getBoardLists(inbox.getId()).get(0).createCard(create);
         log.info("新增卡片的id为：{}", card.getId());
 
+    }
+
+    @Override
+    public Page<Card> getCardList(GetCardRequest request) {
+        Page<Card> page = new Page<>();
+        Board board = trello.getBoard("5cab0e8e548bff605a46d275");
+        List<Card> boardCards = trello.getBoardCards(board.getId());
+        page.setRecords(boardCards);
+        page.setCurrent(1);
+        page.setTotal(boardCards.size());
+        page.setSize(1000);
+        return page;
     }
 }
