@@ -29,6 +29,6 @@ public class BoardController {
     @PostMapping("/save")
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
         cardService.saveCard(request);
-        return RestResponse.success();
+        return RestResponse.successEmpty();
     }
 }

@@ -2,7 +2,10 @@ package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
 import com.aircjm.project.card.service.CardService;
+import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.julienvey.trello.domain.Card;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +32,15 @@ public class CardController {
     @PostMapping("/save")
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
         cardService.saveCard(request);
-        return RestResponse.success();
+        return RestResponse.successEmpty();
     }
+
+
+    @PostMapping("/list")
+    public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
+        Page<Card> page = cardService.getCardList(request);
+        return RestResponse.successData(page);
+    }
+
+
 }
