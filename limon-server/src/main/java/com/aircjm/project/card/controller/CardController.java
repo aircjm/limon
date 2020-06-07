@@ -1,7 +1,7 @@
 package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
-import com.aircjm.project.card.service.CardService;
+import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -27,18 +27,18 @@ public class CardController {
 
 
     @Resource
-    private CardService cardService;
+    private CellCardService cellCardService;
 
     @PostMapping("/save")
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
-        cardService.saveCard(request);
+        cellCardService.saveCard(request);
         return RestResponse.successEmpty();
     }
 
 
     @PostMapping("/list")
     public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
-        Page<Card> page = cardService.getCardList(request);
+        Page<Card> page = cellCardService.getCardList(request);
         return RestResponse.successData(page);
     }
 

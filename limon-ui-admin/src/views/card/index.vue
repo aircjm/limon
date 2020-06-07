@@ -55,7 +55,7 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="名称" align="center" width="200" autocapitalize="on" prop="name" />
       <el-table-column label="链接" align="center" prop="url" type="url" />
-      <el-table-column label="字典键值" align="center" prop="dictValue" />
+      <el-table-column label="内容" align="center" prop="desc" />
       <el-table-column label="字典排序" align="center" prop="dictSort" />
       <el-table-column label="状态" align="center" prop="status"/>
       <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true" />

@@ -2,7 +2,9 @@ package com.aircjm.project.card.domain;
 
 
 import com.aircjm.common.vo.DbBaseEntity;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import lombok.*;
 
@@ -15,9 +17,12 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Card extends DbBaseEntity<Card> {
+@TableName(value = "cell_card")
+public class CellCard extends DbBaseEntity<CellCard> {
 
-    @TableId
+    @TableId(type = IdType.INPUT)
+    private String id;
+
     private String cardId;
 
     private String listId;

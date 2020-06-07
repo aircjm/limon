@@ -1,6 +1,8 @@
 package com.aircjm.project.monitor.controller;
 
 import java.util.List;
+
+import com.aircjm.project.card.service.CellCardService;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,6 +24,8 @@ import com.aircjm.framework.web.page.TableDataInfo;
 import com.aircjm.project.monitor.domain.SysJob;
 import com.aircjm.project.monitor.service.ISysJobService;
 
+import javax.annotation.Resource;
+
 /**
  * 调度任务信息操作处理
  * 
@@ -33,6 +37,9 @@ public class SysJobController extends BaseController
 {
     @Autowired
     private ISysJobService jobService;
+
+    @Resource
+    private CellCardService cellCardService;
 
     /**
      * 查询定时任务列表

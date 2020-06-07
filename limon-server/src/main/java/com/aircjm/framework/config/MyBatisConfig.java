@@ -3,12 +3,11 @@ package com.aircjm.framework.config;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- *  MyBatisConfig.
+ * MyBatisConfig.
  *
  * @author johnniang
  */
