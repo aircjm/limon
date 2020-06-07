@@ -1,7 +1,7 @@
 package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
-import com.aircjm.project.card.service.CardService;
+import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,16 +19,16 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/api/board/")
-@Api(value = "BoardController", description = "卡片博客API")
+@Api(value = "卡片博客API")
 public class BoardController {
 
 
     @Resource
-    private CardService cardService;
+    private CellCardService cellCardService;
 
     @PostMapping("/save")
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
-        cardService.saveCard(request);
+        cellCardService.saveCard(request);
         return RestResponse.successEmpty();
     }
 }
