@@ -47,15 +47,10 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
     }
 
     @Override
-    public Page<Card> getCardList(GetCardRequest request) {
-        Page<Card> page = new Page<>();
-        Board board = trello.getBoard(configService.selectConfigByKey("trello.default.boardId"));
-        List<Card> boardCards = trello.getBoardCards(board.getId());
-        page.setRecords(boardCards);
-        page.setCurrent(1);
-        page.setTotal(boardCards.size());
-        page.setSize(1000);
-        return page;
+    public Page<CellCard> getCardList(GetCardRequest request) {
+        QueryWrapper<CellCard> queryWrapper = new QueryWrapper<>();
+        Page<CellCard> boardCards = page(request,queryWrapper);
+        return boardCards;
     }
 
     @Override
@@ -65,7 +60,6 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
         List<Board> boards = member.getBoards();
         log.info("获取所有board 开始更新");
 
-        LocalDateTime nowDate = LocalDateTime.now();
         boards.forEach(board -> {
             List<Card> cardList = trello.getBoardCards(board.getId());
             QueryWrapper<CellCard> queryWrapper = new QueryWrapper<>();

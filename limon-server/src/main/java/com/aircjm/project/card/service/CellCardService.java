@@ -16,7 +16,7 @@ public interface CellCardService extends IService<CellCard> {
 
     void saveCard(SaveCardRequest request);
 
-    Page<Card> getCardList(GetCardRequest request);
+    Page<CellCard> getCardList(GetCardRequest request);
 
     /**
      * 全量更新卡片
