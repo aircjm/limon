@@ -1,11 +1,13 @@
 package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.utils.LocalDateUtils;
+import com.aircjm.common.utils.bean.BeanUtils;
 import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.mapper.CellCardMapper;
 import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
+import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.aircjm.project.system.service.ISysConfigService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -19,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -47,10 +48,17 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
     }
 
     @Override
-    public Page<CellCard> getCardList(GetCardRequest request) {
+    public Page<CellCardDetailResponse> getCardList(GetCardRequest request) {
         QueryWrapper<CellCard> queryWrapper = new QueryWrapper<>();
         Page<CellCard> boardCards = page(request,queryWrapper);
-        return boardCards;
+        Page<CellCardDetailResponse> response = new Page<>();
+        BeanUtils.copyProperties(boardCards, response);
+        response.setRecords(boardCards.getRecords().stream().map(item -> {
+            CellCardDetailResponse detail = new CellCardDetailResponse();
+            BeanUtils.copyProperties(item, detail);
+            return detail;
+        }).collect(Collectors.toList()));
+        return response;
     }
 
     @Override
