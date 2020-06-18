@@ -27,7 +27,6 @@ public class DbBaseEntity<T extends Model<?>> extends Model<T> {
     /**
      * 修改时间
      */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     /**
