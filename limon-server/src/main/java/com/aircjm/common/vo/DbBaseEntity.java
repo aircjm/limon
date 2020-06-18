@@ -27,7 +27,7 @@ public class DbBaseEntity<T extends Model<?>> extends Model<T> {
     /**
      * 修改时间
      */
-    private LocalDateTime updateTime;
+     private LocalDateTime updateTime;
 
     /**
      * 创建人

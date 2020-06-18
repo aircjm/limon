@@ -5,6 +5,7 @@ import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
+import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.julienvey.trello.domain.Card;
 import io.swagger.annotations.Api;
@@ -39,7 +40,7 @@ public class CardController {
 
     @PostMapping("/list")
     public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
-        Page<CellCard> page = cellCardService.getCardList(request);
+        Page<CellCardDetailResponse> page = cellCardService.getCardList(request);
         return RestResponse.successData(page);
     }
 
