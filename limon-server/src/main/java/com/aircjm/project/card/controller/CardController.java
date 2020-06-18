@@ -1,6 +1,7 @@
 package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
+import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
@@ -38,7 +39,7 @@ public class CardController {
 
     @PostMapping("/list")
     public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
-        Page<Card> page = cellCardService.getCardList(request);
+        Page<CellCard> page = cellCardService.getCardList(request);
         return RestResponse.successData(page);
     }
 
