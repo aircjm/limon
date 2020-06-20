@@ -7,8 +7,11 @@ import com.aircjm.project.card.mapper.CellCardMapper;
 import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
+import com.aircjm.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.aircjm.project.system.service.ISysConfigService;
+import com.alibaba.druid.support.json.JSONUtils;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -19,6 +22,7 @@ import com.julienvey.trello.domain.Card;
 import com.julienvey.trello.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -103,6 +107,19 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
             );
 
         });
+
+    }
+
+    @Resource
+    private RestTemplate restTemplate;
+
+    @Override
+    public void setAnki(SetAnkiRequest request) {
+        QueryWrapper<CellCard> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("card_id", request.getCardId());
+        CellCard one = getOne(queryWrapper);
+        log.info("获取的卡片为：{}", one.getCardTitle());
+//        restTemplate.postForEntity("http://localhost:8095/api/util/markdown2html", null);
 
     }
 
