@@ -5,6 +5,7 @@ import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
+import com.aircjm.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.julienvey.trello.domain.Card;
@@ -42,6 +43,15 @@ public class CardController {
     public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
         Page<CellCardDetailResponse> page = cellCardService.getCardList(request);
         return RestResponse.successData(page);
+    }
+
+
+
+
+    @PostMapping("/setAnki")
+    public RestResponse setAnki(@RequestBody @Valid SetAnkiRequest request) {
+        cellCardService.setAnki(request);
+        return RestResponse.successEmpty();
     }
 
 

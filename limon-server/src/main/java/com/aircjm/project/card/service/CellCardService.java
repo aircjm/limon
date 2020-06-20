@@ -3,6 +3,7 @@ package com.aircjm.project.card.service;
 import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
+import com.aircjm.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -22,4 +23,6 @@ public interface CellCardService extends IService<CellCard> {
      * 全量更新卡片
      */
     void updateAllCard();
+
+    void setAnki(SetAnkiRequest request);
 }
