@@ -11,51 +11,51 @@
     </el-form>
 
     <!--<el-row :gutter="10" class="mb8">-->
-      <!--<el-col :span="1.5">-->
-        <!--<el-button-->
-          <!--type="primary"-->
-          <!--icon="el-icon-plus"-->
-          <!--size="mini"-->
-          <!--@click="handleAdd"-->
-          <!--v-hasPermi="['system:dict:add']"-->
-        <!--&gt;新增</el-button>-->
-      <!--</el-col>-->
-      <!--<el-col :span="1.5">-->
-        <!--<el-button-->
-          <!--type="success"-->
-          <!--icon="el-icon-edit"-->
-          <!--size="mini"-->
-          <!--:disabled="single"-->
-          <!--@click="handleUpdate"-->
-          <!--v-hasPermi="['system:dict:edit']"-->
-        <!--&gt;修改</el-button>-->
-      <!--</el-col>-->
-      <!--<el-col :span="1.5">-->
-        <!--<el-button-->
-          <!--type="danger"-->
-          <!--icon="el-icon-delete"-->
-          <!--size="mini"-->
-          <!--:disabled="multiple"-->
-          <!--@click="handleDelete"-->
-          <!--v-hasPermi="['system:dict:remove']"-->
-        <!--&gt;删除</el-button>-->
-      <!--</el-col>-->
-      <!--<el-col :span="1.5">-->
-        <!--<el-button-->
-          <!--type="warning"-->
-          <!--icon="el-icon-download"-->
-          <!--size="mini"-->
-          <!--@click="handleExport"-->
-          <!--v-hasPermi="['system:dict:export']"-->
-        <!--&gt;导出</el-button>-->
-      <!--</el-col>-->
+    <!--<el-col :span="1.5">-->
+    <!--<el-button-->
+    <!--type="primary"-->
+    <!--icon="el-icon-plus"-->
+    <!--size="mini"-->
+    <!--@click="handleAdd"-->
+    <!--v-hasPermi="['system:dict:add']"-->
+    <!--&gt;新增</el-button>-->
+    <!--</el-col>-->
+    <!--<el-col :span="1.5">-->
+    <!--<el-button-->
+    <!--type="success"-->
+    <!--icon="el-icon-edit"-->
+    <!--size="mini"-->
+    <!--:disabled="single"-->
+    <!--@click="handleUpdate"-->
+    <!--v-hasPermi="['system:dict:edit']"-->
+    <!--&gt;修改</el-button>-->
+    <!--</el-col>-->
+    <!--<el-col :span="1.5">-->
+    <!--<el-button-->
+    <!--type="danger"-->
+    <!--icon="el-icon-delete"-->
+    <!--size="mini"-->
+    <!--:disabled="multiple"-->
+    <!--@click="handleDelete"-->
+    <!--v-hasPermi="['system:dict:remove']"-->
+    <!--&gt;删除</el-button>-->
+    <!--</el-col>-->
+    <!--<el-col :span="1.5">-->
+    <!--<el-button-->
+    <!--type="warning"-->
+    <!--icon="el-icon-download"-->
+    <!--size="mini"-->
+    <!--@click="handleExport"-->
+    <!--v-hasPermi="['system:dict:export']"-->
+    <!--&gt;导出</el-button>-->
+    <!--</el-col>-->
     <!--</el-row>-->
 
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="名称" align="center" width="200" autocapitalize="on" prop="cardTitle" />
-      <el-table-column label="链接" align="center" prop="url" type="url" />
-      <el-table-column label="内容" align="center" prop="cardDesc" />
+      <el-table-column type="selection" width="55" align="center"/>
+      <el-table-column label="名称" align="center" width="200" autocapitalize="on" prop="cardTitle"/>
+      <el-table-column label="链接" align="center" prop="url" type="url"/>
+      <el-table-column label="内容" align="center" prop="cardDesc"/>
       <el-table-column label="状态" align="center" prop="status"/>
       <el-table-column label="trello更新时间" align="center" prop="trelloUpdateTime" width="180">
         <template slot-scope="scope">
@@ -68,16 +68,18 @@
             size="mini"
             type="text"
             icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
+            @click="setAnki(scope.row)"
             v-hasPermi="['system:dict:edit']"
-          >修改</el-button>
+          >设置anki
+          </el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:dict:remove']"
-          >删除</el-button>
+          >删除
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -93,91 +95,98 @@
 </template>
 
 <script>
-import { listData } from "@/api/card/card";
+  import {listData, setAnki} from "@/api/card/card";
 
-export default {
-  name: "Card",
-  data() {
-    return {
-      // 遮罩层
-      loading: true,
-      // 选中数组
-      ids: [],
-      // 非单个禁用
-      single: true,
-      // 非多个禁用
-      multiple: true,
-      // 总条数
-      total: 0,
-      // 字典表格数据
-      dataList: [],
-      // 默认字典类型
-      defaultDictType: "",
-      // 弹出层标题
-      title: "",
-      // 是否显示弹出层
-      open: false,
-      // 状态数据字典
-      statusOptions: [],
-      // 类型数据字典
-      typeOptions: [],
-      // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        dictName: undefined,
-        dictType: undefined,
-        status: undefined
-      },
-      // 表单参数
-      form: {},
-      // 表单校验
-      rules: {
-        dictLabel: [
-          { required: true, message: "数据标签不能为空", trigger: "blur" }
-        ],
-        dictValue: [
-          { required: true, message: "数据键值不能为空", trigger: "blur" }
-        ],
-        dictSort: [
-          { required: true, message: "数据顺序不能为空", trigger: "blur" }
-        ]
-      }
-    };
-  },
-  created() {
-    this.getList();
-    // const dictId = this.$route.params && this.$route.params.dictId;
-    // this.getType(dictId);
-    // this.getTypeList();
-    // this.getDicts("sys_normal_disable").then(response => {
-    //   this.statusOptions = response.data;
-    // });
-  },
-  methods: {
-
-    /** 查询字典数据列表 */
-    getList() {
-      this.loading = true;
-      listData(this.queryParams).then(response => {
-        let data = response.data;
-        this.dataList = data.records;
-        this.total = data.total;
-        this.loading = false;
-      });
+  export default {
+    name: "Card",
+    data() {
+      return {
+        // 遮罩层
+        loading: true,
+        // 选中数组
+        ids: [],
+        // 非单个禁用
+        single: true,
+        // 非多个禁用
+        multiple: true,
+        // 总条数
+        total: 0,
+        // 字典表格数据
+        dataList: [],
+        // 默认字典类型
+        defaultDictType: "",
+        // 弹出层标题
+        title: "",
+        // 是否显示弹出层
+        open: false,
+        // 状态数据字典
+        statusOptions: [],
+        // 类型数据字典
+        typeOptions: [],
+        // 查询参数
+        queryParams: {
+          pageNum: 1,
+          pageSize: 10,
+          dictName: undefined,
+          dictType: undefined,
+          status: undefined
+        },
+        // 表单参数
+        form: {},
+        // 表单校验
+        rules: {
+          dictLabel: [
+            {required: true, message: "数据标签不能为空", trigger: "blur"}
+          ],
+          dictValue: [
+            {required: true, message: "数据键值不能为空", trigger: "blur"}
+          ],
+          dictSort: [
+            {required: true, message: "数据顺序不能为空", trigger: "blur"}
+          ]
+        }
+      };
     },
-    /** 搜索按钮操作 */
-    handleQuery() {
-      this.queryParams.pageNum = 1;
+    created() {
       this.getList();
+      // const dictId = this.$route.params && this.$route.params.dictId;
+      // this.getType(dictId);
+      // this.getTypeList();
+      // this.getDicts("sys_normal_disable").then(response => {
+      //   this.statusOptions = response.data;
+      // });
     },
+    methods: {
 
-    // 多选框选中数据
-    handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.dictId)
-      this.single = selection.length!=1
-      this.multiple = !selection.length
-    },
-  }
-};
+      /** 查询字典数据列表 */
+      getList() {
+        this.loading = true;
+        listData(this.queryParams).then(response => {
+          let data = response.data;
+          this.dataList = data.records;
+          this.total = data.total;
+          this.loading = false;
+        });
+      },
+      /** 搜索按钮操作 */
+      handleQuery() {
+        this.queryParams.pageNum = 1;
+        this.getList();
+      },
+
+      setAnki(row) {
+        const a = {}
+        a.cardId = row.cardId
+        setAnki(a);
+      },
+
+
+      // 多选框选中数据
+      handleSelectionChange(selection) {
+        this.ids = selection.map(item => item.dictId)
+        this.single = selection.length != 1
+        this.multiple = !selection.length
+      },
+    }
+  };
 </script>

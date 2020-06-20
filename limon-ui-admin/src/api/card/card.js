@@ -8,3 +8,12 @@ export function listData(query) {
     data: query
   })
 }
+
+// 设置anki
+export function setAnki(setAnkiRequest) {
+  return request({
+    url: '/api/card/setAnki',
+    method: 'post',
+    data: setAnkiRequest
+  })
+}
