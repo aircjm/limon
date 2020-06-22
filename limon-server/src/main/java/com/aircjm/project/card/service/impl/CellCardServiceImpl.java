@@ -119,6 +119,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
         queryWrapper.eq("card_id", request.getCardId());
         CellCard one = getOne(queryWrapper);
         log.info("获取的卡片为：{}", one.getCardTitle());
+
 //        restTemplate.postForEntity("http://localhost:8095/api/util/markdown2html", null);
 
     }
