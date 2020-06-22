@@ -10,52 +10,10 @@
       </el-form-item>
     </el-form>
 
-    <!--<el-row :gutter="10" class="mb8">-->
-    <!--<el-col :span="1.5">-->
-    <!--<el-button-->
-    <!--type="primary"-->
-    <!--icon="el-icon-plus"-->
-    <!--size="mini"-->
-    <!--@click="handleAdd"-->
-    <!--v-hasPermi="['system:dict:add']"-->
-    <!--&gt;新增</el-button>-->
-    <!--</el-col>-->
-    <!--<el-col :span="1.5">-->
-    <!--<el-button-->
-    <!--type="success"-->
-    <!--icon="el-icon-edit"-->
-    <!--size="mini"-->
-    <!--:disabled="single"-->
-    <!--@click="handleUpdate"-->
-    <!--v-hasPermi="['system:dict:edit']"-->
-    <!--&gt;修改</el-button>-->
-    <!--</el-col>-->
-    <!--<el-col :span="1.5">-->
-    <!--<el-button-->
-    <!--type="danger"-->
-    <!--icon="el-icon-delete"-->
-    <!--size="mini"-->
-    <!--:disabled="multiple"-->
-    <!--@click="handleDelete"-->
-    <!--v-hasPermi="['system:dict:remove']"-->
-    <!--&gt;删除</el-button>-->
-    <!--</el-col>-->
-    <!--<el-col :span="1.5">-->
-    <!--<el-button-->
-    <!--type="warning"-->
-    <!--icon="el-icon-download"-->
-    <!--size="mini"-->
-    <!--@click="handleExport"-->
-    <!--v-hasPermi="['system:dict:export']"-->
-    <!--&gt;导出</el-button>-->
-    <!--</el-col>-->
-    <!--</el-row>-->
-
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="名称" align="center" width="200" autocapitalize="on" prop="cardTitle"/>
       <el-table-column label="链接" align="center" prop="url" type="url"/>
-      <el-table-column label="内容" align="center" prop="cardDesc"/>
       <el-table-column label="状态" align="center" prop="status"/>
       <el-table-column label="trello更新时间" align="center" prop="trelloUpdateTime" width="180">
         <template slot-scope="scope">
