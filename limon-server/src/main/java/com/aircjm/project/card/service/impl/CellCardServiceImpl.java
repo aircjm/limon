@@ -2,16 +2,19 @@ package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.utils.LocalDateUtils;
 import com.aircjm.common.utils.bean.BeanUtils;
+import com.aircjm.project.anki.ankiconnect.AnkiRespVo;
 import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.mapper.CellCardMapper;
+import com.aircjm.project.card.service.AnkiService;
 import com.aircjm.project.card.service.CellCardService;
+import com.aircjm.project.card.vo.anki.vo.Fields;
+import com.aircjm.project.card.vo.anki.vo.Note;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.aircjm.project.system.service.ISysConfigService;
-import com.alibaba.druid.support.json.JSONUtils;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -19,16 +22,15 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.julienvey.trello.Trello;
 import com.julienvey.trello.domain.Board;
 import com.julienvey.trello.domain.Card;
+import com.julienvey.trello.domain.Label;
 import com.julienvey.trello.domain.Member;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -54,7 +56,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
     @Override
     public Page<CellCardDetailResponse> getCardList(GetCardRequest request) {
         QueryWrapper<CellCard> queryWrapper = new QueryWrapper<>();
-        Page<CellCard> boardCards = page(request,queryWrapper);
+        Page<CellCard> boardCards = page(request, queryWrapper);
         Page<CellCardDetailResponse> response = new Page<>();
         BeanUtils.copyProperties(boardCards, response);
         response.setRecords(boardCards.getRecords().stream().map(item -> {
@@ -113,6 +115,10 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
     @Resource
     private RestTemplate restTemplate;
 
+    @Resource
+    private AnkiService ankiService;
+
+
     @Override
     public void setAnki(SetAnkiRequest request) {
         QueryWrapper<CellCard> queryWrapper = new QueryWrapper<>();
@@ -120,8 +126,30 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
         CellCard one = getOne(queryWrapper);
         log.info("获取的卡片为：{}", one.getCardTitle());
 
-//        restTemplate.postForEntity("http://localhost:8095/api/util/markdown2html", null);
+        // 开始生成卡片
+        Note note = convert(trello.getCard(one.getCardId()));
+        log.info("请求生成anki卡片请求参数是：{}", JSON.toJSONString(note));
+        AnkiRespVo ankiRespVo = ankiService.addNote(note);
+        if (Objects.nonNull(ankiRespVo)) {
+            log.info("生产卡片成功 开始保存数据， {}", JSON.toJSONString(ankiRespVo));
+        }
+    }
 
+
+    private static Note convert(com.julienvey.trello.domain.Card card) {
+        Note note = new Note();
+        note.setDeckName("trello");
+        note.setModelName("Markdown");
+
+        Fields fields = new Fields();
+        fields.setFront(card.getName());
+        fields.setBack(card.getDesc());
+        note.setFields(fields);
+        if (CollectionUtils.isNotEmpty(card.getLabels())) {
+            note.setTags(card.getLabels().stream().map(Label::getName).collect(Collectors.toList()));
+        }
+
+        return note;
     }
 
 }
