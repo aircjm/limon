@@ -127,9 +127,11 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
         log.info("获取的卡片为：{}", one.getCardTitle());
 
         // 开始生成卡片
-        Note note = convert(trello.getCard(one.getCardId()));
+        Card card = trello.getCard("5ef19b4c4afff2868182d957");
+        Note note = convert(card);
         log.info("请求生成anki卡片请求参数是：{}", JSON.toJSONString(note));
-        AnkiRespVo ankiRespVo = ankiService.addNote(note);
+        log.info("请求生成anki desc：{}", card.getDesc());
+         AnkiRespVo ankiRespVo = ankiService.addNote(note);
         if (Objects.nonNull(ankiRespVo)) {
             log.info("生产卡片成功 开始保存数据， {}", JSON.toJSONString(ankiRespVo));
         }
