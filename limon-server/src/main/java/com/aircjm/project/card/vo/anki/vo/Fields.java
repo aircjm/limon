@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class Fields {
-    @JSONField(name = "Front")
+    @JSONField(name = "Question")
     private String front;
-    @JSONField(name = "Back")
+    @JSONField(name = "Answer")
     private String back;
 }
