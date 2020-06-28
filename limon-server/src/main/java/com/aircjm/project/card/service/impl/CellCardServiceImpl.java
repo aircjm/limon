@@ -2,6 +2,8 @@ package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.utils.LocalDateUtils;
 import com.aircjm.common.utils.bean.BeanUtils;
+import com.aircjm.common.utils.poi.ExcelUtil;
+import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.project.anki.ankiconnect.AnkiRespVo;
 import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.mapper.CellCardMapper;
@@ -13,6 +15,7 @@ import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.project.card.vo.response.CellCardDetailResponse;
+import com.aircjm.project.monitor.domain.SysJob;
 import com.aircjm.project.system.service.ISysConfigService;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -68,6 +71,15 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
     }
 
     @Override
+    public AjaxResult exportCard(GetCardRequest request) {
+        Page<CellCardDetailResponse> page = getCardList(request);
+        ExcelUtil<CellCardDetailResponse> util = new ExcelUtil<>(CellCardDetailResponse.class);
+        AjaxResult ajaxResult = util.exportExcel(page.getRecords(), "卡片集合");
+
+        return ajaxResult;
+    }
+
+    @Override
     public void updateAllCard() {
         String memberId = configService.selectConfigByKey("trello.default.memberId");
         Member member = trello.getMemberInformation(memberId);
@@ -79,7 +91,6 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
             QueryWrapper<CellCard> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("board_id", board.getId());
             Map<String, CellCard> cellCardMap = list(queryWrapper).stream().collect(Collectors.toMap(CellCard::getCardId, Function.identity()));
-
 
             cardList.stream().forEach(card -> {
                         CellCard cellCard = cellCardMap.get(card.getId());

@@ -1,6 +1,7 @@
 package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
+import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
@@ -36,6 +37,12 @@ public class CardController {
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
         cellCardService.saveCard(request);
         return RestResponse.successEmpty();
+    }
+
+    @PostMapping("/exportCard")
+    public RestResponse exportCard(@RequestBody @Valid GetCardRequest request) {
+        AjaxResult ajaxResult = cellCardService.exportCard(request);
+        return RestResponse.successData(ajaxResult);
     }
 
 

@@ -10,6 +10,18 @@
       </el-form-item>
     </el-form>
 
+    <el-row :gutter="10" class="mb8">
+      <el-col :span="1.5">
+        <el-button
+          type="warning"
+          icon="el-icon-download"
+          size="mini"
+          @click="handleExport"
+        >导出</el-button>
+      </el-col>
+    </el-row>
+
+
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="名称" align="center" width="200" autocapitalize="on" prop="cardTitle"/>
@@ -53,7 +65,7 @@
 </template>
 
 <script>
-  import {listData, setAnki} from "@/api/card/card";
+  import {listData, setAnki, exportCard} from "@/api/card/card";
 
   export default {
     name: "Card",
@@ -137,7 +149,19 @@
         a.cardId = row.cardId
         setAnki(a);
       },
-
+      /** 导出按钮操作 */
+      handleExport() {
+        const queryParams = this.queryParams;
+        this.$confirm('是否确认导出所有角色数据项?', "警告", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        }).then(function() {
+          return exportCard(queryParams);
+        }).then(response => {
+          this.download(response.data.msg);
+        }).catch(function() {});
+      },
 
       // 多选框选中数据
       handleSelectionChange(selection) {
