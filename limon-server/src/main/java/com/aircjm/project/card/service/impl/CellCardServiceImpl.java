@@ -156,7 +156,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, CellCard> i
 
         Fields fields = new Fields();
         fields.setFront(card.getName());
-        fields.setBack(card.getDesc());
+        fields.setBack(card.getDesc().replace("\n", "<br>"));
         note.setFields(fields);
         if (CollectionUtils.isNotEmpty(card.getLabels())) {
             note.setTags(card.getLabels().stream().map(Label::getName).collect(Collectors.toList()));
