@@ -1,6 +1,7 @@
 package com.aircjm.project.card.vo.response;
 
 
+import com.aircjm.framework.aspectj.lang.annotation.Excel;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,8 +24,10 @@ public class CellCardDetailResponse {
 
     private String cardId;
 
+    @Excel(name = "Question")
     private String cardTitle;
 
+    @Excel(name = "Answer")
     private String cardDesc;
 
     private String descHtml;

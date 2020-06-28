@@ -17,3 +17,13 @@ export function setAnki(setAnkiRequest) {
     data: setAnkiRequest
   })
 }
+
+
+// 查询列表
+export function exportCard(query) {
+  return request({
+    url: '/api/card/exportCard',
+    method: 'post',
+    data: query
+  })
+}

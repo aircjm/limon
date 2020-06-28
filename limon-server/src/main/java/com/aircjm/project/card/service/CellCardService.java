@@ -1,5 +1,6 @@
 package com.aircjm.project.card.service;
 
+import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
@@ -18,6 +19,8 @@ public interface CellCardService extends IService<CellCard> {
     void saveCard(SaveCardRequest request);
 
     Page<CellCardDetailResponse> getCardList(GetCardRequest request);
+
+    AjaxResult exportCard(GetCardRequest request);
 
     /**
      * 全量更新卡片
