@@ -1,8 +1,8 @@
 package com.aircjm.project.card.mapper;
 
-import com.aircjm.project.card.domain.CellCard;
+import com.aircjm.project.card.domain.Cell;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface CellCardMapper extends BaseMapper<CellCard> {
+public interface CellCardMapper extends BaseMapper<Cell> {
 
 }

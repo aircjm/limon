@@ -5,7 +5,6 @@ import com.aircjm.common.vo.DbBaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import lombok.*;
 
@@ -21,7 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @TableName(value = "cell_card")
-public class CellCard extends DbBaseEntity<CellCard> {
+public class Cell extends DbBaseEntity<Cell> {
 
     @TableId(type = IdType.INPUT)
     private String id;
