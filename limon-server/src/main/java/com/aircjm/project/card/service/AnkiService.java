@@ -1,11 +1,9 @@
 package com.aircjm.project.card.service;
 
-import com.aircjm.project.anki.ankiconnect.AnkiRespVo;
+import com.aircjm.project.anki.response.AnkiRespVo;
 import com.aircjm.project.anki.ankiconnect.AnkiVo;
 import com.aircjm.project.anki.ankiconnect.NoteVo;
 import com.aircjm.project.card.vo.anki.vo.Note;
-import com.aircjm.project.card.vo.request.GetBoardRequest;
-import com.julienvey.trello.domain.Board;
 
 import java.util.List;
 
@@ -26,5 +24,11 @@ public interface AnkiService {
      */
     AnkiRespVo addNotes(List<NoteVo> noteVos);
 
+    /**
+     * 新增卡片
+     *
+     * @param note 具体卡片
+     * @return 请求返回结果
+     */
     AnkiRespVo addNote(Note note);
 }

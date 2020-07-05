@@ -1,6 +1,6 @@
 package com.aircjm.project.card.service.impl;
 
-import com.aircjm.project.anki.ankiconnect.AnkiRespVo;
+import com.aircjm.project.anki.response.AnkiRespVo;
 import com.aircjm.project.anki.ankiconnect.AnkiVo;
 import com.aircjm.project.anki.ankiconnect.NoteVo;
 import com.aircjm.project.card.service.AnkiService;

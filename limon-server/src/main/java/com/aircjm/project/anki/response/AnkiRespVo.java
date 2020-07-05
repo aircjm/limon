@@ -1,4 +1,4 @@
-package com.aircjm.project.anki.ankiconnect;
+package com.aircjm.project.anki.response;
 
 
 import lombok.Data;
