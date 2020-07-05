@@ -2,14 +2,12 @@ package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
 import com.aircjm.framework.web.domain.AjaxResult;
-import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.service.CellCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.julienvey.trello.domain.Card;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
