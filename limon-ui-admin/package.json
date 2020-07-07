@@ -1,8 +1,8 @@
 {
   "name": "limon-ui-admin",
   "version": "2.2.0",
-  "description": "若依管理系统",
-  "author": "若依",
+  "description": "柠檬后台管理系统",
+  "author": "aircjm",
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve --open",
