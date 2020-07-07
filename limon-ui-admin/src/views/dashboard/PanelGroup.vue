@@ -1,6 +1,13 @@
 <template>
   <el-row :gutter="40" class="panel-group">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <el-button-group>
+        <el-button type="small" @click="refreshAllCard">
+          刷新所有卡片内容
+        </el-button>
+      </el-button-group>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
         <div class="card-panel-icon-wrapper icon-people">
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
@@ -57,6 +64,7 @@
 
 <script>
 import CountTo from 'vue-count-to'
+import {refreshAllCard} from '@/api/system/job'
 
 export default {
   components: {
@@ -65,6 +73,10 @@ export default {
   methods: {
     handleSetLineChartData(type) {
       this.$emit('handleSetLineChartData', type)
+    },
+
+    refreshAllCard() {
+      refreshAllCard({});
     }
   }
 }
