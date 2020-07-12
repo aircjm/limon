@@ -67,6 +67,9 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
     @Override
     public Page<CellCardDetailResponse> getCardList(GetCardRequest request) {
         QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
+        if (Objects.nonNull(request.getStatus())) {
+            queryWrapper.eq("status", request.getStatus());
+        }
         Page<Cell> boardCards = page(request, queryWrapper);
         Page<CellCardDetailResponse> response = new Page<>();
         BeanUtils.copyProperties(boardCards, response);
