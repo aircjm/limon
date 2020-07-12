@@ -40,7 +40,10 @@ public class AnkiServiceImpl implements AnkiService {
         log.info("调用anki接口入参为:{}", JSON.toJSONString(ankiVo));
         JSONObject jsonObj = JSONObject.parseObject(JSONObject.toJSONString(ankiVo));
         HttpEntity<String> formEntity = new HttpEntity<>(jsonObj.toString(), headers);
-        return restTemplate.postForObject(ANKI_URL, formEntity, AnkiRespVo.class);
+        String result = restTemplate.postForObject(ANKI_URL, formEntity, String.class);
+        log.info("调用anki接口回参为:{}", JSON.toJSONString(result));
+        AnkiRespVo ankiRespVo = JSON.parseObject(result, AnkiRespVo.class);
+        return ankiRespVo;
     }
 
     @Override
