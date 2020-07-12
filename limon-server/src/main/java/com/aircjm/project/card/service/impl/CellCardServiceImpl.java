@@ -1,6 +1,8 @@
 package com.aircjm.project.card.service.impl;
 
+import com.aircjm.common.exception.CustomException;
 import com.aircjm.common.utils.LocalDateUtils;
+import com.aircjm.common.utils.StringUtils;
 import com.aircjm.common.utils.bean.BeanUtils;
 import com.aircjm.common.utils.poi.ExcelUtil;
 import com.aircjm.framework.web.domain.AjaxResult;
@@ -138,14 +140,16 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
         log.info("获取的卡片为：{}", one.getCardTitle());
 
         // 开始生成卡片
-        Card card = trello.getCard("5ef19b4c4afff2868182d957");
+        Card card = trello.getCard(request.getCardId());
         Note note = convert(card);
         log.info("请求生成anki卡片请求参数是：{}", JSON.toJSONString(note));
         log.info("请求生成anki desc：{}", card.getDesc());
         AnkiRespVo ankiRespVo = ankiService.addNote(note);
-        if (Objects.nonNull(ankiRespVo)) {
-            log.info("生产卡片成功 开始保存数据， {}", JSON.toJSONString(ankiRespVo));
+        if (StringUtils.isNotEmpty(ankiRespVo.getError())) {
+            throw new CustomException("生成Anki的Note失败，失败原因为：" + ankiRespVo.getError());
         }
+        UpdateWrapper<Cell> updateWrapper = new UpdateWrapper<>();
+        update(updateWrapper);
     }
 
 
