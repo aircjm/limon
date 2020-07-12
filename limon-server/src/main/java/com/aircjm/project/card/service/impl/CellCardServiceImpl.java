@@ -29,10 +29,12 @@ import com.julienvey.trello.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -50,6 +52,11 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
 
     @Resource
     private ISysConfigService configService;
+
+
+    @Resource
+    private AnkiService ankiService;
+
 
     @Override
     public void saveCard(SaveCardRequest request) {
@@ -91,7 +98,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
             queryWrapper.eq("board_id", board.getId());
             Map<String, Cell> cellCardMap = list(queryWrapper).stream().collect(Collectors.toMap(Cell::getCardId, Function.identity()));
 
-            cardList.stream().forEach(card -> {
+            cardList.forEach(card -> {
                         Cell cell = cellCardMap.get(card.getId());
                         if (Objects.isNull(cell)) {
                             cell = Cell.builder().boardId(board.getId())
@@ -122,12 +129,6 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
 
     }
 
-    @Resource
-    private RestTemplate restTemplate;
-
-    @Resource
-    private AnkiService ankiService;
-
 
     @Override
     public void setAnki(SetAnkiRequest request) {
@@ -141,7 +142,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
         Note note = convert(card);
         log.info("请求生成anki卡片请求参数是：{}", JSON.toJSONString(note));
         log.info("请求生成anki desc：{}", card.getDesc());
-         AnkiRespVo ankiRespVo = ankiService.addNote(note);
+        AnkiRespVo ankiRespVo = ankiService.addNote(note);
         if (Objects.nonNull(ankiRespVo)) {
             log.info("生产卡片成功 开始保存数据， {}", JSON.toJSONString(ankiRespVo));
         }
