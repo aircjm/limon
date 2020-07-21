@@ -64,14 +64,6 @@ mybatis-plus:
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
   mapper-locations: classpath*:mybatis/**/*Mapper.xml
 
-
-# PageHelper分页插件
-pagehelper: 
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql 
-
 # Swagger配置
 swagger:
   # 是否开启swagger

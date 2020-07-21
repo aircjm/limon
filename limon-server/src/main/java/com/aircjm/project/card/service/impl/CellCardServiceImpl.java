@@ -33,6 +33,8 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -113,6 +115,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
                                     .listId(Optional.ofNullable(card.getIdList()).orElse(""))
                                     .trelloUpdateTime(LocalDateUtils.date2LocalDate(card.getDateLastActivity()))
                                     .build();
+                            cell.setCreateTime(LocalDateTime.now());
                         } else {
                             if (LocalDateUtils.date2LocalDate(card.getDateLastActivity()).isAfter(cell.getTrelloUpdateTime())) {
                                 cell.setCardTitle(Optional.ofNullable(card.getName()).orElse(""));
