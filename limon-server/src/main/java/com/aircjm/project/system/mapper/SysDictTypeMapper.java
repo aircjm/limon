@@ -1,15 +1,15 @@
 package com.aircjm.project.system.mapper;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Mapper;
 import com.aircjm.project.system.domain.SysDictType;
+
+
+import java.util.List;
 
 /**
  * 字典表 数据层
  * 
  * @author aircjm
  */
-@Mapper
 public interface SysDictTypeMapper
 {
     /**

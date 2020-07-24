@@ -1,6 +1,8 @@
 package com.aircjm.project.card.service.impl;
 
+import com.aircjm.common.exception.CustomException;
 import com.aircjm.common.utils.LocalDateUtils;
+import com.aircjm.common.utils.StringUtils;
 import com.aircjm.common.utils.bean.BeanUtils;
 import com.aircjm.common.utils.poi.ExcelUtil;
 import com.aircjm.framework.web.domain.AjaxResult;
@@ -29,10 +31,14 @@ import com.julienvey.trello.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -51,6 +57,11 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
     @Resource
     private ISysConfigService configService;
 
+
+    @Resource
+    private AnkiService ankiService;
+
+
     @Override
     public void saveCard(SaveCardRequest request) {
     }
@@ -58,6 +69,9 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
     @Override
     public Page<CellCardDetailResponse> getCardList(GetCardRequest request) {
         QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
+        if (Objects.nonNull(request.getStatus())) {
+            queryWrapper.eq("status", request.getStatus());
+        }
         Page<Cell> boardCards = page(request, queryWrapper);
         Page<CellCardDetailResponse> response = new Page<>();
         BeanUtils.copyProperties(boardCards, response);
@@ -91,7 +105,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
             queryWrapper.eq("board_id", board.getId());
             Map<String, Cell> cellCardMap = list(queryWrapper).stream().collect(Collectors.toMap(Cell::getCardId, Function.identity()));
 
-            cardList.stream().forEach(card -> {
+            cardList.forEach(card -> {
                         Cell cell = cellCardMap.get(card.getId());
                         if (Objects.isNull(cell)) {
                             cell = Cell.builder().boardId(board.getId())
@@ -101,6 +115,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
                                     .listId(Optional.ofNullable(card.getIdList()).orElse(""))
                                     .trelloUpdateTime(LocalDateUtils.date2LocalDate(card.getDateLastActivity()))
                                     .build();
+                            cell.setCreateTime(LocalDateTime.now());
                         } else {
                             if (LocalDateUtils.date2LocalDate(card.getDateLastActivity()).isAfter(cell.getTrelloUpdateTime())) {
                                 cell.setCardTitle(Optional.ofNullable(card.getName()).orElse(""));
@@ -122,12 +137,6 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
 
     }
 
-    @Resource
-    private RestTemplate restTemplate;
-
-    @Resource
-    private AnkiService ankiService;
-
 
     @Override
     public void setAnki(SetAnkiRequest request) {
@@ -137,14 +146,16 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
         log.info("获取的卡片为：{}", one.getCardTitle());
 
         // 开始生成卡片
-        Card card = trello.getCard("5ef19b4c4afff2868182d957");
+        Card card = trello.getCard(request.getCardId());
         Note note = convert(card);
         log.info("请求生成anki卡片请求参数是：{}", JSON.toJSONString(note));
         log.info("请求生成anki desc：{}", card.getDesc());
-         AnkiRespVo ankiRespVo = ankiService.addNote(note);
-        if (Objects.nonNull(ankiRespVo)) {
-            log.info("生产卡片成功 开始保存数据， {}", JSON.toJSONString(ankiRespVo));
+        AnkiRespVo ankiRespVo = ankiService.addNote(note);
+        if (StringUtils.isNotEmpty(ankiRespVo.getError())) {
+            throw new CustomException("生成Anki的Note失败，失败原因为：" + ankiRespVo.getError());
         }
+        UpdateWrapper<Cell> updateWrapper = new UpdateWrapper<>();
+        update(updateWrapper);
     }
 
 

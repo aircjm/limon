@@ -1,7 +1,7 @@
 package com.aircjm.project.system.mapper;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.data.repository.query.Param;
 import com.aircjm.project.system.domain.SysDept;
 
 /**
