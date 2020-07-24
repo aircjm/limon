@@ -2,6 +2,8 @@ package com.aircjm.project.system.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,9 @@ import com.aircjm.project.system.service.ISysUserService;
  * @author aircjm
  */
 @Service
+@Slf4j
 public class SysUserServiceImpl implements ISysUserService
 {
-    private static final Logger log = LoggerFactory.getLogger(SysUserServiceImpl.class);
 
     @Autowired
     private SysUserMapper userMapper;

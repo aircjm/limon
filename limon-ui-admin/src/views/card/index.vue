@@ -25,11 +25,16 @@
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="名称" align="center" width="200" autocapitalize="on" prop="cardTitle"/>
+      <el-table-column label="具体内容" align="center">
+        <template slot-scope="scope">
+          <el-button type="text" @click="openMarkdown(scope.row)">点击打开内容</el-button>
+        </template>
+      </el-table-column>
       <el-table-column label="链接" align="center" prop="url" type="url"/>
       <el-table-column label="状态" align="center" prop="status"/>
       <el-table-column label="trello更新时间" align="center" prop="trelloUpdateTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.createTime) }}</span>
+          <span>{{parseTime(scope.row.updateTime)}}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -57,8 +62,8 @@
     <pagination
       v-show="total>0"
       :total="total"
-      :page.sync="queryParams.pageNum"
-      :limit.sync="queryParams.pageSize"
+      :page.sync="queryParams.current"
+      :limit.sync="queryParams.size"
       @pagination="getList"
     />
   </div>
@@ -66,7 +71,7 @@
 
 <script>
   import {listData, setAnki, exportCard} from "@/api/card/card";
-
+  import Marked from 'marked'
   export default {
     name: "Card",
     data() {
@@ -95,8 +100,8 @@
         typeOptions: [],
         // 查询参数
         queryParams: {
-          pageNum: 1,
-          pageSize: 10,
+          current: 1,
+          size: 10,
           dictName: undefined,
           dictType: undefined,
           status: undefined
@@ -127,6 +132,12 @@
       // });
     },
     methods: {
+      openMarkdown(row) {
+        let marked = Marked(row.cardDesc, { sanitize: true });
+        this.$alert(marked, row.cardTitle, {
+          dangerouslyUseHTMLString: true
+        });
+      },
 
       /** 查询字典数据列表 */
       getList() {
@@ -140,7 +151,7 @@
       },
       /** 搜索按钮操作 */
       handleQuery() {
-        this.queryParams.pageNum = 1;
+        this.queryParams.current = 1;
         this.getList();
       },
 
