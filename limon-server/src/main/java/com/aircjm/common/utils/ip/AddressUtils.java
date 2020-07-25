@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.aircjm.common.constant.Constants;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.common.utils.http.HttpUtils;
-import com.aircjm.framework.config.RuoYiConfig;
+import com.aircjm.framework.config.SystemConfig;
 
 /**
  * 获取地址类
@@ -31,7 +31,7 @@ public class AddressUtils
         {
             return "内网IP";
         }
-        if (RuoYiConfig.isAddressEnabled())
+        if (SystemConfig.isAddressEnabled())
         {
             try
             {
