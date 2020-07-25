@@ -3,4 +3,6 @@ EXPOSE 8085
 
 #VOLUME /tmp
 ADD target/limon-server.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar","--spring.config.location=/data/java/limon/config/application-prod.yml"]
+ENV JAVA_OPTS="-Xms256m -Xmx256m"
+
+ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} -server -jar app.jar
