@@ -7,7 +7,6 @@ import com.aircjm.common.constant.Constants;
 /**
  * VelocityEngine工厂
  * 
- * @author RuoYi
  */
 public class VelocityInitializer
 {
