@@ -15,7 +15,7 @@ import com.aircjm.common.utils.ServletUtils;
 import com.aircjm.common.utils.file.FileUploadUtils;
 import com.aircjm.framework.aspectj.lang.annotation.Log;
 import com.aircjm.framework.aspectj.lang.enums.BusinessType;
-import com.aircjm.framework.config.RuoYiConfig;
+import com.aircjm.framework.config.SystemConfig;
 import com.aircjm.framework.security.LoginUser;
 import com.aircjm.framework.security.service.TokenService;
 import com.aircjm.framework.web.controller.BaseController;
@@ -111,7 +111,7 @@ public class SysProfileController extends BaseController
         if (!file.isEmpty())
         {
             LoginUser loginUser = tokenService.getLoginUser(ServletUtils.getRequest());
-            String avatar = FileUploadUtils.upload(RuoYiConfig.getAvatarPath(), file);
+            String avatar = FileUploadUtils.upload(SystemConfig.getAvatarPath(), file);
             if (userService.updateUserAvatar(loginUser.getUsername(), avatar))
             {
                 AjaxResult ajax = AjaxResult.success();

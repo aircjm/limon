@@ -43,7 +43,7 @@ import com.aircjm.framework.aspectj.lang.annotation.Excel;
 import com.aircjm.framework.aspectj.lang.annotation.Excel.ColumnType;
 import com.aircjm.framework.aspectj.lang.annotation.Excel.Type;
 import com.aircjm.framework.aspectj.lang.annotation.Excels;
-import com.aircjm.framework.config.RuoYiConfig;
+import com.aircjm.framework.config.SystemConfig;
 import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.common.core.text.Convert;
 import com.aircjm.common.exception.CustomException;
@@ -680,7 +680,7 @@ public class ExcelUtil<T>
      */
     public String getAbsoluteFile(String filename)
     {
-        String downloadPath = RuoYiConfig.getDownloadPath() + filename;
+        String downloadPath = SystemConfig.getDownloadPath() + filename;
         File desc = new File(downloadPath);
         if (!desc.getParentFile().exists())
         {
