@@ -19,25 +19,30 @@ services:
       net:
         ipv4_address: 172.28.1.1
 
-
   limon-server:
     container_name: limon-server
-    image: aircjm/limon-server:1.0.2
+    build:
+      context: ./
+      dockerfile: ./docker/server-Dockerfile
+    working_dir: /app
     environment:
       TZ: Asia/Shanghai
     volumes:
-      - /data/java/limon/config/:/data/java/limon/config/
+      - ./limon-server:/app
+      - ~/.m2:/root/.m2
       - /var/logs/java/limon:/var/log/java/limon
-      - ~/.limon/upload:/root/.limon/upload
+      - ~/.titan/upload:/root/.titan/upload
     expose:
       - "8075"
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker -Dmaven.test.skip=true
     depends_on:
       - limon-mysql
       - limon-redis
     restart: always
     networks:
-      net:
+      titan-net:
         ipv4_address: 172.28.1.2
+
 
   limon-redis:
     container_name:  limon-redis
