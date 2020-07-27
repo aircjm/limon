@@ -1,7 +1,8 @@
-FROM anapsix/alpine-java:8-jdk-alpine
-EXPOSE 8900
+FROM openjdk:8u191-jdk-alpine3.9
+EXPOSE 8085
 
 #VOLUME /tmp
-ADD limon-server.jar app.jar
-RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-jar","/app.jar","--spring.config.location=/data/java/config/application-prod.yml"]
+ADD target/limon-server.jar app.jar
+ENV JAVA_OPTS="-Xms256m -Xmx256m"
+
+ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} -server -jar app.jar
