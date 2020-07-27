@@ -15,12 +15,13 @@ ossDir=''
 basedir=''
 #将accessKeyId 和 accessKeySecret替换自己的
 #bucketName
+conf = toml.loads(open('/etc/conf/oss.toml').read())
+
 
 auth = oss2.Auth(conf['OSS']['AccessKeyId'], conf['OSS']['AccessKeySecret'])
 bucket = oss2.Bucket(auth, conf['OSS']['EndPoint'], conf['OSS']['Bucket'])
 
 
-conf = toml.loads(open('/etc/conf/oss.toml').read())
 
 
 
