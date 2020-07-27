@@ -3,7 +3,7 @@ import os
 import oss2
 import sys
 
-conf = toml.loads(open('etc/conf/oss.toml').read())
+conf = toml.loads(open('/etc/conf/oss.toml').read())
 
 
 # 打包admin静态文件。
