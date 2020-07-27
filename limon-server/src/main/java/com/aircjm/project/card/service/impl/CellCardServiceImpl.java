@@ -1,16 +1,17 @@
 package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.exception.CustomException;
-import com.aircjm.common.utils.LocalDateUtils;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.common.utils.bean.BeanUtils;
 import com.aircjm.common.utils.poi.ExcelUtil;
 import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.project.anki.response.AnkiRespVo;
 import com.aircjm.project.card.domain.Cell;
+import com.aircjm.project.card.domain.TrelloCard;
 import com.aircjm.project.card.mapper.CellCardMapper;
 import com.aircjm.project.card.service.AnkiService;
 import com.aircjm.project.card.service.CellCardService;
+import com.aircjm.project.card.service.TrelloCardService;
 import com.aircjm.project.card.vo.anki.vo.Fields;
 import com.aircjm.project.card.vo.anki.vo.Note;
 import com.aircjm.project.card.vo.request.GetCardRequest;
@@ -33,13 +34,9 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -61,6 +58,9 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
     @Resource
     private AnkiService ankiService;
 
+
+    @Resource
+    private TrelloCardService trelloCardService;
 
     @Override
     public void saveCard(SaveCardRequest request) {
@@ -101,35 +101,35 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
 
         boards.forEach(board -> {
             List<Card> cardList = trello.getBoardCards(board.getId());
-            QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("board_id", board.getId());
-            Map<String, Cell> cellCardMap = list(queryWrapper).stream().collect(Collectors.toMap(Cell::getCardId, Function.identity()));
+            QueryWrapper<TrelloCard> queryWrapper = new QueryWrapper<>();
+
 
             cardList.forEach(card -> {
-                        Cell cell = cellCardMap.get(card.getId());
-                        if (Objects.isNull(cell)) {
-                            cell = Cell.builder().boardId(board.getId())
+                        queryWrapper.eq("card_id", board.getId());
+                        TrelloCard trelloCard = trelloCardService.getOne(queryWrapper);
+                        if (Objects.isNull(trelloCard)) {
+                            trelloCard = TrelloCard.builder().boardId(board.getId())
                                     .cardId(Optional.ofNullable(card.getId()).orElse(""))
                                     .cardTitle(Optional.ofNullable(card.getName()).orElse(""))
                                     .cardDesc(Optional.ofNullable(card.getDesc()).orElse(""))
-                                    .listId(Optional.ofNullable(card.getIdList()).orElse(""))
-                                    .trelloUpdateTime(LocalDateUtils.date2LocalDate(card.getDateLastActivity()))
+                                    .card(card)
+                                    .dateLastActivity(card.getDateLastActivity())
                                     .build();
-                            cell.setCreateTime(LocalDateTime.now());
                         } else {
-                            if (LocalDateUtils.date2LocalDate(card.getDateLastActivity()).isAfter(cell.getTrelloUpdateTime())) {
-                                cell.setCardTitle(Optional.ofNullable(card.getName()).orElse(""));
-                                cell.setCardDesc(Optional.ofNullable(card.getDesc()).orElse(""));
-                                cell.setBoardId(Optional.ofNullable(card.getIdBoard()).orElse(""));
-                                cell.setTrelloUpdateTime(LocalDateUtils.date2LocalDate(card.getDateLastActivity()));
+                            if (card.getDateLastActivity().after(trelloCard.getDateLastActivity())) {
+                                trelloCard.setBoardId(Optional.ofNullable(card.getIdBoard()).orElse(""));
+                                trelloCard.setCardTitle(Optional.ofNullable(card.getName()).orElse(""));
+                                trelloCard.setCardDesc(Optional.ofNullable(card.getDesc()).orElse(""));
+                                trelloCard.setBoardId(Optional.ofNullable(card.getIdBoard()).orElse(""));
+                                trelloCard.setCard(card);
+                                trelloCard.setDateLastActivity(card.getDateLastActivity());
                             } else {
                                 return;
                             }
                         }
-
-                        UpdateWrapper<Cell> tWrapper = new UpdateWrapper<>();
+                        UpdateWrapper<TrelloCard> tWrapper = new UpdateWrapper<>();
                         tWrapper.eq("card_id", card.getId());
-                        saveOrUpdate(cell, tWrapper);
+                        trelloCardService.saveOrUpdate(trelloCard, tWrapper);
                     }
             );
 
