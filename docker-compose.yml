@@ -33,7 +33,7 @@ services:
       - /var/logs/java/limon:/var/log/java/limon
       - ~/.limon/upload:/root/.limon/upload
     expose:
-      - "8075"
+      - "8085"
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker -Dmaven.test.skip=true
     depends_on:
       - limon-mysql
