@@ -34,6 +34,8 @@ services:
       - ~/.limon/upload:/root/.limon/upload
     expose:
       - "8085"
+    ports:
+      - 8085:8085
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker -Dmaven.test.skip=true
     depends_on:
       - limon-mysql
