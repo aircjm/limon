@@ -7,7 +7,7 @@ conf = toml.loads(open('etc/conf/oss.toml').read())
 
 
 # 打包admin静态文件。
-os.system("npm run build:prod")
+os.system("npm install && export VUE_APP_PUBLIC_PATH=https://cdn.chenjiaming.org/limon && npm run build:prod")
 
 
 
