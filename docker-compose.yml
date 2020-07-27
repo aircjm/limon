@@ -31,7 +31,7 @@ services:
       - ./limon-server:/app
       - ~/.m2:/root/.m2
       - /var/logs/java/limon:/var/log/java/limon
-      - ~/.titan/upload:/root/.titan/upload
+      - ~/.limon/upload:/root/.limon/upload
     expose:
       - "8075"
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker -Dmaven.test.skip=true
@@ -40,7 +40,7 @@ services:
       - limon-redis
     restart: always
     networks:
-      titan-net:
+      net:
         ipv4_address: 172.28.1.2
 
 
