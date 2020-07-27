@@ -22,7 +22,7 @@ services:
 
   limon-server:
     container_name: limon-server
-    image: aircjm/limon-server:1.0.1
+    image: aircjm/limon-server:1.0.2
     environment:
       TZ: Asia/Shanghai
     volumes:
