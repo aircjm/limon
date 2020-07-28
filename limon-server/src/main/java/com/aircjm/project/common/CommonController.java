@@ -13,7 +13,7 @@ import com.aircjm.common.constant.Constants;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.common.utils.file.FileUploadUtils;
 import com.aircjm.common.utils.file.FileUtils;
-import com.aircjm.framework.config.RuoYiConfig;
+import com.aircjm.framework.config.SystemConfig;
 import com.aircjm.framework.config.ServerConfig;
 import com.aircjm.framework.web.domain.AjaxResult;
 
@@ -46,7 +46,7 @@ public class CommonController
                 throw new Exception(StringUtils.format("文件名称({})非法，不允许下载。 ", fileName));
             }
             String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
-            String filePath = RuoYiConfig.getDownloadPath() + fileName;
+            String filePath = SystemConfig.getDownloadPath() + fileName;
 
             response.setCharacterEncoding("utf-8");
             response.setContentType("multipart/form-data");
@@ -73,7 +73,7 @@ public class CommonController
         try
         {
             // 上传文件路径
-            String filePath = RuoYiConfig.getUploadPath();
+            String filePath = SystemConfig.getUploadPath();
             // 上传并返回新文件名称
             String fileName = FileUploadUtils.upload(filePath, file);
             String url = serverConfig.getUrl() + fileName;
@@ -95,7 +95,7 @@ public class CommonController
     public void resourceDownload(String name, HttpServletRequest request, HttpServletResponse response) throws Exception
     {
         // 本地资源路径
-        String localPath = RuoYiConfig.getProfile();
+        String localPath = SystemConfig.getProfile();
         // 数据库资源地址
         String downloadPath = localPath + StringUtils.substringAfter(name, Constants.RESOURCE_PREFIX);
         // 下载名称

@@ -1,14 +1,10 @@
 package com.aircjm.project.card.service;
 
 import com.aircjm.project.card.domain.Webhook;
-import com.julienvey.trello.TrelloHttpClient;
-import com.julienvey.trello.impl.TrelloImpl;
+import org.springframework.stereotype.Service;
 
-public class MyTrelloServiceImpl extends TrelloImpl implements MyTrelloService {
-
-    public MyTrelloServiceImpl(String applicationKey, String accessToken, TrelloHttpClient httpClient) {
-        super(applicationKey, accessToken, httpClient);
-    }
+@Service
+public class MyTrelloServiceImpl implements MyTrelloService {
 
     @Override
     public Webhook createWebhook(String description, String callbackUrl, String idModel) {

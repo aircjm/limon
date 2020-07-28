@@ -11,5 +11,4 @@ public interface MyTrelloService {
     public void deleteWebhook(String idWebhook);
 
     public Webhook getWebhook(String idWebhook);
-
 }

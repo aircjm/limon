@@ -3,11 +3,12 @@ import os
 import oss2
 import sys
 
-conf = toml.loads(open('etc/conf/oss.toml').read())
+
+conf = toml.loads(open('/etc/conf/oss.toml').read())
 
 
 # 打包admin静态文件。
-os.system("npm run build:prod")
+os.system("npm install && export VUE_APP_PUBLIC_PATH=https://cdn.chenjiaming.org/limon && npm run build:prod")
 
 
 
@@ -33,7 +34,7 @@ auth = oss2.Auth(conf['OSS']['AccessKeyId'], conf['OSS']['AccessKeySecret'])
 bucket = oss2.Bucket(auth, conf['OSS']['EndPoint'], conf['OSS']['Bucket'])
 
 for file in allfile:
-    ret = bucket.put_object_from_file(file.replace(curdir, "application"), file)
+    ret = bucket.put_object_from_file(file.replace(curdir, "limon"), file)
     print(ret.status, "   ", file)
 
 for file in allfile:
