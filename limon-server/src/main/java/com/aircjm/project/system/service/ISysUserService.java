@@ -2,13 +2,16 @@ package com.aircjm.project.system.service;
 
 import java.util.List;
 import com.aircjm.project.system.domain.SysUser;
+import com.aircjm.project.system.vo.request.ListUserRequest;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * 用户 业务层
  * 
  * @author aircjm
  */
-public interface ISysUserService
+public interface ISysUserService extends IService<SysUser>
 {
     /**
      * 根据条件分页查询用户列表
@@ -16,7 +19,7 @@ public interface ISysUserService
      * @param user 用户信息
      * @return 用户信息集合信息
      */
-    public List<SysUser> selectUserList(SysUser user);
+    public IPage<SysUser> selectUserList(ListUserRequest user);
 
     /**
      * 通过用户名查询用户

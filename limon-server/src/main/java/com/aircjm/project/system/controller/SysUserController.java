@@ -1,6 +1,9 @@
 package com.aircjm.project.system.controller;
 
 import java.util.List;
+
+import com.aircjm.project.system.vo.request.ListUserRequest;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -55,20 +58,19 @@ public class SysUserController extends BaseController
      * 获取用户列表
      */
     @PreAuthorize("@ss.hasPermi('system:user:list')")
-    @GetMapping("/list")
-    public TableDataInfo list(SysUser user)
+    @PostMapping("/list")
+    public TableDataInfo list(@RequestBody ListUserRequest user)
     {
-        startPage();
-        List<SysUser> list = userService.selectUserList(user);
-        return getDataTable(list);
+        IPage<SysUser> userPage = userService.selectUserList(user);
+        return getDataTable(userPage);
     }
 
     @Log(title = "用户管理", businessType = BusinessType.EXPORT)
     @PreAuthorize("@ss.hasPermi('system:user:export')")
-    @GetMapping("/export")
-    public AjaxResult export(SysUser user)
+    @PostMapping("/export")
+    public AjaxResult export(@RequestBody ListUserRequest user)
     {
-        List<SysUser> list = userService.selectUserList(user);
+        List<SysUser> list = userService.selectUserList(user).getRecords();
         ExcelUtil<SysUser> util = new ExcelUtil<SysUser>(SysUser.class);
         return util.exportExcel(list, "用户数据");
     }
@@ -145,7 +147,6 @@ public class SysUserController extends BaseController
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysUser user)
     {
-        userService.checkUserAllowed(user);
         if (UserConstants.NOT_UNIQUE.equals(userService.checkPhoneUnique(user)))
         {
             return AjaxResult.error("修改用户'" + user.getUserName() + "'失败，手机号码已存在");

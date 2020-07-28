@@ -5,6 +5,11 @@ import java.util.List;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,6 +24,10 @@ import com.aircjm.framework.web.domain.BaseEntity;
  * 
  * @author aircjm
  */
+@TableName(value = "sys_user")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class SysUser extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -91,10 +100,6 @@ public class SysUser extends BaseEntity
     /** 岗位组 */
     private Long[] postIds;
 
-    public SysUser()
-    {
-
-    }
 
     public SysUser(Long userId)
     {
