@@ -5,8 +5,8 @@ import { praseStrEmpty } from "@/utils/aircjm";
 export function listUser(query) {
   return request({
     url: '/system/user/list',
-    method: 'get',
-    params: query
+    method: 'post',
+    data: query
   })
 }
 

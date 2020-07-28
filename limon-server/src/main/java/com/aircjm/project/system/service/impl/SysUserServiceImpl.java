@@ -3,9 +3,11 @@ package com.aircjm.project.system.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.aircjm.project.system.vo.request.ListUserRequest;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +36,7 @@ import com.aircjm.project.system.service.ISysUserService;
  */
 @Service
 @Slf4j
-public class SysUserServiceImpl implements ISysUserService
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService
 {
 
     @Autowired
@@ -58,14 +60,23 @@ public class SysUserServiceImpl implements ISysUserService
     /**
      * 根据条件分页查询用户列表
      * 
-     * @param user 用户信息
+     * @param request 用户信息
      * @return 用户信息集合信息
      */
     @Override
     @DataScope(deptAlias = "d", userAlias = "u")
-    public List<SysUser> selectUserList(SysUser user)
+    public IPage<SysUser> selectUserList(ListUserRequest request)
     {
-        return userMapper.selectUserList(user);
+
+        Page<SysUser> page = new Page<>();
+        page.setSize(request.getPageSize());
+        page.setCurrent(request.getPageNum());
+
+        SysUser user = SysUser.builder()
+                .userName(request.getUserName())
+                .phonenumber(request.getPhonenumber())
+                .build();
+        return userMapper.selectUserList(page,user);
     }
 
     /**
