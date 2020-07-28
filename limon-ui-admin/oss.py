@@ -3,6 +3,7 @@ import os
 import oss2
 import sys
 
+
 conf = toml.loads(open('/etc/conf/oss.toml').read())
 
 
