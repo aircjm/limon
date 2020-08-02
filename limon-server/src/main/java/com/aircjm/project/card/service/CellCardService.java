@@ -22,10 +22,5 @@ public interface CellCardService extends IService<Cell> {
 
     AjaxResult exportCard(GetCardRequest request);
 
-    /**
-     * 全量更新卡片
-     */
-    void updateAllCard();
-
     void setAnki(SetAnkiRequest request);
 }

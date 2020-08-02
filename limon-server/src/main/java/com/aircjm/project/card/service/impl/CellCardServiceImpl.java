@@ -51,16 +51,12 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
     @Resource
     Trello trello;
 
-    @Resource
-    private ISysConfigService configService;
 
 
     @Resource
     private AnkiService ankiService;
 
 
-    @Resource
-    private TrelloCardService trelloCardService;
 
     @Override
     public void saveCard(SaveCardRequest request) {
@@ -92,50 +88,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
         return ajaxResult;
     }
 
-    @Override
-    public void updateAllCard() {
-        String memberId = configService.selectConfigByKey("trello.default.memberId");
-        Member member = trello.getMemberInformation(memberId);
-        List<Board> boards = member.getBoards();
-        log.info("获取所有board 开始更新");
 
-        boards.forEach(board -> {
-            List<Card> cardList = trello.getBoardCards(board.getId());
-            QueryWrapper<TrelloCard> queryWrapper = new QueryWrapper<>();
-
-
-            cardList.forEach(card -> {
-                        queryWrapper.eq("card_id", board.getId());
-                        TrelloCard trelloCard = trelloCardService.getOne(queryWrapper);
-                        if (Objects.isNull(trelloCard)) {
-                            trelloCard = TrelloCard.builder().boardId(board.getId())
-                                    .cardId(Optional.ofNullable(card.getId()).orElse(""))
-                                    .cardTitle(Optional.ofNullable(card.getName()).orElse(""))
-                                    .cardDesc(Optional.ofNullable(card.getDesc()).orElse(""))
-                                    .card(card)
-                                    .dateLastActivity(card.getDateLastActivity())
-                                    .build();
-                        } else {
-                            if (card.getDateLastActivity().after(trelloCard.getDateLastActivity())) {
-                                trelloCard.setBoardId(Optional.ofNullable(card.getIdBoard()).orElse(""));
-                                trelloCard.setCardTitle(Optional.ofNullable(card.getName()).orElse(""));
-                                trelloCard.setCardDesc(Optional.ofNullable(card.getDesc()).orElse(""));
-                                trelloCard.setBoardId(Optional.ofNullable(card.getIdBoard()).orElse(""));
-                                trelloCard.setCard(card);
-                                trelloCard.setDateLastActivity(card.getDateLastActivity());
-                            } else {
-                                return;
-                            }
-                        }
-                        UpdateWrapper<TrelloCard> tWrapper = new UpdateWrapper<>();
-                        tWrapper.eq("card_id", card.getId());
-                        trelloCardService.saveOrUpdate(trelloCard, tWrapper);
-                    }
-            );
-
-        });
-
-    }
 
 
     @Override
