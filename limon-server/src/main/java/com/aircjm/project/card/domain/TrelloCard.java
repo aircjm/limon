@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.julienvey.trello.domain.Card;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,18 +17,24 @@ import java.util.Date;
 /**
  * @author aircjm
  */
-@EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "Trello 卡片")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName(value = "trello_card")
-public class TrelloCard extends DbBaseEntity<TrelloCard> {
+@TableName(value = "trello_card", autoResultMap = true)
+public class TrelloCard {
 
 
     @TableId(type = IdType.INPUT)
-    private String id;
+    private Long id;
+
+
+    @ApiModelProperty(value = "卡片id")
+    private String cardId;
+
+    @ApiModelProperty(value = "看板id")
+    private String boardId;
 
     @ApiModelProperty(value = "标题")
     private String cardTitle;
@@ -37,6 +43,7 @@ public class TrelloCard extends DbBaseEntity<TrelloCard> {
     private String cardDesc;
 
     @ApiModelProperty(value = "卡片内容")
+    @TableField(typeHandler = JacksonTypeHandler.class)
     private Card card;
 
     @ApiModelProperty(value = "最后更新时间")
