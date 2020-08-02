@@ -701,3 +701,26 @@ create table cell_card
   primary key (id)
 ) engine = innodb
   auto_increment = 1 comment = '卡片表';
+
+
+
+create table trello_card
+(
+  id                 int auto_increment comment '主键'
+    primary key,
+  card_id            varchar(200) default ''                null comment 'card id',
+  card_title         varchar(5000) default ''                null comment 'card title',
+  card_desc          text                                   null comment 'card desc',
+  card               json                                   null comment 'card的json内容',
+  date_last_activity timestamp    default CURRENT_TIMESTAMP not null comment 'card最后更新时间',
+  board_id           varchar(200) default ''                null comment 'board id',
+  create_time           timestamp    NOT NULL DEFAULT current_timestamp comment '创建时间',
+  update_time           TIMESTAMP    NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp comment '更新时间',
+  creator               int          null comment '创建人',
+  modifier              int          null comment '修改人',
+  deleted               int                   default 0 null comment '逻辑删除标识(0.未删除,1.已删除)',
+  constraint trello_card_id_index
+    unique (card_id)
+)
+  comment 'trello的card表';
+
