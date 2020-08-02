@@ -13,4 +13,11 @@ public interface TrelloCardService extends IService<TrelloCard> {
     public void deleteWebhook(String idWebhook);
 
     public Webhook getWebhook(String idWebhook);
+
+
+    /**
+     * 全量更新卡片
+     */
+    void updateAllCard();
+
 }
