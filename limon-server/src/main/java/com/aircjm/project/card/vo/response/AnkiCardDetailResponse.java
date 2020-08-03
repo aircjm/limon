@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CellCardDetailResponse {
+public class AnkiCardDetailResponse {
 
     private Long id;
 
@@ -30,8 +30,6 @@ public class CellCardDetailResponse {
     @Excel(name = "Answer")
     private String cardDesc;
 
-    private String descHtml;
-
     private Integer status;
 
     private LocalDateTime trelloUpdateTime;
@@ -40,4 +38,6 @@ public class CellCardDetailResponse {
 
     private String boardId;
 
+
+    private String ankiNoteId;
 }

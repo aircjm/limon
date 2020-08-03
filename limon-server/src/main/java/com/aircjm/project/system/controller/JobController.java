@@ -3,7 +3,7 @@ package com.aircjm.project.system.controller;
 import com.aircjm.common.vo.RestResponse;
 import com.aircjm.framework.aspectj.lang.annotation.Log;
 import com.aircjm.framework.aspectj.lang.enums.BusinessType;
-import com.aircjm.project.card.service.CellCardService;
+import com.aircjm.project.card.service.AnkiCardService;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +16,13 @@ import javax.annotation.Resource;
 public class JobController {
 
     @Resource
-    private CellCardService cellCardService;
+    private AnkiCardService ankiCardService;
 
     @Log(title = "刷新卡片数据", businessType = BusinessType.IMPORT)
     @Async
     @PostMapping("/refreshAllCard")
     public RestResponse refreshAllCard() {
-        cellCardService.updateAllCard();
+        ankiCardService.updateAllCard();
         return RestResponse.successEmpty();
     }
 }

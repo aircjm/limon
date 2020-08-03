@@ -20,8 +20,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName(value = "cell_card")
-public class Cell extends DbBaseEntity<Cell> {
+@TableName(value = "anki_card")
+public class AnkiCard extends DbBaseEntity<AnkiCard> {
 
     @TableId(type = IdType.INPUT)
     private String id;
@@ -37,12 +37,15 @@ public class Cell extends DbBaseEntity<Cell> {
 
     private String boardId;
 
-
-    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
-    private String descType;
+//
+//    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
+//    private String descType;
 
     @ApiModelProperty(value = "卡片内容描述")
     private String cardDesc;
+
+    @ApiModelProperty(value = "anki 笔记id")
+    private String ankiNoteId;
 
 
     @ApiModelProperty(value = "卡片内容描述HTML")
@@ -52,5 +55,6 @@ public class Cell extends DbBaseEntity<Cell> {
     private Integer status;
 
     private LocalDateTime trelloUpdateTime;
+
 
 }

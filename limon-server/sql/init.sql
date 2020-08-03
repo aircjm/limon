@@ -678,12 +678,12 @@ create table gen_table_column (
 
 
 
-drop table if exists cell_card;
-create table cell_card
+drop table if exists anki_card;
+create table anki_card
 (
   id                    bigint(20)   not null auto_increment comment 'id',
   card_id               varchar(255) not null default '' comment 'trello 卡片id',
-  card_title            varchar(255) not null default '' comment '标题',
+  card_title            varchar(2000) not null default '' comment '标题',
   card_desc             longtext     null comment '内容',
   desc_html             longtext     null comment '内容的html',
   trello_update_time    timestamp comment 'trello 卡片更新时间',
