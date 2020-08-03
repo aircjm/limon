@@ -29,25 +29,28 @@ public class Cell extends DbBaseEntity<Cell> {
     private String cardId;
 
 
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value = "卡片标题")
     private String cardTitle;
-
-
-    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
-    private String descType;
-
-    private String cardDesc;
-
-
-    private String descHtml;
-
-    private Integer status;
-
-    private LocalDateTime trelloUpdateTime;
 
 
     private String listId;
 
     private String boardId;
+
+
+    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
+    private String descType;
+
+    @ApiModelProperty(value = "卡片内容描述")
+    private String cardDesc;
+
+
+    @ApiModelProperty(value = "卡片内容描述HTML")
+    private String descHtml;
+
+    @ApiModelProperty(value = "卡片状态")
+    private Integer status;
+
+    private LocalDateTime trelloUpdateTime;
 
 }
