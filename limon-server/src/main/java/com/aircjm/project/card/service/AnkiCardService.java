@@ -1,11 +1,11 @@
 package com.aircjm.project.card.service;
 
 import com.aircjm.framework.web.domain.AjaxResult;
-import com.aircjm.project.card.domain.Cell;
+import com.aircjm.project.card.domain.AnkiCard;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
-import com.aircjm.project.card.vo.response.CellCardDetailResponse;
+import com.aircjm.project.card.vo.response.AnkiCardDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,11 +14,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *
  * @author aircjm
  */
-public interface CellCardService extends IService<Cell> {
+public interface AnkiCardService extends IService<AnkiCard> {
 
     void saveCard(SaveCardRequest request);
 
-    Page<CellCardDetailResponse> getCardList(GetCardRequest request);
+    Page<AnkiCardDetailResponse> getAnkiCardList(GetCardRequest request);
 
     AjaxResult exportCard(GetCardRequest request);
 

@@ -7,16 +7,16 @@ import com.aircjm.common.utils.bean.BeanUtils;
 import com.aircjm.common.utils.poi.ExcelUtil;
 import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.project.anki.response.AnkiRespVo;
-import com.aircjm.project.card.domain.Cell;
+import com.aircjm.project.card.domain.AnkiCard;
 import com.aircjm.project.card.mapper.CellCardMapper;
 import com.aircjm.project.card.service.AnkiService;
-import com.aircjm.project.card.service.CellCardService;
+import com.aircjm.project.card.service.AnkiCardService;
 import com.aircjm.project.card.vo.anki.vo.Fields;
 import com.aircjm.project.card.vo.anki.vo.Note;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
-import com.aircjm.project.card.vo.response.CellCardDetailResponse;
+import com.aircjm.project.card.vo.response.AnkiCardDetailResponse;
 import com.aircjm.project.system.service.ISysConfigService;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -33,7 +33,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +48,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> implements CellCardService {
+public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> implements AnkiCardService {
 
     @Resource
     Trello trello;
@@ -67,16 +66,16 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
     }
 
     @Override
-    public Page<CellCardDetailResponse> getCardList(GetCardRequest request) {
-        QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
+    public Page<AnkiCardDetailResponse> getAnkiCardList(GetCardRequest request) {
+        QueryWrapper<AnkiCard> queryWrapper = new QueryWrapper<>();
         if (Objects.nonNull(request.getStatus())) {
             queryWrapper.eq("status", request.getStatus());
         }
-        Page<Cell> boardCards = page(request, queryWrapper);
-        Page<CellCardDetailResponse> response = new Page<>();
+        Page<AnkiCard> boardCards = page(request, queryWrapper);
+        Page<AnkiCardDetailResponse> response = new Page<>();
         BeanUtils.copyProperties(boardCards, response);
         response.setRecords(boardCards.getRecords().stream().map(item -> {
-            CellCardDetailResponse detail = new CellCardDetailResponse();
+            AnkiCardDetailResponse detail = new AnkiCardDetailResponse();
             BeanUtils.copyProperties(item, detail);
             return detail;
         }).collect(Collectors.toList()));
@@ -85,8 +84,8 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
 
     @Override
     public AjaxResult exportCard(GetCardRequest request) {
-        Page<CellCardDetailResponse> page = getCardList(request);
-        ExcelUtil<CellCardDetailResponse> util = new ExcelUtil<>(CellCardDetailResponse.class);
+        Page<AnkiCardDetailResponse> page = getAnkiCardList(request);
+        ExcelUtil<AnkiCardDetailResponse> util = new ExcelUtil<>(AnkiCardDetailResponse.class);
         AjaxResult ajaxResult = util.exportExcel(page.getRecords(), "卡片集合");
 
         return ajaxResult;
@@ -101,35 +100,37 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
 
         boards.forEach(board -> {
             List<Card> cardList = trello.getBoardCards(board.getId());
-            QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
+            QueryWrapper<AnkiCard> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("board_id", board.getId());
-            Map<String, Cell> cellCardMap = list(queryWrapper).stream().collect(Collectors.toMap(Cell::getCardId, Function.identity()));
+            Map<String, AnkiCard> cellCardMap = list(queryWrapper).stream().collect(Collectors.toMap(AnkiCard::getCardId, Function.identity()));
 
             cardList.forEach(card -> {
-                        Cell cell = cellCardMap.get(card.getId());
-                        if (Objects.isNull(cell)) {
-                            cell = Cell.builder().boardId(board.getId())
+                        AnkiCard ankiCard = cellCardMap.get(card.getId());
+                        if (Objects.isNull(ankiCard)) {
+                            ankiCard = AnkiCard.builder().boardId(board.getId())
                                     .cardId(Optional.ofNullable(card.getId()).orElse(""))
                                     .cardTitle(Optional.ofNullable(card.getName()).orElse(""))
                                     .cardDesc(Optional.ofNullable(card.getDesc()).orElse(""))
                                     .listId(Optional.ofNullable(card.getIdList()).orElse(""))
                                     .trelloUpdateTime(LocalDateUtils.date2LocalDate(card.getDateLastActivity()))
                                     .build();
-                            cell.setCreateTime(LocalDateTime.now());
+                            ankiCard.setCreateTime(LocalDateTime.now());
+                            save(ankiCard);
                         } else {
-                            if (LocalDateUtils.date2LocalDate(card.getDateLastActivity()).isAfter(cell.getTrelloUpdateTime())) {
-                                cell.setCardTitle(Optional.ofNullable(card.getName()).orElse(""));
-                                cell.setCardDesc(Optional.ofNullable(card.getDesc()).orElse(""));
-                                cell.setBoardId(Optional.ofNullable(card.getIdBoard()).orElse(""));
-                                cell.setTrelloUpdateTime(LocalDateUtils.date2LocalDate(card.getDateLastActivity()));
+                            if (LocalDateUtils.date2LocalDate(card.getDateLastActivity()).isAfter(ankiCard.getTrelloUpdateTime())) {
+                                ankiCard.setCardTitle(Optional.ofNullable(card.getName()).orElse(""));
+                                ankiCard.setCardDesc(Optional.ofNullable(card.getDesc()).orElse(""));
+                                ankiCard.setBoardId(Optional.ofNullable(card.getIdBoard()).orElse(""));
+                                ankiCard.setTrelloUpdateTime(LocalDateUtils.date2LocalDate(card.getDateLastActivity()));
+
+                                UpdateWrapper<AnkiCard> tWrapper = new UpdateWrapper<>();
+                                tWrapper.eq("card_id", card.getId());
+                                update(ankiCard, tWrapper);
                             } else {
                                 return;
                             }
                         }
 
-                        UpdateWrapper<Cell> tWrapper = new UpdateWrapper<>();
-                        tWrapper.eq("card_id", card.getId());
-                        saveOrUpdate(cell, tWrapper);
                     }
             );
 
@@ -140,9 +141,9 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
 
     @Override
     public void setAnki(SetAnkiRequest request) {
-        QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<AnkiCard> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("card_id", request.getCardId());
-        Cell one = getOne(queryWrapper);
+        AnkiCard one = getOne(queryWrapper);
         log.info("获取的卡片为：{}", one.getCardTitle());
 
         // 开始生成卡片
@@ -154,7 +155,7 @@ public class CellCardServiceImpl extends ServiceImpl<CellCardMapper, Cell> imple
         if (StringUtils.isNotEmpty(ankiRespVo.getError())) {
             throw new CustomException("生成Anki的Note失败，失败原因为：" + ankiRespVo.getError());
         }
-        UpdateWrapper<Cell> updateWrapper = new UpdateWrapper<>();
+        UpdateWrapper<AnkiCard> updateWrapper = new UpdateWrapper<>();
         update(updateWrapper);
     }
 
