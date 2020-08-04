@@ -47,6 +47,9 @@ public class AnkiCard extends DbBaseEntity<AnkiCard> {
     @ApiModelProperty(value = "anki 笔记id")
     private String ankiNoteId;
 
+    @ApiModelProperty(value = "anki note 更新时间")
+    private LocalDateTime ankiNoteUpdateTime;
+
 
     @ApiModelProperty(value = "卡片内容描述HTML")
     private String descHtml;

@@ -17,4 +17,7 @@ public class GetCardRequest extends Page<AnkiCard> {
 
     @ApiModelProperty(value = "卡片状态")
     private Integer status;
+
+    @ApiModelProperty
+    private Integer ankiStatus;
 }
