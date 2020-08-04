@@ -686,7 +686,7 @@ create table anki_card
   card_title            varchar(2000) not null default '' comment '标题',
   card_desc             longtext     null comment '内容',
   desc_html             longtext     null comment '内容的html',
-  trello_update_time    timestamp comment 'trello 卡片更新时间',
+  trello_update_time    timestamp(3) comment 'trello 卡片更新时间 毫秒级',
   list_id               varchar(255) not null default '' comment 'trello 集合id',
   board_id              varchar(255) not null default '' comment 'trello 面板id',
   type                  int                   default 0 comment '类型',
