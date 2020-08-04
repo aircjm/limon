@@ -159,12 +159,14 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
         Card card = trello.getCard(request.getCardId());
         Note note = convert(card);
         log.info("请求生成anki卡片请求参数是：{}", JSON.toJSONString(note));
-        log.info("请求生成anki desc：{}", card.getDesc());
         AnkiRespVo ankiRespVo = ankiService.addNote(note);
         if (StringUtils.isNotEmpty(ankiRespVo.getError())) {
             throw new CustomException("生成Anki的Note失败，失败原因为：" + ankiRespVo.getError());
+        } else{
+            one.setAnkiNoteId(ankiRespVo.getResult());
         }
         UpdateWrapper<AnkiCard> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.setEntity(one);
         update(updateWrapper);
     }
 
