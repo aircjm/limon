@@ -27,5 +27,10 @@ public interface AnkiCardService extends IService<AnkiCard> {
      */
     void updateAllCard();
 
+    /**
+     * 异步全量更新卡片
+     */
+    void asyncUpdateAllCard();
+
     void setAnki(SetAnkiRequest request);
 }
