@@ -80,7 +80,7 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
             if (request.getAnkiStatus().equals(1)) {
                 queryWrapper.isNotNull("anki_note_id");
             } else if (request.getAnkiStatus().equals(0)) {
-                queryWrapper.isNotNull("anki_note_id");
+                queryWrapper.isNull("anki_note_id");
             }
         }
 
