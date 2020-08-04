@@ -26,6 +26,10 @@ limon 项目旨在打造一个以最简便的方式搭建简单、稳定和可�
 
 - 感谢 [在 Anki 中使用 Markdown](https://zhuanlan.zhihu.com/p/137570649) anki如何展示markdown。
 - 感谢 [RuoYi](https://gitee.com/y_project/RuoYi-Vue) 设计的 脚手架。
+- [![jetbrains.svg](jetbrains.svg)](https://www.jetbrains.com/?from=limon)
+
+
+
 
 
 ## 授权许可
