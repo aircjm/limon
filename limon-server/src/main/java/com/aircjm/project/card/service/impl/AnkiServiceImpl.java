@@ -42,8 +42,7 @@ public class AnkiServiceImpl implements AnkiService {
         HttpEntity<String> formEntity = new HttpEntity<>(jsonObj.toString(), headers);
         String result = restTemplate.postForObject(ANKI_URL, formEntity, String.class);
         log.info("调用anki接口回参为:{}", JSON.toJSONString(result));
-        AnkiRespVo ankiRespVo = JSON.parseObject(result, AnkiRespVo.class);
-        return ankiRespVo;
+        return JSON.parseObject(result, AnkiRespVo.class);
     }
 
     @Override

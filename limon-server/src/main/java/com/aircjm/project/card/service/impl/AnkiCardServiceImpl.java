@@ -76,6 +76,14 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
         if (Objects.nonNull(request.getStatus())) {
             queryWrapper.eq("status", request.getStatus());
         }
+        if (Objects.nonNull(request.getAnkiStatus())) {
+            if (request.getAnkiStatus().equals(1)) {
+                queryWrapper.isNotNull("anki_note_id");
+            } else if (request.getAnkiStatus().equals(0)) {
+                queryWrapper.isNotNull("anki_note_id");
+            }
+        }
+
         Page<AnkiCard> boardCards = page(request, queryWrapper);
         Page<AnkiCardDetailResponse> response = new Page<>();
         BeanUtils.copyProperties(boardCards, response);
@@ -164,10 +172,9 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
             throw new CustomException("生成Anki的Note失败，失败原因为：" + ankiRespVo.getError());
         } else{
             one.setAnkiNoteId(ankiRespVo.getResult());
+            one.setAnkiNoteUpdateTime(LocalDateTime.now());
         }
-        UpdateWrapper<AnkiCard> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.setEntity(one);
-        update(updateWrapper);
+        updateById(one);
     }
 
 
