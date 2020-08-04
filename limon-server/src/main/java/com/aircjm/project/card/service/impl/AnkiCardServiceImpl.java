@@ -9,8 +9,8 @@ import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.project.anki.response.AnkiRespVo;
 import com.aircjm.project.card.domain.AnkiCard;
 import com.aircjm.project.card.mapper.CellCardMapper;
-import com.aircjm.project.card.service.AnkiService;
 import com.aircjm.project.card.service.AnkiCardService;
+import com.aircjm.project.card.service.AnkiService;
 import com.aircjm.project.card.vo.anki.vo.Fields;
 import com.aircjm.project.card.vo.anki.vo.Note;
 import com.aircjm.project.card.vo.request.GetCardRequest;
@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.Executor;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -59,6 +60,10 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
 
     @Resource
     private AnkiService ankiService;
+
+
+    @Resource(name = "asyncExecutor")
+    private Executor asyncExecutor;
 
 
     @Override
@@ -86,9 +91,8 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
     public AjaxResult exportCard(GetCardRequest request) {
         Page<AnkiCardDetailResponse> page = getAnkiCardList(request);
         ExcelUtil<AnkiCardDetailResponse> util = new ExcelUtil<>(AnkiCardDetailResponse.class);
-        AjaxResult ajaxResult = util.exportExcel(page.getRecords(), "卡片集合");
 
-        return ajaxResult;
+        return util.exportExcel(page.getRecords(), "卡片集合");
     }
 
     @Override
@@ -127,7 +131,7 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
                                 tWrapper.eq("card_id", card.getId());
                                 update(ankiCard, tWrapper);
                             } else {
-                                return;
+                                log.info("card : {} 当前数据为最新的无需更新", card.getId());
                             }
                         }
 
@@ -136,6 +140,11 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
 
         });
 
+    }
+
+    @Override
+    public void asyncUpdateAllCard() {
+        asyncExecutor.execute(this::updateAllCard);
     }
 
 
