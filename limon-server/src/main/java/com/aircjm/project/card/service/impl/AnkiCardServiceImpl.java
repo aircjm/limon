@@ -1,6 +1,7 @@
 package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.exception.CustomException;
+import com.aircjm.common.utils.LocalDateUtils;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.common.utils.bean.BeanUtils;
 import com.aircjm.common.utils.poi.ExcelUtil;
@@ -35,6 +36,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.Executor;
@@ -61,6 +63,9 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
 
     @Resource(name = "asyncExecutor")
     private Executor asyncExecutor;
+
+    @Resource
+    private ISysConfigService configService;
 
 
     @Override
