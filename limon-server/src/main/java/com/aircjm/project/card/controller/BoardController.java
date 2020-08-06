@@ -1,7 +1,7 @@
 package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
-import com.aircjm.project.card.service.CellCardService;
+import com.aircjm.project.card.service.AnkiCardService;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,11 +24,11 @@ public class BoardController {
 
 
     @Resource
-    private CellCardService cellCardService;
+    private AnkiCardService ankiCardService;
 
     @PostMapping("/save")
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
-        cellCardService.saveCard(request);
+        ankiCardService.saveCard(request);
         return RestResponse.successEmpty();
     }
 }
