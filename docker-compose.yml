@@ -30,7 +30,7 @@ services:
     volumes:
       - ./limon-server:/app
       - ~/.m2:/root/.m2
-      - /var/logs/java/limon:/var/logs/java/limon
+      - /var/log/java/limon:/var/log/java/limon
       - ~/.limon/upload:/root/.limon/upload
     expose:
       - "8085"
