@@ -4,6 +4,7 @@ import com.aircjm.project.anki.ankiconnect.AnkiVo;
 import com.aircjm.project.anki.response.AnkiRespVo;
 import com.aircjm.project.card.service.AnkiService;
 import com.aircjm.project.card.vo.anki.vo.Note;
+import com.aircjm.project.system.service.ISysConfigService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Maps;
@@ -29,21 +30,22 @@ public class AnkiServiceImpl implements AnkiService {
     @Resource
     private RestTemplate restTemplate;
 
-    private static final String ANKI_URL = "http://127.0.0.1:8765";
+    @Resource
+    private ISysConfigService configService;
 
     @Override
     public AnkiRespVo postAnki(AnkiVo ankiVo) {
         HttpHeaders headers = new HttpHeaders();
+        String ankiUrl = configService.selectConfigByKey("anki.connect.url");
         MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
         headers.setContentType(type);
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
         log.info("调用anki接口入参为:{}", JSON.toJSONString(ankiVo));
         JSONObject jsonObj = JSONObject.parseObject(JSONObject.toJSONString(ankiVo));
         HttpEntity<String> formEntity = new HttpEntity<>(jsonObj.toString(), headers);
-        String result = restTemplate.postForObject(ANKI_URL, formEntity, String.class);
+        String result = restTemplate.postForObject(ankiUrl, formEntity, String.class);
         log.info("调用anki接口回参为:{}", JSON.toJSONString(result));
-        AnkiRespVo ankiRespVo = JSON.parseObject(result, AnkiRespVo.class);
-        return ankiRespVo;
+        return JSON.parseObject(result, AnkiRespVo.class);
     }
 
     @Override

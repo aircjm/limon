@@ -5,6 +5,12 @@
         <el-select v-model="queryParams.status" placeholder="数据状态" clearable size="small">
         </el-select>
       </el-form-item>
+      <el-form-item label="状态" prop="ankiStatus">
+        <el-select v-model="queryParams.ankiStatus" placeholder="是否已有anki" clearable size="small">
+          <el-option label="已生成" value="1" />
+          <el-option label="未生成" value="0" />
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
       </el-form-item>
@@ -104,7 +110,8 @@
           size: 10,
           dictName: undefined,
           dictType: undefined,
-          status: undefined
+          status: undefined,
+          ankiStatus: undefined
         },
         // 表单参数
         form: {},

@@ -2,11 +2,11 @@ package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
 import com.aircjm.framework.web.domain.AjaxResult;
-import com.aircjm.project.card.service.CellCardService;
+import com.aircjm.project.card.service.AnkiCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
-import com.aircjm.project.card.vo.response.CellCardDetailResponse;
+import com.aircjm.project.card.vo.response.AnkiCardDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,24 +29,24 @@ public class CardController {
 
 
     @Resource
-    private CellCardService cellCardService;
+    private AnkiCardService ankiCardService;
 
     @PostMapping("/save")
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
-        cellCardService.saveCard(request);
+        ankiCardService.saveCard(request);
         return RestResponse.successEmpty();
     }
 
     @PostMapping("/exportCard")
     public RestResponse exportCard(@RequestBody @Valid GetCardRequest request) {
-        AjaxResult ajaxResult = cellCardService.exportCard(request);
+        AjaxResult ajaxResult = ankiCardService.exportCard(request);
         return RestResponse.successData(ajaxResult);
     }
 
 
     @PostMapping("/list")
     public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
-        Page<CellCardDetailResponse> page = cellCardService.getCardList(request);
+        Page<AnkiCardDetailResponse> page = ankiCardService.getAnkiCardList(request);
         return RestResponse.successData(page);
     }
 
@@ -55,7 +55,7 @@ public class CardController {
 
     @PostMapping("/setAnki")
     public RestResponse setAnki(@RequestBody @Valid SetAnkiRequest request) {
-        cellCardService.setAnki(request);
+        ankiCardService.setAnki(request);
         return RestResponse.successEmpty();
     }
 
