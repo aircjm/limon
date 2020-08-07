@@ -1,10 +1,10 @@
 package com.aircjm.project.card.config;
 
+import com.aircjm.project.system.domain.SysConfig;
+import com.aircjm.project.system.mapper.SysConfigMapper;
 import com.julienvey.trello.Trello;
 import com.julienvey.trello.impl.TrelloImpl;
 import com.julienvey.trello.impl.http.ApacheHttpClient;
-import com.aircjm.project.system.domain.SysConfig;
-import com.aircjm.project.system.mapper.SysConfigMapper;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
+ * Trello配置
+ *
  * @author aircjm
  */
 @Configuration
