@@ -17,7 +17,7 @@ public class JobController {
     @Resource
     private AnkiCardService ankiCardService;
 
-    @Log(title = "刷新全部卡片数据", businessType = BusinessType.IMPORT)
+    @Log(title = "刷新全部卡片数据", businessType = BusinessType.UPDATE)
     @PostMapping("/refreshAllCard")
     public RestResponse refreshAllCard() {
         ankiCardService.asyncUpdateAllCard();
