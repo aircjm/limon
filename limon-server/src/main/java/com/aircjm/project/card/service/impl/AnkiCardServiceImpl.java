@@ -70,6 +70,8 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
 
     @Override
     public void saveCard(SaveCardRequest request) {
+        // 1. 更新trello API
+        // 2. 更新本地数据库
     }
 
     @Override

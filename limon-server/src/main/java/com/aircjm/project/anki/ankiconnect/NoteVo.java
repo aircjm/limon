@@ -16,21 +16,5 @@ public class NoteVo {
     private Map<String, String> fields;
 
     private List<String> tags;
-
-//
-//    public static NoteVo convert(YoudaoVo youdaoVo) {
-//        if (youdaoVo == null) {
-//            return null;
-//        }
-//        NoteVo noteVo = new NoteVo();
-//        noteVo.setDeckName("Default");
-//        noteVo.setModelName("Basic");
-//        Map<String, String> fields = new HashMap();
-//        fields.put("Front", youdaoVo.getFront());
-//        fields.put("Back", youdaoVo.getBack());
-//        noteVo.setFields(fields);
-//        noteVo.setTags(null);
-//        return noteVo;
-//    }
 }
 
