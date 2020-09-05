@@ -178,3 +178,14 @@ spring:
             max-file-size:  10MB
             # 设置总上传的文件大小
             max-request-size:  20MB
+    mail:
+        host: smtp.qq.com
+        username: username
+        password: password
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true

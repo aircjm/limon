@@ -147,6 +147,12 @@
 			<version>${bitwalker.version}</version>
 		</dependency>
 
+		<!--邮件发送的依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
 		<!-- 阿里JSON解析器 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
