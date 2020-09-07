@@ -149,8 +149,9 @@
 
 		<!--邮件发送的依赖-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-extra</artifactId>
+			<version>5.4.1</version>
 		</dependency>
 
 		<!-- 阿里JSON解析器 -->
