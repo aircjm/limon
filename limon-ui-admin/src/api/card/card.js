@@ -19,10 +19,21 @@ export function setAnki(setAnkiRequest) {
 }
 
 
-// 查询列表
+// 导出表格
 export function exportCard(query) {
   return request({
     url: '/api/card/exportCard',
+    method: 'post',
+    data: query
+  })
+}
+
+
+
+// 导出表格
+export function detail(query) {
+  return request({
+    url: '/api/card/detail',
     method: 'post',
     data: query
   })

@@ -7,8 +7,8 @@
       </el-form-item>
       <el-form-item label="状态" prop="ankiStatus">
         <el-select v-model="queryParams.ankiStatus" placeholder="是否已有anki" clearable size="small">
-          <el-option label="已生成" value="1" />
-          <el-option label="未生成" value="0" />
+          <el-option label="已生成" value="1"/>
+          <el-option label="未生成" value="0"/>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -23,7 +23,8 @@
           icon="el-icon-download"
           size="mini"
           @click="handleExport"
-        >导出</el-button>
+        >导出
+        </el-button>
       </el-col>
     </el-row>
 
@@ -34,7 +35,6 @@
             <el-form-item align="left" label="标题">
               <span>{{this.form.cardTitle}}</span>
             </el-form-item>
-            <div v-html="this.form.html"></div>
           </el-col>
         </el-row>
       </el-form>
@@ -47,11 +47,6 @@
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="名称" align="center" width="200" autocapitalize="on" prop="cardTitle"/>
-      <el-table-column label="具体内容" align="center">
-        <template slot-scope="scope">
-          <el-button type="text" @click="openMarkdown(scope.row)">点击打开内容</el-button>
-        </template>
-      </el-table-column>
       <el-table-column label="链接" align="center" prop="url" type="url"/>
       <el-table-column label="状态" align="center" prop="status"/>
       <el-table-column label="trello更新时间" align="center" prop="trelloUpdateTime" width="180">
@@ -61,6 +56,14 @@
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-edit"
+            @click="detail(scope.row)"
+            v-hasPermi="['system:dict:edit']"
+          >详情
+          </el-button>
           <el-button
             size="mini"
             type="text"
@@ -92,8 +95,10 @@
 </template>
 
 <script>
-  import {listData, setAnki, exportCard} from "@/api/card/card";
-  import Marked from 'marked'
+  import {detail, exportCard, listData, setAnki} from "@/api/card/card";
+  import Marked from 'marked';
+
+
   export default {
     name: "Card",
     data() {
@@ -147,25 +152,29 @@
     },
     created() {
       this.getList();
-      // const dictId = this.$route.params && this.$route.params.dictId;
-      // this.getType(dictId);
-      // this.getTypeList();
-      // this.getDicts("sys_normal_disable").then(response => {
-      //   this.statusOptions = response.data;
-      // });
     },
     methods: {
       openMarkdown(row) {
-        let marked = Marked(row.cardDesc, { sanitize: true });
+        let marked = Marked(row.cardDesc, {sanitize: true});
         this.open = true;
         this.form = row;
         this.form.html = marked;
       },
 
 
+      detail(row) {
+        let query = {};
+        query.id = row.id;
+        detail(query).then(response => {
+          this.open = true;
+          this.form = row;
+        });
+      },
+
+
       cancel() {
         this.open = false;
-        this.form ={}
+        this.form = {}
       },
 
       /** 查询字典数据列表 */
@@ -196,11 +205,12 @@
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
-        }).then(function() {
+        }).then(function () {
           return exportCard(queryParams);
         }).then(response => {
           this.download(response.data.msg);
-        }).catch(function() {});
+        }).catch(function () {
+        });
       },
 
       // 多选框选中数据
