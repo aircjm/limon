@@ -27,6 +27,22 @@
       </el-col>
     </el-row>
 
+    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="60%">
+        <el-row>
+          <el-col align="left">
+            <el-form-item align="left" label="标题">
+              <span>{{this.form.cardTitle}}</span>
+            </el-form-item>
+            <div v-html="this.form.html"></div>
+          </el-col>
+        </el-row>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="cancel">取 消</el-button>
+      </div>
+    </el-dialog>
+
 
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
@@ -141,9 +157,15 @@
     methods: {
       openMarkdown(row) {
         let marked = Marked(row.cardDesc, { sanitize: true });
-        this.$alert(marked, row.cardTitle, {
-          dangerouslyUseHTMLString: true
-        });
+        this.open = true;
+        this.form = row;
+        this.form.html = marked;
+      },
+
+
+      cancel() {
+        this.open = false;
+        this.form ={}
       },
 
       /** 查询字典数据列表 */
