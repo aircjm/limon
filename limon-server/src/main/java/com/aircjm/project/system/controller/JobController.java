@@ -22,7 +22,7 @@ public class JobController {
     @Async
     @PostMapping("/refreshAllCard")
     public RestResponse refreshAllCard() {
-        cellCardService.updateAllCard();
+//        cellCardService.updateAllCard();
         return RestResponse.successEmpty();
     }
 }
