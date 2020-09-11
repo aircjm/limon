@@ -18,7 +18,9 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [code, setCode] = useState('');
     const [captchaImage, setCaptchaImage] = useState('');
+    const [uuid, setUuid] = useState('');
     const [codeUrl, setCodeUrl] =  useState('')
     const [keepLogin, setKeepLogin] = useState(true);
     const {theme, dispatch} = useContext(GlobalStore);
@@ -31,18 +33,18 @@ const Login = () => {
 
 
     const signIn = () => {
-        const data = {username, password, captchaImage, keepLogin};
+        const data = {username, password, code, keepLogin, uuid};
         setLoading(true);
         UserLogin(data, setLoading, setOpenLoginPane, setUser);
     };
 
     const resetCode = () => {
-        GetCode(setCodeUrl)
+        GetCode(setCodeUrl, setUuid)
     };
 
 
     useState(() => {
-        GetCode(setCodeUrl)
+        GetCode(setCodeUrl, setUuid)
     })
 
 

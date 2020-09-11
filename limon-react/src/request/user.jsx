@@ -14,13 +14,14 @@ import {message} from "antd";
 import {defaultValue} from "../store/global";
 
 
-export const GetCode = (setCodeUrl) => {
+export const GetCode = (setCodeUrl, setUuid) => {
     client.get("/captchaImage")
         .then(response => {
             const {data} = response;
             if (data.code == 200) {
                 let code =  "data:image/gif;base64," + data.img
                 setCodeUrl(code)
+                setUuid(data.uuid)
             }
         })
 
@@ -83,16 +84,17 @@ export const UserRegister = (data, setLoading, setOpen, setUser) => {
 };
 
 export const UserLogin = (data, setLoading, setOpen, setUser) => {
-
     setLoading(true);
-    client.post('user/login', stringify(data))
+    client.post('/login', data)
         .then(response => {
             const {data} = response;
+            message.success(`欢迎回来~ ${data.data.alias}`)
+            setOpen(false);
+            setLoading(false);
+            setUser(data.data)
+
             if (data.status) {
-                message.success(`欢迎回来~ ${data.data.alias}`)
-                setOpen(false);
-                setLoading(false);
-                setUser(data.data)
+
             } else {
                 message.error(data.message)
             }

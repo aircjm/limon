@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {message} from "antd";
 
 export const client = axios.create(
     {
@@ -11,7 +12,7 @@ export const client = axios.create(
 );
 
 // 添加请求入参
-axios.interceptors.request.use(function (config) {
+client.interceptors.request.use(function (config) {
     let token = window.localStorage.token;
     if (token) {
         config.headers.Authorization = `token ${token}`
@@ -23,7 +24,7 @@ axios.interceptors.request.use(function (config) {
 
 
 // 回参处理
-axios.interceptors.response.use(response => {
+client.interceptors.response.use(response => {
         //对响应数据做操作
         if (response.data.code === '200') {
             console.log('请求成功');
@@ -35,7 +36,7 @@ axios.interceptors.response.use(response => {
             return Promise.reject(response);
         } else {
             console.log('请求失败', response.data.code);
-            alert(response.data.message);
+            message.warn(response.data.msg);
             return Promise.reject(response);
         }
     },
