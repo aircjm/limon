@@ -1,10 +1,3 @@
-/*
-* @file index.jsx
-* @author jansora
-* @date 2020/2/5
-*/
-
-
 import React from "react";
 import {Route, Switch} from "react-router-dom"
 import {LayoutWrapper} from "../../styled/layout";
@@ -15,6 +8,7 @@ import Hooks from "../../components/hooks";
 import User from "../page/user";
 import Project from "../page/project";
 import Playground from "../page/playground";
+import Record from "../page/record";
 
 const Layout = (props) => {
 
@@ -23,6 +17,7 @@ const Layout = (props) => {
 
             <LayoutWrapper>
                 <Switch>
+                    <Route path="/record" component={Record} exact={false}/>
                     <Route path="/post" component={Post} exact={false}/>
                     <Route path="/topic" component={Topic} exact={false}/>
                     <Route path="/project" component={Project} exact={false}/>
@@ -33,10 +28,9 @@ const Layout = (props) => {
                 </Switch>
             </LayoutWrapper>
             <Hooks/>
-            {/*<Background/>*/}
         </React.Fragment>
 
     )
-}
+};
 
 export default Layout;
