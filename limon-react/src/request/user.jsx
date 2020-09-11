@@ -48,7 +48,7 @@ export const QueryCurrentUser = (setUser) => {
     client.get("user/queryCurrentUser")
         .then(response => {
             const {data} = response;
-            if (data.status) {
+            if (data.status == 200) {
                 setUser(data.data)
             } else {
                 setUser(defaultValue.user)

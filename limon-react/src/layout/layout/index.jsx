@@ -14,7 +14,6 @@ const Layout = (props) => {
 
     return (
         <React.Fragment>
-
             <LayoutWrapper>
                 <Switch>
                     <Route path="/record" component={Record} exact={false}/>
@@ -24,7 +23,6 @@ const Layout = (props) => {
                     <Route path="/feedback" component={Feedback} exact={false}/>
                     <Route path="/playground" component={Playground} exact={false}/>
                     <Route path="/user/:id" component={User} exact={false}/>
-
                 </Switch>
             </LayoutWrapper>
             <Hooks/>
