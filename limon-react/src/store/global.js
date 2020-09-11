@@ -22,13 +22,11 @@ export const defaultValue = {
 export const GlobalStore = createContext(defaultValue);
 
 const reducer = (state, action) => {
-
-    switch(action.type) {
+    switch (action.type) {
         case 'user':
             return {...state, user: action.payload};
         case 'theme':
             return {...state, theme: action.payload};
-
         case 'title':
             return {...state, title: action.payload};
         default:

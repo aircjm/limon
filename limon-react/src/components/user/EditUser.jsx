@@ -1,9 +1,3 @@
-/*
-* @file addUser.jsx
-* @description〈一句话功能简述〉
-* @author jansora
-
-*/
 import React, {useContext, useState} from 'react';
 
 
@@ -34,28 +28,28 @@ const EditUser = (props) => {
   const [avatar, setAvatar] = useState(user.avatar ? user.avatar : '');
 
 
-  const { dispatch } = useContext(GlobalStore);
+  const {dispatch} = useContext(GlobalStore);
 
   const update = () => {
-    const args = { id: user.id,
+    const args = {
+      id: user.id,
       alias, description, avatar, password
     };
-    const setUser = user => dispatch({ type: 'user', payload: user })
+    const setUser = user => dispatch({type: 'user', payload: user})
     UpdateUser(args, setOpen, setUser, null)
   };
 
   return (
 
       <Modal
-        open={open}
-        onClose={() => setOpen(false)}
-        style={{width: "500px"}}
+          open={open}
+          onClose={() => setOpen(false)}
+          style={{width: "500px"}}
 
       >
         <Header as='h3' attached='top' textAlign="center">编辑个人信息</Header>
 
         <Form style={{padding: "1rem"}} loading={loading}>
-
 
 
           <Grid columns="equal">
@@ -70,7 +64,7 @@ const EditUser = (props) => {
             <GridColumn>
               <UploadImage
                   img={avatar}
-                  callback={setAvatar} style={{ height: 107, marginTop: 16, marginLeft: 14, width: 114}}
+                  callback={setAvatar} style={{height: 107, marginTop: 16, marginLeft: 14, width: 114}}
               />
             </GridColumn>
           </Grid>
@@ -79,13 +73,12 @@ const EditUser = (props) => {
               label="简介"
               style={{height: 84}}
               value={description} onChange={event => setDescription(event.target.value)}
-              placeholder="请输入简介" />
+              placeholder="请输入简介"/>
 
 
           <Divider style={{margin: '20px 0 12px 0'}}/>
           <Button fluid color={theme} content='更新' onClick={() => update()}/>
         </Form>
-
 
 
       </Modal>
