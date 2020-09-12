@@ -75,10 +75,9 @@ const Login = () => {
                         value={username} onChange={e => setUsername(e.target.value)}/>
                     <Form.Input label='密码' type="password" placeholder='请输入你的密码' value={password}
                                 onChange={e => setPassword(e.target.value)}/>
-                    <Form.Input label='验证码' type="key" value={captchaImage}
-                                onChange={e => setCaptchaImage(e.target.value)}/>
-                    <Image src={codeUrl} size='small' onClick={resetCode}></Image>
-
+                    <Form.Input label='验证码' type="key" value={code}
+                                onChange={e => setCode(e.target.value)}/>
+                    <Image src={codeUrl} size='small' onClick={resetCode}/>
                     <Form.Checkbox
                         // on
                         onChange={() => setKeepLogin(!keepLogin)}

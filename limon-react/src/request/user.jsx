@@ -18,7 +18,7 @@ export const GetCode = (setCodeUrl, setUuid) => {
     client.get("/captchaImage")
         .then(response => {
             const {data} = response;
-            if (data.code == 200) {
+            if (data.code === 200) {
                 let code =  "data:image/gif;base64," + data.img
                 setCodeUrl(code)
                 setUuid(data.uuid)
@@ -92,12 +92,6 @@ export const UserLogin = (data, setLoading, setOpen, setUser) => {
             setOpen(false);
             setLoading(false);
             setUser(data.data)
-
-            if (data.status) {
-
-            } else {
-                message.error(data.message)
-            }
 
         }).catch(e => {
     }).finally(() => {

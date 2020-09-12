@@ -26,9 +26,8 @@ client.interceptors.request.use(function (config) {
 // 回参处理
 client.interceptors.response.use(response => {
         //对响应数据做操作
-        if (response.data.code === '200') {
-            console.log('请求成功');
-            return response
+        if (response.data.code === 200) {
+            return response;
         }
         if (response.data.code === '2009001' || response.data.code === 2009001) {
             console.log('已过期重新登陆', response.data.code);
