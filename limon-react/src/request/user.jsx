@@ -83,16 +83,19 @@ export const UserRegister = (data, setLoading, setOpen, setUser) => {
     return null;
 };
 
-export const UserLogin = (data, setLoading, setOpen, setUser) => {
+export const UserLogin = (request, setLoading, setOpenLoginPane, setUser) => {
     setLoading(true);
-    client.post('/login', data)
+    client.post('/login', request)
         .then(response => {
+            debugger
             const {data} = response;
-            message.success(`欢迎回来~ ${data.data.alias}`)
-            setOpen(false);
+            message.success(`欢迎回来~ ${request.username}`)
+            setOpenLoginPane(false);
             setLoading(false);
-            setUser(data.data)
-
+            window.localStorage.token = data.token
+            let user = {}
+            user.username = request.username
+            setUser(user)
         }).catch(e => {
     }).finally(() => {
         setLoading(false);
