@@ -29,7 +29,7 @@ client.interceptors.response.use(response => {
         if (response.data.code === 200) {
             return response;
         }
-        if (response.data.code === '2009001' || response.data.code === 2009001) {
+        if (response.data.code === '401' || response.data.code === 401) {
             console.log('已过期重新登陆', response.data.code);
             window.location.href = '/login';
             return Promise.reject(response);
