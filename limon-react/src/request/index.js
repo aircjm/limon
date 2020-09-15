@@ -31,7 +31,7 @@ client.interceptors.response.use(response => {
         }
         if (response.data.code === '401' || response.data.code === 401) {
             console.log('已过期重新登陆', response.data.code);
-            window.location.href = '/login';
+            // window.location.href = '/login';
             return Promise.reject(response);
         } else {
             console.log('请求失败', response.data.code);

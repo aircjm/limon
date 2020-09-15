@@ -6,7 +6,6 @@
 import React, {useContext, useState} from 'react';
 import LoginStatus from "../../components/hooks/LoginStatus";
 import {Dropdown} from "semantic-ui-react";
-import Login from "./login";
 
 import {defaultValue, GlobalStore} from "../../store/global";
 import UserAvatar from "../../components/avatar/UserAvatar";
@@ -30,7 +29,7 @@ const User = () => {
   };
 
 
-  if(!loginStatus) return <Login/>;
+  // if(!loginStatus) return <Login/>;
 
   return (
       <React.Fragment>

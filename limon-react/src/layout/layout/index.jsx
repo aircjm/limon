@@ -9,6 +9,7 @@ import User from "../page/user";
 import Project from "../page/project";
 import Playground from "../page/playground";
 import Record from "../page/record";
+import Login from "../header/login";
 
 const Layout = (props) => {
 
@@ -16,6 +17,7 @@ const Layout = (props) => {
         <React.Fragment>
             <LayoutWrapper>
                 <Switch>
+                    <Route path="/login" component={Login} exact={false}/>
                     <Route path="/record" component={Record} exact={false}/>
                     <Route path="/post" component={Post} exact={false}/>
                     <Route path="/topic" component={Topic} exact={false}/>
