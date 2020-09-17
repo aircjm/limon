@@ -6,13 +6,12 @@
 */
 import React from 'react';
 import ToggleTheme from "./ToggleTheme";
-import AutoLogin from "./AutoLogin";
 
 const Hooks = () => {
   return (
     <React.Fragment>
       <ToggleTheme/>
-      <AutoLogin/>
+      {/*<AutoLogin/>*/}
     </React.Fragment>
   )
 }

@@ -27,7 +27,8 @@ const Layout = (props) => {
                     <Route path="/user/:id" component={User} exact={false}/>
                 </Switch>
             </LayoutWrapper>
-            <Hooks/>
+            {/*todo hooks 配置*/}
+            {/*<Hooks/>*/}
         </React.Fragment>
 
     )

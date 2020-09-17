@@ -11,7 +11,6 @@ const AutoLogin = () => {
       QueryCurrentUser(user => dispatch({ type: 'user', payload: user }))
   }, [dispatch]);
 
-
    return null
 }
 export default AutoLogin;

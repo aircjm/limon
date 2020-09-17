@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {message} from "antd";
 
+// import {useHistory} from "react-router-dom";
+
+
 export const client = axios.create(
     {
         baseURL: "/v2/",
@@ -10,6 +13,10 @@ export const client = axios.create(
         }
     }
 );
+
+
+// const history = useHistory();
+
 
 // 添加请求入参
 client.interceptors.request.use(function (config) {
@@ -31,6 +38,7 @@ client.interceptors.response.use(response => {
         }
         if (response.data.code === '401' || response.data.code === 401) {
             console.log('已过期重新登陆', response.data.code);
+            // history.push('login')
             // window.location.href = '/login';
             return Promise.reject(response);
         } else {

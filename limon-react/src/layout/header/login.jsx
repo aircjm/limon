@@ -107,8 +107,8 @@ const Login = () => {
                                         value={username} onChange={(e) => setUsername(e.target.value)}/>
                             <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password'
                                         value={password} onChange={(e) => setPassword(e.target.value)}/>
-                            <Form.Input fluid  placeholder='Password' type='password'
-                                        value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <Form.Input fluid  placeholder='验证码'
+                                        value={code} onChange={(e) => setCode(e.target.value)}/>
                             <Image src={codeUrl} size='small' onClick={resetCode}/>
                             <Form.Checkbox toggle onChange={() => setKeepLogin(!keepLogin)} checked={keepLogin}
     label='30天内保持登录状态'/>
