@@ -16,7 +16,6 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [code, setCode] = useState('');
-    const [captchaImage, setCaptchaImage] = useState('');
     const [uuid, setUuid] = useState('');
     const [codeUrl, setCodeUrl] = useState('')
     const [keepLogin, setKeepLogin] = useState(false);

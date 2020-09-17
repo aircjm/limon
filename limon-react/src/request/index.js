@@ -22,7 +22,7 @@ export const client = axios.create(
 client.interceptors.request.use(function (config) {
     let token = window.localStorage.token;
     if (token) {
-        config.headers.Authorization = `token ${token}`
+        config.headers.Authorization = `Bearer ${token}`
     }
     return config
 }, function (error) {
@@ -38,8 +38,9 @@ client.interceptors.response.use(response => {
         }
         if (response.data.code === '401' || response.data.code === 401) {
             console.log('已过期重新登陆', response.data.code);
-            // history.push('login')
-            // window.location.href = '/login';
+            message.warn("授权已失效 请重新登录");
+            window.localStorage.removeItem("token");
+            window.location.href = '/login';
             return Promise.reject(response);
         } else {
             console.log('请求失败', response.data.code);

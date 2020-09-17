@@ -89,12 +89,13 @@ export const UserLogin = (request, setLoading, setOpenLoginPane, setUser) => {
         .then(response => {
             debugger
             const {data} = response;
-            message.success(`欢迎回来~ ${request.username}`)
+            message.success(`欢迎回来~ ${request.username}`);
             setOpenLoginPane(false);
             setLoading(false);
-            window.localStorage.token = data.token
-            let user = {}
-            user.username = request.username
+            window.localStorage.token = data.token;
+            window.location.href = '/';
+            let user = {};
+            user.username = request.username;
             setUser(user)
         }).catch(e => {
     }).finally(() => {
