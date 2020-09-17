@@ -43,8 +43,8 @@ client.interceptors.response.use(response => {
             window.location.href = '/login';
             return Promise.reject(response);
         } else {
-            console.log('请求失败', response.data.code);
-            message.warn(response.data.msg);
+            console.log('请求返回失败', response.data.code);
+            message.warn("请求返回失败"+response.data.msg);
             return Promise.reject(response);
         }
     },
