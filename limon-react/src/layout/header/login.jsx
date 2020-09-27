@@ -30,7 +30,7 @@ const Login = () => {
     const login = () => {
         const data = {username, password, code, keepLogin, uuid};
         setLoading(true);
-        UserLogin(data, setLoading, setOpenLoginPane, setUser);
+        UserLogin(data, setLoading, setUser);
     };
 
     const resetCode = () => {

@@ -12,11 +12,8 @@ const AdminLoginStatus = () => {
   const [status, setStatus] = useState(false);
   const {user} = useContext(GlobalStore);
   useEffect(() => {
-
       setStatus((user.id !== undefined && user.id !== "" && user.role === "admin"))
   }, [user]);
-
-
   return status
 }
 export default AdminLoginStatus;

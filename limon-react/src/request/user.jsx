@@ -83,14 +83,13 @@ export const UserRegister = (data, setLoading, setOpen, setUser) => {
     return null;
 };
 
-export const UserLogin = (request, setLoading, setOpenLoginPane, setUser) => {
+export const UserLogin = (request, setLoading, setUser) => {
     setLoading(true);
     client.post('/login', request)
         .then(response => {
             debugger
             const {data} = response;
             message.success(`欢迎回来~ ${request.username}`);
-            setOpenLoginPane(false);
             setLoading(false);
             window.localStorage.token = data.token;
             window.location.href = '/';

@@ -16,8 +16,6 @@ const Record = () => {
     return (
         <Switch>
             <Route path="/record" component={RecordList} exact={true}/>
-            {/*<Route path="/post/new" component={EditPost} exact={true}/>*/}
-            {/*<Route path="/post/:resource/edit" component={EditPost} exact={true}/>*/}
         </Switch>
     )
 

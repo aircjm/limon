@@ -11,7 +11,7 @@ export const defaultValue = {
         updatedAt: "",
         createdAt: "",
         avatar: "",
-        role: "",
+        role: "admin",
     },
     // 主题色
     theme: localStorage.getItem(THEME) ? localStorage.getItem(THEME) : 'violet',

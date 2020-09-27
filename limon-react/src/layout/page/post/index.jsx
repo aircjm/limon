@@ -26,6 +26,6 @@ const Post = () => {
         </Switch>
     )
 
-}
+};
 
 export default Post;

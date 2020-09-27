@@ -66,7 +66,7 @@ const EditPost = (props) => {
   SetTitle(editable ? title : "新建博客")
 
   useEffect(() => {
-    if( post.id) {
+    if(post.id) {
       setTitle(post.title)
       setDescription(post.description)
       setUrl(post.url)
@@ -75,7 +75,6 @@ const EditPost = (props) => {
       setRaw(post.raw)
       setPermission(editable ? post.permission === 'PRIVATE' : false)
     }
-
   }, [post])
 
 

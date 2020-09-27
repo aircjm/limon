@@ -25,6 +25,7 @@
     "monaco-editor": "^0.20.0",
     "mustache": "^4.0.0",
     "pouchdb": "^7.2.1",
+    "history": "^4.10.1",
     "qs": "^6.9.1",
     "rc-texty": "^0.2.0",
     "rc-tween-one": "^2.6.8",
