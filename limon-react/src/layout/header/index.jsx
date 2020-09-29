@@ -1,13 +1,6 @@
-/*
-* @file header.jsx
-* @author jansora
-* @date 2020/2/4
-*/
-
-
 import React from "react";
 import {StyledHeader} from "../../styled/header";
-import {Header as Head, Icon} from "semantic-ui-react";
+import {Header as TitleHeader, Icon} from "semantic-ui-react";
 import {Divider} from "antd";
 import Theme from "./theme";
 import User from "./user";
@@ -54,7 +47,7 @@ const Header = (props) => {
 
             {/*中间标题*/}
             <div className="middle">
-                {!bootstrap && <Head>{title}</Head>}
+                {!bootstrap && <TitleHeader >{title}</TitleHeader>}
             </div>
 
 
