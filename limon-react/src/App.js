@@ -10,13 +10,13 @@ const App = () => {
         <React.Fragment>
             <Header bootstrap={bootstrap}/>
             <Switch>
-                <Redirect from="/" to="/post" exact={true}/>
+                <Redirect from="/" to="/home" exact={true}/>
+                <Redirect from="/post" to="/post" exact={true}/>
                 <Redirect from="/bootstrap/:production/redirect" to="/:production" exact={true}/>
-                {/*<Route path="/bootstrap" component={Bootstrap} exact={false}/>*/}
                 <Route path="/:production" component={Layout} exact={false}/>
             </Switch>
         </React.Fragment>
     );
-}
+};
 
 export default App;

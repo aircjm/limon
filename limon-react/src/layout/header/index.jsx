@@ -17,6 +17,7 @@ import {Link, NavLink} from "react-router-dom";
 import GetTitle from "../../components/hooks/GetTitle";
 import AdminLoginStatus from "../../components/hooks/AdminLoginStatus";
 import Links from "./links";
+import Search from "./search";
 
 
 const Header = (props) => {
@@ -60,6 +61,7 @@ const Header = (props) => {
             {/*右侧按钮*/}
             <div className="right">
                 {!bootstrap && <React.Fragment>
+                    <Search/>
                         <Divider type="vertical" style={{margin: '0 16px 0 50px'}}/>
                         {
                             loginStatus && <React.Fragment>
@@ -72,7 +74,6 @@ const Header = (props) => {
                         <Links/>
                         <Divider type="vertical" style={{margin: '0 16px'}}/>
                         <Help/>
-
                         <Divider type="vertical" style={{margin: '0 16px'}}/>
                         <User/>
                     </React.Fragment>
