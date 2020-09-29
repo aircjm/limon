@@ -16,25 +16,6 @@ const Search = () => {
             name='search'
             style={{margin: 0}}
         />
-      {/*<Dropdown*/}
-      {/*  trigger={*/}
-      {/*    <Icon*/}
-      {/*      title='新建'*/}
-      {/*      name='search'*/}
-      {/*      style={{margin: 0}}*/}
-      {/*    />*/}
-      {/*  }*/}
-      {/*  icon={null}*/}
-      {/*  pointing='top right'*/}
-      {/*>*/}
-      {/*  <Dropdown.Menu>*/}
-
-      {/*    <Dropdown.Item onClick={() => setOpenSearch(true)} icon='file' text='新建文档' />*/}
-      {/*  </Dropdown.Menu>*/}
-      {/*</Dropdown>*/}
-
-      {/*{openSearch && <SearchPane open={openSearch} setOpen={setOpenSearch} />}*/}
-
     </React.Fragment>
   )
 }
