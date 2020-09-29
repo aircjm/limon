@@ -66,6 +66,7 @@
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-task-lists": "^2.1.1",
+    "prop-types": "^15.7.2",
     "react-router-dom": "^5.1.2"
   }
 }

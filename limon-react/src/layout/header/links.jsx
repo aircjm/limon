@@ -1,9 +1,3 @@
-/*
-* @file link.jsx
-* @description〈一句话功能简述〉
-* @author jansora
-* @date 2019-04-08 11:36
-*/
 import React from 'react';
 import {Dropdown, Icon} from "semantic-ui-react";
 

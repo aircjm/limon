@@ -1,13 +1,6 @@
-/*
-* @file header.jsx
-* @author jansora
-* @date 2020/2/4
-*/
-
-
 import React from "react";
 import {StyledHeader} from "../../styled/header";
-import {Header as Head, Icon} from "semantic-ui-react";
+import {Header as TitleHeader, Icon} from "semantic-ui-react";
 import {Divider} from "antd";
 import Theme from "./theme";
 import User from "./user";
@@ -17,6 +10,7 @@ import {Link, NavLink} from "react-router-dom";
 import GetTitle from "../../components/hooks/GetTitle";
 import AdminLoginStatus from "../../components/hooks/AdminLoginStatus";
 import Links from "./links";
+import HeaderSearch from "./HeaderSearch";
 
 
 const Header = (props) => {
@@ -53,13 +47,14 @@ const Header = (props) => {
 
             {/*中间标题*/}
             <div className="middle">
-                {!bootstrap && <Head>{title}</Head>}
+                {!bootstrap && <TitleHeader >{title}</TitleHeader>}
             </div>
 
 
             {/*右侧按钮*/}
             <div className="right">
                 {!bootstrap && <React.Fragment>
+                    <HeaderSearch/>
                         <Divider type="vertical" style={{margin: '0 16px 0 50px'}}/>
                         {
                             loginStatus && <React.Fragment>
@@ -72,7 +67,6 @@ const Header = (props) => {
                         <Links/>
                         <Divider type="vertical" style={{margin: '0 16px'}}/>
                         <Help/>
-
                         <Divider type="vertical" style={{margin: '0 16px'}}/>
                         <User/>
                     </React.Fragment>

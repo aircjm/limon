@@ -1,8 +1,3 @@
-/*
-* @file newFolder.jsx
-* @author jansora
-
-*/
 import React, {useState} from 'react';
 
 

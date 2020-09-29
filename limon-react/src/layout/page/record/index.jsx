@@ -4,7 +4,7 @@ import React from "react";
 
 import {Route, Switch} from "react-router-dom";
 import RecordList from "./list";
-import RecordEdit from "./RecordEdit";
+import RecordEdit from "./edit";
 
 
 const Record = () => {

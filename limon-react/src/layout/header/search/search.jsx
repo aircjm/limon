@@ -1,8 +1,4 @@
-/*
-* @file search.jsx
-* @author jansora
 
-*/
 import React from 'react';
 
 

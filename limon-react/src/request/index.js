@@ -1,9 +1,6 @@
 import axios from 'axios';
 import {message} from "antd";
 
-// import {useHistory} from "react-router-dom";
-
-
 export const client = axios.create(
     {
         baseURL: "/v2/",
@@ -15,7 +12,6 @@ export const client = axios.create(
 );
 
 
-// const history = useHistory();
 
 
 // 添加请求入参
@@ -23,6 +19,8 @@ client.interceptors.request.use(function (config) {
     let token = window.localStorage.token;
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
+    } else {
+        message.warn("请求没有token, 没有加入token白名单");
     }
     return config
 }, function (error) {
