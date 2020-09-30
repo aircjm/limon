@@ -1,5 +1,6 @@
 import React from 'react'
 import {Form} from "semantic-ui-react";
+import {EditRecord} from "../../../request/record";
 
 
 function RecordEdit() {
@@ -9,9 +10,10 @@ function RecordEdit() {
         return {
             title: '',
             context: '',
+            tagList: [],
             type: 0,
             status: 0,
-            checked: true
+            checked: false
         };
     }
 
@@ -23,7 +25,7 @@ function RecordEdit() {
 
     function submit() {
         setLoading(true);
-        console.log(form);
+        EditRecord(form);
         setLoading(false);
     }
 
