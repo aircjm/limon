@@ -9,30 +9,45 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 /**
  * @author aircjm
  */
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value = "单元")
+@ApiModel(value = "卡片")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName(value = "lm_cell")
-public class Cell extends DbBaseEntity<Cell> {
+@TableName(value = "cell_card")
+public class CellCard extends DbBaseEntity<CellCard> {
 
     @TableId(type = IdType.INPUT)
-    private Long id;
+    private String id;
 
-    @ApiModelProperty(value = "标题")
-    private String title;
+    private String cardId;
 
-    @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
-    private Integer type = 0;
 
-    private String desc;
+    @ApiModelProperty(value = "")
+    private String cardTitle;
 
-    private String html;
+
+    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
+    private String descType;
+
+    private String cardDesc;
+
+
+    private String descHtml;
 
     private Integer status;
+
+    private LocalDateTime trelloUpdateTime;
+
+
+    private String listId;
+
+    private String boardId;
+
 }

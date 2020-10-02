@@ -1,6 +1,6 @@
 import React from 'react'
 import {Form} from "semantic-ui-react";
-import {EditRecord} from "../../../request/record";
+import {SaveRecord} from "../../../request/record";
 
 
 function RecordEdit() {
@@ -25,7 +25,7 @@ function RecordEdit() {
 
     function submit() {
         setLoading(true);
-        EditRecord(form);
+        SaveRecord(form);
         setLoading(false);
     }
 
@@ -36,7 +36,7 @@ function RecordEdit() {
                             onChange={(e) => setForm({...form, title: e.target.value})}/>
                 <Form.Select
                     fluid
-                    label='Gender'
+                    label='标签'
                     options={option}
                     placeholder='Gender'
                 />

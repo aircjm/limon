@@ -1,5 +1,7 @@
 package com.aircjm.common.utils;
 
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.IdUtil;
 import com.aircjm.common.core.lang.UUID;
 
 /**
@@ -9,6 +11,21 @@ import com.aircjm.common.core.lang.UUID;
  */
 public class IdUtils
 {
+
+    private static Snowflake snowflake;
+
+    static {
+        snowflake = IdUtil.createSnowflake(1, 1);
+    }
+
+    public static Long getId() {
+        return snowflake.nextId();
+    }
+
+
+
+
+
     /**
      * 获取随机UUID
      * 

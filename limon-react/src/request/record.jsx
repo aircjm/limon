@@ -4,8 +4,8 @@ import {message, notification} from "antd";
 import {stringify} from "qs"
 
 
-export const EditRecord = (data) => {
-    client.post('/record/edit', data)
+export const SaveRecord = (data) => {
+    client.post('/api/record/save', data)
         .then(response =>  {
             const { data } = response;
             if (data.status){
