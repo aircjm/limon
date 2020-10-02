@@ -1,7 +1,7 @@
 package com.aircjm.project.card.service;
 
 import com.aircjm.framework.web.domain.AjaxResult;
-import com.aircjm.project.card.domain.Cell;
+import com.aircjm.project.card.domain.CellCard;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *
  * @author aircjm
  */
-public interface CellCardService extends IService<Cell> {
+public interface CellCardService extends IService<CellCard> {
 
     void saveCard(SaveCardRequest request);
 
