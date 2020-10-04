@@ -9,55 +9,38 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 /**
  * @author aircjm
  */
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value = "卡片")
+@ApiModel(value = "单元")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName(value = "anki_card")
-public class AnkiCard extends DbBaseEntity<AnkiCard> {
+@TableName(value = "lm_cell")
+public class Cell extends DbBaseEntity<Cell> {
 
     @TableId(type = IdType.INPUT)
-    private String id;
+    private Long id;
 
-    private String cardId;
+    @ApiModelProperty(value = "标题")
+    private String title;
 
-
-    @ApiModelProperty(value = "卡片标题")
-    private String cardTitle;
-
-
-    private String listId;
-
-    private String boardId;
+    @Builder.Default
+    @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
+    private Integer type = 0;
 
 //
 //    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
 //    private String descType;
 
     @ApiModelProperty(value = "卡片内容描述")
-    private String cardDesc;
-
-    @ApiModelProperty(value = "anki 笔记id")
-    private String ankiNoteId;
-
-    @ApiModelProperty(value = "anki note 更新时间")
-    private LocalDateTime ankiNoteUpdateTime;
-
+    private String cellDesc;
 
     @ApiModelProperty(value = "卡片内容描述HTML")
-    private String descHtml;
+    private String cellHtml;
 
     @ApiModelProperty(value = "卡片状态")
     private Integer status;
-
-    private LocalDateTime trelloUpdateTime;
-
-
 }

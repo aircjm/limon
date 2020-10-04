@@ -8,8 +8,7 @@ import com.aircjm.common.utils.poi.ExcelUtil;
 import com.aircjm.framework.web.domain.AjaxResult;
 import com.aircjm.project.anki.response.AnkiRespVo;
 import com.aircjm.project.card.domain.AnkiCard;
-import com.aircjm.project.card.domain.TrelloCard;
-import com.aircjm.project.card.mapper.CellCardMapper;
+import com.aircjm.project.card.mapper.AnkiCardMapper;
 import com.aircjm.project.card.service.AnkiCardService;
 import com.aircjm.project.card.service.AnkiService;
 import com.aircjm.project.card.vo.anki.vo.Fields;
@@ -17,7 +16,7 @@ import com.aircjm.project.card.vo.anki.vo.Note;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
-import com.aircjm.project.card.vo.response.AnkiCardDetailResponse;
+import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.aircjm.project.system.service.ISysConfigService;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -50,23 +49,19 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> implements AnkiCardService {
+public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> implements AnkiCardService {
 
     @Resource
     Trello trello;
 
-
-
     @Resource
     private AnkiService ankiService;
-
 
     @Resource(name = "asyncExecutor")
     private Executor asyncExecutor;
 
     @Resource
     private ISysConfigService configService;
-
 
     @Override
     public void saveCard(SaveCardRequest request) {
@@ -75,7 +70,7 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
     }
 
     @Override
-    public Page<AnkiCardDetailResponse> getAnkiCardList(GetCardRequest request) {
+    public Page<CellCardDetailResponse> getCardList(GetCardRequest request) {
         QueryWrapper<AnkiCard> queryWrapper = new QueryWrapper<>();
         if (Objects.nonNull(request.getStatus())) {
             queryWrapper.eq("status", request.getStatus());
@@ -89,10 +84,10 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
         }
 
         Page<AnkiCard> boardCards = page(request, queryWrapper);
-        Page<AnkiCardDetailResponse> response = new Page<>();
+        Page<CellCardDetailResponse> response = new Page<>();
         BeanUtils.copyProperties(boardCards, response);
         response.setRecords(boardCards.getRecords().stream().map(item -> {
-            AnkiCardDetailResponse detail = new AnkiCardDetailResponse();
+            CellCardDetailResponse detail = new CellCardDetailResponse();
             BeanUtils.copyProperties(item, detail);
             return detail;
         }).collect(Collectors.toList()));
@@ -101,13 +96,12 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
 
     @Override
     public AjaxResult exportCard(GetCardRequest request) {
-        Page<AnkiCardDetailResponse> page = getAnkiCardList(request);
-        ExcelUtil<AnkiCardDetailResponse> util = new ExcelUtil<>(AnkiCardDetailResponse.class);
+        Page<CellCardDetailResponse> page = getCardList(request);
+        ExcelUtil<CellCardDetailResponse> util = new ExcelUtil<>(CellCardDetailResponse.class);
 
         return util.exportExcel(page.getRecords(), "卡片集合");
     }
 
-    @Override
     public void updateAllCard() {
         String memberId = configService.selectConfigByKey("trello.default.memberId");
         Member member = trello.getMemberInformation(memberId);
@@ -146,10 +140,8 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
                                 log.info("card : {} 当前数据为最新的无需更新", card.getId());
                             }
                         }
-
                     }
             );
-
         });
 
     }
@@ -174,7 +166,7 @@ public class AnkiCardServiceImpl extends ServiceImpl<CellCardMapper, AnkiCard> i
         AnkiRespVo ankiRespVo = ankiService.addNote(note);
         if (StringUtils.isNotEmpty(ankiRespVo.getError())) {
             throw new CustomException("生成Anki的Note失败，失败原因为：" + ankiRespVo.getError());
-        } else{
+        } else {
             one.setAnkiNoteId(ankiRespVo.getResult());
             one.setAnkiNoteUpdateTime(LocalDateTime.now());
         }

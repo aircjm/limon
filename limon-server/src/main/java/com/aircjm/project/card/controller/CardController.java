@@ -6,7 +6,7 @@ import com.aircjm.project.card.service.AnkiCardService;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
-import com.aircjm.project.card.vo.response.AnkiCardDetailResponse;
+import com.aircjm.project.card.vo.response.CellCardDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +46,7 @@ public class CardController {
 
     @PostMapping("/list")
     public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
-        Page<AnkiCardDetailResponse> page = ankiCardService.getAnkiCardList(request);
+        Page<CellCardDetailResponse> page = ankiCardService.getCardList(request);
         return RestResponse.successData(page);
     }
 

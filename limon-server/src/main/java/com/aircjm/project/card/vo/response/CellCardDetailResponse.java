@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AnkiCardDetailResponse {
+public class CellCardDetailResponse {
 
     private Long id;
 
