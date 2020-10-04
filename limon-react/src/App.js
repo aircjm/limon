@@ -1,14 +1,15 @@
 import React from 'react';
 import Layout from "./layout/layout";
 import {Redirect, Route, Switch, useLocation} from 'react-router-dom'
-import Header from "./layout/header";
+import FixedMenuLayout from "./bootstrap/pages/FixedMenuLayout";
 
 const App = () => {
     const location = useLocation();
     const bootstrap = location.pathname.indexOf("bootstrap") > 0;
     return (
         <React.Fragment>
-            <Header bootstrap={bootstrap}/>
+            {/*<Header bootstrap={bootstrap}/>*/}
+            <FixedMenuLayout bootstrap={bootstrap}/>
             <Switch>
                 <Redirect from="/" to="/home" exact={true}/>
                 <Redirect from="/post" to="/post" exact={true}/>

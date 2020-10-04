@@ -44,12 +44,12 @@ const Login = () => {
 
 
     return (
-        <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='middle'>
+        <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='top'>
             <Grid.Column style={{maxWidth: 450}}>
-                <Header as='h2' color='teal' textAlign='center'>
+                <Header as='h4' color='teal' textAlign='center'>
                     <Image src='/logo.png'/> Log-in to your account
                 </Header>
-                <Form size='large'>
+                <Form size='big'>
                     <Segment>
                         <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address Or username'
                                     value={username} onChange={(e) => setUsername(e.target.value)}/>
@@ -60,7 +60,7 @@ const Login = () => {
                         <Image src={codeUrl} size='small' onClick={resetCode}/>
                         <Form.Checkbox toggle onChange={() => setKeepLogin(!keepLogin)} checked={keepLogin}
                                        label='30天内保持登录状态'/>
-                        <Button color='teal' fluid size='large' onClick={login}>
+                        <Button fluid size='large' onClick={login}>
                             Login
                         </Button>
                     </Segment>

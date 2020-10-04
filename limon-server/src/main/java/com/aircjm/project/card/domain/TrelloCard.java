@@ -1,7 +1,6 @@
 package com.aircjm.project.card.domain;
 
 
-import com.aircjm.common.vo.DbBaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,7 +9,10 @@ import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.julienvey.trello.domain.Card;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -25,10 +27,8 @@ import java.util.Date;
 @TableName(value = "trello_card", autoResultMap = true)
 public class TrelloCard {
 
-
     @TableId(type = IdType.INPUT)
     private Long id;
-
 
     @ApiModelProperty(value = "卡片id")
     private String cardId;

@@ -51,8 +51,6 @@ public class CardController {
     }
 
 
-
-
     @PostMapping("/setAnki")
     public RestResponse setAnki(@RequestBody @Valid SetAnkiRequest request) {
         ankiCardService.setAnki(request);

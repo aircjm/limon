@@ -31,10 +31,6 @@ public class Cell extends DbBaseEntity<Cell> {
     @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
     private Integer type = 0;
 
-//
-//    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
-//    private String descType;
-
     @ApiModelProperty(value = "卡片内容描述")
     private String cellDesc;
 
