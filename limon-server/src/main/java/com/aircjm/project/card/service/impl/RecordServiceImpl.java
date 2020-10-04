@@ -5,10 +5,12 @@ import com.aircjm.project.card.domain.Cell;
 import com.aircjm.project.card.mapper.RecordMapper;
 import com.aircjm.project.card.service.RecordService;
 import com.aircjm.project.card.vo.request.SaveRecordRequest;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -16,7 +18,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Service
-public class RecordServiceImpl implements RecordService {
+public class RecordServiceImpl extends ServiceImpl<RecordMapper, Cell> implements RecordService {
 
     @Resource
     private RecordMapper recordMapper;
@@ -25,15 +27,16 @@ public class RecordServiceImpl implements RecordService {
     public void save(SaveRecordRequest request) {
         Cell cell = Cell.builder()
                 .title(request.getTitle())
-                .desc(request.getContent())
+                .cellDesc(request.getContent())
+                .cellHtml(request.getContent())
                 .type(request.getType())
                 .status(request.getStatus())
                 .build();
-        if (Objects.nonNull(request.getId())) {
-            recordMapper.updateById(cell);
-        } else {
+        if (Objects.isNull(request.getId())) {
             cell.setId(IdUtils.getId());
-            recordMapper.insert(cell);
+            cell.setCreateTime(LocalDateTime.now());
         }
+
+        saveOrUpdate(cell);
     }
 }
