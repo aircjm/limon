@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class SetAnkiRequest {
 
-    @NotNull()
+    @NotNull(message = "卡片id")
     private String cardId;
 
 }

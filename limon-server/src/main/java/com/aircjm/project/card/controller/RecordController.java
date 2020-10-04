@@ -19,13 +19,19 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/api/record/")
-@Api(value = "卡片博客API")
+@Api(value = "记录API")
 public class RecordController {
 
 
     @Resource
     private RecordService recordService;
 
+    /**
+     * 新增或者更新记录
+     *
+     * @param request request
+     * @return 结果
+     */
     @PostMapping("/save")
     public RestResponse save(@RequestBody @Valid SaveRecordRequest request) {
         recordService.save(request);
