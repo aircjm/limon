@@ -1,7 +1,3 @@
-/*
-* @file login.jsx
-* @author jansora
-*/
 import React, {useContext, useState} from 'react';
 
 import {Button, Form, Grid, Header, Image, Message, Segment} from "semantic-ui-react";
@@ -21,11 +17,8 @@ const Login = () => {
     const [keepLogin, setKeepLogin] = useState(false);
     const {theme, dispatch} = useContext(GlobalStore);
 
-    const [openLoginPane, setOpenLoginPane] = useState(false);
-    const [openRegisterPane, setOpenRegisterPane] = useState(false);
 
     const setUser = user => dispatch({type: 'user', payload: user});
-
 
     const login = () => {
         const data = {username, password, code, keepLogin, uuid};
