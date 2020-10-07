@@ -21,8 +21,6 @@ const Login = () => {
     const [keepLogin, setKeepLogin] = useState(false);
     const {theme, dispatch} = useContext(GlobalStore);
 
-    const [openLoginPane, setOpenLoginPane] = useState(false);
-    const [openRegisterPane, setOpenRegisterPane] = useState(false);
 
     const setUser = user => dispatch({type: 'user', payload: user});
 
@@ -55,9 +53,16 @@ const Login = () => {
                                     value={username} onChange={(e) => setUsername(e.target.value)}/>
                         <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password'
                                     value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        <Form.Input fluid placeholder='验证码'
-                                    value={code} onChange={(e) => setCode(e.target.value)}/>
-                        <Image src={codeUrl} size='small' onClick={resetCode}/>
+                        <Form.Group>
+                            <Form.Field>
+                                <Form.Input placeholder='验证码'
+                                            value={code} onChange={(e) => setCode(e.target.value)}/>
+                            </Form.Field>
+                            <Form.Field>
+                                <Image src={codeUrl} size='small' onClick={resetCode}/>
+                            </Form.Field>
+                        </Form.Group>
+
                         <Form.Checkbox toggle onChange={() => setKeepLogin(!keepLogin)} checked={keepLogin}
                                        label='30天内保持登录状态'/>
                         <Button fluid size='large' onClick={login}>
