@@ -1,19 +1,8 @@
 import React from 'react'
 import {Dropdown, Menu,} from 'semantic-ui-react'
-import {useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const FixedMenuLayout = () => {
-
-
-    const history = useHistory();
-
-    function toHome() {
-        history.push("/home")
-    }
-
-    function toLogin() {
-        history.push("/login")
-    }
 
     return (
         <React.Fragment>
@@ -23,7 +12,7 @@ const FixedMenuLayout = () => {
                     {/* <Image size='mini' src='/logo.png' style={{ marginRight: '1em' }} />*/}
                     limon
                 </Menu.Item>
-                <Menu.Item as='a' onClick={toHome}>Home</Menu.Item>
+                <Menu.Item  as={Link} to='/home'>Home</Menu.Item>
 
                 <Dropdown item simple text='Dropdown'>
                     <Dropdown.Menu>
@@ -43,10 +32,10 @@ const FixedMenuLayout = () => {
                     </Dropdown.Menu>
                 </Dropdown>
 
-                <Menu.Item position='right' onClick={toLogin}>Log-in</Menu.Item>
+                <Menu.Item position='right' as={Link} to='/login'>Log-in</Menu.Item>
             </Menu>
         </React.Fragment>
     )
-}
+};
 
 export default FixedMenuLayout

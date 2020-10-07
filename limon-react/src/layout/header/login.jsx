@@ -8,6 +8,7 @@ import {Button, Form, Grid, Header, Image, Message, Segment} from "semantic-ui-r
 import {GlobalStore} from "../../store/global";
 
 import {GetCode, UserLogin} from "../../request/user";
+import {Link} from "react-router-dom";
 
 
 const Login = () => {
@@ -65,13 +66,13 @@ const Login = () => {
 
                         <Form.Checkbox toggle onChange={() => setKeepLogin(!keepLogin)} checked={keepLogin}
                                        label='30天内保持登录状态'/>
-                        <Button fluid size='large' onClick={login}>
+                        <Button fluid size='large' onClick={login} color={"green"}>
                             Login
                         </Button>
                     </Segment>
                 </Form>
                 <Message>
-                    New to us? <a href='#'>Sign Up</a>
+                    New to us? <Button as={Link} to="/signUp" color={"blue"} >Sign Up</Button>
                 </Message>
             </Grid.Column>
         </Grid>
