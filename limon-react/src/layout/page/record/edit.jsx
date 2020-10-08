@@ -11,27 +11,15 @@ function RecordEdit() {
             context: '',
             tagList: [],
             type: 0,
-            status: 0,
-            checked: false
-        };
-    }
-
-    function initTableList() {
-        return {
-            list: [],
-            total: 100,
-            totalPages: 10,
-            currentPage: 1,
+            status: 0
         };
     }
 
 
     const [form, setForm] = React.useState(initFrom());
-    const [tableList, setTableList] = React.useState(initTableList());
     const [option, setOption] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
     const [open, setOpen] = React.useState(false);
-
 
     function submit() {
         setOpen(false);
@@ -62,10 +50,8 @@ function RecordEdit() {
                                 placeholder='Gender'
                             />
                         </Form.Group>
-                        <Form.TextArea label='About' placeholder='Tell us more about you...'
+                        <Form.TextArea label='描述内容'
                                        onChange={(e) => setForm({...form, context: e.target.value})}/>
-                        <Form.Checkbox label='I agree to the Terms and Conditions' defaultChecked={form.checked}
-                                       onClick={(e, data) => setForm({...form, checked: data.checked})}/>
                     </Form>
                 </Modal.Content>
                 <Modal.Actions>
@@ -81,16 +67,7 @@ function RecordEdit() {
                     />
                 </Modal.Actions>
             </Modal>
-
-
-
         </React.Fragment>
-
-
-
-
-
-
     )
 }
 
