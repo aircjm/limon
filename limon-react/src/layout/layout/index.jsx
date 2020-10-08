@@ -4,7 +4,6 @@ import {LayoutWrapper} from "../../styled/layout";
 import Post from "../page/post";
 import Feedback from "../page/feedback";
 import Topic from "../page/topic";
-import Hooks from "../../components/hooks";
 import User from "../page/user";
 import Project from "../page/project";
 import Playground from "../page/playground";

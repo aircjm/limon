@@ -8,7 +8,6 @@ const App = () => {
     const bootstrap = location.pathname.indexOf("bootstrap") > 0;
     return (
         <React.Fragment>
-            {/*<Header bootstrap={bootstrap}/>*/}
             <FixedMenuLayout bootstrap={bootstrap}/>
             <Switch>
                 <Redirect from="/" to="/home" exact={true}/>
