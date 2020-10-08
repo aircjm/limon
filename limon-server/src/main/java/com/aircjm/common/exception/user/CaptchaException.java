@@ -11,6 +11,6 @@ public class CaptchaException extends UserException
 
     public CaptchaException()
     {
-        super("user.jcaptcha.error", null);
+        super("user.captcha.error", null);
     }
 }
