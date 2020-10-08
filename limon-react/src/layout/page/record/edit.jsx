@@ -36,7 +36,7 @@ function RecordEdit() {
                 onOpen={() => setOpen(true)}
                 open={open}
                 size="small"
-                trigger={<Button size={"small"} icon={"add"}>新增</Button>}>
+                trigger={<Button size={"small"} icon={"add"} color={"green"}>新增</Button>}>
                 <Modal.Header>新增</Modal.Header>
                 <Modal.Content>
                     <Form>
