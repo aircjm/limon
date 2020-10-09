@@ -22,7 +22,7 @@ const FixedMenuLayout = () => {
                             placeholder='Search users...'
                         />
                     </Menu.Item>
-                    <Dropdown item simple text='Help' icon={'help'}>
+                    <Dropdown item simple icon={'help'}>
                         <Dropdown.Menu direction={'left'}>
                             <Dropdown.Item as="a" target="_blank" href={`https://react.semantic-ui.com/`}
                                            text='Semantic UI React'/>
