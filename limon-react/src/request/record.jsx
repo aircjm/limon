@@ -42,7 +42,7 @@ export const UpdatePost = (data, callback) => {
 
         }).catch( e => {
     }).finally(()=> {
-    })
+    });
 
 
     return null;

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button, Form, Modal} from "semantic-ui-react";
 import {SaveRecord} from "../../../request/record";
+import {DatePicker} from "antd";
 
 
 function RecordEdit() {
@@ -35,7 +36,6 @@ function RecordEdit() {
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                size="small"
                 trigger={<Button size={"small"} icon={"add"} color={"green"}>新增</Button>}>
                 <Modal.Header>新增</Modal.Header>
                 <Modal.Content>
@@ -49,6 +49,9 @@ function RecordEdit() {
                                 options={option}
                                 placeholder='Gender'
                             />
+                        </Form.Group>
+                        <Form.Group label='begin'>
+                            <DatePicker showTime={{ format: 'HH:mm' }} showToday format={'YYYY-MM-DD HH:mm:ss'}/>
                         </Form.Group>
                         <Form.TextArea label='描述内容'
                                        onChange={(e) => setForm({...form, context: e.target.value})}/>
