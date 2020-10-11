@@ -178,9 +178,16 @@
                     :style="{width: '100%'}"></el-input>
         </el-form-item>
         <el-form-item label="跟踪时间" prop="trackTime">
-          <el-date-picker type="datetimerange" v-model="form.trackTime" format="yyyy-MM-dd HH:mm:ss"
-                          value-format="yyyy-MM-dd HH:mm:ss" :style="{width: '100%'}" start-placeholder="开始日期"
-                          end-placeholder="结束日期" range-separator="至" clearable></el-date-picker>
+          <el-time-select placeholder="起始时间" v-model="form.startTime" :picker-options="{
+      step: '00:15',
+    }">
+          </el-time-select>
+          <el-time-select placeholder="结束时间" v-model="form.endTime"
+            :picker-options="{
+      step: '00:15',
+      minTime: startTime
+    }">
+          </el-time-select>
         </el-form-item>
 
         <el-form-item label="标签" prop="labList">
@@ -207,10 +214,10 @@
 </template>
 
 <script>
-import {clearCache, delType, exportType, getType, listType, updateType} from "@/api/system/dict/type";
-import {addRecord} from "@/api/record/record";
+  import {clearCache, delType, exportType, getType, listType, updateType} from "@/api/system/dict/type";
+  import {addRecord} from "@/api/record/record";
 
-export default {
+  export default {
   name: "Record",
   data() {
     return {
@@ -253,15 +260,13 @@ export default {
           trigger: 'blur'
         }],
         recordContext: [],
-        trackTime: [{
+        endTime: [{
           required: true,
-          message: '跟踪时间不能为空',
+          message: '跟踪结束时间不能为空',
           trigger: 'change'
         }],
         labList: [],
       },
-      uploadPicAction: 'https://jsonplaceholder.typicode.com/posts/',
-
       labListOptions: [{
         "label": "选项一",
         "value": 1
