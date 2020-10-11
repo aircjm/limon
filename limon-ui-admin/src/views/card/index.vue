@@ -76,19 +76,20 @@
 </template>
 
 <script>
-  import {listData, setAnki, exportCard} from "@/api/card/card";
-  import Marked from 'marked'
-  export default {
-    name: "Card",
-    data() {
-      return {
-        // 遮罩层
-        loading: true,
-        // 选中数组
-        ids: [],
-        // 非单个禁用
-        single: true,
-        // 非多个禁用
+import {exportCard, listData, setAnki} from "@/api/card/card";
+import Marked from 'marked'
+
+export default {
+  name: "Card",
+  data() {
+    return {
+      // 遮罩层
+      loading: true,
+      // 选中数组
+      ids: [],
+      // 非单个禁用
+      single: true,
+      // 非多个禁用
         multiple: true,
         // 总条数
         total: 0,
@@ -131,16 +132,11 @@
     },
     created() {
       this.getList();
-      // const dictId = this.$route.params && this.$route.params.dictId;
-      // this.getType(dictId);
-      // this.getTypeList();
-      // this.getDicts("sys_normal_disable").then(response => {
-      //   this.statusOptions = response.data;
-      // });
     },
     methods: {
       openMarkdown(row) {
         let marked = Marked(row.cardDesc, { sanitize: true });
+
         this.$alert(marked, row.cardTitle, {
           dangerouslyUseHTMLString: true
         });
