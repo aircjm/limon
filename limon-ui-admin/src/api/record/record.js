@@ -12,7 +12,7 @@ export function listData(query) {
 // 新增
 export function addRecord(data) {
   return request({
-    url: '/api/record/add',
+    url: '/api/record/save',
     method: 'post',
     data: data
   })
