@@ -168,12 +168,12 @@
     <el-dialog :title="title" :visible.sync="open" append-to-body lock-scroll="false">
       <el-form ref="form" :model="form" :rules="rules"
                label-position="left" label-width="80px">
-        <el-form-item label="标题" prop="recordTitle">
-          <el-input v-model="form.recordTitle" placeholder="请输入标题" :maxlength="500" clearable
+        <el-form-item label="标题" prop="title">
+          <el-input v-model="form.title" placeholder="请输入标题" :maxlength="500" clearable
                     :style="{width: '100%'}"></el-input>
         </el-form-item>
-        <el-form-item label="记录内容" prop="recordContext">
-          <el-input v-model="form.recordContext" type="textarea" placeholder="请输入记录内容"
+        <el-form-item label="记录内容" prop="content">
+          <el-input v-model="form.content" type="textarea" placeholder="请输入记录内容"
                     :maxlength="5000" show-word-limit :autosize="{minRows: 4, maxRows: 4}"
                     :style="{width: '100%'}"></el-input>
         </el-form-item>
@@ -254,12 +254,12 @@
         uploadPicFileList: [],
       },
       rules: {
-        recordTitle: [{
+        title: [{
           required: true,
           message: '请输入标题',
           trigger: 'blur'
         }],
-        recordContext: [],
+        content: [],
         endTime: [{
           required: true,
           message: '跟踪结束时间不能为空',
@@ -305,8 +305,8 @@
     // 表单重置
     reset() {
       this.form = {
-        recordTitle: undefined,
-        recordContext: undefined,
+        title: undefined,
+        content: undefined,
       };
       this.resetForm("form");
     },
