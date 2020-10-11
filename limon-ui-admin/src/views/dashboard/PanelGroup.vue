@@ -76,7 +76,7 @@ export default {
     },
 
     refreshAllCard() {
-      refreshAllCard({});
+      refreshAllCard();
     }
   }
 }
