@@ -165,47 +165,38 @@
       @pagination="getList"
     />
 
-    <el-dialog :title="title" :visible.sync="open" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" size="small"
-               label-position="left">
-        <el-col :span="23">
-          <el-form-item label="标题" prop="recordTitle">
-            <el-input v-model="form.recordTitle" placeholder="请输入标题" :maxlength="500" clearable
-                      :style="{width: '100%'}"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="24">
-          <el-form-item label="记录内容" prop="recordContext">
-            <el-input v-model="form.recordContext" type="textarea" placeholder="请输入记录内容"
-                      :maxlength="5000" show-word-limit :autosize="{minRows: 4, maxRows: 4}"
-                      :style="{width: '100%'}"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="跟踪时间" prop="trackTime">
-            <el-date-picker type="datetimerange" v-model="form.trackTime" format="yyyy-MM-dd HH:mm:ss"
-                            value-format="yyyy-MM-dd HH:mm:ss" :style="{width: '100%'}" start-placeholder="开始日期"
-                            end-placeholder="结束日期" range-separator="至" clearable></el-date-picker>
-          </el-form-item>
-        </el-col>
-        <el-col :span="24">
-          <el-form-item label="标签" prop="labList">
-            <el-select v-model="form.labList" placeholder="请选择标签" filterable clearable
-                       :style="{width: '100%'}">
-              <el-option v-for="(item, index) in labListOptions" :key="index" :label="item.label"
-                         :value="item.value" :disabled="item.disabled"></el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="24">
-          <el-form-item label="上传图片" prop="uploadPic">
-            <el-upload ref="uploadPic" :file-list="form.uploadPicFileList" :action="uploadPicAction" multiple
-                       :before-upload="uploadPicBeforeUpload" list-type="picture-card">
-              <i class="el-icon-plus"></i>
-              <div slot="tip" class="el-upload__tip">只能上传不超过 20MB 的文件</div>
-            </el-upload>
-          </el-form-item>
-        </el-col>
+    <el-dialog :title="title" :visible.sync="open" append-to-body lock-scroll="false">
+      <el-form ref="form" :model="form" :rules="rules"
+               label-position="left" label-width="80px">
+        <el-form-item label="标题" prop="recordTitle">
+          <el-input v-model="form.recordTitle" placeholder="请输入标题" :maxlength="500" clearable
+                    :style="{width: '100%'}"></el-input>
+        </el-form-item>
+        <el-form-item label="记录内容" prop="recordContext">
+          <el-input v-model="form.recordContext" type="textarea" placeholder="请输入记录内容"
+                    :maxlength="5000" show-word-limit :autosize="{minRows: 4, maxRows: 4}"
+                    :style="{width: '100%'}"></el-input>
+        </el-form-item>
+        <el-form-item label="跟踪时间" prop="trackTime">
+          <el-date-picker type="datetimerange" v-model="form.trackTime" format="yyyy-MM-dd HH:mm:ss"
+                          value-format="yyyy-MM-dd HH:mm:ss" :style="{width: '100%'}" start-placeholder="开始日期"
+                          end-placeholder="结束日期" range-separator="至" clearable></el-date-picker>
+        </el-form-item>
+
+        <el-form-item label="标签" prop="labList">
+          <el-select v-model="form.labList" placeholder="请选择标签" filterable clearable
+                     :style="{width: '100%'}">
+            <el-option v-for="(item, index) in labListOptions" :key="index" :label="item.label"
+                       :value="item.value" :disabled="item.disabled"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="上传图片" prop="uploadPic">
+          <el-upload ref="uploadPic" :file-list="form.uploadPicFileList" :action="uploadPicAction" multiple
+                     :before-upload="uploadPicBeforeUpload" list-type="picture-card">
+            <i class="el-icon-plus"></i>
+            <div slot="tip" class="el-upload__tip">只能上传不超过 20MB 的文件</div>
+          </el-upload>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
