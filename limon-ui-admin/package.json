@@ -31,14 +31,8 @@
     "admin",
     "dashboard",
     "element-ui",
-    "boilerplate",
-    "admin-template",
     "management-system"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://gitee.com/y_project/RuoYi-Vue.git"
-  },
   "dependencies": {
     "@riophae/vue-treeselect": "0.4.0",
     "axios": "0.18.1",
@@ -57,6 +51,7 @@
     "path-to-regexp": "2.4.0",
     "screenfull": "4.2.0",
     "sortablejs": "1.8.4",
+    "tiptap": "^1.30.0",
     "vue": "2.6.10",
     "vue-count-to": "1.0.13",
     "vue-cropper": "0.4.9",
