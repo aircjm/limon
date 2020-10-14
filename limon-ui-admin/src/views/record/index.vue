@@ -168,6 +168,12 @@
     <el-dialog :title="title" :visible.sync="open" append-to-body lock-scroll="false">
       <el-form ref="form" :model="form" :rules="rules"
                label-position="left" label-width="80px">
+        <el-form-item label="类型" prop="type">
+          <el-select v-model="form.type">
+            <el-option label="记录" value="1"/>
+            <el-option label="task" value="2"/>
+          </el-select>
+        </el-form-item>
         <el-form-item label="标题" prop="title">
           <el-input v-model="form.title" placeholder="请输入标题" :maxlength="500" clearable
                     :style="{width: '100%'}"></el-input>
@@ -214,10 +220,10 @@
 </template>
 
 <script>
-  import {clearCache, delType, exportType, getType, listType, updateType} from "@/api/system/dict/type";
-  import {addRecord} from "@/api/record/record";
+import {clearCache, delType, exportType, getType, listType, updateType} from "@/api/system/dict/type";
+import {addRecord} from "@/api/record/record";
 
-  export default {
+export default {
   name: "Record",
   data() {
     return {
