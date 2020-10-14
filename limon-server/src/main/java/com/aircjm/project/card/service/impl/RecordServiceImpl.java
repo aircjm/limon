@@ -39,4 +39,9 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Cell> implement
 
         saveOrUpdate(cell);
     }
+
+    @Override
+    public void noticeAdd() {
+
+    }
 }

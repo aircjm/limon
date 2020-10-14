@@ -10,4 +10,9 @@ public interface RecordService {
      * @param request request
      */
     void save(SaveRecordRequest request);
+
+    /**
+     * 进行新增提醒
+     */
+    void noticeAdd();
 }
