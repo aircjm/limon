@@ -1,10 +1,12 @@
 package com.aircjm.common.utils;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.lang.management.ManagementFactory;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
-import org.apache.commons.lang3.time.DateFormatUtils;
 
 /**
  * 时间工具类
@@ -151,5 +153,15 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils
         // 计算差多少秒//输出结果
         // long sec = diff % nd % nh % nm / ns;
         return day + "天" + hour + "小时" + min + "分钟";
+    }
+
+    /**
+     * 判断是否是工作时间
+     *
+     * @param now 当前时间
+     * @return 是否是工作时间
+     */
+    public static boolean isWorkTime(LocalDateTime now) {
+        return now.getHour() > 8 && now.getHour() < 21;
     }
 }

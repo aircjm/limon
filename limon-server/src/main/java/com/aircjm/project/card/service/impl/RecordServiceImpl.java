@@ -1,15 +1,16 @@
 package com.aircjm.project.card.service.impl;
 
+import com.aircjm.common.utils.DateUtils;
 import com.aircjm.common.utils.IdUtils;
 import com.aircjm.project.card.domain.Cell;
 import com.aircjm.project.card.mapper.RecordMapper;
 import com.aircjm.project.card.service.RecordService;
 import com.aircjm.project.card.vo.request.SaveRecordRequest;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -19,9 +20,6 @@ import java.util.Objects;
 @Slf4j
 @Service
 public class RecordServiceImpl extends ServiceImpl<RecordMapper, Cell> implements RecordService {
-
-    @Resource
-    private RecordMapper recordMapper;
 
     @Override
     public void save(SaveRecordRequest request) {
@@ -42,6 +40,12 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Cell> implement
 
     @Override
     public void noticeAdd() {
-
+        QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
+        LocalDateTime dateTime = LocalDateTime.now().plusMinutes(-30L);
+        queryWrapper.ge("update_time", dateTime);
+        Cell one = getOne(queryWrapper);
+        if (Objects.isNull(one) && DateUtils.isWorkTime(LocalDateTime.now())) {
+            // 消息通知
+        }
     }
 }
