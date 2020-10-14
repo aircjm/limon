@@ -41,10 +41,10 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Cell> implement
     @Override
     public void noticeAdd() {
         QueryWrapper<Cell> queryWrapper = new QueryWrapper<>();
-        LocalDateTime dateTime = LocalDateTime.now().plusMinutes(-30L);
-        queryWrapper.ge("update_time", dateTime);
+        LocalDateTime now = LocalDateTime.now();
+        queryWrapper.ge("update_time", now.plusMinutes(-30L));
         Cell one = getOne(queryWrapper);
-        if (Objects.isNull(one) && DateUtils.isWorkTime(LocalDateTime.now())) {
+        if (Objects.isNull(one) && DateUtils.isWorkTime(now)) {
             // 消息通知
         }
     }
