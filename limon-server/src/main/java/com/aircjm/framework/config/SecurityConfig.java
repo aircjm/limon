@@ -1,5 +1,8 @@
 package com.aircjm.framework.config;
 
+import com.aircjm.framework.security.filter.JwtAuthenticationTokenFilter;
+import com.aircjm.framework.security.handle.AuthenticationEntryPointImpl;
+import com.aircjm.framework.security.handle.LogoutSuccessHandlerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -12,9 +15,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.aircjm.framework.security.filter.JwtAuthenticationTokenFilter;
-import com.aircjm.framework.security.handle.AuthenticationEntryPointImpl;
-import com.aircjm.framework.security.handle.LogoutSuccessHandlerImpl;
 
 /**
  * spring security配置
