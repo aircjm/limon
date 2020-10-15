@@ -2,6 +2,7 @@ package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.utils.DateUtils;
 import com.aircjm.common.utils.IdUtils;
+import com.aircjm.framework.message.MessageService;
 import com.aircjm.project.card.domain.Cell;
 import com.aircjm.project.card.mapper.RecordMapper;
 import com.aircjm.project.card.service.RecordService;
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -20,6 +22,9 @@ import java.util.Objects;
 @Slf4j
 @Service
 public class RecordServiceImpl extends ServiceImpl<RecordMapper, Cell> implements RecordService {
+
+    @Resource
+    private MessageService emailService;
 
     @Override
     public void save(SaveRecordRequest request) {
@@ -46,6 +51,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Cell> implement
         Cell one = getOne(queryWrapper);
         if (Objects.isNull(one) && DateUtils.isWorkTime(now)) {
             // 消息通知
+            emailService.sendNoticeMessage("hello", "world", 1L);
         }
     }
 }
