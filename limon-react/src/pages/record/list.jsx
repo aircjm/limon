@@ -1,5 +1,5 @@
 import React from "react";
-import SetTitle from "../../../components/hooks/SetTitle";
+import SetTitle from "../../components/hooks/SetTitle";
 import RecordEdit from "./edit";
 
 

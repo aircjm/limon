@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Form, Modal} from "semantic-ui-react";
-import {SaveRecord} from "../../../request/record";
+import {SaveRecord} from "../../request/record";
 import {DatePicker} from "antd";
 
 

@@ -7,7 +7,7 @@ import Topic from "../page/topic";
 import User from "../page/user";
 import Project from "../page/project";
 import Playground from "../page/playground";
-import Record from "../page/record";
+import Record from "../../pages/record";
 import Login from "../header/login";
 
 const Layout = (props) => {

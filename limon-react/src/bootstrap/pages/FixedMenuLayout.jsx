@@ -1,6 +1,7 @@
 import React from 'react'
 import {Dropdown, Input, Menu,} from 'semantic-ui-react'
 import {Link} from "react-router-dom";
+import HeaderSearch from "../../layout/header/HeaderSearch";
 
 const FixedMenuLayout = () => {
 
@@ -15,6 +16,7 @@ const FixedMenuLayout = () => {
                 <Menu.Item as={Link} to='/home'>Home</Menu.Item>
                 <Menu.Item as={Link} to='/record'>record</Menu.Item>
                 <Menu.Menu position={'right'}>
+                    <HeaderSearch/>
                     <Menu.Item>
                         <Input
                             className='icon'
