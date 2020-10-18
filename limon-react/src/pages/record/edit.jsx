@@ -13,7 +13,8 @@ function RecordEdit() {
             context: '',
             tagList: [],
             type: 0,
-            status: 0
+            status: 0,
+            beginTime: null
         };
     }
 
@@ -31,10 +32,8 @@ function RecordEdit() {
     }
 
     function modifyTitle(e) {
-
         let date = parseDate(e.target.value);
-        debugger;
-
+        setForm({...form, beginTime: date})
     }
 
 
@@ -60,7 +59,7 @@ function RecordEdit() {
                             />
                         </Form.Group>
                         <Form.Group label='begin'>
-                            <DatePicker showTime={{ format: 'HH:mm' }} showToday format={'YYYY-MM-DD HH:mm:ss'}/>
+                            <TimePicker showToday value={form.beginTime}/>
                         </Form.Group>
                         <Form.TextArea label='描述内容'
                                        onChange={(e) => setForm({...form, context: e.target.value})}/>
