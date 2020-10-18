@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Form, Modal} from "semantic-ui-react";
 import {SaveRecord} from "../../request/record";
 import {DatePicker} from "antd";
+import {parseDate} from "../../utils/DateUtil";
 
 
 function RecordEdit() {
@@ -29,6 +30,14 @@ function RecordEdit() {
         setLoading(false);
     }
 
+    function modifyTitle(e) {
+
+        let date = parseDate(e.target.value);
+        debugger;
+
+    }
+
+
 
     return (
         <React.Fragment>
@@ -42,7 +51,7 @@ function RecordEdit() {
                     <Form>
                         <Form.Group widths='equal'>
                             <Form.Input fluid label='title' placeholder='title' value={form.title}
-                                        onChange={(e) => setForm({...form, title: e.target.value})}/>
+                                        onChange={(e) => setForm({...form, title: e.target.value})}  onBlur={modifyTitle}/>
                             <Form.Select
                                 fluid
                                 label='标签'
