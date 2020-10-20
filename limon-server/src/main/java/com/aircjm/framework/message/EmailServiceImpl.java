@@ -1,11 +1,11 @@
 package com.aircjm.framework.message;
 
-import cn.hutool.extra.mail.MailAccount;
-import cn.hutool.extra.mail.MailUtil;
 import com.aircjm.common.exception.CustomException;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.project.system.domain.SysUser;
 import com.aircjm.project.system.mapper.SysUserMapper;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,8 +20,9 @@ public class EmailServiceImpl implements MessageService {
     @Resource
     private SysUserMapper sysUserMapper;
 
+
     @Resource
-    private MailAccount mailAccount;
+    private JavaMailSender customMailSender;
 
 
     @Override
@@ -30,7 +31,13 @@ public class EmailServiceImpl implements MessageService {
         if (Objects.isNull(sysUser) || StringUtils.isEmpty(sysUser.getEmail())) {
             throw new CustomException("当前用户不存在");
         }
-        MailUtil.send(mailAccount, sysUser.getEmail(), title, context, false);
+
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setSubject(title);
+        simpleMailMessage.setText(context);
+        simpleMailMessage.setTo(sysUser.getEmail());
+        customMailSender.send(simpleMailMessage);
+
     }
 
 }
