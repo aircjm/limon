@@ -1,6 +1,7 @@
 import React from "react";
 import SetTitle from "../../components/hooks/SetTitle";
 import RecordEdit from "./edit";
+import BaseEditor from "../../components/editor/mdEditor/BaseEditor";
 
 
 const RecordList = (props) => {
@@ -10,6 +11,8 @@ const RecordList = (props) => {
 
         <React.Fragment>
             <RecordEdit/>
+
+            <BaseEditor/>
         </React.Fragment>
     )
 };

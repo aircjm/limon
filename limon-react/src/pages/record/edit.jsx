@@ -3,6 +3,7 @@ import {Button, Form, Modal} from "semantic-ui-react";
 import {SaveRecord} from "../../request/record";
 import {DatePicker} from "antd";
 import {parseDate} from "../../utils/DateUtil";
+import BaseEditor from "../../components/editor/mdEditor/BaseEditor";
 
 
 function RecordEdit() {
@@ -45,7 +46,7 @@ function RecordEdit() {
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Button size={"small"} icon={"add"} color={"green"}>新增</Button>}>
+                trigger={<Button size={"small"} color={"green"}>新增</Button>}>
                 <Modal.Header>新增</Modal.Header>
                 <Modal.Content>
                     <Form>
@@ -62,15 +63,15 @@ function RecordEdit() {
                         <Form.Group label='begin'>
                             <DatePicker showTime={{ format: 'HH:mm' }} showToday format={'YYYY-MM-DD HH:mm:ss'}/>
                         </Form.Group>
-                        <Form.TextArea label='描述内容'
-                                       onChange={(e) => setForm({...form, context: e.target.value})}/>
+                        <BaseEditor label='描述内容'
+                                    onChange={(e) => setForm({...form, context: e.target.value})}/>
                     </Form>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color='black' onClick={() => setOpen(false)}>
                         关闭
                     </Button>
-                    <Button size={"small"}
+                    <Button
                             content="提交"
                             labelPosition='right'
                             icon='checkmark'
