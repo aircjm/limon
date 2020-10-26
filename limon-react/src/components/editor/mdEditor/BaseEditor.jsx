@@ -89,7 +89,7 @@ function BaseEditor(props) {
 
     return (
         <Fragment>
-            {!readOnly ? <Button onClick={() => setReadOnly(false)} content={"修改"}/>: <Button onClick={() => setReadOnly(true)} content={"保存"}/>}
+            {readOnly ? <Button onClick={() => setReadOnly(false)} content={"修改"}/>: <Button onClick={() => setReadOnly(true)} content={"保存"}/>}
 
 
             <div className='EditorCore-frame' onKeyDown={handleKeyDown}>
