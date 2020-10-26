@@ -7,10 +7,15 @@ function BaseEditor(props) {
 
     const id = props.id;
 
-
+    const [readOnly, setReadOnly] = useState(false)
     const [mdContext, setMdContext] = useState();
     const [title, setTitle] = useState('');
     const [editor, setEditor] = useState();
+
+
+    useEffect(() => {
+        console.log(readOnly)
+    }, [readOnly]);
 
 
     function handleSave(data) {
@@ -84,7 +89,9 @@ function BaseEditor(props) {
 
     return (
         <Fragment>
-            <Button onClick={handleClick} content={"保存"}/>
+            {!readOnly ? <Button onClick={() => setReadOnly(false)} content={"修改"}/>: <Button onClick={() => setReadOnly(true)} content={"保存"}/>}
+
+
             <div className='EditorCore-frame' onKeyDown={handleKeyDown}>
                 <div className='EditorCore-HMD-wrapper'>
                     <textarea id={'EditorCore-frame' + id} onKeyDown={handleKeyDown}></textarea>
