@@ -10,12 +10,7 @@ function BaseEditor(props) {
     const [readOnly, setReadOnly] = useState(false)
     const [mdContext, setMdContext] = useState();
     const [title, setTitle] = useState('');
-    const [editor, setEditor] = useState();
-
-
-    useEffect(() => {
-        console.log(readOnly)
-    }, [readOnly]);
+    const [editor, setEditor] = useState(null);
 
 
     function handleSave(data) {
@@ -41,7 +36,7 @@ function BaseEditor(props) {
     useEffect(() => {
         let myTextarea = document.getElementById('EditorCore-frame' + id);
 
-        let editor = HyperMD.fromTextArea(myTextarea, {
+        const editor = HyperMD.fromTextArea(myTextarea, {
             mode: {
                 name: 'hypermd',
                 hashtag: true,
@@ -85,6 +80,14 @@ function BaseEditor(props) {
         setEditor(editor)
 
     }, []);
+
+
+    useEffect(() => {
+        debugger;
+        if (editor) {
+            editor.setOption("readOnly", readOnly)
+        }
+    }, [readOnly]);
 
 
     return (
