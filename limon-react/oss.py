@@ -1,14 +1,12 @@
-import toml
 import os
 import oss2
-import sys
-
+import toml
 
 conf = toml.loads(open('/etc/conf/oss.toml').read())
 
 
 # 打包admin静态文件。
-os.system("npm install && export PUBLIC_URL=https://cdn.chenjiaming.org/dash && npm run build:prod")
+os.system("npm install && export PUBLIC_URL=https://cdn.chenjiaming.org/dash && npm run build")
 
 
 
