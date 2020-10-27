@@ -1,13 +1,13 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import * as HyperMD from "hypermd"
-import {Button} from "semantic-ui-react";
+import {Button, Form, FormGroup, Input} from "semantic-ui-react";
 
+//todo 上传图片
 function BaseEditor(props) {
-
-
     const id = props.id;
+    const defaultValue = props.defaultValue;
 
-    const [readOnly, setReadOnly] = useState(false)
+    const [readOnly, setReadOnly] = useState(true)
     const [mdContext, setMdContext] = useState();
     const [title, setTitle] = useState('');
     const [editor, setEditor] = useState(null);
@@ -55,6 +55,9 @@ function BaseEditor(props) {
             },
             tabSize: 2,
         });
+        if (defaultValue) {
+            editor.setValue(defaultValue)
+        }
         editor.setSize(null, "100%");
         editor.setOption("lineNumbers", false);
         editor.setOption("foldGutter", false);
@@ -83,7 +86,6 @@ function BaseEditor(props) {
 
 
     useEffect(() => {
-        debugger;
         if (editor) {
             editor.setOption("readOnly", readOnly)
         }
@@ -92,25 +94,34 @@ function BaseEditor(props) {
 
     return (
         <Fragment>
-            {readOnly ? <Button onClick={() => setReadOnly(false)} content={"修改"}/>: <Button onClick={() => setReadOnly(true)} content={"保存"}/>}
+            <Form>
+                <FormGroup>
+                    <Input onChange={(e) => setTitle(e.target.value)}/>
+                </FormGroup>
+                <FormGroup>
+                    {readOnly ? <Button onClick={() => setReadOnly(false)} content={"修改"}/>: <Button onClick={() => setReadOnly(true)} content={"保存"}/>}
+                </FormGroup>
+                <FormGroup>
+                    <div className='EditorCore-frame' onKeyDown={handleKeyDown}>
+                        <div className='EditorCore-HMD-wrapper'>
+                            <textarea id={'EditorCore-frame' + id} onKeyDown={handleKeyDown}></textarea>
+                        </div>
+                        {/*<PerfectScrollbar>*/}
+                        {/**/}
+                        {/*</PerfectScrollbar>*/}
 
+                        {/*<div id={"math-preview-" + this.props.id} className="float-win float-win-hidden">*/}
+                        {/*<div className="float-win-title">*/}
+                        {/*<button className="float-win-close"><i className="fas fa-times"></i></button>*/}
+                        {/*Math Preview*/}
+                        {/*</div>*/}
+                        {/*<div className="float-win-content" id={"math-preview-content-" + id}></div>*/}
+                        {/*</div>*/}
+                    </div>
+                </FormGroup>
+                <Button onClick={() => console.log(title  +"\n" + mdContext)} content={"submit"}/>
+            </Form>
 
-            <div className='EditorCore-frame' onKeyDown={handleKeyDown}>
-                <div className='EditorCore-HMD-wrapper'>
-                    <textarea id={'EditorCore-frame' + id} onKeyDown={handleKeyDown}></textarea>
-                </div>
-                {/*<PerfectScrollbar>*/}
-                {/**/}
-                {/*</PerfectScrollbar>*/}
-
-                {/*<div id={"math-preview-" + this.props.id} className="float-win float-win-hidden">*/}
-                {/*<div className="float-win-title">*/}
-                {/*<button className="float-win-close"><i className="fas fa-times"></i></button>*/}
-                {/*Math Preview*/}
-                {/*</div>*/}
-                {/*<div className="float-win-content" id={"math-preview-content-" + id}></div>*/}
-                {/*</div>*/}
-            </div>
 
         </Fragment>
 
