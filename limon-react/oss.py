@@ -11,7 +11,7 @@ os.system("npm install && export PUBLIC_URL=https://cdn.chenjiaming.org/dash && 
 
 
 allfile = []
-curdir = "dist"; #os.path.abspath(os.curdir)
+curdir = "build";  # os.path.abspath(os.curdir)
 def dirlist(path):
 
     for file in os.listdir(path):
