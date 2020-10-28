@@ -32,7 +32,7 @@ auth = oss2.Auth(conf['OSS']['AccessKeyId'], conf['OSS']['AccessKeySecret'])
 bucket = oss2.Bucket(auth, conf['OSS']['EndPoint'], conf['OSS']['Bucket'])
 
 for file in allfile:
-    ret = bucket.put_object_from_file(file.replace(curdir, "limon"), file)
+    ret = bucket.put_object_from_file(file.replace(curdir, "dash"), file)
     print(ret.status, "   ", file)
 
 for file in allfile:
