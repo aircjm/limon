@@ -11,7 +11,6 @@ import {Grid, Label, Menu, Modal, Popup} from "semantic-ui-react";
 import GetTheme from "../hooks/GetTheme";
 
 import {QueryHistory, QueryHistoryList} from "../../request/post";
-import DiffEditor from "../editor/code-editor/DiffEditor";
 import * as moment from 'moment'
 import 'moment/locale/zh-cn'
 import {StyledDescription} from "../../styled/GlobalStyles";
@@ -72,13 +71,6 @@ const History = (props) => {
                   </Menu>
               </Grid.Column>
             <Grid.Column >
-                {
-                        history &&
-                        <DiffEditor
-                            modified={{data: raw, language: 'markdown'}}
-                            original={{data: history.raw, language: 'markdown'}}
-                        />
-                }
 
             </Grid.Column>
           </Grid>
