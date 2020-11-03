@@ -2,9 +2,12 @@
   <q-layout>
     <q-page-container>
       <q-page class="flex bg-image flex-center">
-        <q-card v-bind:style="$q.screen.lt.sm?{'width': '80%'}:{'width':'30%'}">
+        <q-card :style="$q.screen.lt.sm?{'width': '80%'}:{'width':'30%'}">
           <q-card-section>
-            <q-avatar size="103px" class="absolute-center shadow-10">
+            <q-avatar
+              size="103px"
+              class="absolute-center shadow-10"
+            >
               <img src="../../statics/profile.svg">
             </q-avatar>
           </q-card-section>
@@ -25,7 +28,6 @@
                 label="Username"
                 lazy-rules
               />
-
               <q-input
                 type="password"
                 filled
@@ -33,9 +35,20 @@
                 label="Password"
                 lazy-rules
               />
-
+              <q-toggle
+                label="记住密码"
+                v-model="remeber"
+                checked-icon="check"
+                color="green"
+                unchecked-icon="clear"
+              />
               <div>
-                <q-btn label="Login" @click="login" type="button" color="primary"/>
+                <q-btn
+                  label="Login"
+                  @click="login"
+                  type="button"
+                  color="primary"
+                />
               </div>
             </q-form>
           </q-card-section>
