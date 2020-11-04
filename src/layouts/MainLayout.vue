@@ -15,7 +15,28 @@
           Quasar App
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn-dropdown
+          flat
+          dense
+          round
+          icon="help"
+          label="help"
+        >
+          <q-list>
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label @click="window.open('http://www.quasarchs.com/start/pick-quasar-flavour/')">Docs</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+        <q-btn
+          flat
+          dense
+          round
+          icon=""
+          aria-label="用户中心"
+        />
       </q-toolbar>
     </q-header>
 
@@ -54,7 +75,7 @@ const linksData = [
     title: 'Docs',
     caption: 'quasar.dev',
     icon: 'school',
-    link: 'https://quasar.dev'
+    link: 'http://www.quasarchs.com/start/pick-quasar-flavour/'
   },
   {
     title: 'Github',
@@ -102,6 +123,8 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: linksData
     }
+  },
+  methods: {
   }
 }
 </script>
