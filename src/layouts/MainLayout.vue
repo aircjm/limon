@@ -25,7 +25,9 @@
           <q-list>
             <q-item clickable>
               <q-item-section>
-                <q-item-label @click="window.open('http://www.quasarchs.com/start/pick-quasar-flavour/')">Docs</q-item-label>
+                <q-item-label @click="jumpLink('http://www.quasarchs.com/start/pick-quasar-flavour/')">
+                  Docs
+                </q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -125,6 +127,10 @@ export default {
     }
   },
   methods: {
+    jumpLink (url) {
+      window.open(url)
+    }
+
   }
 }
 </script>
