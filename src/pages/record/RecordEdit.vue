@@ -31,7 +31,7 @@
           >
             <template v-slot:prepend>
               <q-icon
-                name="access_date"
+                name="today"
                 class="cursor-pointer"
               >
                 <q-popup-proxy
