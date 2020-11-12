@@ -37,7 +37,7 @@
               />
               <q-toggle
                 label="记住密码"
-                v-model="remeber"
+                v-model="remember"
                 checked-icon="check"
                 color="green"
                 unchecked-icon="clear"
@@ -65,12 +65,12 @@ export default {
     return {
       username: '',
       password: '',
-      remeber: false
+      remember: false
     }
   },
   methods: {
     login () {
-      console.log(this.username + this.password + this.remeber)
+      console.log(this.username + this.password + this.remember)
     }
 
   }
