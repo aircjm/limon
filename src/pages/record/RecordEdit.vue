@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card style="width: 500px; max-width: 60vw">
     <q-card-section>
       <div class="text-h6">
         Add Record
@@ -7,7 +7,7 @@
     </q-card-section>
     <q-separator />
     <q-card-section>
-      <q-form style="max-width: 300px"
+      <q-form
         class="q-ml-sm"
         @submit="onSubmitForm"
       >
@@ -24,7 +24,7 @@
           use-input
           new-value-mode="add"
         />
-        <div style="max-width: 300px">
+        <div style="max-width: 400px">
           <q-input
             filled
             v-model="noticeDate"
