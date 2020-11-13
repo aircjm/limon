@@ -45,7 +45,7 @@
               <div>
                 <q-btn
                   label="Login"
-                  @click="login"
+                  @click="Login"
                   type="button"
                   color="primary"
                 />
