@@ -8,6 +8,8 @@
     <q-separator />
     <q-card-section>
       <q-form
+        @reset="resetForm"
+        style="max-width: 300px"
         class="q-ml-sm"
         @submit="onSubmitForm"
       >
@@ -24,7 +26,7 @@
           use-input
           new-value-mode="add"
         />
-        <div style="max-width: 400px">
+        <div style="max-width: 300px">
           <q-input
             filled
             v-model="noticeDate"
@@ -39,7 +41,8 @@
                   transition-hide="scale"
                 >
                   <q-date
-                    v-model="noticeDate" default-year-month="2020/01"
+                    v-model="noticeDate"
+                    default-year-month="2020/01"
                     mask="YYYY-MM-DD HH:mm"
                   />
                 </q-popup-proxy>
@@ -91,6 +94,12 @@ export default {
   methods: {
     onSubmitForm (e) {
       console.log(e)
+    },
+    resetForm () {
+      this.title = ''
+      this.recordType = null
+      this.date = null
+      this.noticeDate = null
     }
   }
 }
