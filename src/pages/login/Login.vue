@@ -24,33 +24,33 @@
             >
               <q-input
                 filled
-                v-model="username"
+                v-model="loginForm.username"
                 label="Username"
                 lazy-rules
               />
               <q-input
                 type="password"
                 filled
-                v-model="password"
+                v-model="loginForm.password"
                 label="Password"
                 lazy-rules
               />
               <q-input
                 filled
-                v-model="code"
+                v-model="loginForm.code"
                 label="code"
                 lazy-rules
                 style="max-width: 50%"
               >
                 <q-img
-                  v-model="codeImg"
-                  :src="codeImg"
-                  style="height: 50px; max-width: 100px"
+                  :src="codeUrl"
+                  @click="getCode"
+                  style="height: 40px; max-width: 80px;cursor: pointer;"
                 />
               </q-input>
               <q-toggle
                 label="记住密码"
-                v-model="remember"
+                v-model="loginForm.rememberMe"
                 checked-icon="check"
                 color="green"
                 unchecked-icon="clear"
@@ -58,7 +58,7 @@
               <div>
                 <q-btn
                   label="Login"
-                  @click="Login"
+                  @click="submitLogin"
                   type="button"
                   color="primary"
                 />
@@ -72,22 +72,47 @@
 </template>
 
 <script>
+import { getCodeImg, login } from 'src/api/login'
+
 export default {
   name: 'Login',
   data () {
     return {
-      username: '',
-      password: '',
-      remember: false,
-      code: '',
-      codeImg: ''
+      codeUrl: '',
+      loginForm: {
+        username: '',
+        password: '',
+        rememberMe: false,
+        code: '',
+        uuid: ''
+      }
     }
   },
-  methods: {
-    login () {
-      console.log(this.username + this.password + this.remember)
+  watch: {
+    $route: {
+      handler: function (route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
     }
-
+  },
+  created () {
+    this.getCode()
+  },
+  methods: {
+    submitLogin () {
+      login(this.loginForm).then(() => {
+        this.$router.push({ path: this.redirect || '/' })
+      }).catch(() => {
+        this.getCode()
+      })
+    },
+    getCode () {
+      getCodeImg().then(res => {
+        this.codeUrl = 'data:image/gif;base64,' + res.img
+        this.uuid = res.uuid
+      })
+    }
   }
 }
 </script>

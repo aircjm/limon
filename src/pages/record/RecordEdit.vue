@@ -62,6 +62,7 @@
                     v-model="noticeDate"
                     mask="YYYY-MM-DD HH:mm"
                     format24h
+                    now-btn
                   />
                 </q-popup-proxy>
               </q-icon>

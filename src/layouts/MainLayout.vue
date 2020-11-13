@@ -10,7 +10,6 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
@@ -36,7 +35,7 @@
           flat
           dense
           round
-          icon=""
+          icon="login"
           aria-label="用户中心"
         />
       </q-toolbar>
