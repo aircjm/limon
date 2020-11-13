@@ -35,6 +35,19 @@
                 label="Password"
                 lazy-rules
               />
+              <q-input
+                filled
+                v-model="code"
+                label="code"
+                lazy-rules
+                style="max-width: 50%"
+              >
+                <q-img
+                  v-model="codeImg"
+                  :src="codeImg"
+                  style="height: 50px; max-width: 100px"
+                />
+              </q-input>
               <q-toggle
                 label="记住密码"
                 v-model="remember"
@@ -65,7 +78,9 @@ export default {
     return {
       username: '',
       password: '',
-      remember: false
+      remember: false,
+      code: '',
+      codeImg: ''
     }
   },
   methods: {
