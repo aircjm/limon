@@ -6,7 +6,9 @@
         @click="openDialog = true"
       />
     </q-btn-group>
-    <RecordEdit v-if="openDialog" />
+    <q-dialog v-model="openDialog">
+      <RecordEdit />
+    </q-dialog>
   </q-page>
 </template>
 

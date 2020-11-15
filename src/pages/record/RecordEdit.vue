@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 500px; max-width: 60vw">
+  <q-card style="width: 800px; max-width: 60vw">
     <q-card-section>
       <div class="text-h6">
         Add Record
@@ -26,48 +26,23 @@
           use-input
           new-value-mode="add"
         />
-        <div style="max-width: 300px">
-          <q-input
-            filled
-            v-model="noticeDate"
-          >
-            <template v-slot:prepend>
-              <q-icon
-                name="today"
-                class="cursor-pointer"
-              >
-                <q-popup-proxy
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
-                  <q-date
-                    v-model="noticeDate"
-                    default-year-month="2020/01"
-                    mask="YYYY-MM-DD HH:mm"
-                  />
-                </q-popup-proxy>
-              </q-icon>
-            </template>
+        <date-time-picker
+          :time.sync="noticeDate"
+        />
 
-            <template v-slot:append>
-              <q-icon
-                name="access_time"
-                class="cursor-pointer"
-              >
-                <q-popup-proxy
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
-                  <q-time
-                    v-model="noticeDate"
-                    mask="YYYY-MM-DD HH:mm"
-                    format24h
-                    now-btn
-                  />
-                </q-popup-proxy>
-              </q-icon>
-            </template>
-          </q-input>
+        <div>
+          <q-btn
+            label="Submit"
+            type="submit"
+            color="primary"
+          />
+          <q-btn
+            label="Reset"
+            type="reset"
+            color="primary"
+            flat
+            class="q-ml-sm"
+          />
         </div>
       </q-form>
     </q-card-section>
@@ -75,10 +50,15 @@
 </template>
 
 <script>
+import { getRecordDetail } from 'src/api/record'
+import DateTimePicker from 'components/form/DateTimePicker'
+
 export default {
   name: 'RecordEdit',
+  components: { DateTimePicker },
   data () {
     return {
+      id: null,
       title: '',
       recordType: null,
       date: null,
@@ -94,7 +74,7 @@ export default {
   },
   methods: {
     onSubmitForm (e) {
-      console.log(e)
+      console.log(this.noticeDate)
     },
     resetForm () {
       this.title = ''
@@ -102,7 +82,14 @@ export default {
       this.date = null
       this.noticeDate = null
     }
+  },
+  created () {
+    if (this.id) {
+      // 获取详情内容 回填数据
+      getRecordDetail(this.id)
+    }
   }
+
 }
 </script>
 
