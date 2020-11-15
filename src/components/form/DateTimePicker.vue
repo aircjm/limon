@@ -16,7 +16,7 @@
           <q-date
             v-model="dateTime"
             default-year-month="2020/01"
-            mask="YYYY-MM-DD HH:mm"
+            mask="YYYY-MM-DD HH:mm:ss"
           />
         </q-popup-proxy>
       </q-icon>
@@ -33,7 +33,7 @@
         >
           <q-time
             v-model="dateTime"
-            mask="YYYY-MM-DD HH:mm"
+            mask="YYYY-MM-DD HH:mm:ss"
             format24h
             now-btn
           />
@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     updateDateTime () {
-      debugger
       this.$emit('update:time', this.dateTime)
     }
   }
