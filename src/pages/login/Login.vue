@@ -72,6 +72,7 @@
 
 <script>
 import { getCodeImg, login } from 'src/api/login'
+import { setToken } from 'src/utils/project'
 
 export default {
   name: 'Login',
@@ -100,7 +101,8 @@ export default {
   },
   methods: {
     submitLogin () {
-      login(this.loginForm).then(() => {
+      login(this.loginForm).then((res) => {
+        setToken(res.token)
         this.$router.push({ path: this.redirect || '/' })
       }).catch(() => {
         this.getCode()
@@ -108,8 +110,9 @@ export default {
     },
     getCode () {
       getCodeImg().then(res => {
+        debugger
         this.codeUrl = 'data:image/gif;base64,' + res.img
-        this.uuid = res.uuid
+        this.loginForm.uuid = res.uuid
       })
     }
   }
