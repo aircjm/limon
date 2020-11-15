@@ -41,13 +41,12 @@
                 label="code"
                 lazy-rules
                 style="max-width: 50%"
-              >
-                <q-img
-                  :src="codeUrl"
-                  @click="getCode"
-                  style="height: 40px; max-width: 80px;cursor: pointer;"
-                />
-              </q-input>
+              />
+              <q-img
+                :src="codeUrl"
+                @click="getCode"
+                style="height: 40px; max-width: 110px;"
+              />
               <q-toggle
                 label="记住密码"
                 v-model="loginForm.rememberMe"
