@@ -16,7 +16,7 @@
           <q-date
             v-model="dateTime"
             default-year-month="2020/01"
-            mask="YYYY-MM-DD HH:mm:ss"
+            mask="YYYY-MM-DD HH:mm"
           />
         </q-popup-proxy>
       </q-icon>
@@ -33,7 +33,7 @@
         >
           <q-time
             v-model="dateTime"
-            mask="YYYY-MM-DD HH:mm:ss"
+            mask="YYYY-MM-DD HH:mm"
             format24h
             now-btn
           />
