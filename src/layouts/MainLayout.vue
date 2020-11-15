@@ -11,9 +11,9 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
         <q-toolbar-title>
-          Quasar App
+          Dash App
         </q-toolbar-title>
-
+        <q-space />
         <q-btn-dropdown
           flat
           dense
@@ -31,6 +31,10 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
+        <q-separator
+          dark
+          vertical
+        />
         <q-btn
           flat
           dense
@@ -73,16 +77,16 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
+    title: 'Record',
+    caption: '记录生活',
+    icon: 'code',
+    link: '/#/record'
+  },
+  {
     title: 'Docs',
     caption: 'quasar.dev',
     icon: 'school',
     link: 'http://www.quasarchs.com/start/pick-quasar-flavour/'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
   },
   {
     title: 'Discord Chat Channel',
@@ -95,18 +99,6 @@ const linksData = [
     caption: 'forum.quasar.dev',
     icon: 'record_voice_over',
     link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
   },
   {
     title: 'Quasar Awesome',
