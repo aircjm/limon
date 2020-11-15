@@ -1,5 +1,6 @@
 <template>
   <q-input
+    :label="label"
     filled
     v-model="dateTime"
     @blur="updateDateTime"
@@ -47,7 +48,8 @@
 export default {
   name: 'DateTimePicker',
   props: {
-    time: String
+    time: String,
+    label: String
   },
   data: function () {
     return {

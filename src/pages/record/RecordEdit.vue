@@ -9,16 +9,15 @@
     <q-card-section>
       <q-form
         @reset="resetForm"
-        style="max-width: 300px"
-        class="q-ml-sm"
+        class="q-pa-md"
         @submit="onSubmitForm"
       >
         <q-input
-          v-model="title"
+          v-model="form.title"
           label="title"
         />
         <q-select
-          v-model="recordType"
+          v-model="form.recordType"
           :options="options"
           :option-value="opt => Object(opt) === opt && 'id' in opt ? opt.id : null"
           :option-label="opt => Object(opt) === opt && 'desc' in opt ? opt.desc : ''"
@@ -27,9 +26,15 @@
           new-value-mode="add"
         />
         <date-time-picker
-          :time.sync="noticeDate"
+          label="通知时间"
+          :time.sync="form.noticeDate"
         />
-
+        <q-input
+          label="context"
+          v-model="form.context"
+          filled
+          type="textarea"
+        />
         <div>
           <q-btn
             label="Submit"
@@ -50,7 +55,7 @@
 </template>
 
 <script>
-import { getRecordDetail } from 'src/api/record'
+import { getRecordDetail, saveRecord } from 'src/api/record'
 import DateTimePicker from 'components/form/DateTimePicker'
 
 export default {
@@ -58,23 +63,27 @@ export default {
   components: { DateTimePicker },
   data () {
     return {
-      id: null,
-      title: '',
-      recordType: null,
+
       date: null,
       openDialog: false,
-      noticeDate: null,
       options: [
         {
           id: 1,
           desc: 'first'
         }
-      ]
+      ],
+      form: {
+        id: null,
+        title: '',
+        recordType: null,
+        noticeDate: null,
+        context: null
+      }
     }
   },
   methods: {
     onSubmitForm (e) {
-      console.log(this.noticeDate)
+      saveRecord(this.form)
     },
     resetForm () {
       this.title = ''
