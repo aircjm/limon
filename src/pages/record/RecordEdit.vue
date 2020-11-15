@@ -9,7 +9,7 @@
     <q-card-section>
       <q-form
         @reset="resetForm"
-        class="q-pa-md"
+        class="q-gutter-y-md column"
         @submit="onSubmitForm"
       >
         <q-input

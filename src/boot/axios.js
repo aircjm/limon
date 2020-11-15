@@ -35,10 +35,9 @@ Vue.prototype.$axios.interceptors.response.use(res => {
       type: 'warning',
       position: 'top-right',
       timeout: 5000
-    }).then(() => {
-      logout().then(() => {
-        location.reload() // 为了重新实例化vue-router对象 避免bug
-      })
+    })
+    logout().then(() => {
+      location.reload() // 为了重新实例化vue-router对象 避免bug
     })
   } else if (code === 500) {
     Notify.create({
