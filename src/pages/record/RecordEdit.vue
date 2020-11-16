@@ -17,7 +17,7 @@
           label="title"
         />
         <q-select
-          v-model="form.recordType"
+          v-model="form.type"
           :options="options"
           :option-value="opt => Object(opt) === opt && 'id' in opt ? opt.id : null"
           :option-label="opt => Object(opt) === opt && 'desc' in opt ? opt.desc : ''"
@@ -75,7 +75,7 @@ export default {
       form: {
         id: null,
         title: '',
-        recordType: null,
+        type: null,
         noticeDate: null,
         context: null
       }
