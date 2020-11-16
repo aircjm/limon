@@ -110,7 +110,6 @@ export default {
     },
     getCode () {
       getCodeImg().then(res => {
-        debugger
         this.codeUrl = 'data:image/gif;base64,' + res.img
         this.loginForm.uuid = res.uuid
       })
