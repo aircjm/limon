@@ -16,7 +16,7 @@ import com.aircjm.project.card.vo.anki.vo.Note;
 import com.aircjm.project.card.vo.request.GetCardRequest;
 import com.aircjm.project.card.vo.request.SaveCardRequest;
 import com.aircjm.project.card.vo.request.SetAnkiRequest;
-import com.aircjm.project.card.vo.response.CellCardDetailResponse;
+import com.aircjm.project.card.vo.response.TaskDetailResponse;
 import com.aircjm.project.system.service.ISysConfigService;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -70,7 +70,7 @@ public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> i
     }
 
     @Override
-    public Page<CellCardDetailResponse> getCardList(GetCardRequest request) {
+    public Page<TaskDetailResponse> getCardList(GetCardRequest request) {
         QueryWrapper<AnkiCard> queryWrapper = new QueryWrapper<>();
         if (Objects.nonNull(request.getStatus())) {
             queryWrapper.eq("status", request.getStatus());
@@ -84,10 +84,10 @@ public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> i
         }
 
         Page<AnkiCard> boardCards = page(request, queryWrapper);
-        Page<CellCardDetailResponse> response = new Page<>();
+        Page<TaskDetailResponse> response = new Page<>();
         BeanUtils.copyProperties(boardCards, response);
         response.setRecords(boardCards.getRecords().stream().map(item -> {
-            CellCardDetailResponse detail = new CellCardDetailResponse();
+            TaskDetailResponse detail = new TaskDetailResponse();
             BeanUtils.copyProperties(item, detail);
             return detail;
         }).collect(Collectors.toList()));
@@ -96,8 +96,8 @@ public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> i
 
     @Override
     public AjaxResult exportCard(GetCardRequest request) {
-        Page<CellCardDetailResponse> page = getCardList(request);
-        ExcelUtil<CellCardDetailResponse> util = new ExcelUtil<>(CellCardDetailResponse.class);
+        Page<TaskDetailResponse> page = getCardList(request);
+        ExcelUtil<TaskDetailResponse> util = new ExcelUtil<>(TaskDetailResponse.class);
 
         return util.exportExcel(page.getRecords(), "卡片集合");
     }

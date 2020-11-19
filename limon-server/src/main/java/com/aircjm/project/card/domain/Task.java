@@ -13,13 +13,13 @@ import lombok.*;
  * @author aircjm
  */
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value = "单元")
+@ApiModel(value = "任务")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName(value = "lm_cell")
-public class Cell extends DbBaseEntity<Cell> {
+@TableName(value = "lm_task")
+public class Task extends DbBaseEntity<Task> {
 
     @TableId(type = IdType.INPUT)
     private Long id;
@@ -32,10 +32,10 @@ public class Cell extends DbBaseEntity<Cell> {
     private Integer type = 0;
 
     @ApiModelProperty(value = "卡片内容描述")
-    private String cellDesc;
+    private String taskDesc;
 
     @ApiModelProperty(value = "卡片内容描述HTML")
-    private String cellHtml;
+    private String taskHtml;
 
     @ApiModelProperty(value = "卡片状态")
     private Integer status;

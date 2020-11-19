@@ -703,7 +703,6 @@ create table anki_card
   auto_increment = 1 comment = '卡片表';
 
 
-
 create table trello_card
 (
   id                 int auto_increment comment '主键'
@@ -725,20 +724,28 @@ create table trello_card
   comment 'trello的card表';
 
 
-
-create table lm_cell
+drop table if exists lm_task;
+create table lm_task
 (
-  id          bigint(20)   not null auto_increment comment 'id',
-  title       varchar(500) not null default '' comment '标题',
-  cell_desc   longtext     null comment '内容',
-  cell_html   longtext     null comment '内容的html',
-  type        int          NOT NULL DEFAULT 0 comment '类型',
-  status      int          NOT NULL DEFAULT 0 comment '状态',
-  create_time timestamp    NOT NULL DEFAULT current_timestamp comment '创建时间',
-  update_time TIMESTAMP    NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp comment '更新时间',
-  creator     int          null comment '创建人',
-  modifier    int          null comment '修改人',
-  deleted     int                   default 0 null comment '逻辑删除标识(0.未删除,1.已删除)',
-  primary key (id)
+    id             bigint(20)   not null auto_increment comment 'id',
+    title          varchar(500) not null default '' comment '标题',
+    type           tinyint(1)          NOT NULL DEFAULT 0 comment '类型 0markdown 1html',
+    task_desc      text          comment '内容 只支持markdown',
+    task_html      text          comment '内容的html',
+    status         tinyint(1)         NOT NULL DEFAULT 0 comment '状态',
+    due_date       DATETIME comment '截至时间',
+    done_time      DATETIME comment '创建时间',
+    start_date     DATETIME comment '持续时间-开始时间',
+    end_date       DATETIME comment '持续时间-结束时间',
+    note_id        bigint(20)   NOT NULL DEFAULT 0 comment '笔记id',
+    position       float             DEFAULT 0.00 comment '位置',
+    create_time    DATETIME     NOT NULL DEFAULT current_timestamp comment '创建时间',
+    update_time    DATETIME     NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp comment '更新时间',
+    creator        int          null comment '创建人',
+    modifier       int          null comment '修改人',
+    deleted        int                   default 0 null comment '逻辑删除标识(0.未删除,1.已删除)',
+    primary key (id)
 ) engine = innodb
-  auto_increment = 1 comment = '单元表';
+  auto_increment = 1 comment = '任务表';
+
+

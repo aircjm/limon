@@ -14,7 +14,7 @@ import java.util.List;
  * @author aircjm
  */
 @Data
-public class SaveRecordRequest {
+public class SaveTaskRequest {
 
     @ApiModelProperty(value = "id")
     private Long id;
