@@ -7,11 +7,11 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       {
         path: '/record',
-        component: () => import('pages/record/RecordList.vue'),
+        component: () => import('pages/task/TaskList.vue'),
         children: [
         ]
       },
-      { path: '/record/edit', component: () => import('pages/record/RecordEdit.vue') }
+      { path: '/record/edit', component: () => import('pages/task/TaskEdit.vue') }
     ]
   },
 

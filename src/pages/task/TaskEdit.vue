@@ -55,11 +55,11 @@
 </template>
 
 <script>
-import { getRecordDetail, saveRecord } from 'src/api/record'
+import { getTaskDetail, saveTask } from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
 
 export default {
-  name: 'RecordEdit',
+  name: 'TaskEdit',
   components: { DateTimePicker },
   data () {
     return {
@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     onSubmitForm (e) {
-      saveRecord(this.form)
+      saveTask(this.form)
     },
     resetForm () {
       this.title = ''
@@ -95,7 +95,7 @@ export default {
   created () {
     if (this.id) {
       // 获取详情内容 回填数据
-      getRecordDetail(this.id)
+      getTaskDetail(this.id)
     }
   }
 

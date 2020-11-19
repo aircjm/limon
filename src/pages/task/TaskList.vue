@@ -5,16 +5,22 @@
         label="add"
         @click="openDialog = true"
       />
+      <q-btn
+        label="search"
+        name="search"
+        @click="list"
+      />
     </q-btn-group>
     <q-dialog v-model="openDialog">
-      <RecordEdit />
+      <TaskEdit />
     </q-dialog>
-
     <q-table
       :columns="table.columns"
       :data="table.tableData"
       title="Record List"
       row-key="id"
+      :loading="loading"
+      :pagination.sync="pagination"
       selection="single"
       :selected.sync="table.selected"
     >
@@ -32,10 +38,11 @@
 </template>
 
 <script>
-import RecordEdit from 'pages/record/RecordEdit'
+import TaskEdit from 'pages/task/TaskEdit'
+import { getTaskList } from 'src/api/task'
 export default {
-  name: 'RecordList',
-  components: { RecordEdit },
+  name: 'TaskList',
+  components: { TaskEdit },
   data () {
     return {
       title: '',
@@ -115,13 +122,40 @@ export default {
             noticeDate: null
           }
         ]
+      },
+      filter: '',
+      loading: false,
+      pagination: {
+        sortBy: 'desc',
+        descending: false,
+        page: 1,
+        rowsPerPage: 3,
+        rowsNumber: 10
       }
-
     }
   },
+
   methods: {
     openDetail (id) {
       console.log(id)
+    },
+    list () {
+      const { page, rowsPerPage } = this.pagination
+      // const filter = this.filter
+      // get all rows if "All" (0) is selected
+      const fetchCount = rowsPerPage === 0 ? this.pagination.rowsNumber : rowsPerPage
+
+      // calculate starting row of data
+
+      // fetch data from "server"
+      getTaskList({
+        size: fetchCount,
+        current: page
+      }).then(res => {
+        this.table.tableData = res.data.records
+      })
+      // ...and turn of loading indicator
+      this.loading = false
     }
   }
 }
