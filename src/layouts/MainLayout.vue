@@ -46,8 +46,11 @@
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
       show-if-above
+      :mini="miniState"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
+      mini-to-overlay
       bordered
       content-class="bg-grey-1"
     >
@@ -113,7 +116,8 @@ export default {
   components: { EssentialLink },
   data () {
     return {
-      leftDrawerOpen: false,
+      leftDrawerOpen: true,
+      miniState: true,
       essentialLinks: linksData
     }
   },
