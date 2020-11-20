@@ -2,6 +2,7 @@
   <q-input
     :label="label"
     filled
+    clearable
     v-model="dateTime"
     @blur="updateDateTime"
   >
