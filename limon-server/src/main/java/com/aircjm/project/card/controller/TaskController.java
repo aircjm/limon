@@ -2,7 +2,7 @@ package com.aircjm.project.card.controller;
 
 import com.aircjm.common.vo.RestResponse;
 import com.aircjm.project.card.service.TaskService;
-import com.aircjm.project.card.vo.request.GetTaskRequest;
+import com.aircjm.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.project.card.vo.response.TaskDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -56,7 +56,7 @@ public class TaskController {
      * @return 结果
      */
     @PostMapping("/list")
-    public RestResponse list(@RequestBody @Valid GetTaskRequest request) {
+    public RestResponse list(@RequestBody @Valid QueryTaskRequest request) {
         Page<TaskDetailResponse> responsePage =  taskService.list(request);
         return RestResponse.successData(responsePage);
     }

@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 /**
  * @author aircjm
  */
@@ -39,4 +41,10 @@ public class Task extends DbBaseEntity<Task> {
 
     @ApiModelProperty(value = "卡片状态")
     private Integer status;
+
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private LocalDateTime dueTime;
+    private LocalDateTime doneTime;
+
 }

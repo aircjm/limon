@@ -14,6 +14,6 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class GetTaskRequest extends Page<Task> {
+public class QueryTaskRequest extends Page<Task> {
     private String name;
 }

@@ -32,5 +32,6 @@ public class SaveTaskRequest {
 
     private Integer type;
 
-    private Boolean checked;
+
+
 }

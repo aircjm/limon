@@ -6,10 +6,9 @@ import com.aircjm.framework.message.MessageService;
 import com.aircjm.project.card.domain.Task;
 import com.aircjm.project.card.mapper.RecordMapper;
 import com.aircjm.project.card.service.TaskService;
-import com.aircjm.project.card.vo.request.GetTaskRequest;
+import com.aircjm.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.project.card.vo.response.TaskDetailResponse;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -21,9 +20,7 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author aircjm
@@ -65,7 +62,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     }
 
     @Override
-    public Page<TaskDetailResponse> list(GetTaskRequest request) {
+    public Page<TaskDetailResponse> list(QueryTaskRequest request) {
         QueryWrapper<Task> queryWrapper = new QueryWrapper<>();
         Page<Task> taskPage = page(request, queryWrapper);
         List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(task -> {
