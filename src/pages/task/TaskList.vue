@@ -5,12 +5,8 @@
         label="add"
         @click="openDialog = true"
       />
-      <q-btn
-        label="search"
-        name="search"
-        @click="list"
-      />
     </q-btn-group>
+
     <q-dialog v-model="openDialog">
       <TaskEdit />
     </q-dialog>
@@ -24,6 +20,27 @@
       selection="single"
       :selected.sync="table.selected"
     >
+      <template v-slot:top-left>
+        <div class="row  q-gutter-x-sm">
+          <div class="col">
+            <q-input
+              outlined
+              dense
+              no-error-icon
+              v-model="searchForm.title"
+              placeholder="输入标题"
+            />
+          </div>
+          <div class="col">
+            <q-btn
+              label="查询"
+              color="primary"
+              @click="list"
+            />
+          </div>
+        </div>
+      </template>
+
       <template v-slot:body-cell-options="props">
         <q-td :props="props">
           <q-btn
@@ -55,7 +72,9 @@ export default {
           desc: 'first'
         }
       ],
-
+      searchForm: {
+        title: null
+      },
       table: {
         selected: [],
         columns: [
@@ -79,7 +98,7 @@ export default {
             align: 'left',
 
             // （可选）告诉QTable你想要这个列可排序
-            sortable: true,
+            // sortable: true,
 
             // （可选）比较功能，如果你有
             //  一些自定义数据或想要一个特定的方式来比较两行
@@ -104,7 +123,7 @@ export default {
             // headerStyle: 'width: 500px',
             // headerClasses: 'my-special-class'
           },
-          { name: 'title', label: 'title', field: 'title', sortable: true },
+          { name: 'title', label: 'title', field: 'title' },
           { name: 'context', label: 'context', field: 'context' },
           { name: 'noticeDate', label: 'noticeDate', field: 'noticeDate' },
           { name: 'options', label: '操作', field: 'options', style: 'width: 100px' }

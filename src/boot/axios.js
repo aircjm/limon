@@ -34,8 +34,8 @@ Vue.prototype.$axios.interceptors.response.use(res => {
     Notify.create({
       message: '登录状态已过期，您可以继续留在该页面，或者重新登录',
       type: 'warning',
-      position: 'top-right',
-      timeout: 5000
+      position: 'top',
+      timeout: 3000
     })
     logout().then(() => {
       location.reload() // 为了重新实例化vue-router对象 避免bug
@@ -43,13 +43,15 @@ Vue.prototype.$axios.interceptors.response.use(res => {
   } else if (code === 500) {
     Notify.create({
       message: message,
-      type: 'error',
-      position: 'top-right',
-      timeout: 5000
+      type: 'negative',
+      position: 'top',
+      timeout: 3000
     })
     return Promise.reject(new Error(message))
   } else if (code !== 200) {
-    Notification.error({
+    Notify.create({
+      position: 'top',
+      type: 'negative',
       title: message
     })
     return Promise.reject('error')
@@ -61,9 +63,10 @@ error => {
   console.log('err' + error)
   Notify.create({
     message: error.message,
-    type: 'error',
-    position: 'top-right',
-    timeout: 5000
+    type: 'negative',
+    icon: 'report_problem',
+    position: 'top',
+    timeout: 3000
   })
   return Promise.reject(error)
 }
