@@ -42,12 +42,15 @@
       </template>
 
       <template v-slot:body-cell-options="props">
-        <q-td :props="props">
-          <q-btn
-            label="detail"
+        <q-td
+          :props="props"
+          class="q-gutter-xs action"
+        >
+          <a
+            class="text-primary"
             @click="openDetail(props.row.id)"
-          />
-          <q-btn label="update" />
+          >详情</a>
+          <a class="text-primary">标记</a>
         </q-td>
       </template>
     </q-table>
@@ -123,10 +126,11 @@ export default {
             // headerStyle: 'width: 500px',
             // headerClasses: 'my-special-class'
           },
-          { name: 'title', label: 'title', field: 'title' },
-          { name: 'context', label: 'context', field: 'context' },
-          { name: 'noticeDate', label: 'noticeDate', field: 'noticeDate' },
-          { name: 'options', label: '操作', field: 'options', style: 'width: 100px' }
+          { name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px' },
+          { name: 'context', label: 'context', field: 'context', align: 'left' },
+          { name: 'status', label: '状态', field: 'status', align: 'left' },
+          { name: 'noticeDate', label: 'noticeDate', field: 'noticeDate', align: 'left', style: 'width:100px' },
+          { name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px' }
         ],
         tableData: [
           {

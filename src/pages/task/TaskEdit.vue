@@ -21,14 +21,24 @@
           :options="options"
           :option-value="opt => Object(opt) === opt && 'id' in opt ? opt.id : null"
           :option-label="opt => Object(opt) === opt && 'desc' in opt ? opt.desc : ''"
-          :option-disable="opt => Object(opt) === opt ? opt.inactive === true : true"
+          :option-disable="opt => Object(opt) === opt ? opt.inactiveColor === true : true"
           use-input
           new-value-mode="add"
         />
         <date-time-picker
           label="通知时间"
-          :time.sync="form.noticeDate"
+          :time.sync="form.dueTime"
         />
+        <q-field>
+          <date-time-picker
+            label="开始时间"
+            :time.sync="form.startTime"
+          />
+          <date-time-picker
+            label="通知时间"
+            :time.sync="form.endTime"
+          />
+        </q-field>
         <q-input
           label="context"
           v-model="form.context"
@@ -41,13 +51,13 @@
             type="submit"
             color="primary"
           />
-          <q-btn
+          <!--<q-btn
             label="Reset"
             type="reset"
             color="primary"
             flat
             class="q-ml-sm"
-          />
+          />-->
         </div>
       </q-form>
     </q-card-section>
@@ -76,7 +86,9 @@ export default {
         id: null,
         title: '',
         type: null,
-        noticeDate: null,
+        dueTime: null,
+        startTime: null,
+        endTime: null,
         context: null
       }
     }
