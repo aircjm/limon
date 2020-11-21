@@ -20,7 +20,7 @@
           </q-card-section>
           <q-card-section>
             <q-form
-              class="q-gutter-md"
+              class="q-gutter-md column"
             >
               <q-input
                 filled
@@ -35,18 +35,20 @@
                 label="Password"
                 lazy-rules
               />
-              <q-input
-                filled
-                v-model="loginForm.code"
-                label="code"
-                lazy-rules
-                style="max-width: 50%"
-              />
-              <q-img
-                :src="codeUrl"
-                @click="getCode"
-                style="height: 40px; max-width: 110px;"
-              />
+              <q-field>
+                <q-input
+                  filled
+                  v-model="loginForm.code"
+                  label="code"
+                  lazy-rules
+                  style="max-width: 50%"
+                />
+                <q-img
+                  :src="codeUrl"
+                  @click="getCode"
+                  style="height: 56px; max-width: 150px;"
+                />
+              </q-field>
               <q-toggle
                 label="记住密码"
                 v-model="loginForm.rememberMe"
