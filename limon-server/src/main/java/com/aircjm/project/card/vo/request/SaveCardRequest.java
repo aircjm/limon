@@ -1,7 +1,7 @@
 package com.aircjm.project.card.vo.request;
 
 import com.aircjm.common.utils.StringUtils;
-import com.aircjm.project.card.domain.Tag;
+import com.aircjm.project.tag.domain.Tag;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
