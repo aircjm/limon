@@ -49,8 +49,12 @@
 export default {
   name: 'DateTimePicker',
   props: {
-    time: String,
-    label: String
+    time: {
+      type: String
+    },
+    label: {
+      type: String
+    }
   },
   data: function () {
     return {

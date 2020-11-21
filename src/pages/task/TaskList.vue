@@ -11,14 +11,14 @@
       <TaskEdit />
     </q-dialog>
     <q-table
-      :columns="table.columns"
-      :data="table.tableData"
+      :columns="columns"
+      :data="data"
       title="Record List"
       row-key="id"
       :loading="loading"
       :pagination.sync="pagination"
       selection="single"
-      :selected.sync="table.selected"
+      :selected.sync="selected"
     >
       <template v-slot:top-left>
         <div class="row  q-gutter-x-sm">
@@ -78,74 +78,6 @@ export default {
       searchForm: {
         title: null
       },
-      table: {
-        selected: [],
-        columns: [
-          {
-            // 唯一的ID
-            // 标识列
-            // （由pagination.sortBy使用，“body-cell-[name]”插槽，...）
-            name: 'id',
-
-            // 头部标签
-            label: 'id',
-
-            // 行对象属性以确定此列的值
-            field: 'id',
-            // 或者field: row => row.some.nested.prop
-
-            // （可选）如果我们使用可见列，这个列将始终可见
-            required: true,
-
-            // （可选）对齐
-            align: 'left',
-
-            // （可选）告诉QTable你想要这个列可排序
-            // sortable: true,
-
-            // （可选）比较功能，如果你有
-            //  一些自定义数据或想要一个特定的方式来比较两行
-            sort: (a, b, rowA, rowB) => parseInt(a, 10) - parseInt(b, 10),
-            // 函数返回值：
-            // *小于0，然后将a排序为低于b的索引，即首先出现
-            // *为0，则相对于彼此保持a和b不变，但相对于所有不同的元素进行排序
-            // *大于0，则将b排序为低于a的索引，即b先到达
-
-            // （可选）您可以使用函数格式化数据
-            // format: (val, row) => `${val}%`,
-            // 另一个格式示例：
-            // format: val => val
-            //   ? /* 选中Unicode复选标记 */ "\u2611"
-            //   : /* 未选中Unicode复选标记 */ "\u2610",
-
-            // body td:
-            style: 'width: 20px'
-            // classes: 'my-special-class',
-
-            // (v1.3.0+) header th:
-            // headerStyle: 'width: 500px',
-            // headerClasses: 'my-special-class'
-          },
-          { name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px' },
-          { name: 'context', label: 'context', field: 'context', align: 'left' },
-          { name: 'status', label: '状态', field: 'status', align: 'left' },
-          { name: 'noticeDate', label: 'noticeDate', field: 'noticeDate', align: 'left', style: 'width:100px' },
-          { name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px' }
-        ],
-        tableData: [
-          {
-            id: 1,
-            title: '123',
-            context: '内容',
-            noticeDate: null
-          }, {
-            id: 2,
-            title: '345',
-            context: '内容1213',
-            noticeDate: null
-          }
-        ]
-      },
       filter: '',
       loading: false,
       pagination: {
@@ -154,7 +86,73 @@ export default {
         page: 1,
         rowsPerPage: 3,
         rowsNumber: 10
-      }
+      },
+      selected: [],
+      columns: [
+        {
+          // 唯一的ID
+          // 标识列
+          // （由pagination.sortBy使用，“body-cell-[name]”插槽，...）
+          name: 'id',
+
+          // 头部标签
+          label: 'id',
+
+          // 行对象属性以确定此列的值
+          field: 'id',
+          // 或者field: row => row.some.nested.prop
+
+          // （可选）如果我们使用可见列，这个列将始终可见
+          required: true,
+
+          // （可选）对齐
+          align: 'left',
+
+          // （可选）告诉QTable你想要这个列可排序
+          // sortable: true,
+
+          // （可选）比较功能，如果你有
+          //  一些自定义数据或想要一个特定的方式来比较两行
+          sort: (a, b, rowA, rowB) => parseInt(a, 10) - parseInt(b, 10),
+          // 函数返回值：
+          // *小于0，然后将a排序为低于b的索引，即首先出现
+          // *为0，则相对于彼此保持a和b不变，但相对于所有不同的元素进行排序
+          // *大于0，则将b排序为低于a的索引，即b先到达
+
+          // （可选）您可以使用函数格式化数据
+          // format: (val, row) => `${val}%`,
+          // 另一个格式示例：
+          // format: val => val
+          //   ? /* 选中Unicode复选标记 */ "\u2611"
+          //   : /* 未选中Unicode复选标记 */ "\u2610",
+
+          // body td:
+          style: 'width: 20px'
+          // classes: 'my-special-class',
+
+          // (v1.3.0+) header th:
+          // headerStyle: 'width: 500px',
+          // headerClasses: 'my-special-class'
+        },
+        { name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px' },
+        { name: 'context', label: 'context', field: 'context', align: 'left' },
+        { name: 'status', label: '状态', field: 'status', align: 'left' },
+        { name: 'noticeDate', label: 'noticeDate', field: 'noticeDate', align: 'left', style: 'width:100px' },
+        { name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px' }
+      ],
+      data: [
+        {
+          id: 1,
+          title: '123',
+          context: '内容',
+          noticeDate: null
+        }, {
+          id: 2,
+          title: '345',
+          context: '内容1213',
+          noticeDate: null
+        }
+      ]
     }
   },
 
@@ -175,7 +173,7 @@ export default {
         size: fetchCount,
         current: page
       }).then(res => {
-        this.table.tableData = res.data.records
+        this.data = res.data.records
       })
       // ...and turn of loading indicator
       this.loading = false

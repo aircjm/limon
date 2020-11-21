@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 800px; max-width: 60vw">
+  <q-card style="width: 800px;max-width: 80%">
     <q-card-section>
       <div class="text-h6">
         Add Record
@@ -16,34 +16,26 @@
           v-model="form.title"
           label="title"
         />
-        <q-select
-          v-model="form.type"
-          :options="options"
-          :option-value="opt => Object(opt) === opt && 'id' in opt ? opt.id : null"
-          :option-label="opt => Object(opt) === opt && 'desc' in opt ? opt.desc : ''"
-          :option-disable="opt => Object(opt) === opt ? opt.inactiveColor === true : true"
-          use-input
-          new-value-mode="add"
+        <TagSelect :select.sync="form.tags" />
+
+        <date-time-picker
+          label="开始时间"
+          :time.sync="form.startTime"
         />
         <date-time-picker
           label="通知时间"
-          :time.sync="form.dueTime"
+          :time.sync="form.endTime"
         />
-        <q-field>
-          <date-time-picker
-            label="开始时间"
-            :time.sync="form.startTime"
-          />
-          <date-time-picker
-            label="通知时间"
-            :time.sync="form.endTime"
-          />
-        </q-field>
         <q-input
           label="context"
           v-model="form.context"
           filled
           type="textarea"
+        />
+
+        <date-time-picker
+          label="截止时间"
+          :time.sync="form.dueTime"
         />
         <div>
           <q-btn
@@ -67,20 +59,17 @@
 <script>
 import { getTaskDetail, saveTask } from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
+import TagSelect from 'pages/tag/TagSelect'
 
 export default {
   name: 'TaskEdit',
-  components: { DateTimePicker },
+  components: { TagSelect, DateTimePicker },
   data () {
     return {
-
       date: null,
       openDialog: false,
-      options: [
-        {
-          id: 1,
-          desc: 'first'
-        }
+      tags: [
+        1
       ],
       form: {
         id: null,
@@ -102,6 +91,18 @@ export default {
       this.recordType = null
       this.date = null
       this.noticeDate = null
+    },
+    createValue (val, done) {
+      // specific logic to eventually call done(...) -- or not
+      done(val, 'add-unique')
+
+      // done callback has two optional parameters:
+      //  - the value to be added
+      //  - the behavior (same values of new-value-mode prop,
+      //    and when it is specified it overrides that prop –
+      //    if it is used); default behavior (if not using
+      //    new-value-mode) is to add the value even if it would
+      //    be a duplicate
     }
   },
   created () {
