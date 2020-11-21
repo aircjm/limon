@@ -8,7 +8,7 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="miniState = !miniState"
         />
         <q-toolbar-title>
           Dash App
@@ -47,10 +47,10 @@
 
     <q-drawer
       show-if-above
+      v-model="miniState"
       :mini="miniState"
       @mouseover="miniState = false"
       @mouseout="miniState = true"
-      mini-to-overlay
       bordered
       content-class="bg-grey-1"
     >
