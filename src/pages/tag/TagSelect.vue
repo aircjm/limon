@@ -10,7 +10,7 @@
     :options="filterOptions"
     map-options
     emit-value
-    :option-value="opt => Object(opt) === opt && 'value' in opt ? opt.value : null"
+    :option-value="returnValue"
     @filter="filterFn"
   >
     <template v-slot:option="scope">
@@ -73,7 +73,7 @@ export default {
         // if (!stringOptions.includes(val)) {
         //   stringOptions.push(val)
         // }
-        saveTag({ tagName: val }).then(res => {
+        saveTag({ name: val }).then(res => {
           const id = res.data.id
           this.options.push({
             value: id,
@@ -95,6 +95,11 @@ export default {
           )
         }
       })
+    },
+    returnValue (opt) {
+      if ('value' in opt) {
+        return opt.value
+      }
     }
   }
 }

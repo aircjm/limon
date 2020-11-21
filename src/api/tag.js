@@ -12,7 +12,7 @@ export function saveTag (data) {
 // 列表搜索
 export function getTagList (data) {
   return axios({
-    url: '/api/task/list',
+    url: '/api/tag/list',
     method: 'post',
     data: data
   })
