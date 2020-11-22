@@ -1,11 +1,17 @@
 <template>
   <q-page>
-    <q-btn-group>
-      <q-btn
-        label="add"
-        @click="openDialog = true"
-      />
-    </q-btn-group>
+    <div>
+      <q-form
+        style="width: 200px;"
+        class="column"
+      >
+        <q-input v-model="title" />
+        <q-btn
+          label="add"
+          @click="saveTask"
+        />
+      </q-form>
+    </div>
 
     <q-dialog v-model="openDialog">
       <TaskEdit />
@@ -59,7 +65,7 @@
 
 <script>
 import TaskEdit from 'pages/task/TaskEdit'
-import { getTaskList } from 'src/api/task'
+import { getTaskList, saveTask } from 'src/api/task'
 export default {
   name: 'TaskList',
   components: { TaskEdit },
@@ -136,8 +142,10 @@ export default {
         },
         { name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px' },
         { name: 'context', label: 'context', field: 'context', align: 'left' },
-        { name: 'status', label: '状态', field: 'status', align: 'left' },
-        { name: 'noticeDate', label: 'noticeDate', field: 'noticeDate', align: 'left', style: 'width:100px' },
+        { name: 'status', label: '状态', field: 'status', align: 'left', style: 'width: 20px' },
+        { name: 'dueTime', label: '截止时间（通知）', field: 'dueTime', align: 'left', style: 'width:100px' },
+        { name: 'startTime', label: '开始时间', field: 'startTime', align: 'left', style: 'width:100px' },
+        { name: 'endTime', label: '结束时间', field: 'endTime', align: 'left', style: 'width:100px' },
         { name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px' }
       ],
       data: [
@@ -159,6 +167,13 @@ export default {
   methods: {
     openDetail (id) {
       console.log(id)
+    },
+    saveTask () {
+      this.loading = true
+      saveTask({ title: this.title }).then(res => {
+        this.title = ''
+      })
+      this.loading = false
     },
     list () {
       const { page, rowsPerPage } = this.pagination
