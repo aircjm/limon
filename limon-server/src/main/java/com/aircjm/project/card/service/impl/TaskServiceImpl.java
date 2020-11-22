@@ -40,6 +40,9 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
                 .taskHtml(request.getContent())
                 .type(request.getType())
                 .status(request.getStatus())
+                .startTime(request.getStartTime())
+                .endTime(request.getEndTime())
+                .dueTime(request.getDueTime())
                 .build();
         if (Objects.isNull(request.getId())) {
             task.setId(IdUtils.getId());
