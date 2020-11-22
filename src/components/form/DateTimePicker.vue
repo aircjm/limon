@@ -50,10 +50,12 @@ export default {
   name: 'DateTimePicker',
   props: {
     time: {
-      type: String
+      type: String,
+      default: ''
     },
     label: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   data: function () {
