@@ -10,6 +10,7 @@
     :options="filterOptions"
     map-options
     emit-value
+    :readonly="readonly"
     :option-value="returnValue"
     @filter="filterFn"
   >
@@ -34,6 +35,7 @@ export default {
   name: 'TagSelect',
   data () {
     return {
+      readonly: false,
       model: [],
       options: [
         {
@@ -55,6 +57,7 @@ export default {
       console.log(this.model)
     },
     async createValue (val, done) {
+      this.readonly = true
       // Calling done(var) when new-value-mode is not set or "add", or done(var, "add") adds "var" content to the model
       // and it resets the input textbox to empty string
       // ----
@@ -82,6 +85,7 @@ export default {
           this.model.push(id)
         })
         done(val, 'toggle')
+        this.readonly = false
       }
     },
     filterFn (val, update) {
