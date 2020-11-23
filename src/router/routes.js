@@ -6,12 +6,11 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       {
-        path: '/record',
+        path: '/task',
         component: () => import('pages/task/TaskList.vue'),
         children: [
         ]
-      },
-      { path: '/record/edit', component: () => import('pages/task/TaskEdit.vue') }
+      }
     ]
   },
 

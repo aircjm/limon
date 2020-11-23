@@ -1,74 +1,125 @@
 <template>
-  <q-page>
-    <div>
-      <q-form
-        style="width: 200px;"
-        class="column"
-      >
-        <q-input v-model="title" />
-        <q-btn
-          label="add"
-          @click="openDialog = true"
-        />
-      </q-form>
-    </div>
-
-    <q-dialog v-model="openDialog">
-      <TaskEdit />
-    </q-dialog>
-    <q-table
-      :columns="columns"
-      :data="data"
-      title="Record List"
-      row-key="id"
-      :loading="loading"
-      :pagination.sync="pagination"
-      selection="single"
-      :selected.sync="selected"
+  <q-page class="column">
+    <div
+      style="height: 100px"
     >
-      <template v-slot:top-left>
-        <div class="row  q-gutter-x-sm">
-          <div class="col">
+      <q-btn
+        label="add"
+        @click="openDialog = true"
+      />
+    </div>
+    <q-dialog v-model="openDialog">
+      <q-card style="width: 800px;max-width: 80%">
+        <q-card-section>
+          <div class="text-h6">
+            Add Record
+          </div>
+        </q-card-section>
+        <q-separator />
+        <q-card-section>
+          <q-form
+            ref="myForm"
+            @reset="resetForm"
+            class="q-gutter-y-md column"
+            @submit="onSubmitForm"
+          >
             <q-input
-              outlined
-              dense
-              no-error-icon
-              v-model="searchForm.title"
-              placeholder="输入标题"
+              v-model="form.title"
+              label="title"
             />
-          </div>
-          <div class="col">
-            <q-btn
-              label="查询"
-              color="primary"
-              @click="list"
+            <TagSelect :select.sync="form.tags" />
+            <date-time-picker
+              label="开始时间"
+              :time.sync="form.startTime"
             />
-          </div>
-        </div>
-      </template>
+            <date-time-picker
+              label="通知时间"
+              :time.sync="form.endTime"
+            />
+            <q-input
+              label="context"
+              v-model="form.context"
+              filled
+              type="textarea"
+            />
 
-      <template v-slot:body-cell-options="props">
-        <q-td
-          :props="props"
-          class="q-gutter-xs action"
-        >
-          <a
-            class="text-primary"
-            @click="openDetail(props.row.id)"
-          >详情</a>
-          <a class="text-primary">标记</a>
-        </q-td>
-      </template>
-    </q-table>
+            <date-time-picker
+              label="截止时间"
+              :time.sync="form.dueTime"
+            />
+            <div>
+              <q-btn
+                label="Submit"
+                type="submit"
+                color="primary"
+              />
+              <q-btn
+                label="Cancel"
+                type="reset"
+                color="primary"
+                flat
+              />
+            </div>
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+    <div>
+      <q-table
+        :columns="columns"
+        :data="data"
+        title="Record List"
+        row-key="id"
+        :loading="loading"
+        :pagination.sync="pagination"
+        selection="single"
+        :selected.sync="selected"
+      >
+        <template v-slot:top-left>
+          <div class="row  q-gutter-x-sm">
+            <div class="col">
+              <q-input
+                outlined
+                dense
+                no-error-icon
+                v-model="searchForm.title"
+                placeholder="输入标题"
+              />
+            </div>
+            <div class="col">
+              <q-btn
+                label="查询"
+                color="primary"
+                @click="list"
+              />
+            </div>
+          </div>
+        </template>
+
+        <template v-slot:body-cell-options="props">
+          <q-td
+            :props="props"
+            class="q-gutter-xs action"
+          >
+            <a
+              class="text-primary"
+              @click="openDetail(props.row.id)"
+            >详情</a>
+            <a class="text-primary">标记</a>
+          </q-td>
+        </template>
+      </q-table>
+    </div>
   </q-page>
 </template>
 
 <script>
-import TaskEdit from 'pages/task/TaskEdit'
 import { getTaskList, saveTask } from 'src/api/task'
+import TagSelect from 'pages/tag/TagSelect'
+import DateTimePicker from 'components/form/DateTimePicker'
 export default {
   name: 'TaskList',
-  components: { TaskEdit },
+  components: { TagSelect, DateTimePicker },
   data () {
     return {
       title: '',
@@ -81,6 +132,18 @@ export default {
           desc: 'first'
         }
       ],
+      tags: [
+        1
+      ],
+      form: {
+        id: null,
+        title: '',
+        type: null,
+        dueTime: null,
+        startTime: null,
+        endTime: null,
+        context: null
+      },
       searchForm: {
         title: null
       },
@@ -90,7 +153,7 @@ export default {
         sortBy: 'desc',
         descending: false,
         page: 1,
-        rowsPerPage: 3,
+        rowsPerPage: 10,
         rowsNumber: 10
       },
       selected: [],
@@ -149,31 +212,20 @@ export default {
         { name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px' }
       ],
       data: [
-        {
-          id: 1,
-          title: '123',
-          context: '内容',
-          noticeDate: null
-        }, {
-          id: 2,
-          title: '345',
-          context: '内容1213',
-          noticeDate: null
-        }
       ]
     }
   },
-
+  mounted () {
+    this.list()
+  },
   methods: {
     openDetail (id) {
       console.log(id)
     },
     saveTask () {
-      this.loading = true
       saveTask({ title: this.title }).then(res => {
         this.title = ''
       })
-      this.loading = false
     },
     list () {
       const { page, rowsPerPage } = this.pagination
@@ -192,7 +244,29 @@ export default {
       })
       // ...and turn of loading indicator
       this.loading = false
+    },
+    onSubmitForm (e) {
+      this.$refs.myForm.validate().then(success => {
+        if (success) {
+          // 是的，模型是正确的
+        } else {
+          // 哦，不，用户至少
+          // 填写了一个无效值
+        }
+      })
+
+      // 重置验证：
+      this.$refs.myForm.resetValidation()
+      saveTask(this.form)
+    },
+    resetForm () {
+      // this.form.title = ''
+      // this.form.dueTime = null
+      // this.form.startTime = null
+      // this.form.endTime = null
+      this.openDialog = false
     }
+
   }
 }
 </script>
