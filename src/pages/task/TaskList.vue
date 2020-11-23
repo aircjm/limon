@@ -8,7 +8,7 @@
         <q-input v-model="title" />
         <q-btn
           label="add"
-          @click="saveTask"
+          @click="openDialog = true"
         />
       </q-form>
     </div>

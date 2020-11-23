@@ -54,7 +54,7 @@ export default {
       this.$emit('update:tags', this.model)
       console.log(this.model)
     },
-    createValue (val, done) {
+    async createValue (val, done) {
       // Calling done(var) when new-value-mode is not set or "add", or done(var, "add") adds "var" content to the model
       // and it resets the input textbox to empty string
       // ----
@@ -73,7 +73,7 @@ export default {
         // if (!stringOptions.includes(val)) {
         //   stringOptions.push(val)
         // }
-        saveTag({ name: val }).then(res => {
+        await saveTag({ name: val }).then(res => {
           const id = res.data.id
           this.options.push({
             value: id,
