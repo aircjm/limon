@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { saveTask } from 'src/api/task'
+import { getTaskDetail, saveTask } from 'src/api/task'
 import TagSelect from 'pages/tag/TagSelect'
 import DateTimePicker from 'components/form/DateTimePicker'
 
@@ -99,16 +99,21 @@ export default {
       loading: false
     }
   },
-  created () {
+  async created () {
     const id = this.$route.query.id
     if (id) {
       this.form.id = id
+      await getTaskDetail(id).then(res => {
+        this.form = res.data
+      })
     }
   },
   methods: {
     saveTask () {
       saveTask({ title: this.form.title }).then(res => {
         this.form.title = ''
+      }).then(() => {
+        this.$router.push('/task')
       })
     },
     onSubmit (e) {

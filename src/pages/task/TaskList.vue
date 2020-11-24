@@ -101,10 +101,12 @@
             :props="props"
             class="q-gutter-xs action"
           >
-            <a
+            <router-link
+              :to="`/task/edit?id=${props.row.id}`"
               class="text-primary"
-              @click="openDetail(props.row.id)"
-            >详情</a>
+            >
+              编辑
+            </router-link>
             <a class="text-primary">标记</a>
           </q-td>
         </template>
@@ -136,7 +138,7 @@ export default {
         1
       ],
       form: {
-        id: null,
+        id: '',
         title: '',
         type: null,
         dueTime: null,
@@ -191,7 +193,7 @@ export default {
           // （可选）您可以使用函数格式化数据
           // format: (val, row) => `${val}%`,
           // 另一个格式示例：
-          // format: val => val
+          // format: val => `${val}`,
           //   ? /* 选中Unicode复选标记 */ "\u2611"
           //   : /* 未选中Unicode复选标记 */ "\u2610",
 
@@ -219,8 +221,9 @@ export default {
     this.list()
   },
   methods: {
-    openDetail (id) {
-      console.log(id)
+    edit (id) {
+      const path = '/task/edit?id==' + id
+      this.$route.push({ path })
     },
     saveTask () {
       saveTask({ title: this.title }).then(res => {

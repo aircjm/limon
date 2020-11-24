@@ -3,7 +3,7 @@ import axios from 'axios'
 // 获取详情
 export function getTaskDetail (id) {
   return axios({
-    url: '/api/task/detail/' + id,
+    url: '/api/task/detail?id=' + id,
     method: 'get'
   })
 }
