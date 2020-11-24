@@ -103,6 +103,7 @@ export default {
   },
   methods: {
     init () {
+      const that = this
       const options = {
         // la;ng: "en_US",
         mode: 'ir',
@@ -118,8 +119,35 @@ export default {
         minHeight: 300,
         cache: false,
         upload: {
-          handler: this.uploadFiles
+          filename (name) {
+            return name.replace(/\?|\\|\/|:|\||<|>|\*|\[|\]|\s+/g, '-')
+          },
+          handler (files) {
+            debugger
+            console.log(files)
+            for (let i = 0; i < files.length; i++) {
+              that.uploadFiles(files[i])
+                .then({})
+                .catch(e => {
+                  console.log(e)
+                })
+            }
+          },
+          linkToImgUrl (files) {
+            debugger
+          }
         }
+        // upload: {
+        //   accept: 'image/*',
+        //   url: '/api/common/uploadList',
+        //   headers: {
+        //     Authorization: 'Bearer ' + getToken()
+        //   },
+        //   linkToImgUrl: '/common/uploadList',
+        //   filename (name) {
+        //     return name.replace(/\?|\\|\/|:|\||<|>|\*|\[|\]|\s+/g, '-')
+        //   }
+        // }
       }
       // 判断是否是移动端 如果是移动端 不展示那么多按钮
       if (this.$q.platform.is.mobile) {
