@@ -77,10 +77,10 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Record',
-    caption: '记录生活',
+    title: 'Task List',
+    caption: '任务列表',
     icon: 'code',
-    link: '/#/record'
+    link: '/#/task'
   },
   {
     title: 'Docs',
