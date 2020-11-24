@@ -2,8 +2,6 @@ package com.aircjm.project.card.domain;
 
 
 import com.aircjm.common.vo.DbBaseEntity;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -23,7 +21,6 @@ import java.time.LocalDateTime;
 @TableName(value = "lm_task")
 public class Task extends DbBaseEntity<Task> {
 
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "标题")
