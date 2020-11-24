@@ -23,14 +23,9 @@ public class TaskDetailResponse {
 
     private Long id;
 
-
+    @Excel(name = "Question")
     @ApiModelProperty(value = "标题")
     private String title;
-    
-    private String cardId;
-
-    @Excel(name = "Question")
-    private String cardTitle;
 
     @Excel(name = "Answer")
     private String cardDesc;
@@ -41,10 +36,6 @@ public class TaskDetailResponse {
     private LocalDateTime trelloUpdateTime;
 
     private String listId;
-
-    private String boardId;
-
-    private String ankiNoteId;
 
 
     @Builder.Default

@@ -33,4 +33,12 @@ public interface TaskService extends IService<Task> {
      * @return 分页结果
      */
     Page<TaskDetailResponse> list(QueryTaskRequest request);
+
+    /**
+     * 单个详情查询
+     *
+     * @param id id
+     * @return task
+     */
+    TaskDetailResponse detail(Long id);
 }

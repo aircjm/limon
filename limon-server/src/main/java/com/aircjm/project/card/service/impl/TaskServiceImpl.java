@@ -68,15 +68,23 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     public Page<TaskDetailResponse> list(QueryTaskRequest request) {
         QueryWrapper<Task> queryWrapper = new QueryWrapper<>();
         Page<Task> taskPage = page(request, queryWrapper);
-        List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(task -> {
-            TaskDetailResponse response = new TaskDetailResponse();
-            BeanUtils.copyProperties(task, response);
-            return response;
-        }).collect(Collectors.toList());
+        List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(this::getTaskDetailResponse).collect(Collectors.toList());
         Page<TaskDetailResponse> responsePage = new Page<>();
         responsePage.setTotal(taskPage.getTotal());
         responsePage.setSize(taskPage.getSize());
         responsePage.setRecords(taskDetailResponseList);
         return responsePage;
+    }
+
+    private TaskDetailResponse getTaskDetailResponse(Task task) {
+        TaskDetailResponse response = new TaskDetailResponse();
+        BeanUtils.copyProperties(task, response);
+        return response;
+    }
+
+    @Override
+    public TaskDetailResponse detail(Long id) {
+        Task task = getById(id);
+        return getTaskDetailResponse(task);
     }
 }

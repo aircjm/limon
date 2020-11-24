@@ -40,6 +40,18 @@ public class TaskController {
 
 
     /**
+     * 详情
+     *
+     * @param id request
+     * @return 结果
+     */
+    @GetMapping("/detail}")
+    public RestResponse<TaskDetailResponse> save(@RequestParam(value = "id") Long id) {
+        return RestResponse.successData(taskService.detail(id));
+    }
+
+
+    /**
      * 监听实际记录是否超时未新增
      *
      * @return 结果
@@ -57,7 +69,7 @@ public class TaskController {
      */
     @PostMapping("/list")
     public RestResponse list(@RequestBody @Valid QueryTaskRequest request) {
-        Page<TaskDetailResponse> responsePage =  taskService.list(request);
+        Page<TaskDetailResponse> responsePage = taskService.list(request);
         return RestResponse.successData(responsePage);
     }
 }
