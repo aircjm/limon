@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @TableName(value = "lm_task")
 public class Task extends DbBaseEntity<Task> {
 
-    @TableId(type = IdType.INPUT)
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "标题")

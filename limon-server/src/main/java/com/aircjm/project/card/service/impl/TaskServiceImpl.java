@@ -1,7 +1,6 @@
 package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.utils.DateUtils;
-import com.aircjm.common.utils.IdUtils;
 import com.aircjm.framework.message.MessageService;
 import com.aircjm.project.card.domain.Task;
 import com.aircjm.project.card.mapper.RecordMapper;
@@ -45,7 +44,6 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
                 .dueTime(request.getDueTime())
                 .build();
         if (Objects.isNull(request.getId())) {
-            task.setId(IdUtils.getId());
             task.setCreateTime(LocalDateTime.now());
         }
 

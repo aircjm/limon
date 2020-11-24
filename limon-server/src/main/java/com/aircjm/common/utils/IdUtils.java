@@ -12,18 +12,11 @@ import com.aircjm.common.core.lang.UUID;
 public class IdUtils
 {
 
-    private static Snowflake snowflake;
-
-    static {
-        snowflake = IdUtil.createSnowflake(1, 1);
-    }
+    private static final Snowflake snowflake = IdUtil.getSnowflake(1, 1);
 
     public static Long getId() {
         return snowflake.nextId();
     }
-
-
-
 
 
     /**
