@@ -103,7 +103,9 @@ export default {
   },
   methods: {
     init () {
-      const that = this
+      // const url = process.env.NODE_ENV === 'production' ? '/api/common/uploadList' : 'http://localhost:8085/api/common/uploadList'
+
+      // const that = this
       const options = {
         // la;ng: "en_US",
         mode: 'ir',
@@ -118,36 +120,37 @@ export default {
         },
         minHeight: 300,
         cache: false,
+        // upload: {
+        //   filename (name) {
+        //     return name.replace(/\?|\\|\/|:|\||<|>|\*|\[|\]|\s+/g, '-')
+        //   },
+        //   handler (files) {
+        //     debugger
+        //     that.uploadFiles(files)
+        //       .then({})
+        //       .catch(e => {
+        //         console.log(e)
+        //       })
+        //   },
+        //   linkToImgUrl (files) {
+        //     debugger
+        //   }
+        // }
         upload: {
+          accept: 'image/*',
+          url: '/api/api/task/upload',
+          headers: {
+            Authorization: 'Bearer ' + getToken()
+          },
+          linkToImgUrl: '/api/api/task/upload',
           filename (name) {
             return name.replace(/\?|\\|\/|:|\||<|>|\*|\[|\]|\s+/g, '-')
           },
-          handler (files) {
-            debugger
-            console.log(files)
-            for (let i = 0; i < files.length; i++) {
-              that.uploadFiles(files[i])
-                .then({})
-                .catch(e => {
-                  console.log(e)
-                })
-            }
+          extraData: {
+            id: 123
           },
-          linkToImgUrl (files) {
-            debugger
-          }
+          format: this.uploadFormat
         }
-        // upload: {
-        //   accept: 'image/*',
-        //   url: '/api/common/uploadList',
-        //   headers: {
-        //     Authorization: 'Bearer ' + getToken()
-        //   },
-        //   linkToImgUrl: '/common/uploadList',
-        //   filename (name) {
-        //     return name.replace(/\?|\\|\/|:|\||<|>|\*|\[|\]|\s+/g, '-')
-        //   }
-        // }
       }
       // 判断是否是移动端 如果是移动端 不展示那么多按钮
       if (this.$q.platform.is.mobile) {
@@ -225,6 +228,20 @@ export default {
     },
     uploadFiles (files) {
       console.log('开始上传')
+    },
+    uploadFormat (files, response) {
+      const respJson = JSON.parse(response)
+      console.log(respJson)
+      const result = {
+        msg: respJson.msg,
+        code: 0,
+        data: {
+          errFiles: [],
+          succMap: {}
+        }
+      }
+
+      return JSON.stringify(result)
     }
   }
 }
