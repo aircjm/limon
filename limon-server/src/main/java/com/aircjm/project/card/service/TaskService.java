@@ -6,6 +6,9 @@ import com.aircjm.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.project.card.vo.response.TaskDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * 记录服务
@@ -41,4 +44,13 @@ public interface TaskService extends IService<Task> {
      * @return task
      */
     TaskDetailResponse detail(Long id);
+
+    /**
+     * 添加附件
+     *
+     * @param files    文件
+     * @param taskId   taskId
+     * @param username 操作用户
+     */
+    void uploadFileList(List<MultipartFile> files, Long taskId, String username);
 }

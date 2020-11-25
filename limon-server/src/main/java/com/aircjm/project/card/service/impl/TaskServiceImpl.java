@@ -1,6 +1,7 @@
 package com.aircjm.project.card.service.impl;
 
 import com.aircjm.common.utils.DateUtils;
+import com.aircjm.framework.config.ServerConfig;
 import com.aircjm.framework.message.MessageService;
 import com.aircjm.project.card.domain.Task;
 import com.aircjm.project.card.mapper.RecordMapper;
@@ -14,6 +15,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -30,6 +32,10 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
 
     @Resource
     private MessageService emailService;
+
+
+    @Resource
+    private ServerConfig serverConfig;
 
     @Override
     public void save(SaveTaskRequest request) {
@@ -84,5 +90,28 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     public TaskDetailResponse detail(Long id) {
         Task task = getById(id);
         return getTaskDetailResponse(task);
+    }
+
+    @Override
+    public void uploadFileList(List<MultipartFile> files, Long taskId, String username) {
+//        try
+//        {
+//            String name = StringUtils.EMPTY;
+//            // 上传文件路径
+//            String filePath = SystemConfig.getUploadPath();
+//            for (MultipartFile multipartFile : files) {
+//                name = FileUploadUtils.upload(filePath, multipartFile);
+//            }
+//            // 上传并返回新文件名称
+//            String url = serverConfig.getUrl() + name;
+//            AjaxResult ajax = AjaxResult.success();
+//            ajax.put("fileName", name);
+//            ajax.put("url", url);
+//            return ajax;
+//        }
+//        catch (Exception e)
+//        {
+//            return AjaxResult.error(e.getMessage());
+//        }
     }
 }
