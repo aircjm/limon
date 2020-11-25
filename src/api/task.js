@@ -25,3 +25,12 @@ export function getTaskList (data) {
     data: data
   })
 }
+
+// 上传附件
+export function upload (data) {
+  return axios({
+    url: '/api/task/upload',
+    method: 'post',
+    data: data
+  })
+}
