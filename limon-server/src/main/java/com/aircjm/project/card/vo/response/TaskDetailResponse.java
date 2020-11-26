@@ -27,13 +27,17 @@ public class TaskDetailResponse {
     @ApiModelProperty(value = "标题")
     private String title;
 
+
+    @ApiModelProperty(value = "卡片内容描述")
     @Excel(name = "Answer")
-    private String cardDesc;
+    private String taskDesc;
+
+    @ApiModelProperty(value = "卡片内容描述HTML")
+    private String taskHtml;
 
     @ApiModelProperty(value = "卡片状态")
     private Integer status;
 
-    private LocalDateTime trelloUpdateTime;
 
     private String listId;
 
@@ -42,9 +46,4 @@ public class TaskDetailResponse {
     @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
     private Integer type = 0;
 
-    @ApiModelProperty(value = "卡片内容描述")
-    private String taskDesc;
-
-    @ApiModelProperty(value = "卡片内容描述HTML")
-    private String taskHtml;
 }

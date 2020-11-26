@@ -1,5 +1,6 @@
 package com.aircjm.project.card.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.aircjm.common.utils.DateUtils;
 import com.aircjm.framework.config.ServerConfig;
 import com.aircjm.framework.message.MessageService;
@@ -39,21 +40,25 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
 
     @Override
     public void save(SaveTaskRequest request) {
-        Task task = Task.builder()
-                .title(request.getTitle())
-                .taskDesc(request.getTaskDesc())
-                .taskHtml("")
-                .type(request.getType())
-                .status(request.getStatus())
-                .startTime(request.getStartTime())
-                .endTime(request.getEndTime())
-                .dueTime(request.getDueTime())
-                .build();
+
         if (Objects.isNull(request.getId())) {
+            Task task = Task.builder()
+                    .title(request.getTitle())
+                    .taskDesc(request.getTaskDesc())
+                    .taskHtml("")
+                    .type(request.getType())
+                    .status(request.getStatus())
+                    .startTime(request.getStartTime())
+                    .endTime(request.getEndTime())
+                    .dueTime(request.getDueTime())
+                    .build();
             task.setCreateTime(LocalDateTime.now());
+            saveOrUpdate(task);
+        } else {
+            Task task = BeanUtil.copyProperties(request, Task.class);
+            saveOrUpdate(task);
         }
 
-        saveOrUpdate(task);
     }
 
     @Override
