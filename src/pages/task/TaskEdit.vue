@@ -35,11 +35,9 @@
             label="通知时间"
             :time.sync="form.endTime"
           />
-          <q-input
+          <MarkdownEditor
             label="context"
-            v-model="form.context"
-            filled
-            type="textarea"
+            :task.sync="form"
           />
 
           <date-time-picker
@@ -73,10 +71,11 @@
 import { getTaskDetail, saveTask } from 'src/api/task'
 import TagSelect from 'pages/tag/TagSelect'
 import DateTimePicker from 'components/form/DateTimePicker'
+import MarkdownEditor from 'components/editor/MarkdownEditor'
 
 export default {
   name: 'TaskEdit',
-  components: { TagSelect, DateTimePicker },
+  components: { MarkdownEditor, TagSelect, DateTimePicker },
   data () {
     return {
       title: '',
@@ -93,7 +92,7 @@ export default {
         dueTime: null,
         startTime: null,
         endTime: null,
-        context: null
+        taskDesc: null
       },
       filter: '',
       loading: false

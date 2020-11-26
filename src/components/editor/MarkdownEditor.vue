@@ -15,8 +15,13 @@ import { getToken } from 'src/utils/project'
 export default {
   name: 'MarkdownEditor',
   props: {
-    id: {
-      type: String
+    task: {
+      type: Object,
+      default () {
+        return {
+
+        }
+      }
     }
   },
   data () {
@@ -27,8 +32,9 @@ export default {
           token: getToken()
         }
       },
-      contextMd: '',
+      contextMd: this.task.taskDesc,
       vditor: null,
+      editorTask: this.task,
       toolbar: [
         'emoji',
         'headings',
@@ -101,6 +107,11 @@ export default {
     this.init()
     this.vditor.clearCache()
   },
+  watch: {
+    editorTask: function (val) {
+      this.$emit('update:task', this.editorTask)
+    }
+  },
   methods: {
     init () {
       // const url = process.env.NODE_ENV === 'production' ? '/api/common/uploadList' : 'http://localhost:8085/api/common/uploadList'
@@ -151,56 +162,6 @@ export default {
           },
           format: this.uploadFormat
         }
-      }
-      // 判断是否是移动端 如果是移动端 不展示那么多按钮
-      if (this.$q.platform.is.mobile) {
-        this.toolbar = [
-          'strike',
-          'link',
-          '|',
-          'list',
-          'ordered-list',
-          'quote',
-          'upload',
-          'table',
-          '|',
-          'undo',
-          'redo',
-          '|',
-          'outline',
-          'edit-mode',
-          'preview',
-          'both',
-          '|',
-          'edit-mode',
-          {
-            name: 'history',
-            tip: '历史版本',
-            icon: "<i class='fa fa-history fa-lg'></i>",
-            click: () => {
-              this.showHistory()
-            }
-          },
-          {
-            name: 'more',
-            toolbar: [
-              'content-theme',
-              'export',
-              'outline',
-              'preview'
-            ]
-          }, {
-            hotkey: '⌘-s',
-            name: 'save',
-            tip: '保存',
-            icon: '<i class="fa fa-save fa-lg"/>',
-            click: () => {
-              console.log(this.vditor.getValue())
-              this.saveContent(this.vditor.getValue())
-            }
-          }
-        ]
-        options.toolbar = this.toolbar
       }
 
       // 初始化编辑器
