@@ -49,8 +49,8 @@ public class TaskController {
      * @param id request
      * @return 结果
      */
-    @GetMapping("/detail}")
-    public RestResponse<TaskDetailResponse> save(@RequestParam(value = "id") Long id) {
+    @GetMapping("/detail")
+    public RestResponse<TaskDetailResponse> detail(@RequestParam(value = "id") Long id) {
         return RestResponse.successData(taskService.detail(id));
     }
 

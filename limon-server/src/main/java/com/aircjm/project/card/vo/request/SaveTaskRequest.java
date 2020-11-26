@@ -26,7 +26,7 @@ public class SaveTaskRequest {
     private String title;
 
     @ApiModelProperty(value = "内容")
-    private String content = StringUtils.EMPTY;
+    private String taskDesc = StringUtils.EMPTY;
 
     private Integer status;
 

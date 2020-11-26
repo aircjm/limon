@@ -41,8 +41,8 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     public void save(SaveTaskRequest request) {
         Task task = Task.builder()
                 .title(request.getTitle())
-                .taskDesc(request.getContent())
-                .taskHtml(request.getContent())
+                .taskDesc(request.getTaskDesc())
+                .taskHtml("")
                 .type(request.getType())
                 .status(request.getStatus())
                 .startTime(request.getStartTime())
