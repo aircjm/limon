@@ -37,7 +37,7 @@
           />
           <MarkdownEditor
             label="context"
-            :task.sync="form"
+            :context.sync="form.taskDesc"
           />
 
           <date-time-picker
@@ -82,9 +82,6 @@ export default {
       recordType: null,
       date: null,
       openDialog: false,
-      tags: [
-        1
-      ],
       form: {
         id: null,
         title: '',

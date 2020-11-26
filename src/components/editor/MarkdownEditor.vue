@@ -15,26 +15,20 @@ import { getToken } from 'src/utils/project'
 export default {
   name: 'MarkdownEditor',
   props: {
-    task: {
-      type: Object,
-      default () {
-        return {
-
-        }
-      }
+    context: {
+      type: String
     }
+
   },
-  data () {
+  data: function () {
     return {
-      title: '',
       config: {
         headers: {
           token: getToken()
         }
       },
-      contextMd: this.task.taskDesc,
+      contextMd: this.context,
       vditor: null,
-      editorTask: this.task,
       toolbar: [
         'emoji',
         'headings',
@@ -107,18 +101,9 @@ export default {
     this.init()
     this.vditor.clearCache()
   },
-  watch: {
-    editorTask: function (val) {
-      this.$emit('update:task', this.editorTask)
-    }
-  },
   methods: {
     init () {
-      // const url = process.env.NODE_ENV === 'production' ? '/api/common/uploadList' : 'http://localhost:8085/api/common/uploadList'
-
-      // const that = this
       const options = {
-        // la;ng: "en_US",
         mode: 'ir',
         toolbar: this.toolbar,
         value: this.contextMd,
@@ -163,32 +148,9 @@ export default {
           format: this.uploadFormat
         }
       }
-
       // 初始化编辑器
+      options.value = this.context
       this.vditor = new Vditor('vditor', options)
-    },
-    setContent (value) {
-      this.vditor.setValue(value)
-    },
-    clear () {
-      this.vditor.setValue('')
-    },
-    setTitleEditable (editable) {
-      this.showEditTitle = editable
-    },
-    getContent () {
-      this.vditor.setValue(this.vditor.getValue())
-      return this.vditor.getValue()
-    },
-    saveContent () {
-      this.vditor.setValue(this.vditor.getValue())
-      this.$emit('saveContent', this.vditor.getValue(), this.title, this.notebookName)
-    },
-    showHistory () {
-      this.$emit('showHistory')
-    },
-    uploadFiles (files) {
-      console.log('开始上传')
     },
     uploadFormat (files, response) {
       const respJson = JSON.parse(response)
@@ -201,7 +163,6 @@ export default {
           succMap: {}
         }
       }
-
       return JSON.stringify(result)
     }
   }
