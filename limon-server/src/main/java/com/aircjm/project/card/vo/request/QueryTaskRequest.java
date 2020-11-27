@@ -1,9 +1,7 @@
 package com.aircjm.project.card.vo.request;
 
-import com.aircjm.project.card.domain.AnkiCard;
 import com.aircjm.project.card.domain.Task;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -15,5 +13,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class QueryTaskRequest extends Page<Task> {
-    private String name;
+
+    private String title;
 }

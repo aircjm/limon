@@ -2,6 +2,7 @@ package com.aircjm.project.card.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.aircjm.common.utils.DateUtils;
+import com.aircjm.common.utils.StringUtils;
 import com.aircjm.framework.config.ServerConfig;
 import com.aircjm.framework.message.MessageService;
 import com.aircjm.project.card.domain.Task;
@@ -76,6 +77,10 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     @Override
     public Page<TaskDetailResponse> list(QueryTaskRequest request) {
         QueryWrapper<Task> queryWrapper = new QueryWrapper<>();
+        if (StringUtils.isNotEmpty(request.getTitle())) {
+            queryWrapper.eq("title", request.getTitle());
+        }
+        queryWrapper.orderByDesc("id");
         Page<Task> taskPage = page(request, queryWrapper);
         List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(this::getTaskDetailResponse).collect(Collectors.toList());
         Page<TaskDetailResponse> responsePage = new Page<>();
