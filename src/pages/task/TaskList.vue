@@ -188,13 +188,16 @@ export default {
       // get all rows if "All" (0) is selected
       const fetchCount = rowsPerPage === 0 ? this.pagination.rowsNumber : rowsPerPage
 
+      const queryRequest = {
+        size: fetchCount,
+        current: page
+      }
+      queryRequest.title = this.searchForm.title
+
       // calculate starting row of data
 
       // fetch data from "server"
-      getTaskList({
-        size: fetchCount,
-        current: page
-      }).then(res => {
+      getTaskList(queryRequest).then(res => {
         this.data = res.data.records
       })
       // ...and turn of loading indicator
