@@ -11,6 +11,7 @@ import com.aircjm.project.card.service.TaskService;
 import com.aircjm.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.project.card.vo.response.TaskDetailResponse;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -76,12 +77,11 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
 
     @Override
     public Page<TaskDetailResponse> list(QueryTaskRequest request) {
-        QueryWrapper<Task> queryWrapper = new QueryWrapper<>();
-        if (StringUtils.isNotEmpty(request.getTitle())) {
-            queryWrapper.eq("title", request.getTitle());
-        }
-        queryWrapper.orderByDesc("id");
-        Page<Task> taskPage = page(request, queryWrapper);
+        LambdaQueryWrapper<Task> wrapper = new QueryWrapper<Task>().lambda()
+                .orderByDesc(Task::getId)
+                .like(StringUtils.isNotEmpty(request.getTitle()), Task::getTitle, request.getTitle())
+                .eq(Objects.nonNull(request.getStatus()), Task::getStatus, request.getStatus());
+        Page<Task> taskPage = page(request, wrapper);
         List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(this::getTaskDetailResponse).collect(Collectors.toList());
         Page<TaskDetailResponse> responsePage = new Page<>();
         responsePage.setTotal(taskPage.getTotal());
@@ -102,26 +102,9 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
         return getTaskDetailResponse(task);
     }
 
+
     @Override
     public void uploadFileList(List<MultipartFile> files, Long taskId, String username) {
-//        try
-//        {
-//            String name = StringUtils.EMPTY;
-//            // 上传文件路径
-//            String filePath = SystemConfig.getUploadPath();
-//            for (MultipartFile multipartFile : files) {
-//                name = FileUploadUtils.upload(filePath, multipartFile);
-//            }
-//            // 上传并返回新文件名称
-//            String url = serverConfig.getUrl() + name;
-//            AjaxResult ajax = AjaxResult.success();
-//            ajax.put("fileName", name);
-//            ajax.put("url", url);
-//            return ajax;
-//        }
-//        catch (Exception e)
-//        {
-//            return AjaxResult.error(e.getMessage());
-//        }
+
     }
 }

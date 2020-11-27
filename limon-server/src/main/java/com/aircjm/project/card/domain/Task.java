@@ -36,7 +36,7 @@ public class Task extends DbBaseEntity<Task> {
     @ApiModelProperty(value = "卡片内容描述HTML")
     private String taskHtml;
 
-    @ApiModelProperty(value = "卡片状态")
+    @ApiModelProperty(value = "任务状态")
     private Integer status;
 
     private LocalDateTime startTime;
