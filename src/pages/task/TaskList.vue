@@ -1,69 +1,20 @@
 <template>
   <q-page class="column">
-    <div
-      style="height: 100px"
-    >
-      <q-btn
-        label="add"
-        @click="openDialog = true"
-      />
+    <div style="height: 240px">
+      <q-input
+        v-model="title"
+        style="width: 300px"
+        filled
+        placeholder="Please Input"
+      >
+        <template v-slot:append>
+          <q-icon
+            name="school"
+            @click.native="saveTitle"
+          />
+        </template>
+      </q-input>
     </div>
-    <q-dialog v-model="openDialog">
-      <q-card style="width: 800px;max-width: 80%">
-        <q-card-section>
-          <div class="text-h6">
-            Add Record
-          </div>
-        </q-card-section>
-        <q-separator />
-        <q-card-section>
-          <q-form
-            ref="myForm"
-            @reset="resetForm"
-            class="q-gutter-y-md column"
-            @submit="onSubmitForm"
-          >
-            <q-input
-              v-model="form.title"
-              label="title"
-            />
-            <TagSelect :select.sync="form.tags" />
-            <date-time-picker
-              label="开始时间"
-              :time.sync="form.startTime"
-            />
-            <date-time-picker
-              label="通知时间"
-              :time.sync="form.endTime"
-            />
-            <q-input
-              label="context"
-              v-model="form.context"
-              filled
-              type="textarea"
-            />
-
-            <date-time-picker
-              label="截止时间"
-              :time.sync="form.dueTime"
-            />
-            <div>
-              <q-btn
-                label="Submit"
-                type="submit"
-                color="primary"
-              />
-              <q-btn
-                label="Cancel"
-                type="reset"
-                color="primary"
-                flat
-              />
-            </div>
-          </q-form>
-        </q-card-section>
-      </q-card>
-    </q-dialog>
     <div>
       <q-table
         :columns="columns"
@@ -102,6 +53,7 @@
             class="q-gutter-xs action"
           >
             <router-link
+              style="text-decoration: none;"
               :to="`/task/edit?id=${props.row.id}`"
               class="text-primary"
             >
@@ -117,11 +69,10 @@
 
 <script>
 import { getTaskList, saveTask } from 'src/api/task'
-import TagSelect from 'pages/tag/TagSelect'
-import DateTimePicker from 'components/form/DateTimePicker'
+
 export default {
   name: 'TaskList',
-  components: { TagSelect, DateTimePicker },
+  components: { },
   data () {
     return {
       title: '',
@@ -225,9 +176,10 @@ export default {
       const path = '/task/edit?id==' + id
       this.$route.push({ path })
     },
-    saveTask () {
+    saveTitle () {
       saveTask({ title: this.title }).then(res => {
         this.title = ''
+        location.reload()
       })
     },
     list () {

@@ -105,15 +105,10 @@ export default {
     }
   },
   methods: {
-    saveTask () {
-      saveTask({ title: this.form.title }).then(res => {
-        this.form.title = ''
-      }).then(() => {
+    onSubmit () {
+      saveTask(this.form).then(res => {
         this.$router.push('/task')
       })
-    },
-    onSubmit (e) {
-      saveTask(this.form)
     },
     resetForm () {
       this.form.title = ''
