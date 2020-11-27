@@ -18,7 +18,14 @@ export default {
     context: {
       type: String
     }
-
+  },
+  watch: {
+    context: function (val) {
+      console.log(val)
+      if (!this.contextMd) {
+        this.vditor.setValue(val)
+      }
+    }
   },
   data: function () {
     return {
@@ -106,7 +113,7 @@ export default {
       const options = {
         mode: 'ir',
         toolbar: this.toolbar,
-        value: this.contextMd,
+        input: this.updateContextMd,
         preview: {
           hljs: {
             style: 'native',
@@ -149,7 +156,6 @@ export default {
         }
       }
       // 初始化编辑器
-      options.value = this.context
       this.vditor = new Vditor('vditor', options)
     },
     uploadFormat (files, response) {
@@ -164,6 +170,9 @@ export default {
         }
       }
       return JSON.stringify(result)
+    },
+    updateContextMd (contextMd) {
+      this.$emit('update:context', contextMd)
     }
   }
 }
