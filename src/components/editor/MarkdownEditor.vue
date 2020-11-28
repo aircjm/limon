@@ -16,7 +16,8 @@ export default {
   name: 'MarkdownEditor',
   props: {
     context: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   watch: {
