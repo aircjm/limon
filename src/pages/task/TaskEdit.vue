@@ -1,6 +1,6 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <q-card style="width: 800px;max-width: 80%">
+  <q-page class="row">
+    <q-card class="col-9">
       <q-card-section>
         <div
           class="text-h6"
@@ -10,7 +10,7 @@
         </div>
         <div
           class="text-h6"
-          v-if="form.id == null"
+          v-else
         >
           Add Record {{ form.id }}
         </div>
@@ -44,6 +44,16 @@
             label="截止时间"
             :time.sync="form.dueTime"
           />
+          <q-uploader
+            color="teal-10"
+            ref="uploaderRef"
+            style="max-width: 300px"
+            class="full-width"
+            :factory="factoryUpload"
+            hide-upload-btn
+            multiple
+            batch
+          />
           <div>
             <q-btn
               icon="save"
@@ -64,6 +74,17 @@
         </q-form>
       </q-card-section>
     </q-card>
+    <div class="col-3 column">
+      <div class="col">
+        1
+      </div>
+      <div class="col">
+        2
+      </div>
+      <div class="col">
+        3
+      </div>
+    </div>
   </q-page>
 </template>
 
