@@ -1,6 +1,6 @@
 <template>
   <q-page class="row">
-    <q-card class="col-9">
+    <q-card class="col-md-9 col-sm-12">
       <q-card-section>
         <div
           class="text-h6"
