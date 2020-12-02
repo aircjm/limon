@@ -47,6 +47,13 @@ mybatis-plus:
             logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
     mapper-locations: classpath*:mybatis/**/*Mapper.xml
 
+oss:
+    endpoint: https://oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAI4GDZpCFa7NtQY5RC7Qw3
+    accessKeySecret: bauRCDzYWcgvDvs0icLQLEhcHxV9TW
+    bucketName: ferryblog
+    filePath: dash/
+
 # Swagger配置
 swagger:
     # 是否开启swagger

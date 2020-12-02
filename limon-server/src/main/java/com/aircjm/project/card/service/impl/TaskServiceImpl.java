@@ -11,6 +11,7 @@ import com.aircjm.project.card.service.TaskService;
 import com.aircjm.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.project.card.vo.response.TaskDetailResponse;
+import com.aircjm.project.system.service.AliyunOssService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -36,9 +37,10 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     @Resource
     private MessageService emailService;
 
-
     @Resource
-    private ServerConfig serverConfig;
+    private AliyunOssService aliyunOssService;
+
+
 
     @Override
     public void save(SaveTaskRequest request) {
@@ -102,9 +104,10 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
         return getTaskDetailResponse(task);
     }
 
-
     @Override
     public void uploadFileList(List<MultipartFile> files, Long taskId, String username) {
-
+        files.forEach(file -> {
+            aliyunOssService.putObjectGetUrl(file, file.getOriginalFilename());
+        });
     }
 }
