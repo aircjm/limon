@@ -1,20 +1,28 @@
 <template>
   <q-page class="column">
-    <div style="height: 240px">
+    <div style="height: 65px">
       <q-input
         v-model="title"
         style="width: 300px"
-        filled
-        placeholder="Please Input"
+        @keyup.enter="saveTitle"
+        placeholder="Please Input Task"
       >
         <template v-slot:append>
           <q-icon
-            name="school"
+            name="add"
             @click.native="saveTitle"
           />
         </template>
       </q-input>
     </div>
+    <div class="q-gutter-md">
+      <q-btn
+        icon="add"
+        label="新增"
+        to="/task/edit"
+      />
+    </div>
+
     <div>
       <q-table
         :columns="columns"
@@ -78,15 +86,11 @@ export default {
       title: '',
       recordType: null,
       date: null,
-      openDialog: false,
       options: [
         {
           id: 1,
           desc: 'first'
         }
-      ],
-      tags: [
-        1
       ],
       form: {
         id: '',
@@ -174,13 +178,15 @@ export default {
   methods: {
     edit (id) {
       const path = '/task/edit?id==' + id
-      this.$route.push({ path })
+      this.$route.push(path)
     },
     saveTitle () {
-      saveTask({ title: this.title }).then(res => {
-        this.title = ''
-        location.reload()
-      })
+      if (this.title.length > 0) {
+        saveTask({ title: this.title }).then(res => {
+          this.title = ''
+          this.list()
+        })
+      }
     },
     list () {
       const { page, rowsPerPage } = this.pagination
@@ -218,11 +224,6 @@ export default {
       saveTask(this.form)
     },
     resetForm () {
-      // this.form.title = ''
-      // this.form.dueTime = null
-      // this.form.startTime = null
-      // this.form.endTime = null
-      this.openDialog = false
     }
 
   }
