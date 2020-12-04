@@ -10,16 +10,29 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-toolbar-title>
+        <q-btn
+          flat
+          to="/"
+        >
           Dash App
-        </q-toolbar-title>
+        </q-btn>
+        <q-separator
+          dark
+          vertical
+        />
+        <q-btn
+          stretch
+          flat
+          label="Task"
+          to="/task"
+        />
+
         <q-space />
         <q-btn-dropdown
           flat
           dense
           round
           icon="help"
-          label="help"
         >
           <q-list>
             <q-item clickable>
