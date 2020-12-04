@@ -2,14 +2,14 @@ package com.aircjm.project.card.vo.response;
 
 
 import com.aircjm.framework.aspectj.lang.annotation.Excel;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 /**
  * @author aircjm
@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 @Builder
 public class TaskDetailResponse {
 
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     @Excel(name = "Question")
