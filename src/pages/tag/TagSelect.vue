@@ -1,6 +1,7 @@
 <template>
   <q-select
     filled
+    :label="label"
     v-model="model"
     use-input
     use-chips
@@ -32,6 +33,12 @@
 import { saveTag } from 'src/api/tag'
 
 export default {
+  props: {
+    label: {
+      type: String,
+      required: false
+    }
+  },
   name: 'TagSelect',
   data () {
     return {

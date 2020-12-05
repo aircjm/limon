@@ -26,23 +26,9 @@
             :rules="[ val => val && val.length > 0 && val.length < 500 || 'Please type something']"
             @keyup.enter="onSubmit"
           />
-          <TagSelect :select.sync="form.tags" />
-          <date-time-picker
-            label="开始时间"
-            :time.sync="form.startTime"
-          />
-          <date-time-picker
-            label="通知时间"
-            :time.sync="form.endTime"
-          />
           <MarkdownEditor
             label="context"
             :context.sync="form.taskDesc"
-          />
-
-          <date-time-picker
-            label="截止时间"
-            :time.sync="form.dueTime"
           />
           <q-uploader
             color="teal-10"
@@ -74,9 +60,25 @@
         </q-form>
       </q-card-section>
     </q-card>
-    <div class="col-3 column">
+    <div class="col-md-3 col-sm-12 column">
       <div class="col">
-        1
+        <TagSelect
+          label="标签"
+          :select.sync="form.tags"
+        />
+        <date-time-picker
+          label="开始时间"
+          :time.sync="form.startTime"
+        />
+        <date-time-picker
+          label="通知时间"
+          :time.sync="form.endTime"
+        />
+
+        <date-time-picker
+          label="截止时间"
+          :time.sync="form.dueTime"
+        />
       </div>
       <div class="col">
         2

@@ -162,14 +162,25 @@ export default {
     uploadFormat (files, response) {
       const respJson = JSON.parse(response)
       console.log(respJson)
+
+      const succMap = {}
+      const fileList = respJson.data
+
+      for (let i = fileList.length - 1; i >= 0; i--) {
+        const fileVo = fileList[i]
+        console.log(JSON.stringify(fileVo))
+        succMap[fileVo.fileName] = fileVo.url
+      }
+
       const result = {
         msg: respJson.msg,
         code: 0,
         data: {
           errFiles: [],
-          succMap: {}
+          succMap: succMap
         }
       }
+
       return JSON.stringify(result)
     },
     updateContextMd (contextMd) {
