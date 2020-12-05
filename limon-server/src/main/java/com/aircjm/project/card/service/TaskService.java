@@ -1,6 +1,7 @@
 package com.aircjm.project.card.service;
 
 import com.aircjm.project.card.domain.Task;
+import com.aircjm.project.card.domain.TaskAttachment;
 import com.aircjm.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.project.card.vo.response.TaskDetailResponse;
@@ -47,10 +48,9 @@ public interface TaskService extends IService<Task> {
 
     /**
      * 添加附件
-     *
-     * @param files    文件
+     *  @param files    文件
      * @param taskId   taskId
      * @param username 操作用户
      */
-    void uploadFileList(List<MultipartFile> files, Long taskId, String username);
+    List<TaskAttachment> uploadFileList(List<MultipartFile> files, Long taskId, String username);
 }

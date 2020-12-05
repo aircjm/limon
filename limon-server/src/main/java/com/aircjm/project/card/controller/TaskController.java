@@ -84,7 +84,6 @@ public class TaskController {
      */
     @PostMapping(value = "/upload")
     public RestResponse uploadFileList(@RequestParam(value = "file[]") List<MultipartFile> files, @RequestParam(value = "id") Long id) {
-        taskService.uploadFileList(files, id, SecurityUtils.getUsername());
-        return RestResponse.successEmpty();
+        return RestResponse.successData(taskService.uploadFileList(files, id, SecurityUtils.getUsername()));
     }
 }

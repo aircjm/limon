@@ -3,9 +3,9 @@ package com.aircjm.project.card.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.aircjm.common.utils.DateUtils;
 import com.aircjm.common.utils.StringUtils;
-import com.aircjm.framework.config.ServerConfig;
 import com.aircjm.framework.message.MessageService;
 import com.aircjm.project.card.domain.Task;
+import com.aircjm.project.card.domain.TaskAttachment;
 import com.aircjm.project.card.mapper.RecordMapper;
 import com.aircjm.project.card.service.TaskService;
 import com.aircjm.project.card.vo.request.QueryTaskRequest;
@@ -105,9 +105,18 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     }
 
     @Override
-    public void uploadFileList(List<MultipartFile> files, Long taskId, String username) {
-        files.forEach(file -> {
-            aliyunOssService.putObjectGetUrl(file, file.getOriginalFilename());
-        });
+    public List<TaskAttachment> uploadFileList(List<MultipartFile> files, Long taskId, String username) {
+        List<TaskAttachment> attachmentList = files.stream().map(file -> {
+            String url = aliyunOssService.putObjectGetUrl(file, file.getOriginalFilename());
+            TaskAttachment taskAttachment = new TaskAttachment();
+            taskAttachment.setUrl(url);
+            taskAttachment.setFileName(file.getOriginalFilename());
+            taskAttachment.setTaskId(taskId);
+            return taskAttachment;
+        }).collect(Collectors.toList());
+        // todo 关联taskId和文件url
+
+        return attachmentList;
+
     }
 }

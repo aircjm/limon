@@ -754,11 +754,9 @@ drop table if exists lm_tag;
 create table lm_tag
 (
     id          bigint(20)   not null auto_increment comment 'id',
-    name        varchar(500) not null default '' comment '名称',
-    type        tinyint(1)   NOT NULL DEFAULT 0 comment '类型 0markdown 1html',
+    name        varchar(500) not null default '' comment '标签名称',
+    color        varchar(50)   NOT NULL DEFAULT 0 comment '颜色',
     status      tinyint(1)   NOT NULL DEFAULT 0 comment '状态',
-    note_id     bigint(20)   NOT NULL DEFAULT 0 comment '笔记id',
-    position    float                 DEFAULT 0.00 comment '位置',
     create_time DATETIME     NOT NULL DEFAULT current_timestamp comment '创建时间',
     update_time DATETIME     NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp comment '更新时间',
     creator     int          null comment '创建人',
@@ -767,6 +765,25 @@ create table lm_tag
     primary key (id)
 ) engine = innodb
   auto_increment = 1 comment = '标签表';
+
+
+drop table if exists lm_task_attachment;
+create table lm_task_attachment
+(
+    id          bigint(20)   not null auto_increment comment 'id',
+    file_name       varchar(200) not null default '' comment '文件名称',
+    task_id     bigint(20)   NOT NULL DEFAULT 0 comment '任务id',
+    type        tinyint(1)   NOT NULL DEFAULT 0 comment '类型 0markdown 1html',
+    status      tinyint(1)   NOT NULL DEFAULT 0 comment '状态',
+    file_url        varchar(1000) not null default '' comment '文件url',
+    create_time DATETIME     NOT NULL DEFAULT current_timestamp comment '创建时间',
+    update_time DATETIME     NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp comment '更新时间',
+    creator     int          null comment '创建人',
+    modifier    int          null comment '修改人',
+    deleted     int                   default 0 null comment '逻辑删除标识(0.未删除,1.已删除)',
+    primary key (id)
+) engine = innodb
+  auto_increment = 1 comment = 'task附件表';
 
 
 

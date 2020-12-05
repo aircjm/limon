@@ -48,10 +48,10 @@ mybatis-plus:
     mapper-locations: classpath*:mybatis/**/*Mapper.xml
 
 oss:
-    endpoint: https://oss-cn-shenzhen.aliyuncs.com
-    accessKeyId: LTAI4GDZpCFa7NtQY5RC7Qw3
-    accessKeySecret: bauRCDzYWcgvDvs0icLQLEhcHxV9TW
-    bucketName: ferryblog
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    accessKeyId: LTAI4G2nebsvMQEiFfcXrqmo
+    accessKeySecret: UjFSzAz2NX7X1j1snGcvLckERLUW
+    bucketName: mingdrive
     filePath: dash/
 
 # Swagger配置
@@ -86,9 +86,8 @@ aircjm:
     # 名称
     name: Limon
     # 版本
-    version: 1.0.0
     # 版权年份
-    copyrightYear: 2020
+    versionx    copyrightYear: 2020
     # 实例演示开关
     demoEnabled: true
     # 文件路径 示例（ Windows配置D:/aircjm/uploadPath，Linux配置 /home/aircjm/uploadPath）

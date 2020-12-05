@@ -23,10 +23,13 @@ public class TaskAttachment extends DbBaseEntity<TaskAttachment> {
 
     private Long taskId;
 
-    @Builder.Default
-    @ApiModelProperty(value = "附件类型，支持html1，markdown0")
-    private Integer type = 0;
+    @ApiModelProperty(value = "附件类型 文件后缀名")
+    private String fileType;
+
+    @ApiModelProperty(value = "文件名")
+    private  String fileName;
 
     @ApiModelProperty(value = "附件url")
     private String url;
+
 }
