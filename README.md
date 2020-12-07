@@ -21,6 +21,12 @@ limon 项目旨在打造一个以最简便的方式搭建简单、稳定和可�
 ## 注意事项
 - 需要指定对应的DB数据库
 
+## 备份还原
+```shell script
+docker exec limon-mysql /usr/bin/mysqldump -u root --password=root dice > backup.sql
+```
+
+
 
 ## 特别鸣谢
 
@@ -35,3 +41,9 @@ limon 项目旨在打造一个以最简便的方式搭建简单、稳定和可�
 ## 授权许可
 
 本项目采用 MIT 开源授权许可证，完整的授权说明已放置在 [LICENSE](https://github.com/aircjm/limon/blob/master/LICENSE) 文件中。
+
+
+## 参考
+```shell script
+docker exec mysql_container_name /usr/bin/mysqldump -u user_name --password=user_password db_name > backup.sql
+```

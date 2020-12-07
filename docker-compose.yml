@@ -1,7 +1,7 @@
 version: '3'
 services:
   limon-mysql:
-    container_name: mysql
+    container_name: limon-mysql
     build:
       context: ./
       dockerfile: docker/mysql/mysql-Dockerfile
