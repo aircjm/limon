@@ -39,5 +39,4 @@ public class EmailServiceImpl implements MessageService {
         }
         MailUtil.send(getMailAccount(), sysUser.getEmail(), title, context, false);
     }
-
 }
