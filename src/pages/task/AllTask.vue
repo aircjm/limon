@@ -27,15 +27,51 @@
           v-for="(task) in data"
           :key="task"
         >
-          <q-item-section><q-checkbox :value="task.status === 2" /></q-item-section>
           <q-item-section>
-            {{ task.title }}
+            <q-item-label><q-checkbox :value="task.status === 2" /> </q-item-label>
           </q-item-section>
-          <q-item-section avatar>
-            <q-icon
-              color="primary"
-              name="edit"
-            />
+          <q-item-section>
+            <q-item-label>{{ task.endTime }}</q-item-label>
+            <q-item-label>{{ task.title }}</q-item-label>
+          </q-item-section>
+
+          <q-item-section
+            side
+            top
+          >
+            <q-item-label caption>
+              5 min ago
+            </q-item-label>
+          </q-item-section>
+          <q-item-section
+            top
+            side
+          >
+            <div class="text-grey-8 q-gutter-xs">
+              <q-btn
+                class="gt-xs"
+                size="12px"
+                flat
+                dense
+                round
+                icon="delete"
+              />
+              <q-btn
+                class="gt-xs"
+                size="12px"
+                flat
+                dense
+                round
+                icon="done"
+              />
+              <q-btn
+                size="12px"
+                flat
+                dense
+                round
+                icon="more_vert"
+              />
+            </div>
           </q-item-section>
         </q-item>
       </q-list>
