@@ -2,6 +2,7 @@ package com.aircjm.project.card.vo.response;
 
 
 import com.aircjm.framework.aspectj.lang.annotation.Excel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
@@ -10,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 /**
  * @author aircjm
@@ -41,6 +44,10 @@ public class TaskDetailResponse {
 
 
     private String listId;
+
+    @ApiModelProperty(value = "截止时间")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dueTime;
 
 
     @Builder.Default
