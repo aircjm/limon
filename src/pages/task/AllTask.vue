@@ -19,16 +19,45 @@
         </template>
       </q-input>
     </div>
+    <div class="q-gutter-md">
+      <q-form>
+        <q-field
+          label="title"
+          style="max-width: 500px"
+        >
+          <q-input
+            v-model="searchForm.title"
+          />
+        </q-field>
+
+        <div class="content-end">
+          <q-btn
+            label="Search"
+            type="submit"
+            color="primary"
+          />
+          <q-btn
+            label="Reset"
+            type="reset"
+            color="primary"
+            flat
+            class="q-ml-sm"
+          />
+        </div>
+      </q-form>
+    </div>
     <div class="q-pa-md q-gutter-md">
       <q-list>
         <q-item
           clickable
           v-ripple
           v-for="(task) in data"
-          :key="task"
+          :key="task.id"
         >
           <q-item-section>
-            <q-item-label><q-checkbox :value="task.status === 2" /> </q-item-label>
+            <q-item-label>
+              <q-checkbox :value="task.status === 2" />
+            </q-item-label>
           </q-item-section>
           <q-item-section>
             <q-item-label>{{ task.endTime }}</q-item-label>
@@ -40,7 +69,7 @@
             top
           >
             <q-item-label caption>
-              5 min ago
+              {{ task.dueTime }}
             </q-item-label>
           </q-item-section>
           <q-item-section
@@ -55,6 +84,16 @@
                 dense
                 round
                 icon="delete"
+                @click="deleteTask(task)"
+              />
+              <q-btn
+                class="gt-xs"
+                size="12px"
+                flat
+                dense
+                round
+                icon="date"
+                @click="setEndTime(task)"
               />
               <q-btn
                 class="gt-xs"
@@ -76,17 +115,53 @@
         </q-item>
       </q-list>
     </div>
-
-    <q-dialog v-model="loading" />
+    <q-dialog
+      v-model="setTimeForm.loading"
+      persistent
+      style="min-width: 300px"
+    >
+      <q-card>
+        <q-toolbar>
+          <q-toolbar-title><span class="text-weight-bold">设置截至时间</span></q-toolbar-title>
+          <q-btn
+            flat
+            round
+            dense
+            icon="close"
+            v-close-popup
+          />
+        </q-toolbar>
+        <q-card-section>
+          <date-time-picker :time.sync="setTimeForm.task.dueTime" />
+        </q-card-section>
+        <q-card-actions
+          align="right"
+          class="text-primary"
+        >
+          <q-btn
+            flat
+            label="submit"
+            icon="primary"
+            @click="saveTaskDetail"
+          />
+          <q-btn
+            flat
+            label="Close"
+            v-close-popup
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
 <script>
 import { getTaskList, saveTask } from 'src/api/task'
+import DateTimePicker from 'components/form/DateTimePicker'
 
 export default {
-  name: 'TaskList',
-  components: {},
+  name: 'AllTask',
+  components: { DateTimePicker },
   data () {
     return {
       title: '',
@@ -98,6 +173,10 @@ export default {
           desc: 'first'
         }
       ],
+      setTimeForm: {
+        loading: false,
+        task: {}
+      },
       form: {
         id: '',
         title: '',
@@ -234,15 +313,24 @@ export default {
         })
       }
     },
+    deleteTask (task) {
+      console.log('删除' + task.id)
+      // 删除任务
+    },
+    setEndTime (task) {
+      console.log('设置时间' + task.id)
+      // 删除任务
+      this.setTimeForm = { loading: true }
+      this.setTimeForm.task = task
+    },
+    saveTaskDetail () {
+      saveTask(this.setTimeForm.task)
+    },
     list () {
-      const { page, rowsPerPage } = this.pagination
-      // const filter = this.filter
-      // get all rows if "All" (0) is selected
-      const fetchCount = rowsPerPage === 0 ? this.pagination.rowsNumber : rowsPerPage
-
+      this.loading = true
       const queryRequest = {
-        size: fetchCount,
-        current: page
+        size: 1000,
+        current: 1
       }
       queryRequest.title = this.searchForm.title
 
