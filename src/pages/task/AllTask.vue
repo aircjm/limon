@@ -21,11 +21,9 @@
     </div>
     <div class="q-gutter-md">
       <q-form>
-        <q-field
-          label="title"
-          style="max-width: 500px"
-        >
+        <q-field style="max-width: 200px">
           <q-input
+            label="title"
             v-model="searchForm.title"
           />
         </q-field>
@@ -47,14 +45,18 @@
       </q-form>
     </div>
     <div class="q-pa-md q-gutter-md">
-      <q-list>
+      <q-list
+        dense
+        bordered
+      >
         <q-item
           clickable
           v-ripple
           v-for="(task) in data"
           :key="task.id"
+          dense
         >
-          <q-item-section>
+          <q-item-section style="width: 40px">
             <q-checkbox
               :value="task.status === 2"
               size="40px"
