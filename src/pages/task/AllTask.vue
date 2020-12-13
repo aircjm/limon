@@ -55,9 +55,10 @@
           :key="task.id"
         >
           <q-item-section>
-            <q-item-label>
-              <q-checkbox :value="task.status === 2" />
-            </q-item-label>
+            <q-checkbox
+              :value="task.status === 2"
+              size="40px"
+            />
           </q-item-section>
           <q-item-section>
             <q-item-label>{{ task.endTime }}</q-item-label>
@@ -92,7 +93,7 @@
                 flat
                 dense
                 round
-                icon="date"
+                icon="timer"
                 @click="setEndTime(task)"
               />
               <q-btn
@@ -323,8 +324,11 @@ export default {
       this.setTimeForm = { loading: true }
       this.setTimeForm.task = task
     },
-    saveTaskDetail () {
-      saveTask(this.setTimeForm.task)
+    async saveTaskDetail () {
+      this.$q.loading.show()
+      await saveTask(this.setTimeForm.task)
+      this.$q.loading.hide()
+      this.setTimeForm.loading = false
     },
     list () {
       this.loading = true
