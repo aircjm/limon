@@ -25,6 +25,7 @@
 
     <div>
       <q-table
+        @request="list"
         :columns="columns"
         :data="data"
         title="Record List"
@@ -54,7 +55,23 @@
             </div>
           </div>
         </template>
-
+        <template v-slot:body-cell-dueTime="props">
+          <q-td
+            :props="props"
+            class="q-gutter-xs action"
+          >
+            <q-chip
+              class="gt-xs"
+              size="12px"
+              text-color="red"
+              icon="event"
+              clickable
+              @click="setEndTime(props.row)"
+            >
+              {{ props.row.dueTime }}
+            </q-chip>
+          </q-td>
+        </template>
         <template v-slot:body-cell-options="props">
           <q-td
             :props="props"
@@ -71,16 +88,54 @@
           </q-td>
         </template>
       </q-table>
+      <q-dialog
+        v-model="setTimeForm.loading"
+        persistent
+        style="min-width: 300px"
+      >
+        <q-card>
+          <q-toolbar>
+            <q-toolbar-title><span class="text-weight-bold">设置截至时间</span></q-toolbar-title>
+            <q-btn
+              flat
+              round
+              dense
+              icon="close"
+              v-close-popup
+            />
+          </q-toolbar>
+          <q-card-section>
+            <date-time-picker :time.sync="setTimeForm.task.dueTime" />
+          </q-card-section>
+          <q-card-actions
+            align="right"
+            class="text-primary"
+          >
+            <q-btn
+              flat
+              label="submit"
+              icon="primary"
+              @click="saveTaskDetail"
+            />
+            <q-btn
+              flat
+              label="Close"
+              v-close-popup
+            />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </div>
   </q-page>
 </template>
 
 <script>
 import { getTaskList, saveTask } from 'src/api/task'
+import DateTimePicker from 'components/form/DateTimePicker'
 
 export default {
   name: 'TaskList',
-  components: { },
+  components: { DateTimePicker },
   data () {
     return {
       title: '',
@@ -110,7 +165,7 @@ export default {
         sortBy: 'desc',
         descending: false,
         page: 1,
-        rowsPerPage: 10,
+        rowsPerPage: 50,
         rowsNumber: 10
       },
       selected: [],
@@ -169,7 +224,11 @@ export default {
         { name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px' }
       ],
       data: [
-      ]
+      ],
+      setTimeForm: {
+        loading: false,
+        task: {}
+      }
     }
   },
   mounted () {
@@ -187,6 +246,16 @@ export default {
           this.list()
         })
       }
+    },
+    setEndTime (task) {
+      this.setTimeForm = { loading: true }
+      this.setTimeForm.task = task
+    },
+    async saveTaskDetail () {
+      this.$q.loading.show()
+      await saveTask(this.setTimeForm.task)
+      this.$q.loading.hide()
+      this.setTimeForm.loading = false
     },
     list () {
       const { page, rowsPerPage } = this.pagination
