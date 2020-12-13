@@ -1,65 +1,67 @@
 <template>
   <q-page class="row">
-    <q-card class="col-md-9 col-sm-12">
-      <q-card-section>
-        <div
-          class="text-h6"
-          v-if="form.id"
-        >
-          Edit Record {{ form.id }}
-        </div>
-        <div
-          class="text-h6"
-          v-else
-        >
-          Add Record {{ form.id }}
-        </div>
-      </q-card-section>
-      <q-separator />
-      <q-card-section>
-        <q-form
-          class="q-gutter-y-md column"
-        >
-          <q-input
-            v-model="form.title"
-            label="title"
-            :rules="[ val => val && val.length > 0 && val.length < 500 || 'Please type something']"
-            @keyup.enter="onSubmit"
-          />
-          <MarkdownEditor
-            label="context"
-            :context.sync="form.taskDesc"
-          />
-          <q-uploader
-            color="teal-10"
-            ref="uploaderRef"
-            style="max-width: 300px"
-            class="full-width"
-            :factory="factoryUpload"
-            hide-upload-btn
-            multiple
-            batch
-          />
-          <div>
-            <q-btn
-              icon="save"
-              label="Submit"
-              type="submit"
-              color="primary"
-              @click="onSubmit"
-            />
-            <q-btn
-              class="mdi-book-cancel"
-              label="Cancel"
-              @click="goBack()"
-              color="primary"
-              flat
-              v-close-popup
-            />
+    <div class="col-md-9 col-sm-12">
+      <q-card>
+        <q-card-section>
+          <div
+            class="text-h6"
+            v-if="form.id"
+          >
+            Edit Record {{ form.id }}
           </div>
-        </q-form>
-      </q-card-section>
-    </q-card>
+          <div
+            class="text-h6"
+            v-else
+          >
+            Add Record {{ form.id }}
+          </div>
+        </q-card-section>
+        <q-separator />
+        <q-card-section>
+          <q-form
+            class="q-gutter-y-md column"
+          >
+            <q-input
+              v-model="form.title"
+              label="title"
+              :rules="[ val => val && val.length > 0 && val.length < 500 || 'Please type something']"
+              @keyup.enter="onSubmit"
+            />
+            <MarkdownEditor
+              label="context"
+              :context.sync="form.taskDesc"
+            />
+            <!--          <q-uploader-->
+            <!--            color="teal-10"-->
+            <!--            ref="uploaderRef"-->
+            <!--            style="max-width: 300px"-->
+            <!--            class="full-width"-->
+            <!--            :factory="factoryUpload"-->
+            <!--            hide-upload-btn-->
+            <!--            multiple-->
+            <!--            batch-->
+            <!--          />-->
+            <div>
+              <q-btn
+                icon="save"
+                label="Submit"
+                type="submit"
+                color="primary"
+                @click="onSubmit"
+              />
+              <q-btn
+                class="mdi-book-cancel"
+                label="Cancel"
+                @click="goBack()"
+                color="primary"
+                flat
+                v-close-popup
+              />
+            </div>
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </div>
     <div class="col-md-3 col-sm-12 column">
       <div class="col">
         <TagSelect
