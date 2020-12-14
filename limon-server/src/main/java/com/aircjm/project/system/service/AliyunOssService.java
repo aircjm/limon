@@ -1,8 +1,8 @@
 package com.aircjm.project.system.service;
 
-import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import com.aircjm.common.exception.CustomException;
+import com.aircjm.common.utils.IdUtils;
 import com.aircjm.project.system.vo.OssFileVo;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.OSSObject;
@@ -88,7 +88,8 @@ public class AliyunOssService {
      */
     private String uploadFileAndGetUrl(InputStream inputStream, String fileName) {
         OSSClient ossClient = null;
-        String objectKey = this.getFileKey(fileName);
+
+        String objectKey = filePath + DateUtil.today() + "/" + IdUtils.getId() + "/" + fileName;
         try {
             ossClient = new OSSClient(this.endpoint, this.accessKeyId, this.accessKeySecret);
             // 创建上传Object的Metadata
@@ -104,7 +105,7 @@ public class AliyunOssService {
             // 设置URL过期时间为10年  3600L * 1000 * 24 * 365 * 10
             Date expiration = new Date(System.currentTimeMillis() + 3600L * 1000 * 24 * 365 * 10);
             // 生成URL
-            URL url = ossClient.generatePresignedUrl(bucketName, filePath + DateUtil.format(DateUtil.date(), DatePattern.PURE_DATETIME_PATTERN) + "/" + fileName, expiration);
+            URL url = ossClient.generatePresignedUrl(bucketName, objectKey, expiration);
             return url.toString();
         } catch (Exception e) {
             log.warn("上传文文件至oss,发生异常:", e);
@@ -142,10 +143,6 @@ public class AliyunOssService {
      */
     public String putObjectGetUrl(InputStream inputStream, String fileName) {
         return uploadFileAndGetUrl(inputStream, fileName);
-    }
-
-    private String getFileKey(String fileName) {
-        return filePath + fileName;
     }
 
     public void downLoadObject(HttpServletRequest request, HttpServletResponse response) {
