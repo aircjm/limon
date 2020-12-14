@@ -23,8 +23,9 @@ export default {
   watch: {
     context: function (val) {
       console.log(val)
-      if (!this.contextMd) {
+      if (!this.contextMd && !this.initContext) {
         this.vditor.setValue(val)
+        this.initContext = true
       }
     }
   },
@@ -35,6 +36,7 @@ export default {
           token: getToken()
         }
       },
+      initContext: false,
       contextMd: this.context,
       vditor: null,
       toolbar: [
