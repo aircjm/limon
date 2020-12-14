@@ -1,5 +1,7 @@
 package com.aircjm.project.system.service;
 
+import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.date.DateUtil;
 import com.aircjm.common.exception.CustomException;
 import com.aircjm.project.system.vo.OssFileVo;
 import com.aliyun.oss.OSSClient;
@@ -102,7 +104,7 @@ public class AliyunOssService {
             // 设置URL过期时间为10年  3600L * 1000 * 24 * 365 * 10
             Date expiration = new Date(System.currentTimeMillis() + 3600L * 1000 * 24 * 365 * 10);
             // 生成URL
-            URL url = ossClient.generatePresignedUrl(bucketName, filePath + fileName, expiration);
+            URL url = ossClient.generatePresignedUrl(bucketName, filePath + DateUtil.format(DateUtil.date(), DatePattern.PURE_DATETIME_PATTERN) + "/" + fileName, expiration);
             return url.toString();
         } catch (Exception e) {
             log.warn("上传文文件至oss,发生异常:", e);
@@ -126,7 +128,7 @@ public class AliyunOssService {
             InputStream inputStream = file.getInputStream();
             return uploadFileAndGetUrl(inputStream, fileName);
         } catch (IOException e) {
-            log.warn("上传文文件至oss,发生IOException异常:{}", e);
+            log.warn("上传文文件至oss,发生IOException异常: ", e);
             throw new CustomException(e.getMessage());
         }
     }
@@ -169,10 +171,10 @@ public class AliyunOssService {
             }
             out.flush();
         } catch (IOException e) {
-            log.warn("oss下载文件出现 IOException 异常：{}", e);
+            log.warn("oss下载文件出现 IOException 异常： ", e);
             throw new CustomException(e.getMessage());
         } catch (Exception e) {
-            log.warn("oss下载文件出现 Exception 异常：{}", e);
+            log.warn("oss下载文件出现 Exception 异常：", e);
             throw new CustomException(e.getMessage());
         } finally {
             ossClient.shutdown();
