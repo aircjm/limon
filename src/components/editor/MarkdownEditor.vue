@@ -22,10 +22,11 @@ export default {
   },
   watch: {
     context: function (val) {
-      console.log(val)
       if (!this.contextMd && !this.initContext) {
+        console.log('初始化 vditor 数据: ' + val)
         this.vditor.setValue(val)
         this.initContext = true
+        console.log('初始化 vditor 数据 完成')
       }
     }
   },
