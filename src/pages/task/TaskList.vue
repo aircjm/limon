@@ -72,6 +72,21 @@
             </q-chip>
           </q-td>
         </template>
+        <template v-slot:body-cell-status="props">
+          <q-td
+            :props="props"
+            class="q-gutter-xs action"
+          >
+            <q-chip
+              class="gt-xs"
+              size="12px"
+              text-color="red"
+              clickable
+            >
+              {{ getStatus(props.row.status) }}
+            </q-chip>
+          </q-td>
+        </template>
         <template v-slot:body-cell-options="props">
           <q-td
             :props="props"
@@ -217,7 +232,7 @@ export default {
         },
         { name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px' },
         { name: 'context', label: 'context', field: 'context', align: 'left' },
-        { name: 'status', label: '状态', field: 'status', align: 'left', style: 'width: 20px' },
+        { name: 'status', label: '状态', field: 'status', align: 'center', style: 'width: 20px' },
         { name: 'dueTime', label: '截止时间（通知）', field: 'dueTime', align: 'left', style: 'width:100px' },
         { name: 'startTime', label: '开始时间', field: 'startTime', align: 'left', style: 'width:100px' },
         { name: 'endTime', label: '结束时间', field: 'endTime', align: 'left', style: 'width:100px' },
@@ -250,6 +265,13 @@ export default {
     setEndTime (task) {
       this.setTimeForm = { loading: true }
       this.setTimeForm.task = task
+    },
+    getStatus (status) {
+      if (status === 0) {
+        return '待处理'
+      } else {
+        return '已完成'
+      }
     },
     async saveTaskDetail () {
       this.$q.loading.show()
