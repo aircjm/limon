@@ -58,7 +58,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <!--<q-drawer
       show-if-above
       v-model="leftDrawerOpen"
       bordered
@@ -77,7 +77,7 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer>-->
 
     <q-page-container>
       <router-view />
@@ -86,7 +86,6 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
@@ -123,7 +122,6 @@ const linksData = [
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
   data () {
     return {
       leftDrawerOpen: true,
