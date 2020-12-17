@@ -30,9 +30,9 @@
             <MarkdownEditor
               label="context"
               v-if="this.editorFlag"
-            :context.sync="form.taskDesc"
-          />
-          <!--          <q-uploader-->
+              :context.sync="form.taskDesc"
+            />
+            <!--          <q-uploader-->
             <!--            color="teal-10"-->
             <!--            ref="uploaderRef"-->
             <!--            style="max-width: 300px"-->
@@ -118,7 +118,8 @@ export default {
         taskDesc: null
       },
       filter: '',
-      loading: false
+      loading: false,
+      editorFlag: false
     }
   },
   async created () {
@@ -138,7 +139,9 @@ export default {
   methods: {
     onSubmit () {
       saveTask(this.form).then(res => {
-        this.$router.push('/task')
+        if (res.code === 200) {
+          this.$router.push('/task')
+        }
       })
     },
     resetForm () {
