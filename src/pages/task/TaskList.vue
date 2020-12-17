@@ -231,7 +231,7 @@ export default {
           // headerClasses: 'my-special-class'
         },
         { name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px' },
-        { name: 'context', label: 'context', field: 'context', align: 'left' },
+        { name: 'context', label: 'context', field: 'taskDesc', align: 'left' },
         { name: 'status', label: '状态', field: 'status', align: 'center', style: 'width: 20px' },
         { name: 'dueTime', label: '截止时间（通知）', field: 'dueTime', align: 'left', style: 'width:100px' },
         { name: 'startTime', label: '开始时间', field: 'startTime', align: 'left', style: 'width:100px' },

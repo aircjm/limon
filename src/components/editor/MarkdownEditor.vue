@@ -20,16 +20,6 @@ export default {
       default: ''
     }
   },
-  watch: {
-    context: function (val) {
-      if (!this.contextMd && !this.initContext) {
-        console.log('初始化 vditor 数据: ' + val)
-        this.vditor.setValue(val)
-        this.initContext = true
-        console.log('初始化 vditor 数据 完成')
-      }
-    }
-  },
   data: function () {
     return {
       config: {
@@ -118,6 +108,7 @@ export default {
         mode: 'ir',
         toolbar: this.toolbar,
         input: this.updateContextMd,
+        value: this.contextMd,
         preview: {
           hljs: {
             style: 'native',

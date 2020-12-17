@@ -29,9 +29,10 @@
             />
             <MarkdownEditor
               label="context"
-              :context.sync="form.taskDesc"
-            />
-            <!--          <q-uploader-->
+              v-if="this.editorFlag"
+            :context.sync="form.taskDesc"
+          />
+          <!--          <q-uploader-->
             <!--            color="teal-10"-->
             <!--            ref="uploaderRef"-->
             <!--            style="max-width: 300px"-->
@@ -124,9 +125,14 @@ export default {
     const id = this.$route.query.id
     if (id) {
       this.form.id = id
+      this.$q.loading.show()
       await getTaskDetail(id).then(res => {
         this.form = res.data
+        this.editorFlag = true
       })
+      this.$q.loading.hide()
+    } else {
+      this.editorFlag = true
     }
   },
   methods: {
