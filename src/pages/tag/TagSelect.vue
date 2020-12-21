@@ -34,8 +34,13 @@ import { saveTag } from 'src/api/tag'
 
 export default {
   props: {
+    tagList: {
+      default: [],
+      required: false
+    },
     label: {
       type: String,
+      default: '',
       required: false
     }
   },
@@ -45,10 +50,6 @@ export default {
       readonly: false,
       model: [],
       options: [
-        {
-          label: 'default',
-          value: -1
-        }
       ],
       filterOptions: []
     }
@@ -60,8 +61,7 @@ export default {
   },
   methods: {
     updateTags () {
-      this.$emit('update:tags', this.model)
-      console.log(this.model)
+      this.$emit('update:tagList', this.model)
     },
     async createValue (val, done) {
       this.readonly = true

@@ -1,6 +1,9 @@
 <template>
   <q-page class="column">
-    <div style="height: 65px">
+    <div
+      style="height: 65px"
+      class="q-pa-sm q-ma-sm"
+    >
       <q-input
         v-model="title"
         style="width: 300px"
@@ -15,7 +18,7 @@
         </template>
       </q-input>
     </div>
-    <div class="q-gutter-md">
+    <div class="q-pa-md">
       <q-btn
         icon="add"
         label="新增"
@@ -99,7 +102,13 @@
             >
               编辑
             </router-link>
-            <a class="text-primary">标记</a>
+            <q-btn
+              class="text-primary"
+              v-if="props.row.status == 0"
+              @click="doneTask(props.row)"
+            >
+              已完成
+            </q-btn>
           </q-td>
         </template>
       </q-table>
@@ -250,6 +259,22 @@ export default {
     this.list()
   },
   methods: {
+    doneTask (task) {
+      task.status = 1
+      console.log(task)
+      saveTask(task).then(res => {
+        this.list()
+        this.$q.dialog({
+          title: '提交成功',
+          message: '是否回退处理',
+          position: 'bottom'
+        }).onOk(() => {
+          task.status = 0
+          saveTask(task)
+          this.list()
+        })
+      })
+    },
     edit (id) {
       const path = '/task/edit?id==' + id
       this.$route.push(path)

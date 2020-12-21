@@ -116,6 +116,7 @@ module.exports = function (/* ctx */) {
         'SessionStorage',
         'Cookies',
         'Loading',
+        'Dialog',
         'Notify'
       ]
     },

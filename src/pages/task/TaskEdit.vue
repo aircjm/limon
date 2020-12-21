@@ -67,7 +67,7 @@
       <div class="col">
         <TagSelect
           label="标签"
-          :select.sync="form.tags"
+          :tag-list.sync="form.tagList"
         />
         <date-time-picker
           label="开始时间"
@@ -115,6 +115,7 @@ export default {
         dueTime: null,
         startTime: null,
         endTime: null,
+        tagList: null,
         taskDesc: null
       },
       filter: '',
