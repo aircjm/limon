@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import lombok.*;
 
+/**
+ * @author aircjm
+ */
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "标签")
 @Data

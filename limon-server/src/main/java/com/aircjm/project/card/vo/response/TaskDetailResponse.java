@@ -2,6 +2,7 @@ package com.aircjm.project.card.vo.response;
 
 
 import com.aircjm.framework.aspectj.lang.annotation.Excel;
+import com.aircjm.project.tag.domain.Tag;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -13,6 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author aircjm
@@ -53,5 +55,8 @@ public class TaskDetailResponse {
     @Builder.Default
     @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
     private Integer type = 0;
+
+
+    private List<Tag> tagList;
 
 }
