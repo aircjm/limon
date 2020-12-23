@@ -57,7 +57,6 @@ module.exports = function (/* ctx */) {
       // showProgress: false,
       // gzip: true,
       // analyze: true,
-
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
 
@@ -69,6 +68,9 @@ module.exports = function (/* ctx */) {
           loader: 'eslint-loader',
           exclude: /node_modules/
         })
+        if (cfg.mode === 'production') {
+          cfg.output.publicPath = process.env.VUE_APP_PUBLIC_PATH || '/'
+        }
       }
     },
 
