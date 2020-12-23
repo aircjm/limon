@@ -19,7 +19,6 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-
       'axios'
     ],
 
@@ -84,7 +83,7 @@ module.exports = function (/* ctx */) {
           target: 'http://localhost:8085',
           changeOrigin: true,
           pathRewrite: {
-            '^/api': '/'
+            '^/api': ''
           }
         }
       }
@@ -137,7 +136,7 @@ module.exports = function (/* ctx */) {
       manifest: {
         name: 'ban',
         short_name: 'ban',
-        description: 'A Quasar Framework app',
+        description: 'A Self Space',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

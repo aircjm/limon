@@ -73,6 +73,6 @@ export default async ({ app, router, store, Vue }) => {
   )
 
   Vue.prototype.$axios = axios
-  Vue.prototype.$axios.defaults.baseURL = 'api'
+  Vue.prototype.$axios.defaults.baseURL = '/api'
   Vue.prototype.$axios.defaults.timeout = 150000
 }
