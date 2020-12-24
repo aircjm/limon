@@ -69,7 +69,7 @@ module.exports = function (/* ctx */) {
           exclude: /node_modules/
         })
         if (cfg.mode === 'production') {
-          cfg.output.publicPath = process.env.VUE_APP_PUBLIC_PATH || '/'
+          cfg.output.publicPath = process.env.VUE_APP_PUBLIC_PATH + '/' || '/'
         }
       }
     },
