@@ -8,14 +8,12 @@
         placeholder="Please Input Task"
       >
         <template v-slot:append>
-          <q-btn
-            name="add"
-            @click.native="saveTitle"
-          />
-          <q-icon
-            name="add"
-            @click.native="saveTitle"
-          />
+          <q-btn>
+            <q-icon
+              name="add"
+              @click.native="saveTitle"
+            />
+          </q-btn>
         </template>
       </q-input>
     </div>
@@ -48,74 +46,72 @@
       <q-list
         dense
         bordered
+        class="rounded-borders"
+        style="max-width: 650px"
       >
-        <q-item
-          clickable
-          v-ripple
+        <div
           v-for="(task) in data"
           :key="task.id"
-          dense
         >
-          <q-item-section style="width: 40px">
-            <q-checkbox
-              :value="task.status === 2"
-              size="40px"
-            />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>{{ task.endTime }}</q-item-label>
-            <q-item-label>{{ task.title }}</q-item-label>
-          </q-item-section>
+          <q-item
+            tag="label"
+            v-ripple
+          >
+            <q-item-section
+              side
+              top
+            >
+              <q-checkbox v-model="task.status" />
+            </q-item-section>
 
-          <q-item-section
-            side
-            top
-          >
-            <q-item-label caption>
-              {{ task.dueTime }}
-            </q-item-label>
-          </q-item-section>
-          <q-item-section
-            top
-            side
-          >
-            <div class="text-grey-8 q-gutter-xs">
-              <q-btn
-                class="gt-xs"
-                size="12px"
-                flat
-                dense
-                round
-                icon="delete"
-                @click="deleteTask(task)"
-              />
-              <q-btn
-                class="gt-xs"
-                size="12px"
-                flat
-                dense
-                round
-                icon="timer"
-                @click="setEndTime(task)"
-              />
-              <q-btn
-                class="gt-xs"
-                size="12px"
-                flat
-                dense
-                round
-                icon="done"
-              />
-              <q-btn
-                size="12px"
-                flat
-                dense
-                round
-                icon="more_vert"
-              />
-            </div>
-          </q-item-section>
-        </q-item>
+            <q-item-section>
+              <q-item-label>{{ task.title }}</q-item-label>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>{{ task.dueTime }}</q-item-label>
+            </q-item-section>
+            <q-item-section
+              top
+              side
+            >
+              <div class="text-grey-8 q-gutter-xs">
+                <q-btn
+                  class="gt-xs"
+                  size="12px"
+                  flat
+                  dense
+                  round
+                  icon="delete"
+                  @click="deleteTask(task)"
+                />
+                <q-btn
+                  class="gt-xs"
+                  size="12px"
+                  flat
+                  dense
+                  round
+                  icon="timer"
+                  @click="setEndTime(task)"
+                />
+                <q-btn
+                  class="gt-xs"
+                  size="12px"
+                  flat
+                  dense
+                  round
+                  icon="done"
+                />
+                <q-btn
+                  size="12px"
+                  flat
+                  dense
+                  round
+                  icon="more_vert"
+                />
+              </div>
+            </q-item-section>
+          </q-item>
+        </div>
       </q-list>
     </div>
     <q-dialog
