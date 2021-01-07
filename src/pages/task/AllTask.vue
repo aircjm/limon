@@ -18,29 +18,27 @@
       </q-input>
     </div>
     <div class="q-gutter-md">
-      <q-form>
-        <q-field style="max-width: 200px">
-          <q-input
-            label="title"
-            v-model="searchForm.title"
-          />
-        </q-field>
+      <q-field style="max-width: 200px">
+        <q-input
+          label="title"
+          v-model="searchForm.title"
+        />
+      </q-field>
 
-        <div class="content-end">
-          <q-btn
-            label="Search"
-            type="submit"
-            color="primary"
-          />
-          <q-btn
-            label="Reset"
-            type="reset"
-            color="primary"
-            flat
-            class="q-ml-sm"
-          />
-        </div>
-      </q-form>
+      <div class="content-end">
+        <q-btn
+          label="Search"
+          type="submit"
+          color="primary"
+        />
+        <q-btn
+          label="Reset"
+          type="reset"
+          color="primary"
+          flat
+          class="q-ml-sm"
+        />
+      </div>
     </div>
     <div class="q-pa-md q-gutter-md">
       <q-list
@@ -50,7 +48,7 @@
         style="max-width: 650px"
       >
         <div
-          v-for="(task) in data"
+          v-for="(task) in tasks"
           :key="task.id"
         >
           <q-item
@@ -65,10 +63,27 @@
             </q-item-section>
 
             <q-item-section>
-              <q-item-label>{{ task.title }}</q-item-label>
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>{{ task.dueTime }}</q-item-label>
+              <q-item-label
+                style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"
+                :class="{ 'done': task.status == 9}"
+                class="taskStr"
+              >
+                {{ task.title }}
+              </q-item-label>
+              <q-item-label
+                side
+                top
+              >
+                <q-badge
+                  transparent
+                  align="middle"
+                  color="red"
+                  v-if="task.dueTime"
+                >
+                  <q-icon name="timer" />
+                  {{ task.dueTime }}
+                </q-badge>
+              </q-item-label>
             </q-item-section>
             <q-item-section
               top
@@ -100,14 +115,21 @@
                   dense
                   round
                   icon="done"
+                  v-if="task.status != 9"
+                  @click="doneTask(task)"
                 />
-                <q-btn
-                  size="12px"
-                  flat
-                  dense
-                  round
-                  icon="more_vert"
-                />
+
+                <router-link :to="`/task/edit?id=${task.id}`">
+                  <template>
+                    <q-btn
+                      size="12px"
+                      flat
+                      dense
+                      round
+                      icon="more_vert"
+                    />
+                  </template>
+                </router-link>
               </div>
             </q-item-section>
           </q-item>
@@ -293,7 +315,7 @@ export default {
           style: 'width: 100px'
         }
       ],
-      data: []
+      tasks: []
     }
   },
   mounted () {
@@ -322,6 +344,18 @@ export default {
       this.setTimeForm = { loading: true }
       this.setTimeForm.task = task
     },
+    // 完成任务
+    doneTask (updatedTask) {
+      for (const i in this.tasks) {
+        if (this.tasks[i].id === updatedTask.id) {
+          updatedTask.status = 9
+          saveTask(updatedTask)
+          this.tasks.splice(i, 1)
+          this.tasks.push(updatedTask)
+          break
+        }
+      }
+    },
     async saveTaskDetail () {
       this.$q.loading.show()
       await saveTask(this.setTimeForm.task)
@@ -340,7 +374,7 @@ export default {
 
       // fetch data from "server"
       getTaskList(queryRequest).then(res => {
-        this.data = res.data.records
+        this.tasks = res.data.records
       })
       // ...and turn of loading indicator
       this.loading = false
@@ -367,5 +401,8 @@ export default {
 </script>
 
 <style scoped>
-
+.taskStr.done {
+  text-decoration: line-through;
+  color: rgba(0,0,0,.36);
+}
 </style>

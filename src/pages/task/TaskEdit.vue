@@ -98,6 +98,7 @@ import { getTaskDetail, saveTask } from 'src/api/task'
 import TagSelect from 'pages/tag/TagSelect'
 import DateTimePicker from 'components/form/DateTimePicker'
 import MarkdownEditor from 'components/editor/MarkdownEditor'
+import { Notify } from 'quasar'
 
 export default {
   name: 'TaskEdit',
@@ -109,30 +110,29 @@ export default {
       date: null,
       openDialog: false,
       form: {
-        id: null,
-        title: '',
-        type: null,
-        dueTime: null,
-        startTime: null,
-        endTime: null,
-        tagList: null,
-        taskDesc: null
       },
       filter: '',
       loading: false,
       editorFlag: false
     }
   },
-  async created () {
+  watch: {
+    // form: function (oldVal, newVal) {
+    //   if (newVal.id && this.editorFlag) {
+    //     debounce(this.autoSave(), 5000)
+    //   }
+    // }
+  },
+  created () {
     const id = this.$route.query.id
     if (id) {
       this.form.id = id
       this.$q.loading.show()
-      await getTaskDetail(id).then(res => {
+      getTaskDetail(id).then(res => {
         this.form = res.data
+        this.$q.loading.hide()
         this.editorFlag = true
       })
-      this.$q.loading.hide()
     } else {
       this.editorFlag = true
     }
@@ -142,6 +142,15 @@ export default {
       saveTask(this.form).then(res => {
         if (res.code === 200) {
           this.$router.push('/task')
+        }
+      })
+    },
+    autoSave () {
+      saveTask(this.form).then(res => {
+        if (res.code === 200) {
+          Notify.create({
+            message: '自动更新成功'
+          })
         }
       })
     },

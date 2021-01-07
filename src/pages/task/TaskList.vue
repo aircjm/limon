@@ -77,6 +77,14 @@
         </template>
         <template v-slot:body-cell-status="props">
           <q-td
+            style="width: 200px"
+            :props="props"
+          >
+            {{ getStatus(props.row.title) }}
+          </q-td>
+        </template>
+        <template v-slot:body-cell-status="props">
+          <q-td
             :props="props"
             class="q-gutter-xs action"
           >

@@ -1,14 +1,14 @@
-import { Cookies } from 'quasar'
+import { LocalStorage } from 'quasar'
 const TokenKey = 'token'
 
 export function getToken () {
-  return Cookies.get(TokenKey)
+  return LocalStorage.getItem(TokenKey)
 }
 
 export function setToken (token) {
-  return Cookies.set(TokenKey, token)
+  return LocalStorage.set(TokenKey, token)
 }
 
 export function removeToken () {
-  return Cookies.remove(TokenKey)
+  return LocalStorage.remove(TokenKey)
 }
