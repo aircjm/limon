@@ -80,6 +80,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     @Override
     public Page<TaskDetailResponse> list(QueryTaskRequest request) {
         LambdaQueryWrapper<Task> wrapper = new QueryWrapper<Task>().lambda()
+                .orderByDesc(Task::getStatus)
                 .orderByDesc(Task::getId)
                 .like(StringUtils.isNotEmpty(request.getTitle()), Task::getTitle, request.getTitle())
                 .eq(Objects.nonNull(request.getStatus()), Task::getStatus, request.getStatus());
