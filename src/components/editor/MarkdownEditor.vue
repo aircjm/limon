@@ -1,10 +1,7 @@
 <template>
-  <q-card-section>
-    <div
-      id="vditor"
-      class="vditor"
-    />
-  </q-card-section>
+  <div
+    id="vditor"
+  />
 </template>
 
 <script>
@@ -106,17 +103,21 @@ export default {
     init () {
       const options = {
         mode: 'ir',
+        icon: 'material',
         toolbar: this.toolbar,
         input: this.updateContextMd,
         value: this.contextMd,
+        theme: this.$q.dark.isActive ? 'dark' : 'classic',
         preview: {
+          theme: {
+            current: this.$q.dark.isActive ? 'dark' : 'light'
+          },
           hljs: {
             style: 'native',
             lineNumber: true
-          },
-          maxWidth: 4000
+          }
         },
-        minHeight: 300,
+        width: '100%',
         cache: false,
         // upload: {
         //   filename (name) {
@@ -179,4 +180,7 @@ export default {
 </script>
 <style>
 
+  .vditor-reset {
+    padding: 10px !important;
+  }
 </style>
