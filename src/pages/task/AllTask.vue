@@ -40,101 +40,108 @@
         />
       </div>
     </div>
-    <div class="q-pa-md q-gutter-md">
-      <q-list
-        dense
-        bordered
-        class="rounded-borders"
-        style="max-width: 650px"
-      >
-        <div
-          v-for="(task) in tasks"
-          :key="task.id"
-        >
-          <q-item
-            tag="label"
-            v-ripple
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <div class="q-pa-md q-gutter-md">
+          <q-list
+            dense
+            bordered
+            class="rounded-borders"
+            style="max-width: 650px"
           >
-            <q-item-section
-              side
-              top
+            <div
+              v-for="(task) in tasks"
+              :key="task.id"
             >
-              <q-checkbox v-model="task.status" />
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label
-                style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"
-                :class="{ 'done': task.status == 9}"
-                class="taskStr"
+              <q-item
+                tag="label"
+                v-ripple
               >
-                {{ task.title }}
-              </q-item-label>
-              <q-item-label
-                side
-                top
-              >
-                <q-badge
-                  transparent
-                  align="middle"
-                  color="red"
-                  v-if="task.dueTime"
+                <q-item-section
+                  side
+                  top
                 >
-                  <q-icon name="timer" />
-                  {{ task.dueTime }}
-                </q-badge>
-              </q-item-label>
-            </q-item-section>
-            <q-item-section
-              top
-              side
-            >
-              <div class="text-grey-8 q-gutter-xs">
-                <q-btn
-                  class="gt-xs"
-                  size="12px"
-                  flat
-                  dense
-                  round
-                  icon="delete"
-                  @click="deleteTask(task)"
-                />
-                <q-btn
-                  class="gt-xs"
-                  size="12px"
-                  flat
-                  dense
-                  round
-                  icon="timer"
-                  @click="setEndTime(task)"
-                />
-                <q-btn
-                  class="gt-xs"
-                  size="12px"
-                  flat
-                  dense
-                  round
-                  icon="done"
-                  v-if="task.status != 9"
-                  @click="doneTask(task)"
-                />
+                  <q-checkbox v-model="task.status" />
+                </q-item-section>
 
-                <router-link :to="`/task/edit?id=${task.id}`">
-                  <template>
+                <q-item-section>
+                  <q-item-label
+                    style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"
+                    :class="{ 'done': task.status == 9}"
+                    class="taskStr"
+                  >
+                    {{ task.title }}
+                  </q-item-label>
+                  <q-item-label
+                    side
+                    top
+                  >
+                    <q-badge
+                      transparent
+                      align="middle"
+                      color="red"
+                      v-if="task.dueTime"
+                    >
+                      <q-icon name="timer" />
+                      {{ task.dueTime }}
+                    </q-badge>
+                  </q-item-label>
+                </q-item-section>
+                <q-item-section
+                  top
+                  side
+                >
+                  <div class="text-grey-8 q-gutter-xs">
                     <q-btn
+                      class="gt-xs"
                       size="12px"
                       flat
                       dense
                       round
-                      icon="more_vert"
+                      icon="delete"
+                      @click="deleteTask(task)"
                     />
-                  </template>
-                </router-link>
-              </div>
-            </q-item-section>
-          </q-item>
+                    <q-btn
+                      class="gt-xs"
+                      size="12px"
+                      flat
+                      dense
+                      round
+                      icon="timer"
+                      @click="setEndTime(task)"
+                    />
+                    <q-btn
+                      class="gt-xs"
+                      size="12px"
+                      flat
+                      dense
+                      round
+                      icon="done"
+                      v-if="task.status != 9"
+                      @click="doneTask(task)"
+                    />
+
+                    <router-link :to="`/task/edit?id=${task.id}`">
+                      <template>
+                        <q-btn
+                          size="12px"
+                          flat
+                          dense
+                          round
+                          icon="more_vert"
+                        />
+                      </template>
+                    </router-link>
+                  </div>
+                </q-item-section>
+              </q-item>
+            </div>
+          </q-list>
         </div>
-      </q-list>
+      </div>
+      <div class="col-8">
+        <task-edit></task-edit>
+      </div>
     </div>
     <q-dialog
       v-model="setTimeForm.loading"
@@ -179,10 +186,11 @@
 <script>
 import { getTaskList, saveTask } from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
+import TaskEdit from 'pages/task/TaskEdit'
 
 export default {
   name: 'AllTask',
-  components: { DateTimePicker },
+  components: { TaskEdit, DateTimePicker },
   data () {
     return {
       title: '',
