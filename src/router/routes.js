@@ -6,6 +6,12 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       {
+        path: '/tag',
+        component: () => import('pages/tag/TagList.vue'),
+        children: [
+        ]
+      },
+      {
         path: '/task',
         component: () => import('pages/task/TaskList.vue'),
         children: [

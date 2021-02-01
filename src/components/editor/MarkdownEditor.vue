@@ -38,8 +38,6 @@ export default {
         'list',
         'ordered-list',
         'check',
-        'outdent',
-        'indent',
         '|',
         'quote',
         'line',
@@ -102,7 +100,7 @@ export default {
   methods: {
     init () {
       const options = {
-        mode: 'ir',
+        mode: 'wysiwyg',
         icon: 'material',
         toolbar: this.toolbar,
         input: this.updateContextMd,

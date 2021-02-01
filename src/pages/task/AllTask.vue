@@ -57,13 +57,12 @@
                 tag="label"
                 v-ripple
               >
-                <q-item-section
-                  side
-                  top
-                >
-                  <q-checkbox v-model="task.status" />
-                </q-item-section>
-
+                <!--                <q-item-section-->
+                <!--                  side-->
+                <!--                  top-->
+                <!--                >-->
+                <!--                  <q-checkbox v-model="task.status" />-->
+                <!--                </q-item-section>-->
                 <q-item-section>
                   <q-item-label
                     style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"
@@ -139,9 +138,6 @@
           </q-list>
         </div>
       </div>
-      <div class="col-8">
-        <task-edit></task-edit>
-      </div>
     </div>
     <q-dialog
       v-model="setTimeForm.loading"
@@ -186,11 +182,10 @@
 <script>
 import { getTaskList, saveTask } from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
-import TaskEdit from 'pages/task/TaskEdit'
 
 export default {
   name: 'AllTask',
-  components: { TaskEdit, DateTimePicker },
+  components: { DateTimePicker },
   data () {
     return {
       title: '',
