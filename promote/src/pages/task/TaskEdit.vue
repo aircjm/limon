@@ -65,9 +65,9 @@
     </div>
     <div class="col-md-3 col-sm-12 column">
       <div class="col">
-        <TagSelect
-          label="标签"
-          :tag-list.sync="form.tagList"
+        <q-btn
+          @click="tag.editorFlag = true"
+          label="添加标签"
         />
         <date-time-picker
           label="开始时间"
@@ -90,30 +90,83 @@
         3
       </div>
     </div>
+    <q-dialog
+      v-model="tag.editorFlag"
+      style="min-width: 300px"
+    >
+      <q-card>
+        <q-card-section>
+          <q-toolbar-title>添加标签</q-toolbar-title>
+          <q-input
+            ref="filter"
+            filled
+            v-model="tag.filter"
+            label="Search - only filters labels that have also '(*)'"
+          >
+            <template v-slot:append>
+              <q-icon
+                v-if="filter !== ''"
+                name="clear"
+                class="cursor-pointer"
+                @click="resetFilter"
+              />
+            </template>
+          </q-input>
+          <div
+            v-for="(selectTag) in tag.selectList"
+            :key="selectTag.id"
+          >
+            <q-badge
+              outline
+              :color="selectTag.color ? selectTag.color: 'red'"
+              :label="selectTag.label"
+            />
+          </div>
+          <q-list>
+            <q-item
+              v-for="(tagDetail) in tag.tagList"
+              :key="tagDetail.id"
+            >
+              <q-item-label @click="addTag(tagDetail)">
+                {{ tagDetail.label }}
+              </q-item-label>
+            </q-item>
+          </q-list>
+        </q-card-section>
+        <q-card-actions>
+          <q-btn>submit</q-btn>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
 import { getTaskDetail, saveTask } from 'src/api/task'
-import TagSelect from 'pages/tag/TagSelect'
 import DateTimePicker from 'components/form/DateTimePicker'
 import MarkdownEditor from 'components/editor/MarkdownEditor'
 import { Notify } from 'quasar'
 
 export default {
   name: 'TaskEdit',
-  components: { MarkdownEditor, TagSelect, DateTimePicker },
+  components: { MarkdownEditor, DateTimePicker },
   data () {
     return {
       title: '',
       recordType: null,
       date: null,
       openDialog: false,
-      form: {
-      },
+      form: {},
       filter: '',
       loading: false,
-      editorFlag: false
+      editorFlag: false,
+      tag: {
+        editorFlag: false,
+        filter: '',
+        tagList: [{ id: 1, label: '测试' }, { id: 2, label: 'test' }],
+        selectList: []
+      }
+
     }
   },
   watch: {
@@ -144,6 +197,13 @@ export default {
           this.$router.push('/task')
         }
       })
+    },
+    addTag (tagDetail) {
+      console.log(this.tag.selectList.indexOf(tagDetail))
+      if (this.tag.selectList.indexOf(tagDetail) > -1) {
+      } else {
+        this.tag.selectList.push(tagDetail)
+      }
     },
     autoSave () {
       saveTask(this.form).then(res => {

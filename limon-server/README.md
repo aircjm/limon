@@ -13,3 +13,16 @@ docker run -d \
 aircjm/limon-server:1.0.0
 ```
 
+
+### 单独部署mysql
+```shell
+docker run -it \
+--name limon \
+-p 3306:3306 \
+-v ~/docker/limon-mysql:/app \
+-e MYSQL_DATABASE=limon \
+-e MYSQL_USER=db_test \
+-e MYSQL_PASSWORD=12345678 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+wangxian/alpine-mysql
+```
