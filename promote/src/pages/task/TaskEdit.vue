@@ -27,6 +27,31 @@
               :rules="[ val => val && val.length > 0 && val.length < 500 || 'Please type something']"
               @keyup.enter="onSubmit"
             />
+            <div class="q-gutter-sm">
+              <q-badge
+                v-for="tagDetail in tag.selectList"
+                :key="tagDetail.id"
+                :label="tagDetail.label"
+              />
+            </div>
+            <div class="row">
+              <div class="col-10">
+                <q-select
+                  filled
+                  v-model="tag.selectList"
+                  use-input
+                  multiple
+                  input-debounce="0"
+                  :options="tag.tagList"
+                  @filter="filterFn"
+                  @filter-abort="abortFilterFn"
+                  label="Search 选择你的选择"
+                />
+              </div>
+              <div class="col-2">
+                <q-btn label="新增标签" />
+              </div>
+            </div>
             <MarkdownEditor
               label="context"
               v-if="this.editorFlag"
@@ -96,22 +121,6 @@
     >
       <q-card>
         <q-card-section>
-          <q-toolbar-title>添加标签</q-toolbar-title>
-          <q-input
-            ref="filter"
-            filled
-            v-model="tag.filter"
-            label="Search - only filters labels that have also '(*)'"
-          >
-            <template v-slot:append>
-              <q-icon
-                v-if="filter !== ''"
-                name="clear"
-                class="cursor-pointer"
-                @click="resetFilter"
-              />
-            </template>
-          </q-input>
           <div
             v-for="(selectTag) in tag.selectList"
             :key="selectTag.id"
@@ -162,7 +171,7 @@ export default {
       editorFlag: false,
       tag: {
         editorFlag: false,
-        filter: '',
+        filter: null,
         tagList: [{ id: 1, label: '测试' }, { id: 2, label: 'test' }],
         selectList: []
       }
