@@ -45,11 +45,14 @@
                   :options="tag.tagList"
                   @filter="filterFn"
                   @filter-abort="abortFilterFn"
-                  label="Search 选择你的选择"
+                  label="标签"
                 />
               </div>
               <div class="col-2">
-                <q-btn label="新增标签" />
+                <q-btn
+                  label="新增标签"
+                  icon="add"
+                />
               </div>
             </div>
             <MarkdownEditor
@@ -57,16 +60,6 @@
               v-if="this.editorFlag"
               :context.sync="form.taskDesc"
             />
-            <!--          <q-uploader-->
-            <!--            color="teal-10"-->
-            <!--            ref="uploaderRef"-->
-            <!--            style="max-width: 300px"-->
-            <!--            class="full-width"-->
-            <!--            :factory="factoryUpload"-->
-            <!--            hide-upload-btn-->
-            <!--            multiple-->
-            <!--            batch-->
-            <!--          />-->
             <div>
               <q-btn
                 icon="save"
