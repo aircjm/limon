@@ -39,13 +39,13 @@ public class TagController extends BaseController {
     }
 
     /**
-     * 列表搜索
+     * 全部列表搜索
      * @param request request
      * @return 列表数据
      */
     @PostMapping("/allList")
     public RestResponse allList(@RequestBody @Valid GetTagRequest request) {
-        List<TagDetailResponse> page = tagService.list(request);
-        return RestResponse.successData(page);
+        List<TagDetailResponse> list = tagService.list(request);
+        return RestResponse.successData(list);
     }
 }
