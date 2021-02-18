@@ -9,11 +9,11 @@
       v-model="addFlag"
     >
       <q-card style="min-width: 300px">
-        <q-card-section>
+        <div class="q-pa-md">
           <div class="text-h6">
             添加标签
           </div>
-          <q-form>
+          <q-form @reset="onCancel">
             <q-input
               label="标签名称"
               v-model="name"
@@ -44,23 +44,25 @@
                 </q-icon>
               </template>
             </q-input>
+            <q-space />
+
+            <q-separator />
+
+            <q-btn
+              flat
+              color="primary"
+              @click="submit()"
+            >
+              提交
+            </q-btn>
+            <q-btn
+              flat
+              type="reset"
+            >
+              取消
+            </q-btn>
           </q-form>
-        </q-card-section>
-
-        <q-separator />
-
-        <q-card-actions align="right">
-          <q-btn
-            flat
-            color="primary"
-            @click="submit()"
-          >
-            提交
-          </q-btn>
-          <q-btn flat>
-            取消
-          </q-btn>
-        </q-card-actions>
+        </div>
       </q-card>
     </q-dialog>
   </div>
@@ -79,6 +81,12 @@ export default {
   methods: {
     submit () {
       console.log('开始提交')
+    },
+    onCancel () {
+      console.log('kaishi ')
+      this.name = null
+      this.color = null
+      this.addFlag = false
     }
   }
 }
