@@ -32,7 +32,12 @@
           label="TaskList"
           to="/alltask"
         />
-
+        <q-btn
+          stretch
+          flat
+          label="TAG"
+          to="/tag"
+        />
         <q-space />
         <q-btn-dropdown
           flat
