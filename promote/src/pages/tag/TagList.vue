@@ -13,7 +13,7 @@
           <div class="text-h6">
             添加标签
           </div>
-          <q-form @reset="onCancel">
+          <q-form @reset="onReset">
             <q-input
               label="标签名称"
               v-model="name"
@@ -69,6 +69,9 @@
 </template>
 
 <script>
+import { saveTag } from 'src/api/tag'
+import { Notify } from 'quasar'
+
 export default {
   name: 'TagList',
   data () {
@@ -81,9 +84,22 @@ export default {
   methods: {
     submit () {
       console.log('开始提交')
+      saveTag({
+        name: this.name,
+        color: this.color
+      }).then(res => {
+        if (res.code === 200) {
+          Notify.create({
+            position: 'top',
+            type: 'positive',
+            message: '操作成功'
+          })
+          this.onReset()
+        }
+      })
     },
-    onCancel () {
-      console.log('kaishi ')
+    onReset () {
+      console.log('reset')
       this.name = null
       this.color = null
       this.addFlag = false
