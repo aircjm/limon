@@ -62,12 +62,12 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        })
+        // cfg.module.rules.push({
+        //   enforce: 'pre',
+        //   test: /\.(js|vue)$/,
+        //   loader: 'eslint-loader',
+        //   exclude: /node_modules/
+        // })
         if (cfg.mode === 'production') {
           cfg.output.publicPath = process.env.VUE_APP_PUBLIC_PATH + '/' || '/'
         }

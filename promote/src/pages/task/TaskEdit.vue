@@ -43,16 +43,12 @@
                   multiple
                   input-debounce="0"
                   :options="tag.tagList"
-                  @filter="filterFn"
-                  @filter-abort="abortFilterFn"
                   label="标签"
-                />
-              </div>
-              <div class="col-2">
-                <q-btn
-                  label="新增标签"
-                  icon="add"
-                />
+                >
+                  <template v-slot:append>
+                    <q-btn round dense flat icon="add" @click="editorTagFlag == true" />
+                  </template>
+                </q-select>
               </div>
             </div>
             <MarkdownEditor
@@ -162,6 +158,7 @@ export default {
       filter: '',
       loading: false,
       editorFlag: false,
+      editorTagFlag: false,
       tag: {
         editorFlag: false,
         filter: null,

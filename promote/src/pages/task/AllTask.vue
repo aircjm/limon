@@ -180,8 +180,10 @@
 </template>
 
 <script>
-import { getTaskList, saveTask } from 'src/api/task'
+import {saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
+import {doPost} from "boot/axios";
+import {taskList} from "src/api/url";
 
 export default {
   name: 'AllTask',
@@ -264,10 +266,8 @@ export default {
       }
       queryRequest.title = this.searchForm.title
 
-      // calculate starting row of data
-
-      // fetch data from "server"
-      getTaskList(queryRequest).then(res => {
+      doPost(taskList, queryRequest).then(res => {
+        console.log("开始")
         this.tasks = res.data.records
       })
       // ...and turn of loading indicator
