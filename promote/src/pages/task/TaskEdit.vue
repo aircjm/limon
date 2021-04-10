@@ -34,8 +34,28 @@
                 :label="tagDetail.label"
               />
             </div>
-            <div class="row">
-              <div class="col-10">
+            <div class="row q-gutter-sm">
+              <div style="width: 360px">
+                <date-time-picker
+                  label="通知时间"
+                  :time.sync="form.endTime"
+                />
+              </div>
+              <div style="width: 360px">
+                <date-time-picker
+                  label="开始时间"
+                  :time.sync="form.startTime"
+                />
+              </div>
+              <div style="width: 360px">
+                <date-time-picker
+                  label="截止时间"
+                  :time.sync="form.dueTime"
+                />
+              </div>
+            </div>
+            <div>
+              <div>
                 <q-select
                   filled
                   v-model="tag.selectList"
@@ -46,7 +66,13 @@
                   label="标签"
                 >
                   <template v-slot:append>
-                    <q-btn round dense flat icon="add" @click="editorTagFlag == true" />
+                    <q-btn
+                      round
+                      dense
+                      flat
+                      icon="add"
+                      @click="editorTagFlag == true"
+                    />
                   </template>
                 </q-select>
               </div>
@@ -78,25 +104,7 @@
       </q-card>
     </div>
     <div class="col-md-3 col-sm-12 column">
-      <div class="col">
-        <q-btn
-          @click="tag.editorFlag = true"
-          label="添加标签"
-        />
-        <date-time-picker
-          label="开始时间"
-          :time.sync="form.startTime"
-        />
-        <date-time-picker
-          label="通知时间"
-          :time.sync="form.endTime"
-        />
-
-        <date-time-picker
-          label="截止时间"
-          :time.sync="form.dueTime"
-        />
-      </div>
+      <div class="col" />
       <div class="col">
         2
       </div>

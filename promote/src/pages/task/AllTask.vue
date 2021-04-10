@@ -18,7 +18,7 @@
       </q-input>
     </div>
     <div class="q-gutter-md">
-      <q-field style="max-width: 300px">
+      <q-field style="max-width: 400px">
         <q-input
           label="title"
           v-model="searchForm.title"
@@ -216,6 +216,9 @@ export default {
   },
   mounted () {
     this.list()
+    if (!this.form.startTime) {
+      this.form.startTime = date.now()
+    }
   },
   methods: {
     edit (id) {
