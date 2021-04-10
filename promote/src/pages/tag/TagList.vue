@@ -95,6 +95,12 @@ export default {
             message: '操作成功'
           })
           this.onReset()
+        } else {
+          Notify.create({
+            position: 'top',
+            type: 'negative',
+            message: res.msg
+          })
         }
       })
     },

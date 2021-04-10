@@ -18,7 +18,7 @@
       </q-input>
     </div>
     <div class="q-gutter-md">
-      <q-field style="max-width: 200px">
+      <q-field style="max-width: 300px">
         <q-input
           label="title"
           v-model="searchForm.title"
@@ -180,10 +180,10 @@
 </template>
 
 <script>
-import {saveTask} from 'src/api/task'
+import { saveTask } from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
-import {doPost} from "boot/axios";
-import {taskList} from "src/api/url";
+import { doPost } from 'boot/axios'
+import { taskList } from 'src/api/url'
 
 export default {
   name: 'AllTask',
@@ -267,7 +267,7 @@ export default {
       queryRequest.title = this.searchForm.title
 
       doPost(taskList, queryRequest).then(res => {
-        console.log("开始")
+        console.log('开始')
         this.tasks = res.data.records
       })
       // ...and turn of loading indicator
