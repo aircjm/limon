@@ -4,13 +4,13 @@
       <q-card>
         <q-card-section>
           <div
-            class="text-h6"
+            class="text-h7"
             v-if="form.id"
           >
             Edit Record {{ form.id }}
           </div>
           <div
-            class="text-h6"
+            class="text-h7"
             v-else
           >
             Add Record {{ form.id }}
