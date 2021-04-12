@@ -3,7 +3,7 @@ import {Button, Checkbox, Dimmer, Dropdown, Form, Grid, Input, Loader, TextArea}
 import {useHistory, useParams} from 'react-router-dom';
 
 import {Head, Section} from "../../components/styled/frameworks";
-import {Editor} from "../../components/editor/bytemd";
+import {Editor, ProEditor} from "../../components/editor/bytemd";
 import {
   FetchClassifies,
   FetchLogos,
@@ -16,15 +16,8 @@ import styled from 'styled-components'
 import GetTheme from "../../components/hooks/GetTheme";
 import {StyledDescription} from "../../components/styled/common";
 import {useTitle} from "ahooks";
-import {message} from "antd";
 import {IsNumber} from "../../utils/utils";
 
-/**
- * <Description> <br>
- *
- * @author zhang.yangyuan (jansora)
- 2020/12/05 16:26:57
- */
 const StyledDropdown = styled(Dropdown)`
   :hover {
     //z-index: 1001 !important;
@@ -35,13 +28,10 @@ const StyledDropdown = styled(Dropdown)`
 
 `
 const ModifyNote = (props) => {
-
-
   const history = useHistory();
   const {id} = useParams();
   const theme = GetTheme()
   const [note, noteLoading] = FetchNote(id)
-
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState( '');
   const [logo, setLogo] = useState( '');
@@ -71,7 +61,6 @@ const ModifyNote = (props) => {
 
 
   },[id, note])
-
 
   const save = () => {
     const args = {
@@ -151,23 +140,6 @@ const ModifyNote = (props) => {
                     value={classify}
                     renderLabel={(label) => ({ content: label.text,})}
                 />
-                {/*<StyledDropdown*/}
-                {/*    loading={classifiesLoading}*/}
-                {/*    onAddItem={(e, { value }) => {*/}
-                {/*      console.log(value)*/}
-                {/*      if(classifies.filter(l => l.value === value).length === 0) {*/}
-                {/*        setClassifies(classifies.concat([{ value, classify: value, key: value}]))*/}
-                {/*      }*/}
-                {/*    }}*/}
-                {/*    onChange={(e, { value }) => console.log(value) ||setClassify(value)}*/}
-                {/*    options={classifies.map((classify_, index) => ({key: classify_.classify,  value: classify_.classify, text: classify_.classify}))}*/}
-                {/*    placeholder='请选择分类'*/}
-                {/*    search*/}
-                {/*    selection*/}
-                {/*    allowAdditions*/}
-                {/*    additionLabel={<StyledDescription>新增分类</StyledDescription>}*/}
-                {/*    value={classify}*/}
-                {/*/>*/}
               </Form.Field>
             </Grid.Column>
             <Grid.Column width={5}>
@@ -237,13 +209,29 @@ const ModifyNote = (props) => {
 
       {
         rawInit &&
-
         <Editor
             value={raw}
-            setValue={(v) => {setRaw(v)}}
+            setValue={(v) => {
+              setRaw(v)
+            }}
         />
       }
+
     </Form.Field>
+          <Form.Field>
+            <label>pro</label>
+
+            {
+              rawInit &&
+              <ProEditor
+                  value={raw}
+                  setValue={(v) => {
+                    setRaw(v)
+                  }}
+              />
+            }
+
+          </Form.Field>
 
 
         </Form>

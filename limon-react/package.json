@@ -34,6 +34,12 @@
     "source-map-explorer": "^2.5.1",
     "styled-components": "^5.2.1",
     "use-debounce": "^3.3.0",
+    "use-prosemirror": "^1.2.1",
+    "prosemirror-commands": "1.1.5",
+    "prosemirror-history": "1.1.3",
+    "prosemirror-keymap": "1.1.4",
+    "prosemirror-schema-basic": "1.1.2",
+    "prosemirror-view": "1.17.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
