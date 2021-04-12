@@ -7,7 +7,7 @@
 
 import {client} from "./index";
 import {message} from "antd";
-import {defaultValue} from "../store/global";
+import {defaultValue} from "../../store/global";
 
 
 export const FetchCurrentUser = (setUser) => {

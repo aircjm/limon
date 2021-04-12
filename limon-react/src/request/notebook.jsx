@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {client} from "./index";
 import {message} from "antd";
 import {stringify} from 'qs'
-import {IsNumber} from "../utils";
+import {IsNumber} from "../../utils/utils";
 
 /**
  * <Description> <br>
