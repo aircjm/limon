@@ -1,5 +1,5 @@
 import {createContext, useReducer} from 'react';
-import {THEME} from "../constants";
+import {THEME} from "../utils/constants";
 
 
 export const defaultValue = {

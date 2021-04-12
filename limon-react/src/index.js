@@ -4,7 +4,7 @@ import './index.css';
 // import './components/styled/semantic-ui-css/semantic.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStoreProvider from "./components/store/global";
+import GlobalStoreProvider from "./store/global";
 import {BrowserRouter} from 'react-router-dom';
 import {message} from "antd";
 

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {GlobalStore} from "../../components/store/global";
+import {GlobalStore} from "../../store/global";
 import {Button, Container} from "semantic-ui-react";
 import {Head, Section} from "../../components/styled/frameworks";
 import GetTheme from "../../components/hooks/GetTheme";

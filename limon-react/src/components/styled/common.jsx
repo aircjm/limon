@@ -14,6 +14,16 @@ export const StyledDescription = styled.span`
   display: inline;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-
-      margin: 0;
+    margin: 0;
 `
+
+export const Bootstrap = styled.header`
+  background: url("https://cdn.jansora.com/application/Jansora/2020/12/26/10:04:28/image.png");
+  height: 150px;
+  padding: 30px;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+`;
+
+

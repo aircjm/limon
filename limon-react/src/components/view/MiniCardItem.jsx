@@ -61,9 +61,6 @@ const CardItem = (props) => {
 
 
 const Wrapper = (props) => {
-
-  // const {image, title, description} = props;
-
   const {href, extra, children, disabled} = props;
   const target = href.startsWith("http") ? "_blank" : "_self";
   if(extra) {

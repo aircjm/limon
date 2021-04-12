@@ -1,17 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {GlobalStore} from "../../../components/store/global";
-import {UserLogout} from "../../../components/request/user";
+import {GlobalStore} from "../../../store/global";
+import {UserLogout} from "../../../request/user";
 import {Button, Divider} from "semantic-ui-react";
 import GetCurrentUser from "../../../components/hooks/GetCurrentUser";
 import {StyledDescription} from "../../../components/styled/common";
 import {useHistory} from "react-router-dom";
 
-/**
- * <Description> <br>
- *
- * @author zhang.yangyuan (jansora)
- 2020/12/06 14:23:47
- */
 const Current = (props) => {
   const [loading, setLoading] = useState(false);
 
@@ -24,11 +18,10 @@ const Current = (props) => {
     history.push(`/about/user/signin`);
   };
 
-
   const signOut = () => {
-
     setLoading(true);
     UserLogout(setUser);
+    setLoading(false);
   }
   return <React.Fragment>
     <h3>当前用户信息</h3>

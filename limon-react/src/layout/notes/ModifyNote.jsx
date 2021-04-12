@@ -11,13 +11,13 @@ import {
   FetchTags,
   InsertNote,
   UpdateNote
-} from "../../components/request/notebook";
+} from "../../request/notebook";
 import styled from 'styled-components'
 import GetTheme from "../../components/hooks/GetTheme";
 import {StyledDescription} from "../../components/styled/common";
 import {useTitle} from "ahooks";
 import {message} from "antd";
-import {IsNumber} from "../../components/utils";
+import {IsNumber} from "../../utils/utils";
 
 /**
  * <Description> <br>

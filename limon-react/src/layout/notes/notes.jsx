@@ -5,19 +5,11 @@ import NoteListItem from "./NoteListItem";
 import {Link, useLocation} from "react-router-dom";
 import AdminLoginStatus from "../../components/hooks/AdminLoginStatus";
 import GetTheme from "../../components/hooks/GetTheme";
-import {Icons} from '../../components/constants/icons'
+import {Icons} from '../../utils/icons'
 import InfiniteScroll from 'react-infinite-scroller';
-import {FetchClassifies, FetchClassifyCount, FetchNotes, FetchRelationTags} from "../../components/request/notebook";
+import {FetchClassifies, FetchClassifyCount, FetchNotes, FetchRelationTags} from "../../request/notebook";
 import {useDebounceFn, useResponsive, useTitle} from "ahooks";
-import {Bootstrap} from "../../components/styled/bootstrap";
-import {StyledDescription} from "../../components/styled/common";
-
-/**
- * <Description> <br>
- *
- * @author zhang.yangyuan (jansora)
- 2020/12/05 15:57:40
- */
+import {Bootstrap, StyledDescription} from "../../components/styled/common";
 
 const orders = [
   {name: "标题", icon: "yelp", value: "title"},
@@ -221,7 +213,6 @@ const Notes = (props) => {
               {/*<Button primary>Clear Query</Button>*/}
               {
                 adminLoginStatus  &&  <Button color={theme} as={Link} to="/notes/new">Add Document</Button>
-
               }
 
             </Segment.Inline>
@@ -229,9 +220,6 @@ const Notes = (props) => {
 
       }
     </Section>
-
-
-
   </React.Fragment>;
 }
 

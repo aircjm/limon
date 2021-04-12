@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {DeleteNote, FetchNote} from "../../components/request/notebook";
+import {DeleteNote, FetchNote} from "../../request/notebook";
 import {Link, useHistory, useParams} from 'react-router-dom';
 import {Aside, Head, Label as CustomLabel, Section} from "../../components/styled/frameworks";
 import styled from "styled-components";

@@ -5,7 +5,7 @@
 * @date 2020-01-16 15:23
 */
 import {useContext} from 'react';
-import {GlobalStore} from "../store/global";
+import {GlobalStore} from "../../store/global";
 
 const GetCurrentUser = () => {
 

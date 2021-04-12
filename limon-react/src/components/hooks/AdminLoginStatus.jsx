@@ -5,7 +5,7 @@
 */
 import {useContext, useEffect, useState} from 'react';
 
-import {GlobalStore} from "../store/global";
+import {GlobalStore} from "../../store/global";
 
 const AdminLoginStatus = () => {
 

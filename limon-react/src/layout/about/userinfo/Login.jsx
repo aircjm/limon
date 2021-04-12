@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
-import {GlobalStore} from "../../../components/store/global";
-import {UserLogin} from "../../../components/request/user";
+import {GlobalStore} from "../../../store/global";
+import {UserLogin} from "../../../request/user";
 import {Button, Divider, Form} from "semantic-ui-react";
 import {useHistory} from "react-router-dom";
 

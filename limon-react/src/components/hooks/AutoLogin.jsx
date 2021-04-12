@@ -7,8 +7,8 @@
 import {useContext, useEffect} from 'react';
 
 
-import {GlobalStore} from "../store/global";
-import {FetchCurrentUser} from "../request/user";
+import {GlobalStore} from "../../store/global";
+import {FetchCurrentUser} from "../../request/user";
 
 const AutoLogin = () => {
 

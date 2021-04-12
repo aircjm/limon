@@ -6,7 +6,7 @@
 */
 
 import {useContext, useEffect} from "react";
-import {GlobalStore} from "../store/global";
+import {GlobalStore} from "../../store/global";
 
 const SetTitle = (title) => {
 

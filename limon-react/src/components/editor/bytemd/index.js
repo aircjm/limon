@@ -9,7 +9,7 @@ import mermaid from "@bytemd/plugin-mermaid"
 import 'bytemd/dist/index.css'
 import 'highlight.js/styles/vs.css';
 import './override.css'
-import {UploadFile} from "../../request/utils";
+import {UploadFile} from "../../../request/utils";
 import copy from 'copy-to-clipboard';
 
 // import frontmatter from "@bytemd/plugin-frontmatter"

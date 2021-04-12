@@ -1,10 +1,3 @@
-/*
-* @file header.jsx
-* @description〈一句话功能简述〉
-* @author jansora
-* @date 2020-12-05 10:21
-*/
-
 import styled from "styled-components";
 
 export const StyledNavBar = styled.nav`

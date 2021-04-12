@@ -5,8 +5,8 @@
 * @date 2019-12-17 10:39
 */
 import {useContext, useEffect} from 'react';
-import {THEME} from "../constants";
-import {GlobalStore} from "../store/global";
+import {THEME} from "../../utils/constants";
+import {GlobalStore} from "../../store/global";
 
 const ToggleTheme = () => {
 
