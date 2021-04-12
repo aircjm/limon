@@ -47,12 +47,17 @@
 
 <script>
 
+import {date} from "quasar";
+
 export default {
   name: 'DateTimePicker',
   props: {
     time: {
       type: String,
       default: ''
+    },
+    timestamp: {
+      type: Number
     },
     label: {
       type: String,
@@ -67,6 +72,7 @@ export default {
   methods: {
     updateDateTime () {
       this.$emit('update:time', this.dateTime)
+      this.$emit('update:timestamp', date.formatDate(this.dateTime, 'x'))
     }
   }
 }

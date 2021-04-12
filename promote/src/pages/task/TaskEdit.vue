@@ -104,7 +104,26 @@
       </q-card>
     </div>
     <div class="col-md-3 col-sm-12 column">
-      <div class="col" />
+      <div class="col">
+        <q-btn
+          @click="tag.editorFlag = true"
+          label="添加标签"
+        />
+        <date-time-picker
+          label="开始时间"
+          :time.sync="form.startTime"
+          :timestamp.sync="form.startTimeStamp"
+        />
+        <date-time-picker
+          label="通知时间"
+          :time.sync="form.endTime"
+        />
+
+        <date-time-picker
+          label="截止时间"
+          :time.sync="form.dueTime"
+        />
+      </div>
       <div class="col">
         2
       </div>
@@ -148,10 +167,10 @@
 </template>
 
 <script>
-import { getTaskDetail, saveTask } from 'src/api/task'
+import {getTaskDetail, saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
 import MarkdownEditor from 'components/editor/MarkdownEditor'
-import { Notify } from 'quasar'
+import {Notify} from 'quasar'
 
 export default {
   name: 'TaskEdit',
