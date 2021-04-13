@@ -3,7 +3,7 @@ import {Button, Checkbox, Dimmer, Dropdown, Form, Grid, Input, Loader, TextArea}
 import {useHistory, useParams} from 'react-router-dom';
 
 import {Head, Section} from "../../components/styled/frameworks";
-import {Editor, ProEditor} from "../../components/editor/bytemd";
+import {Editor} from "../../components/editor/bytemd";
 import {
   FetchClassifies,
   FetchLogos,
@@ -17,6 +17,7 @@ import GetTheme from "../../components/hooks/GetTheme";
 import {StyledDescription} from "../../components/styled/common";
 import {useTitle} from "ahooks";
 import {IsNumber} from "../../utils/utils";
+import SmallEditorContainer from "../../components/editor/remirror/remirrorEditor";
 
 const StyledDropdown = styled(Dropdown)`
   :hover {
@@ -219,16 +220,11 @@ const ModifyNote = (props) => {
 
     </Form.Field>
           <Form.Field>
-            <label>pro</label>
+            <label>rimirror</label>
 
             {
               rawInit &&
-              <ProEditor
-                  value={raw}
-                  setValue={(v) => {
-                    setRaw(v)
-                  }}
-              />
+              <SmallEditorContainer/>
             }
 
           </Form.Field>
