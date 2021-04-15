@@ -17,7 +17,6 @@ import GetTheme from "../../components/hooks/GetTheme";
 import {StyledDescription} from "../../components/styled/common";
 import {useTitle} from "ahooks";
 import {IsNumber} from "../../utils/utils";
-import SmallEditorContainer from "../../components/editor/remirror/remirrorEditor";
 
 const StyledDropdown = styled(Dropdown)`
   :hover {
@@ -219,17 +218,6 @@ const ModifyNote = (props) => {
       }
 
     </Form.Field>
-          <Form.Field>
-            <label>rimirror</label>
-
-            {
-              rawInit &&
-              <SmallEditorContainer/>
-            }
-
-          </Form.Field>
-
-
         </Form>
 
     </Section>

@@ -7,13 +7,14 @@ import About from "./layout/about";
 import Hooks from "./components/hooks";
 import {configResponsive} from 'ahooks';
 import GetPath from "./components/hooks/GetPath";
+import Task from "./layout/task/task";
+import Login from "./layout/auth/login";
 
 configResponsive({
   small: 0,
   middle: 800,
   large: 1200,
 });
-
 
 
 const LayoutWrapper = styled.main`
@@ -44,12 +45,10 @@ const App = () => {
           <Switch>
             <Redirect from="/" to="/notes" exact={true} />
             <Redirect from="/post/:resource" to="/notes/:resource"/>
-
             <Route path="/notes" component={Notes} exact={false}/>
-
+            <Route path="/task" component={Task} exact={false}/>
             <Route path="/about" component={About} exact={false}/>
-
-
+            <Route path="/login" component={Login} exact={false}/>
           </Switch>
         </LayoutWrapper>
         <Hooks/>

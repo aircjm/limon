@@ -8,6 +8,7 @@ import LoginStatus from "../../components/hooks/LoginStatus";
 import GetCurrentUser from "../../components/hooks/GetCurrentUser";
 import {StyledDescription} from "../../components/styled/common";
 import Theme from "./Theme";
+import Login from "../auth/login";
 
 /**
  * <Description> <br>
@@ -17,7 +18,6 @@ import Theme from "./Theme";
  */
 const About = (props) => {
 
-  // const adminStatus = AdminLoginStatus()
   const status = LoginStatus();
   const user = GetCurrentUser();
 
@@ -46,20 +46,18 @@ const About = (props) => {
               <LinkItem to="/about/user/oauth" className={GetPath() === "/about/user/oauth" ? 'active' : ''}><Icon name="sign in" />   第三方账户登录</LinkItem>
         </React.Fragment> :
             <LinkItem to="/about/user/current" className={GetPath() === "/about/user/current" ? 'active' : ''}>
-              <Icon name="circle" color="green" /> {user.alias} <StyledDescription>已登录</StyledDescription>
+              <Icon name="circle" color="green"/> {user.alias} <StyledDescription>已登录</StyledDescription>
             </LinkItem>
 
       }
 
     </Aside>
-
-
-      <Switch>
-        <Route path="/about/user" component={UserInfo} exact={false}/>
-        <Route path="/about/theme" component={Theme} exact={false}/>
-
-
-      </Switch>
+    <Switch>
+      <Route path="/about/user" component={UserInfo} exact={false}/>
+      <Route path="/about/theme" component={Theme} exact={false}/>
+      <Route path="/login" component={Login} exact={false}/>
+      <Route path="/test/login" component={Login} exact={false}/>
+    </Switch>
   </React.Fragment>;
 }
 
