@@ -3,6 +3,10 @@ package com.aircjm.project.system.vo.request;
 import com.aircjm.framework.web.page.PageDomain;
 import lombok.Data;
 
+/**
+ * @author aircjm
+ * 用户使用
+ */
 @Data
 public class ListUserRequest extends PageDomain {
 

@@ -12,7 +12,8 @@ import org.springframework.context.annotation.Configuration;
  * @author johnniang
  */
 @Configuration
-@MapperScan(value = {"com.aircjm.project.*.mapper"})
+// 指定要扫描的Mapper类的包的路径
+@MapperScan("com.aircjm.project.**.mapper")
 public class MyBatisConfig {
 
     @Bean

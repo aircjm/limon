@@ -31,7 +31,6 @@
 		<swagger.version>2.9.2</swagger.version>
 		<poi.version>3.17</poi.version>
 		<oshi.version>3.9.1</oshi.version>
-		<velocity.version>1.7</velocity.version>
 	</properties>
 
 	<dependencies>
@@ -60,13 +59,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<!--		&lt;!&ndash; spring-boot-devtools &ndash;&gt;-->
-		<!--		<dependency>-->
-		<!--			<groupId>org.springframework.boot</groupId>-->
-		<!--			<artifactId>spring-boot-devtools</artifactId>-->
-		<!--			<optional>true</optional> &lt;!&ndash; 表示依赖不会传递 &ndash;&gt;-->
-		<!--		</dependency>-->
 		<dependency>
 			<groupId>com.aliyun.oss</groupId>
 			<artifactId>aliyun-sdk-oss</artifactId>
@@ -249,14 +241,6 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>${poi.version}</version>
 		</dependency>
-
-		<!--velocity代码生成使用模板 -->
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>${velocity.version}</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
