@@ -184,7 +184,6 @@ import {saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
 import {doPost} from 'src/utils/axios'
 import {taskList} from 'src/api/url'
-import {date} from 'quasar'
 
 export default {
   name: 'AllTask',
@@ -218,7 +217,7 @@ export default {
   mounted () {
     this.list()
     if (!this.form.startTime) {
-      this.form.startTime = date.now()
+      this.form.startTime = Date.now()
     }
   },
   methods: {

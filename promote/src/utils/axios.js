@@ -20,9 +20,7 @@ client.interceptors.request.use(config => {
   // Do something before request is sent
   // console.log(config)
   // 是否需要设置 token
-  const isToken = (config.headers || {}).isToken === false
-  // console.log(getToken())
-  if (getToken() && !isToken) {
+  if (getToken()) {
     config.headers.Authorization = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
   }
   return config
