@@ -3,24 +3,16 @@
     <div class="col-md-9 col-sm-12">
       <q-card>
         <q-card-section>
-          <div
-            class="text-h7"
-            v-if="form.id"
-          >
+          <div class="text-h7" v-if="form.id">
             Edit Record {{ form.id }}
           </div>
-          <div
-            class="text-h7"
-            v-else
-          >
+          <div class="text-h7" v-else>
             Add Record {{ form.id }}
           </div>
         </q-card-section>
-        <q-separator />
+        <q-separator/>
         <q-card-section>
-          <q-form
-            class="q-gutter-y-md column"
-          >
+          <q-form class="q-gutter-y-md column">
             <q-input
               v-model="form.title"
               label="title"
@@ -35,19 +27,19 @@
               />
             </div>
             <div class="row q-gutter-sm">
-              <div style="width: 360px">
+              <div style="width: 330px">
                 <date-time-picker
                   label="通知时间"
                   :time.sync="form.endTime"
                 />
               </div>
-              <div style="width: 360px">
+              <div style="width: 330px">
                 <date-time-picker
                   label="开始时间"
                   :time.sync="form.startTime"
                 />
               </div>
-              <div style="width: 360px">
+              <div style="width: 330px">
                 <date-time-picker
                   label="截止时间"
                   :time.sync="form.dueTime"
@@ -61,6 +53,7 @@
                   v-model="tag.selectList"
                   use-input
                   multiple
+                  style="width: 330px"
                   input-debounce="0"
                   :options="tag.tagList"
                   label="标签"
@@ -102,34 +95,6 @@
           </q-form>
         </q-card-section>
       </q-card>
-    </div>
-    <div class="col-md-3 col-sm-12 column">
-      <div class="col">
-        <q-btn
-          @click="tag.editorFlag = true"
-          label="添加标签"
-        />
-        <date-time-picker
-          label="开始时间"
-          :time.sync="form.startTime"
-          :timestamp.sync="form.startTimeStamp"
-        />
-        <date-time-picker
-          label="通知时间"
-          :time.sync="form.endTime"
-        />
-
-        <date-time-picker
-          label="截止时间"
-          :time.sync="form.dueTime"
-        />
-      </div>
-      <div class="col">
-        2
-      </div>
-      <div class="col">
-        3
-      </div>
     </div>
     <q-dialog
       v-model="tag.editorFlag"
@@ -174,8 +139,8 @@ import {Notify} from 'quasar'
 
 export default {
   name: 'TaskEdit',
-  components: { MarkdownEditor, DateTimePicker },
-  data () {
+  components: {MarkdownEditor, DateTimePicker},
+  data() {
     return {
       title: '',
       recordType: null,
@@ -189,7 +154,7 @@ export default {
       tag: {
         editorFlag: false,
         filter: null,
-        tagList: [{ id: 1, label: '测试' }, { id: 2, label: 'test' }],
+        tagList: [{id: 1, label: '测试'}, {id: 2, label: 'test'}],
         selectList: []
       }
 
@@ -202,7 +167,7 @@ export default {
     //   }
     // }
   },
-  created () {
+  created() {
     const id = this.$route.query.id
     if (id) {
       this.form.id = id
@@ -217,21 +182,21 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       saveTask(this.form).then(res => {
         if (res.code === 200) {
           this.$router.push('/task')
         }
       })
     },
-    addTag (tagDetail) {
+    addTag(tagDetail) {
       console.log(this.tag.selectList.indexOf(tagDetail))
       if (this.tag.selectList.indexOf(tagDetail) > -1) {
       } else {
         this.tag.selectList.push(tagDetail)
       }
     },
-    autoSave () {
+    autoSave() {
       saveTask(this.form).then(res => {
         if (res.code === 200) {
           Notify.create({
@@ -240,14 +205,14 @@ export default {
         }
       })
     },
-    resetForm () {
+    resetForm() {
       this.form.title = ''
       this.form.dueTime = null
       this.form.startTime = null
       this.form.endTime = null
       this.openDialog = false
     },
-    goBack () {
+    goBack() {
       this.$router.back()
     }
   }
