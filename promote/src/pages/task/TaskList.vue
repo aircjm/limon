@@ -75,7 +75,7 @@
             </q-chip>
           </q-td>
         </template>
-        <template v-slot:body-cell-status="props">
+        <template v-slot:body-cell-title="props">
           <q-td
             style="width: 200px"
             :props="props"
@@ -162,7 +162,7 @@
 </template>
 
 <script>
-import { getTaskList, saveTask } from 'src/api/task'
+import {getTaskList, saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
 
 export default {

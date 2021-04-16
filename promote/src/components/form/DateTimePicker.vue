@@ -1,48 +1,50 @@
 <template>
-  <q-input
-    :label="label"
-    filled
-    clearable
-    v-model="dateTime"
-    @blur="updateDateTime"
-  >
-    <template v-slot:prepend>
-      <q-icon
-        name="today"
-        class="cursor-pointer"
-      >
-        <q-popup-proxy
-          transition-show="scale"
-          transition-hide="scale"
+  <div>
+    <q-input
+      filled
+      :label="label"
+      clearable
+      v-model="dateTime"
+      @blur="updateDateTime"
+    >
+      <template v-slot:prepend>
+        <q-icon
+          name="today"
+          class="cursor-pointer"
         >
-          <q-date
-            v-model="dateTime"
-            default-year-month="2020/01"
-            mask="YYYY-MM-DD HH:mm:ss"
-          />
-        </q-popup-proxy>
-      </q-icon>
-    </template>
+          <q-popup-proxy
+            transition-show="scale"
+            transition-hide="scale"
+          >
+            <q-date
+              v-model="dateTime"
+              default-year-month="2020/01"
+              mask="YYYY-MM-DD HH:mmZ"
+            />
+          </q-popup-proxy>
+        </q-icon>
+      </template>
 
-    <template v-slot:append>
-      <q-icon
-        name="access_time"
-        class="cursor-pointer"
-      >
-        <q-popup-proxy
-          transition-show="scale"
-          transition-hide="scale"
+      <template v-slot:append>
+        <q-icon
+          name="access_time"
+          class="cursor-pointer"
         >
-          <q-time
-            v-model="dateTime"
-            mask="YYYY-MM-DD HH:mm:ss"
-            format24h
-            now-btn
-          />
-        </q-popup-proxy>
-      </q-icon>
-    </template>
-  </q-input>
+          <q-popup-proxy
+            transition-show="scale"
+            transition-hide="scale"
+          >
+            <q-time
+              v-model="dateTime"
+              format24h
+              mask="YYYY-MM-DD HH:mmZ"
+              now-btn
+            />
+          </q-popup-proxy>
+        </q-icon>
+      </template>
+    </q-input>
+  </div>
 </template>
 
 <script>
@@ -70,7 +72,7 @@ export default {
     }
   },
   methods: {
-    updateDateTime () {
+    updateDateTime() {
       this.$emit('update:time', this.dateTime)
       this.$emit('update:timestamp', date.formatDate(this.dateTime, 'x'))
     }

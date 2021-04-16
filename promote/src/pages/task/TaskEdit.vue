@@ -3,24 +3,16 @@
     <div class="col-md-9 col-sm-12">
       <q-card>
         <q-card-section>
-          <div
-            class="text-h7"
-            v-if="form.id"
-          >
+          <div class="text-h7" v-if="form.id">
             Edit Record {{ form.id }}
           </div>
-          <div
-            class="text-h7"
-            v-else
-          >
+          <div class="text-h7" v-else>
             Add Record {{ form.id }}
           </div>
         </q-card-section>
-        <q-separator />
+        <q-separator/>
         <q-card-section>
-          <q-form
-            class="q-gutter-y-md column"
-          >
+          <q-form class="q-gutter-y-md column">
             <q-input
               v-model="form.title"
               label="title"
@@ -35,19 +27,19 @@
               />
             </div>
             <div class="row q-gutter-sm">
-              <div style="width: 360px">
+              <div style="width: 330px">
                 <date-time-picker
                   label="通知时间"
                   :time.sync="form.endTime"
                 />
               </div>
-              <div style="width: 360px">
+              <div style="width: 330px">
                 <date-time-picker
                   label="开始时间"
                   :time.sync="form.startTime"
                 />
               </div>
-              <div style="width: 360px">
+              <div style="width: 330px">
                 <date-time-picker
                   label="截止时间"
                   :time.sync="form.dueTime"
@@ -61,6 +53,7 @@
                   v-model="tag.selectList"
                   use-input
                   multiple
+                  style="width: 330px"
                   input-debounce="0"
                   :options="tag.tagList"
                   label="标签"
@@ -71,7 +64,6 @@
                       dense
                       flat
                       icon="add"
-                      @click="editorTagFlag == true"
                     />
                   </template>
                 </q-select>
@@ -79,7 +71,7 @@
             </div>
             <MarkdownEditor
               label="context"
-              v-if="this.editorFlag"
+              v-if="editorFlag"
               :context.sync="form.taskDesc"
             />
             <div>
@@ -93,7 +85,6 @@
               <q-btn
                 class="mdi-book-cancel"
                 label="Cancel"
-                @click="goBack()"
                 color="primary"
                 flat
                 v-close-popup
@@ -102,34 +93,6 @@
           </q-form>
         </q-card-section>
       </q-card>
-    </div>
-    <div class="col-md-3 col-sm-12 column">
-      <div class="col">
-        <q-btn
-          @click="tag.editorFlag = true"
-          label="添加标签"
-        />
-        <date-time-picker
-          label="开始时间"
-          :time.sync="form.startTime"
-          :timestamp.sync="form.startTimeStamp"
-        />
-        <date-time-picker
-          label="通知时间"
-          :time.sync="form.endTime"
-        />
-
-        <date-time-picker
-          label="截止时间"
-          :time.sync="form.dueTime"
-        />
-      </div>
-      <div class="col">
-        2
-      </div>
-      <div class="col">
-        3
-      </div>
     </div>
     <q-dialog
       v-model="tag.editorFlag"
@@ -168,90 +131,110 @@
 
 <script>
 import {getTaskDetail, saveTask} from 'src/api/task'
-import DateTimePicker from 'components/form/DateTimePicker'
-import MarkdownEditor from 'components/editor/MarkdownEditor'
-import {Notify} from 'quasar'
+import {Loading, useQuasar} from 'quasar'
+import {defineComponent} from "vue";
+import {reactive, toRefs} from "@vue/reactivity";
+import {onMounted} from "@vue/runtime-core";
+import {useRoute} from "vue-router";
+import DateTimePicker from "components/form/DateTimePicker";
 
-export default {
-  name: 'TaskEdit',
-  components: { MarkdownEditor, DateTimePicker },
-  data () {
-    return {
-      title: '',
-      recordType: null,
-      date: null,
-      openDialog: false,
-      form: {},
-      filter: '',
-      loading: false,
-      editorFlag: false,
-      editorTagFlag: false,
-      tag: {
+
+export default defineComponent(
+  {
+    name: 'TaskEdit',
+    components:{
+      DateTimePicker
+    },
+    setup() {
+
+      let route = useRoute();
+      const $q = useQuasar();
+
+      const data = reactive({
+        id: null,
+        title: '',
+        recordType: null,
+        date: null,
+        openDialog: false,
+        form: {},
+        filter: '',
+        loading: false,
         editorFlag: false,
-        filter: null,
-        tagList: [{ id: 1, label: '测试' }, { id: 2, label: 'test' }],
-        selectList: []
+        tag: {
+          editorFlag: false,
+          filter: null,
+          tagList: [{id: 1, label: '测试'}, {id: 2, label: 'test'}],
+          selectList: []
+        }
+      });
+
+      // 初始化
+      onMounted(() => {
+        init()
+      })
+      const init = async () => {
+        Loading.show();
+        const id = route.query.id
+        if (id) {
+          data.id = id
+          await getTaskDetail(id).then(res => {
+            data.form = res.data
+            data.editorFlag = true
+          })
+          data.editorFlag = true
+        }
+        Loading.hide();
       }
 
-    }
-  },
-  watch: {
-    // form: function (oldVal, newVal) {
-    //   if (newVal.id && this.editorFlag) {
-    //     debounce(this.autoSave(), 5000)
+
+      // 同步添加标签
+      const addTag = async (tagDetail) => {
+        console.log(data.tag.selectList.indexOf(tagDetail))
+        if (data.tag.selectList.indexOf(tagDetail) > -1) {
+        } else {
+          data.tag.selectList.push(tagDetail)
+        }
+      }
+
+      const onSubmit = () => {
+        saveTask(this.form).then(res => {
+          if (res.code === 200) {
+            this.$router.push('/task')
+          }
+        })
+      }
+
+      const autoSave = () => {
+        saveTask(this.form).then(res => {
+          if (res.code === 200) {
+            $q.notify({
+              message: '自动更新成功'
+            })
+          }
+        })
+      }
+
+      return {
+        ...toRefs(data),
+        addTag,onSubmit, autoSave
+      }
+    },
+
+    // methods: {
+
+    //   resetForm() {
+    //     this.form.title = ''
+    //     this.form.dueTime = null
+    //     this.form.startTime = null
+    //     this.form.endTime = null
+    //     this.openDialog = false
+    //   },
+    //   goBack() {
+    //     this.$router.back()
     //   }
     // }
-  },
-  created () {
-    const id = this.$route.query.id
-    if (id) {
-      this.form.id = id
-      this.$q.loading.show()
-      getTaskDetail(id).then(res => {
-        this.form = res.data
-        this.$q.loading.hide()
-        this.editorFlag = true
-      })
-    } else {
-      this.editorFlag = true
-    }
-  },
-  methods: {
-    onSubmit () {
-      saveTask(this.form).then(res => {
-        if (res.code === 200) {
-          this.$router.push('/task')
-        }
-      })
-    },
-    addTag (tagDetail) {
-      console.log(this.tag.selectList.indexOf(tagDetail))
-      if (this.tag.selectList.indexOf(tagDetail) > -1) {
-      } else {
-        this.tag.selectList.push(tagDetail)
-      }
-    },
-    autoSave () {
-      saveTask(this.form).then(res => {
-        if (res.code === 200) {
-          Notify.create({
-            message: '自动更新成功'
-          })
-        }
-      })
-    },
-    resetForm () {
-      this.form.title = ''
-      this.form.dueTime = null
-      this.form.startTime = null
-      this.form.endTime = null
-      this.openDialog = false
-    },
-    goBack () {
-      this.$router.back()
-    }
   }
-}
+)
 </script>
 
 <style scoped>

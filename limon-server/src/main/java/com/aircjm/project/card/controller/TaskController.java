@@ -2,6 +2,7 @@ package com.aircjm.project.card.controller;
 
 import com.aircjm.common.utils.SecurityUtils;
 import com.aircjm.common.vo.RestResponse;
+import com.aircjm.project.card.domain.TaskAttachment;
 import com.aircjm.project.card.service.TaskService;
 import com.aircjm.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.project.card.vo.request.SaveTaskRequest;
@@ -72,7 +73,7 @@ public class TaskController {
      * @return 结果
      */
     @PostMapping("/list")
-    public RestResponse list(@RequestBody @Valid QueryTaskRequest request) {
+    public RestResponse<Page<TaskDetailResponse>> list(@RequestBody @Valid QueryTaskRequest request) {
         Page<TaskDetailResponse> responsePage = taskService.list(request);
         return RestResponse.successData(responsePage);
     }
@@ -83,7 +84,7 @@ public class TaskController {
      * @return 结果
      */
     @PostMapping(value = "/upload")
-    public RestResponse uploadFileList(@RequestParam(value = "file[]") List<MultipartFile> files, @RequestParam(value = "id") Long id) {
+    public RestResponse<List<TaskAttachment>> uploadFileList(@RequestParam(value = "file[]") List<MultipartFile> files, @RequestParam(value = "id") Long id) {
         return RestResponse.successData(taskService.uploadFileList(files, id, SecurityUtils.getUsername()));
     }
 }

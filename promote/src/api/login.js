@@ -1,18 +1,14 @@
-import axios from 'axios'
+import client, {doPost} from "src/utils/axios";
 
 // 登录方法
 
 export function login (data) {
-  return axios({
-    url: '/login',
-    method: 'post',
-    data: data
-  })
+  return doPost('/login', data)
 }
 
 // 获取用户详细信息
 export function getInfo () {
-  return axios({
+  return client({
     url: '/getInfo',
     method: 'get'
   })
@@ -20,7 +16,7 @@ export function getInfo () {
 
 // 退出方法
 export function logout () {
-  return axios({
+  return client({
     url: '/logout',
     method: 'post'
   })
@@ -28,8 +24,9 @@ export function logout () {
 
 // 获取验证码
 export function getCodeImg () {
-  return axios({
+  return client({
     url: '/captchaImage',
     method: 'get'
   })
 }
+
