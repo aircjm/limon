@@ -137,12 +137,15 @@ import {Loading} from 'quasar'
 import {defineComponent} from "vue";
 import {reactive, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
+import {useRoute} from "vue-router";
 
 
 export default defineComponent(
   {
     name: 'TaskEdit',
     setup() {
+
+      let route = useRoute();
       const data = reactive({
         id: null,
         title: '',
@@ -167,18 +170,16 @@ export default defineComponent(
       })
       const init = async () => {
         Loading.show();
-        const id = this.$route.params.id
+        const id = route.query.id
         if (id) {
           data.id = id
-          Loading.show()
           await getTaskDetail(id).then(res => {
             data.form = res.data
-            Loading.hide()
             data.editorFlag = true
           })
-        } else {
           data.editorFlag = true
         }
+        Loading.hide();
       }
 
       return toRefs(data)
