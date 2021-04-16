@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import {UserLogin} from "../../request/user";
 import {GlobalStore} from "../../store/global";
+import Form from "semantic-ui-react";
 
 const Login = () => {
 
@@ -27,7 +28,7 @@ const Login = () => {
     }
     return (
         <React.Fragment>
-
+            <Form.FormInput label={"登录名称"}/>
         </React.Fragment>
     )
 
