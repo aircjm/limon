@@ -12,7 +12,7 @@
         </q-card-section>
         <q-separator/>
         <q-card-section>
-          <!--<q-form class="q-gutter-y-md column">
+          <q-form class="q-gutter-y-md column">
             <q-input
               v-model="form.title"
               label="title"
@@ -64,7 +64,6 @@
                       dense
                       flat
                       icon="add"
-                      @click="tag.editorFlag == true"
                     />
                   </template>
                 </q-select>
@@ -72,7 +71,7 @@
             </div>
             <MarkdownEditor
               label="context"
-              v-if="this.editorFlag"
+              v-if="editorFlag"
               :context.sync="form.taskDesc"
             />
             <div>
@@ -86,54 +85,53 @@
               <q-btn
                 class="mdi-book-cancel"
                 label="Cancel"
-                @click="goBack()"
                 color="primary"
                 flat
                 v-close-popup
               />
             </div>
-          </q-form>-->
+          </q-form>
         </q-card-section>
       </q-card>
     </div>
-    <!-- <q-dialog
-       v-model="tag.editorFlag"
-       style="min-width: 300px"
-     >
-       <q-card>
-         <q-card-section>
-           <div
-             v-for="(selectTag) in tag.selectList"
-             :key="selectTag.id"
-           >
-             <q-badge
-               outline
-               :color="selectTag.color ? selectTag.color: 'red'"
-               :label="selectTag.label"
-             />
-           </div>
-           <q-list>
-             <q-item
-               v-for="(tagDetail) in tag.tagList"
-               :key="tagDetail.id"
-             >
-               <q-item-label @click="addTag(tagDetail)">
-                 {{ tagDetail.label }}
-               </q-item-label>
-             </q-item>
-           </q-list>
-         </q-card-section>
-         <q-card-actions>
-           <q-btn>submit</q-btn>
-         </q-card-actions>
-       </q-card>
-     </q-dialog>-->
+    <q-dialog
+      v-model="tag.editorFlag"
+      style="min-width: 300px"
+    >
+      <q-card>
+        <q-card-section>
+          <div
+            v-for="(selectTag) in tag.selectList"
+            :key="selectTag.id"
+          >
+            <q-badge
+              outline
+              :color="selectTag.color ? selectTag.color: 'red'"
+              :label="selectTag.label"
+            />
+          </div>
+          <q-list>
+            <q-item
+              v-for="(tagDetail) in tag.tagList"
+              :key="tagDetail.id"
+            >
+              <q-item-label @click="addTag(tagDetail)">
+                {{ tagDetail.label }}
+              </q-item-label>
+            </q-item>
+          </q-list>
+        </q-card-section>
+        <q-card-actions>
+          <q-btn>submit</q-btn>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
-import {getTaskDetail} from 'src/api/task'
-import {Loading} from 'quasar'
+import {getTaskDetail, saveTask} from 'src/api/task'
+import {Loading, useQuasar} from 'quasar'
 import {defineComponent} from "vue";
 import {reactive, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
@@ -146,6 +144,8 @@ export default defineComponent(
     setup() {
 
       let route = useRoute();
+      const $q = useQuasar();
+
       const data = reactive({
         id: null,
         title: '',
@@ -182,48 +182,42 @@ export default defineComponent(
         Loading.hide();
       }
 
-      return toRefs(data)
+
+      // 同步添加标签
+      const addTag = async (tagDetail) => {
+        console.log(data.tag.selectList.indexOf(tagDetail))
+        if (data.tag.selectList.indexOf(tagDetail) > -1) {
+        } else {
+          data.tag.selectList.push(tagDetail)
+        }
+      }
+
+      const onSubmit = () => {
+        saveTask(this.form).then(res => {
+          if (res.code === 200) {
+            this.$router.push('/task')
+          }
+        })
+      }
+
+      const autoSave = () => {
+        saveTask(this.form).then(res => {
+          if (res.code === 200) {
+            $q.notify({
+              message: '自动更新成功'
+            })
+          }
+        })
+      }
+
+      return {
+        ...toRefs(data),
+        addTag,onSubmit, autoSave
+      }
     },
 
-    // watch: {},
-    // created() {
-    //   const id = this.$route.query.id
-    //   if (id) {
-    //     this.form.id = id
-    //     this.$q.loading.show()
-    //     getTaskDetail(id).then(res => {
-    //       this.form = res.data
-    //       this.$q.loading.hide()
-    //       this.editorFlag = true
-    //     })
-    //   } else {
-    //     this.editorFlag = true
-    //   }
-    // },
     // methods: {
-    //   onSubmit() {
-    //     saveTask(this.form).then(res => {
-    //       if (res.code === 200) {
-    //         this.$router.push('/task')
-    //       }
-    //     })
-    //   },
-    //   addTag(tagDetail) {
-    //     console.log(this.tag.selectList.indexOf(tagDetail))
-    //     if (this.tag.selectList.indexOf(tagDetail) > -1) {
-    //     } else {
-    //       this.tag.selectList.push(tagDetail)
-    //     }
-    //   },
-    //   autoSave() {
-    //     saveTask(this.form).then(res => {
-    //       if (res.code === 200) {
-    //         Notify.create({
-    //           message: '自动更新成功'
-    //         })
-    //       }
-    //     })
-    //   },
+
     //   resetForm() {
     //     this.form.title = ''
     //     this.form.dueTime = null
