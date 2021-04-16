@@ -1,8 +1,5 @@
 <template>
   <div>
-    <q-badge color="teal">
-      Model: {{ time }}
-    </q-badge>
     <q-input
       filled
       :label="label"
@@ -68,10 +65,6 @@ export default {
       type: String,
       default: ''
     }
-  },
-  created() {
-    console.log(this.props)
-    debugger;
   },
   data: function () {
     return {

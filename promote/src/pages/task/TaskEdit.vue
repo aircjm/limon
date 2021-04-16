@@ -136,11 +136,15 @@ import {defineComponent} from "vue";
 import {reactive, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useRoute} from "vue-router";
+import DateTimePicker from "components/form/DateTimePicker";
 
 
 export default defineComponent(
   {
     name: 'TaskEdit',
+    components:{
+      DateTimePicker
+    },
     setup() {
 
       let route = useRoute();
