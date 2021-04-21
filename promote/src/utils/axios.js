@@ -2,7 +2,7 @@ import axios from 'axios'
 import {getToken} from 'src/utils/project'
 import {Notify} from 'quasar'
 import {logout} from 'src/api/login'
-
+import {router} from 'src/router/index'
 
 axios.defaults.headers['Content-Type'] = 'application/json;'
 // 创建axios实例

@@ -3,6 +3,8 @@
 import {createMemoryHistory, createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 import routes from './routes'
 
+let router = null
+
 export default function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
@@ -18,5 +20,10 @@ export default function (/* { store, ssrContext } */) {
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
+  router = Router
+
   return Router
 }
+
+
+export {router}
