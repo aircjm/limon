@@ -1,7 +1,6 @@
 <template>
   <q-page class="column">
     <div
-      style="height: 65px"
       class="q-pa-sm q-ma-sm"
     >
       <q-input
@@ -30,7 +29,7 @@
       <q-table
         @request="list"
         :columns="columns"
-        :data="data"
+        :data="listData"
         title="Record List"
         row-key="id"
         :loading="loading"
@@ -45,7 +44,7 @@
                 outlined
                 dense
                 no-error-icon
-                v-model="searchForm.title"
+                v-model="title"
                 placeholder="输入标题"
               />
             </div>
@@ -137,7 +136,7 @@
             />
           </q-toolbar>
           <q-card-section>
-            <date-time-picker :time.sync="setTimeForm.task.dueTime" />
+            <date-time-picker :time.sync="setTimeForm.task.dueTime"/>
           </q-card-section>
           <q-card-actions
             align="right"
@@ -164,34 +163,15 @@
 <script>
 import {getTaskList, saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
+import {reactive, toRefs} from "@vue/reactivity";
+import {onMounted} from "@vue/runtime-core";
 
 export default {
   name: 'TaskList',
-  components: { DateTimePicker },
-  data () {
-    return {
+  components: {DateTimePicker},
+  setup() {
+    const state = reactive({
       title: '',
-      recordType: null,
-      date: null,
-      options: [
-        {
-          id: 1,
-          desc: 'first'
-        }
-      ],
-      form: {
-        id: '',
-        title: '',
-        type: null,
-        dueTime: null,
-        startTime: null,
-        endTime: null,
-        context: null
-      },
-      searchForm: {
-        title: null
-      },
-      filter: '',
       loading: false,
       pagination: {
         sortBy: 'desc',
@@ -247,27 +227,79 @@ export default {
           // headerStyle: 'width: 500px',
           // headerClasses: 'my-special-class'
         },
-        { name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px' },
-        { name: 'context', label: 'context', field: 'taskDesc', align: 'left', style: 'width:100px' },
-        { name: 'status', label: '状态', field: 'status', align: 'center', style: 'width: 20px' },
-        { name: 'dueTime', label: '截止时间（通知）', field: 'dueTime', align: 'left', style: 'width:100px' },
-        { name: 'startTime', label: '开始时间', field: 'startTime', align: 'left', style: 'width:100px' },
-        { name: 'endTime', label: '结束时间', field: 'endTime', align: 'left', style: 'width:100px' },
-        { name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px' }
+        {name: 'title', label: 'title', field: 'title', align: 'left', style: 'width:200px'},
+        {name: 'context', label: 'context', field: 'taskDesc', align: 'left', style: 'width:100px'},
+        {name: 'status', label: '状态', field: 'status', align: 'center', style: 'width: 20px'},
+        {name: 'dueTime', label: '截止时间（通知）', field: 'dueTime', align: 'left', style: 'width:100px'},
+        {name: 'startTime', label: '开始时间', field: 'startTime', align: 'left', style: 'width:100px'},
+        {name: 'endTime', label: '结束时间', field: 'endTime', align: 'left', style: 'width:100px'},
+        {name: 'options', label: '操作', field: 'options', align: 'center', style: 'width: 100px'}
+      ]
+    });
+
+    const listData = reactive([])
+
+    onMounted(() => {
+      list();
+    })
+
+    const list = () => {
+      const {page, rowsPerPage} = state.pagination
+      const fetchCount = rowsPerPage === 0 ? state.pagination.rowsNumber : rowsPerPage
+
+      const queryRequest = {
+        size: fetchCount,
+        current: page
+      }
+      queryRequest.title = state.title
+      // calculate starting row of data
+      // fetch data from "server"
+      getTaskList(queryRequest).then(res => {
+        listData.value = res.data.records
+      })
+    }
+
+
+    return {
+      ...toRefs(state),
+      listData,
+      list
+    }
+
+  },
+
+  data() {
+    return {
+      recordType: null,
+      date: null,
+      options: [
+        {
+          id: 1,
+          desc: 'first'
+        }
       ],
-      data: [
-      ],
+      form: {
+        id: '',
+        title: '',
+        type: null,
+        dueTime: null,
+        startTime: null,
+        endTime: null,
+        context: null
+      },
+      searchForm: {
+        title: null
+      },
+      filter: '',
+      data: [],
       setTimeForm: {
         loading: false,
         task: {}
       }
     }
   },
-  mounted () {
-    this.list()
-  },
   methods: {
-    doneTask (task) {
+    doneTask(task) {
       task.status = 1
       console.log(task)
       saveTask(task).then(res => {
@@ -283,57 +315,36 @@ export default {
         })
       })
     },
-    edit (id) {
+    edit(id) {
       const path = '/task/edit?id==' + id
       this.$route.push(path)
     },
-    saveTitle () {
+    saveTitle() {
       if (this.title.length > 0) {
-        saveTask({ title: this.title }).then(res => {
+        saveTask({title: this.title}).then(res => {
           this.title = ''
           this.list()
         })
       }
     },
-    setEndTime (task) {
-      this.setTimeForm = { loading: true }
+    setEndTime(task) {
+      this.setTimeForm = {loading: true}
       this.setTimeForm.task = task
     },
-    getStatus (status) {
+    getStatus(status) {
       if (status === 0) {
         return '待处理'
       } else {
         return '已完成'
       }
     },
-    async saveTaskDetail () {
+    async saveTaskDetail() {
       this.$q.loading.show()
       await saveTask(this.setTimeForm.task)
       this.$q.loading.hide()
       this.setTimeForm.loading = false
     },
-    list () {
-      const { page, rowsPerPage } = this.pagination
-      // const filter = this.filter
-      // get all rows if "All" (0) is selected
-      const fetchCount = rowsPerPage === 0 ? this.pagination.rowsNumber : rowsPerPage
-
-      const queryRequest = {
-        size: fetchCount,
-        current: page
-      }
-      queryRequest.title = this.searchForm.title
-
-      // calculate starting row of data
-
-      // fetch data from "server"
-      getTaskList(queryRequest).then(res => {
-        this.data = res.data.records
-      })
-      // ...and turn of loading indicator
-      this.loading = false
-    },
-    onSubmitForm (e) {
+    onSubmitForm(e) {
       this.$refs.myForm.validate().then(success => {
         if (success) {
           // 是的，模型是正确的
@@ -347,7 +358,7 @@ export default {
       this.$refs.myForm.resetValidation()
       saveTask(this.form)
     },
-    resetForm () {
+    resetForm() {
     }
 
   }
