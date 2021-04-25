@@ -54,7 +54,7 @@
               :key="task.id"
               class="row q-pa-sm q-gutter-sm"
             >
-              <div class="col-6 taskStr" :class="{ 'done': task.status == 9}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+              <div class="col-7 taskStr" :class="{ 'done': task.status == 9}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
                 {{ task.title }}
                 <q-item-label
                   side
@@ -71,28 +71,20 @@
                   </q-badge>
                 </q-item-label>
               </div>
-              <div class="col-4 q-gutter-xs">
+              <div class="col-4 q-gutter-xs column items-end">
+                <div>
                   <q-btn
-                    size="12px"
-                    flat
-                    dense
-                    round
+                    size="12px" flat dense round
                     icon="delete"
                     @click="deleteTask(task)"
                   />
                   <q-btn
-                    size="12px"
-                    flat
-                    dense
-                    round
+                    size="12px" flat dense round
                     icon="timer"
                     @click="setEndTime(task)"
                   />
                   <q-btn
-                    size="12px"
-                    flat
-                    dense
-                    round
+                    size="12px" flat dense round
                     icon="done"
                     v-if="task.status != 9"
                     @click="doneTask(task)"
@@ -108,6 +100,7 @@
                       />
                     </template>
                   </router-link>
+                </div>
               </div>
             </div>
           </q-list>
@@ -252,10 +245,9 @@
         // 删除任务
       }
       const setEndTime = (task) => {
-        console.log('设置时间' + task.id)
-        // 删除任务
-        this.setTimeForm = {loading: true}
-        this.setTimeForm.task = task
+        console.log('开始设置时间' + task.id)
+        state.setTimeForm = {loading: true}
+        state.setTimeForm.task = task
       }
 
       const saveTaskDetail = async () => {
