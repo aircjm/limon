@@ -29,6 +29,7 @@
         <q-btn
           label="Search"
           type="submit"
+          @click="list"
           color="primary"
         />
         <q-btn
@@ -40,29 +41,23 @@
         />
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-4 col-sm-12">
-        <div class="q-pa-md q-gutter-md">
+    <div >
+      <div class="row q-pa-md q-gutter-md ">
+        <div class="col col-md-4 col-sm-12">
           <q-list
             dense
             bordered
             class="rounded-borders"
-            style="max-width: 650px"
           >
             <div
               v-for="(task) in tasks"
               :key="task.id"
+              class="row q-pa-sm q-gutter-sm"
             >
               <q-item
                 tag="label"
                 v-ripple
               >
-                <!--                <q-item-section-->
-                <!--                  side-->
-                <!--                  top-->
-                <!--                >-->
-                <!--                  <q-checkbox v-model="task.status" />-->
-                <!--                </q-item-section>-->
                 <q-item-section>
                   <q-item-label
                     style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"
@@ -81,7 +76,7 @@
                       color="red"
                       v-if="task.dueTime"
                     >
-                      <q-icon name="timer" />
+                      <q-icon name="timer"/>
                       {{ task.dueTime }}
                     </q-badge>
                   </q-item-label>
@@ -90,7 +85,7 @@
                   top
                   side
                 >
-                  <div class="text-grey-8 q-gutter-xs">
+                  <div class="q-gutter-xs">
                     <q-btn
                       class="gt-xs"
                       size="12px"
@@ -156,7 +151,7 @@
           />
         </q-toolbar>
         <q-card-section>
-          <date-time-picker :time.sync="setTimeForm.task.dueTime" />
+          <date-time-picker :time.sync="setTimeForm.task.dueTime"/>
         </q-card-section>
         <q-card-actions
           align="right"
@@ -180,126 +175,150 @@
 </template>
 
 <script>
-import {saveTask} from 'src/api/task'
-import DateTimePicker from 'components/form/DateTimePicker'
-import {doPost} from 'src/utils/axios'
-import {taskList} from 'src/api/url'
+  import {saveTask} from 'src/api/task'
+  import DateTimePicker from 'components/form/DateTimePicker'
+  import {doPost} from 'src/utils/axios'
+  import {taskList} from 'src/api/url'
+  import {reactive, toRefs} from "@vue/reactivity";
+  import {onMounted} from "@vue/runtime-core";
+  import {Loading} from "quasar";
+  import {useRoute} from "vue-router";
 
-export default {
-  name: 'AllTask',
-  components: {DateTimePicker},
-  data() {
-    return {
-      title: '',
-      recordType: null,
-      date: null,
-      setTimeForm: {
-        loading: false,
-        task: {}
-      },
-      form: {
-        id: '',
+  export default {
+    name: 'AllTask',
+    components: {DateTimePicker},
+    setup() {
+
+      const route = useRoute();
+
+      const state = reactive({
         title: '',
-        type: null,
-        dueTime: null,
-        startTime: null,
-        endTime: null,
-        context: null
-      },
-      searchForm: {
-        title: null
-      },
-      filter: '',
-      loading: false,
-      tasks: []
-    }
-  },
-  mounted () {
-    this.list()
-    if (!this.form.startTime) {
-      this.form.startTime = Date.now()
-    }
-  },
-  methods: {
-    edit (id) {
-      const path = '/task/edit?id==' + id
-      this.$route.push(path)
-    },
-    saveTitle () {
-      if (this.title.length > 0) {
-        saveTask({ title: this.title }).then(res => {
-          this.title = ''
-          this.list()
+        recordType: null,
+        date: null,
+        setTimeForm: {
+          loading: false,
+          task: {}
+        },
+        form: {
+          id: '',
+          title: '',
+          type: null,
+          dueTime: null,
+          startTime: null,
+          endTime: null,
+          context: null
+        },
+        searchForm: {
+          title: null
+        },
+        filter: '',
+        loading: false,
+        tasks: []
+      });
+
+
+      onMounted(() => {
+        list()
+        if (!state.form.startTime) {
+          state.form.startTime = Date.now()
+        }
+      })
+
+
+      const list = () => {
+        state.loading = true
+        const queryRequest = {
+          size: 50,
+          current: 1
+        }
+        queryRequest.title = state.searchForm.title
+
+        doPost(taskList, queryRequest).then(res => {
+          state.tasks = res.data.records
         })
+        state.loading = false
       }
-    },
-    deleteTask (task) {
-      console.log('删除' + task.id)
-      // 删除任务
-    },
-    setEndTime (task) {
-      console.log('设置时间' + task.id)
-      // 删除任务
-      this.setTimeForm = { loading: true }
-      this.setTimeForm.task = task
-    },
-    // 完成任务
-    doneTask (updatedTask) {
-      for (const i in this.tasks) {
-        if (this.tasks[i].id === updatedTask.id) {
-          updatedTask.status = 9
-          saveTask(updatedTask)
-          this.tasks.splice(i, 1)
-          this.tasks.push(updatedTask)
-          break
+
+      const saveTitle = () => {
+        if (state.title.length > 0) {
+          saveTask({title: state.title}).then(res => {
+            state.title = ''
+            this.list()
+          })
         }
       }
-    },
-    async saveTaskDetail () {
-      this.$q.loading.show()
-      await saveTask(this.setTimeForm.task)
-      this.$q.loading.hide()
-      this.setTimeForm.loading = false
-    },
-    list () {
-      this.loading = true
-      const queryRequest = {
-        size: 1000,
-        current: 1
-      }
-      queryRequest.title = this.searchForm.title
 
-      doPost(taskList, queryRequest).then(res => {
-        console.log('开始')
-        this.tasks = res.data.records
-      })
-      // ...and turn of loading indicator
-      this.loading = false
-    },
-    onSubmitForm (e) {
-      this.$refs.myForm.validate().then(success => {
-        if (success) {
-          // 是的，模型是正确的
-        } else {
-          // 哦，不，用户至少
-          // 填写了一个无效值
+      // 完成任务
+      const doneTask = (updatedTask) => {
+        for (const i in state.tasks) {
+          if (state.tasks[i].id === updatedTask.id) {
+            updatedTask.status = 9
+            saveTask(updatedTask)
+            state.tasks.splice(i, 1)
+            state.tasks.push(updatedTask)
+            break
+          }
         }
-      })
+      }
 
-      // 重置验证：
-      this.$refs.myForm.resetValidation()
-      saveTask(this.form)
-    },
-    resetForm () {
+
+      const edit = (id) => {
+        const path = '/task/edit?id==' + id
+        route.push(path)
+      }
+
+      const deleteTask = (task) => {
+        console.log('删除' + task.id)
+        // 删除任务
+      }
+      const setEndTime = (task) => {
+        console.log('设置时间' + task.id)
+        // 删除任务
+        this.setTimeForm = {loading: true}
+        this.setTimeForm.task = task
+      }
+
+      const saveTaskDetail = async () => {
+        Loading.show()
+        await saveTask(state.setTimeForm.task)
+        Loading.hide()
+        state.setTimeForm.loading = false
+      }
+      const onSubmitForm = (e) => {
+        // this.$refs.myForm.validate().then(success => {
+        //   if (success) {
+        //     // 是的，模型是正确的
+        //   } else {
+        //     // 哦，不，用户至少
+        //     // 填写了一个无效值
+        //   }
+        // })
+        //
+        // // 重置验证：
+        // this.$refs.myForm.resetValidation()
+        saveTask(state.form)
+      }
+
+
+      return {
+        ...toRefs(state),
+        saveTaskDetail,
+        saveTitle,
+        list,
+        doneTask,
+        setEndTime,
+        deleteTask,
+        edit
+      }
+
+
     }
-
   }
-}
 </script>
 
 <style scoped>
-.taskStr.done {
-  text-decoration: line-through;
-  color: rgba(0,0,0,.36);
-}
+  .taskStr.done {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, .36);
+  }
 </style>

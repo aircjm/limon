@@ -23,13 +23,13 @@
         <q-btn
           stretch
           flat
-          label="Task"
+          label="TaskList"
           to="/task"
         />
         <q-btn
           stretch
           flat
-          label="TaskList"
+          label="AllTask"
           to="/alltask"
         />
         <q-btn
@@ -133,7 +133,7 @@ const linksData = [
 
 export default {
   name: 'MainLayout',
-  data () {
+  data() {
     return {
       leftDrawerOpen: true,
       miniState: true,
@@ -141,7 +141,7 @@ export default {
     }
   },
   methods: {
-    jumpLink (url) {
+    jumpLink(url) {
       window.open(url)
     }
 
