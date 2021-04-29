@@ -2,13 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {StyledDescription} from "../../components/styled/common";
-import * as moment from "moment";
 import {Label} from "semantic-ui-react";
 import GetTheme from "../../components/hooks/GetTheme";
-import * as zhCn from 'moment/locale/zh-cn';
 import {useResponsive} from "ahooks";
+import * as dayjs from 'dayjs'
+import * as isLeapYear from 'dayjs/plugin/isLeapYear' // 导入插件
+import 'dayjs/locale/zh-cn' // 导入本地化语言
 
-moment.locales(zhCn)
+dayjs.extend(isLeapYear) // 使用插件
+dayjs.locale('zh-cn') // 使用本地化语言
 
 const NoteWrapper = styled.div`
   width: 100%;
@@ -103,7 +105,7 @@ const NoteListItem = (props) => {
                             as="a" key={tag}  >{tag}</Label>)
                   }
 
-                  <StyledDescription> {moment(note.updateAt).fromNow()}</StyledDescription>
+                    <StyledDescription> {dayjs(note.updateAt).fromNow()}</StyledDescription>
 
                 </div>
             </div>

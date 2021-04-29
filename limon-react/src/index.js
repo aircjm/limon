@@ -6,15 +6,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStoreProvider from "./store/global";
 import {BrowserRouter} from 'react-router-dom';
-import {message} from "antd";
-
-message.config({
-  // top: 0,
-  // duration: 2,
-  // maxCount: 1,
-  // rtl: true,
-  // prefixCls: 'my-message',
-});
 
 ReactDOM.render(
   <React.Fragment>

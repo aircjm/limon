@@ -1,5 +1,4 @@
 import {client} from "./request";
-import {message} from "antd";
 import {defaultValue} from "../store/global";
 
 
@@ -15,7 +14,6 @@ export const UserLogin = (data, setLoading, callback) => {
     client.post('login', data)
         .then(response =>  {
           callback(response)
-          message.success(`欢迎回来~ ${data.Name}`)
         }).catch( e => {
 
     }).finally(()=> {

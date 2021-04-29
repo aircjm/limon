@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import {client} from "./request";
-import {message} from "antd";
 import {stringify} from 'qs'
 import {IsNumber} from "../utils/utils";
 
@@ -86,7 +85,6 @@ export const FetchRelationTags = (classify) => {
 export const InsertNote = (data, callback) => {
     client.post('Article', data)
         .then(response => {
-            message.success("添加成功")
             callback && callback(response)
 
         }).catch(e => {
@@ -149,7 +147,7 @@ export const FetchNotes = (classify, tag, title, offset, orderBy, sort, setOffse
                 setTotal(response.total)
                 setNotes(notes.concat(response.data));
 
-                message.success(`获取文章列表, 当前已展示 ${notes.concat(response.data).length} / ${response.total} 条`)
+                // message.success(`获取文章列表, 当前已展示 ${notes.concat(response.data).length} / ${response.total} 条`)
 
             }).finally(() => setLoading(false));
         }

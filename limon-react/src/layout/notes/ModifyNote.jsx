@@ -3,7 +3,7 @@ import {Button, Checkbox, Dimmer, Dropdown, Form, Grid, Input, Loader, TextArea}
 import {useHistory, useParams} from 'react-router-dom';
 
 import {Head, Section} from "../../components/styled/frameworks";
-import {Editor} from "../../components/editor/bytemd";
+// import {Editor} from "../../components/editor/bytemd";
 import {
   FetchClassifies,
   FetchLogos,
@@ -207,7 +207,7 @@ const ModifyNote = (props) => {
       <label>正文</label>
       {/*隐藏 bug, raw 值初始化后不能被修改 */}
 
-      {
+      {/*      {
         rawInit &&
         <Editor
             value={raw}
@@ -215,7 +215,7 @@ const ModifyNote = (props) => {
               setRaw(v)
             }}
         />
-      }
+      }*/}
 
     </Form.Field>
         </Form>

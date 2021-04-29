@@ -3,7 +3,7 @@ import {DeleteNote, FetchNote} from "../../request/notebook";
 import {Link, useHistory, useParams} from 'react-router-dom';
 import {Aside, Head, Label as CustomLabel, Section} from "../../components/styled/frameworks";
 import styled from "styled-components";
-import {Viewer} from "../../components/editor/bytemd";
+// import {Viewer} from "../../components/editor/bytemd";
 import {Button, Icon} from "semantic-ui-react";
 import AdminLoginStatus from "../../components/hooks/AdminLoginStatus";
 import Confirm from "../../components/Confirm";
@@ -133,7 +133,7 @@ const Note = (props) => {
       </Head>
       <Section style={{padding: "16px 10%"}} marginLeft={responsive.middle} marginRight={false}>
 
-        <Viewer value={note.raw} />
+        {/*        <Viewer value={note.raw} />*/}
         {/*<PostContent resource={resource} topic={null} setAnchors={setAnchors}/>*/}
       </Section>
     </>

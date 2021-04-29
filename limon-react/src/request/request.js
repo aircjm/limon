@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {message} from "antd";
 import {getToken} from "../utils/utils";
 
 export const client = axios.create(
@@ -32,25 +31,23 @@ client.interceptors.response.use(function (response) {
     }
     // 特殊处理
     if (response.config.url.endsWith("fetchCurrentUser")) {
-        // message.error("请求返回错误: " + response.data.message)
         return {}
     }
 
     // 特殊处理
     if (!response.config.url.endsWith("fetchCurrentUser") && !response.data.status) {
-        message.error("请求返回错误: " + response.data.message, 5)
+        // message.error("请求返回错误: " + response.data.message, 5)
     }
 
-    // message.error("请求返回错误: " + response.data.message)
     return Promise.reject(response);
 }, function (error) {
     // 对响应错误做点什么
     const {response} = error;
     // console.log(error, response)
     if (response && response.data && response.data.status === false) {
-        message.error(response.data.message, 5)
+        // message.error(response.data.message, 5)
     } else {
-        message.error(`请求时出现异常, HTTP状态码: ${response.status}, ${response.statusText}`, 5)
+        // message.error(`请求时出现异常, HTTP状态码: ${response.status}, ${response.statusText}`, 5)
     }
     return Promise.reject(response);
 });
