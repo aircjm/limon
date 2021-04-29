@@ -4,13 +4,6 @@ import Notes from "./notes";
 import Note from "./note";
 import ModifyNote from "./ModifyNote";
 
-/**
- * <Description> <br>
- *
- * @author zhang.yangyuan (jansora)
- 2020/12/05 12:19:04
- */
-
 const Notebooks = (props) => {
 
 

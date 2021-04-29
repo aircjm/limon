@@ -4,12 +4,7 @@ import styled from 'styled-components'
 import {Link} from "react-router-dom";
 import {StyledDescription} from "../styled/common";
 
-/**
- * <Description> <br>
- *
- * @author zhang.yangyuan (jansora)
- 2020/12/27 16:21:02
- */
+
 const StyledA = styled.a`
      margin-bottom: 20px;
    img {

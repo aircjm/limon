@@ -1,10 +1,3 @@
-/*
-* @file User.jsx
-* @author jansora
-* @date 2020/2/5
-*/
-
-
 import {client} from "./request";
 import {message} from "antd";
 import {defaultValue} from "../store/global";

@@ -1,10 +1,3 @@
-/*
-* @file index.jsx
-* @description〈一句话功能简述〉
-* @author jansora
-* @date 2020-11-21 23:55
-*/
-
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 

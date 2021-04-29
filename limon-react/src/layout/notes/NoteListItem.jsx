@@ -1,10 +1,3 @@
-/*
-* @file PostItem.jsx
-* @author jansora
-* @date 2020/2/12
-*/
-
-
 import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";

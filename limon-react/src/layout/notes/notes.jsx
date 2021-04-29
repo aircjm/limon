@@ -13,8 +13,6 @@ import {Bootstrap, StyledDescription} from "../../components/styled/common";
 
 const orders = [
   {name: "标题", icon: "yelp", value: "title"},
-  // {name: "点赞数", icon: "typo3", value: "like_num"},
-  // {name: "阅读量", icon: "hotjar", value: "read_num"},
   {name: "创建时间", icon: "clock", value: "create_at"},
   {name: "更新时间", icon: "clock", value: "update_at"}
 ]
@@ -49,11 +47,6 @@ const Notes = (props) => {
       setTag("")
     }
   }, [pathname])
-  // const getCount = (name) => {
-  //   const filters = classifyCounts.filter(classifyCount => classifyCount.name === name);
-  //   if(filters.length > 0) return filters[0].count;
-  //   return 0;
-  // }
   const autoSearch = (value) => {
     setTitle(value)
     setNotes([]);setOffset(0);setLock(false)

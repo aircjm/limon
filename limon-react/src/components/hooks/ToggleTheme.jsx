@@ -1,9 +1,3 @@
-/*
-* @file theme.jsx
-* @description〈一句话功能简述〉
-* @author jansora
-* @date 2019-12-17 10:39
-*/
 import {useContext, useEffect} from 'react';
 import {THEME} from "../../utils/constants";
 import {GlobalStore} from "../../store/global";

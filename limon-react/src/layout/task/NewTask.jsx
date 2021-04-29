@@ -4,8 +4,6 @@ import {Form, FormField, Input} from "semantic-ui-react";
 const NewTask = (props) => {
 
     const [title, setTitle] = useState('')
-
-
     return <React.Fragment>
         <Form>
             <FormField>

@@ -1,8 +1,3 @@
-/*
-* @file CheckLogin.jsx
-* @author jansora
-* @date 2019-12-17 11:01
-*/
 import {useContext, useEffect, useState} from 'react';
 
 import {GlobalStore} from "../../store/global";

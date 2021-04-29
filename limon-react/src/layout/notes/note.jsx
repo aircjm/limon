@@ -10,13 +10,6 @@ import Confirm from "../../components/Confirm";
 import {useResponsive, useTitle} from "ahooks";
 import GetTheme from "../../components/hooks/GetTheme";
 
-/**
- * <Description> <br>
- *
- * @author zhang.yangyuan (jansora)
- 2020/12/05 22:21:26
- */
-
 const Item = styled.div`
   height: 33px;
   padding: 5px 0 5px 10px;

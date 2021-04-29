@@ -1,10 +1,3 @@
-/*
-* @file Confirm.jsx
-* @author jansora
-* @date 2020/2/18
-*/
-
-
 import React, {useState} from "react";
 
 import {Confirm as ConfirmModal} from "semantic-ui-react";

@@ -1,10 +1,3 @@
-/*
-* @file index.jsx
-* @author jansora
-* @date 2020/2/16
-*/
-
-
 import React from "react";
 import {Dimmer, Loader} from "semantic-ui-react";
 import styled from "styled-components";
