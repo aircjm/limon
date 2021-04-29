@@ -148,7 +148,6 @@ const Notes = (props) => {
 
 
     <Section style={{padding: responsive.large ? "0 84px" : " 0 32px"}} marginRight={responsive.large}  marginLeft={responsive.middle}>
-
       <Bootstrap style={{margin:responsive.large ? "0 -84px 20px " : " 0 -32px 20px", height: 200}}>
         <h1>检索笔记</h1>
         <StyledDescription style={{marginBottom: 20}}>基于标题模糊搜索</StyledDescription>

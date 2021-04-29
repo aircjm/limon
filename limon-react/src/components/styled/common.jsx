@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const StyledDescription = styled.span`
   color: rgba(1,1,1, 0.33);
   font-size: .85rem;
@@ -18,7 +17,6 @@ export const StyledDescription = styled.span`
 `
 
 export const Bootstrap = styled.header`
-  background: url("https://cdn.jansora.com/application/Jansora/2020/12/26/10:04:28/image.png");
   height: 150px;
   padding: 30px;
   flex-direction: column;

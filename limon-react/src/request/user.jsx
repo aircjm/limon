@@ -8,15 +8,28 @@ export const FetchCurrentUser = (setUser) => {
 };
 
 
+export const GetCode = (setCodeUrl, setUuid) => {
+    client.get("/captchaImage")
+        .then(response => {
+            const {data} = response;
+            if (data.code === 200) {
+                let code = "data:image/gif;base64," + data.img
+                setCodeUrl(code)
+                setUuid(data.uuid)
+            }
+        })
+
+};
+
 
 export const UserLogin = (data, setLoading, callback) => {
     setLoading(true);
     client.post('login', data)
-        .then(response =>  {
-          callback(response)
-        }).catch( e => {
+        .then(response => {
+            callback(response)
+        }).catch(e => {
 
-    }).finally(()=> {
+    }).finally(() => {
         setLoading(false);
     })
     return null;

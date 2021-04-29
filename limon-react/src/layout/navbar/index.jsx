@@ -16,7 +16,7 @@ const NavBar = (props) => {
   const user = GetCurrentUser();
   return <StyledNavBar activeNav={activeNav} responsive={responsive} onMouseEnter={() => setActiveNav(true)}  onMouseLeave={() => setActiveNav(false)}>
     <div className="logo">
-      <NavLink to="/"><img src="https://cdn.jansora.com/logo/logo.png" alt="logo"/></NavLink>
+      <NavLink to="/"><img src="logo.png" alt="logo"/></NavLink>
     </div>
 
     <NavLink to={"/notes"}> <div> <Icon name="globe" /> </div> <> 博客列表 </></NavLink>
