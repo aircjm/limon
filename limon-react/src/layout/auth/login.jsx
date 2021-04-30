@@ -14,8 +14,9 @@ const Img = styled.img`
 const Login = () => {
 
     const [loading, setLoading] = useState(false);
-    const [Name, setName] = useState('');
-    const [Token, setToken] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [code, setCode] = useState('');
 
     const [uuid, setUuid] = useState('')
 
@@ -46,18 +47,21 @@ const Login = () => {
     })
 
 
-    const {theme, dispatch} = useContext(GlobalStore);
+    const {dispatch} = useContext(GlobalStore);
     const history = useHistory();
 
     const setUser = user => {
-        dispatch({type: 'user', payload: user});
+        debugger
+        // dispatch({type: 'user', payload: user});
         history.push(`/about/user/current`);
     };
 
-    const signIn = () => {
-        const data = {Name, Token};
+    const signIn =  () => {
+        const data = {username, password,code, uuid};
         setLoading(true);
-        UserLogin(data, setLoading, setUser);
+        const userInfo =  UserLogin(data, setLoading, setUser);
+        console.log(userInfo)
+        setUser(userInfo)
     }
 
     return (
@@ -75,6 +79,8 @@ const Login = () => {
                         label="username"
                         type='text'
                         id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         autoComplete="current-username"
                     />
                     <TextField
@@ -86,6 +92,7 @@ const Login = () => {
                         label="Password"
                         type="password"
                         id="password"
+                        onChange={(e) =>setPassword(e.target.value)}
                         autoComplete="current-password"
                     />
                     <div className="flex flex-row">
@@ -98,6 +105,7 @@ const Login = () => {
                                 label="验证码"
                                 type="text"
                                 id="imgcode"
+                                onChange={(e) =>  setCode(e.target.value)}
                             />
                         </div>
                         <div className={"m-auto justify-center w-auto"}>
@@ -111,6 +119,7 @@ const Login = () => {
                         size="large"
                         color="primary"
                         className={"text-red"}
+                        onClick={signIn}
                     >
                         Login
                     </Button>

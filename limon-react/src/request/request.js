@@ -29,15 +29,6 @@ client.interceptors.response.use(function (response) {
     if (response.status) {
         return response.data;
     }
-    // 特殊处理
-    if (response.config.url.endsWith("fetchCurrentUser")) {
-        return {}
-    }
-
-    // 特殊处理
-    if (!response.config.url.endsWith("fetchCurrentUser") && !response.data.status) {
-        // message.error("请求返回错误: " + response.data.message, 5)
-    }
     return Promise.reject(response);
 }, function (error) {
     // 对响应错误做点什么
