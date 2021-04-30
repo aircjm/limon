@@ -1,10 +1,12 @@
 import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom';
-import {GetCode, UserLogin} from "../../request/user";
+import {GetCode, GetCodeUrl, UserLogin} from "../../request/user";
 import {GlobalStore} from "../../store/global";
 import TextField from "@material-ui/core/TextField";
 import {Button, FormGroup} from "@material-ui/core";
 import styled from 'styled-components';
+import {client} from "../../request/request";
+
 
 const Img = styled.img`
 `
@@ -15,17 +17,33 @@ const Login = () => {
     const [Name, setName] = useState('');
     const [Token, setToken] = useState('');
 
-    const [codeUrl, setCodeUrl] = useState('')
     const [uuid, setUuid] = useState('')
 
+    const [codeUrl, setCodeUrl] = useState('')
+
     const resetCode = () => {
-        GetCode(setCodeUrl, setUuid)
+        getCode()
     };
+
+    const getCode = () => {
+        client.get("/captchaImage").then(
+            function (data) {
+                if (data.code === 200) {
+                    console.log("get code success")
+                    let code = "data:image/gif;base64," + data.img
+                    setCodeUrl(code)
+                    setUuid(data.uuid)
+                }
+                if (!codeUrl) {
+                    console.log("获取验证码失败")
+                }
+            })
+    }
 
 
     useState(() => {
-        GetCode(setCodeUrl, setUuid)
-    });
+        getCode()
+    })
 
 
     const {theme, dispatch} = useContext(GlobalStore);
@@ -44,57 +62,60 @@ const Login = () => {
 
     return (
         <React.Fragment>
-            <button className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700">
-                Click me
-            </button>
-            <form className="w-80 m-auto"
-                  noValidate
-                  onSubmit={signIn}>
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="username"
-                    label="username"
-                    type='text'
-                    id="username"
-                    autoComplete="current-username"
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                />
-                <div>
+            <div className={"md:m-auto justify-center md:w-2/5 sm:w-auto"}>
+                <form
+                    noValidate
+                    onSubmit={signIn}>
                     <TextField
                         variant="outlined"
                         margin="normal"
                         required
-                        name="imgcode"
-                        label="验证码"
-                        type="text"
-                        id="imgcode"
+                        fullWidth
+                        name="username"
+                        label="username"
+                        type='text'
+                        id="username"
+                        autoComplete="current-username"
                     />
-                    <Img src={codeUrl} onClick={resetCode}/>
-                </div>
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    className={"text-red"}
-                >
-                    Login
-                </Button>
-            </form>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                    />
+                    <div className="flex flex-row">
+                        <div>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                name="imgcode"
+                                label="验证码"
+                                type="text"
+                                id="imgcode"
+                            />
+                        </div>
+                        <div className={"m-auto justify-center w-auto"}>
+                            <Img src={codeUrl} onClick={resetCode}/>
+                        </div>
+                    </div>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        size="large"
+                        color="primary"
+                        className={"text-red"}
+                    >
+                        Login
+                    </Button>
+                </form>
+            </div>
         </React.Fragment>
     )
 

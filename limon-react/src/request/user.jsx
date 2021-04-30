@@ -11,16 +11,16 @@ export const FetchCurrentUser = (setUser) => {
 export const GetCode = (setCodeUrl, setUuid) => {
     client.get("/captchaImage")
         .then(response => {
+            debugger;
             const {data} = response;
             if (data.code === 200) {
+                console.log("get code success")
                 let code = "data:image/gif;base64," + data.img
                 setCodeUrl(code)
                 setUuid(data.uuid)
             }
         })
-
 };
-
 
 export const UserLogin = (data, setLoading, callback) => {
     setLoading(true);
