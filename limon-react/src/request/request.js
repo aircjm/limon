@@ -25,9 +25,9 @@ client.interceptors.request.use(function (config) {
 client.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     // console.log("response", response)
-
-    if (response.data.status) {
-        return response.data.data;
+    // debugger
+    if (response.status) {
+        return response.data;
     }
     // 特殊处理
     if (response.config.url.endsWith("fetchCurrentUser")) {
@@ -38,7 +38,6 @@ client.interceptors.response.use(function (response) {
     if (!response.config.url.endsWith("fetchCurrentUser") && !response.data.status) {
         // message.error("请求返回错误: " + response.data.message, 5)
     }
-
     return Promise.reject(response);
 }, function (error) {
     // 对响应错误做点什么
