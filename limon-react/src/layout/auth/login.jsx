@@ -60,7 +60,6 @@ const Login = () => {
         const data = {username, password,code, uuid};
         setLoading(true);
         const userInfo =  UserLogin(data, setLoading, setUser);
-        console.log(userInfo)
         setUser(userInfo)
     }
 

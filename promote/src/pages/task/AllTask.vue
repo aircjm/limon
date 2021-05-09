@@ -54,7 +54,7 @@
               :key="task.id"
               class="row q-pa-sm q-gutter-sm"
             >
-              <div class="col-7 taskStr" :class="{ 'done': task.status == 9}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+              <div class="col-7 taskStr" :class="{ 'done': task.status === 9}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
                 {{ task.title }}
                 <q-item-label
                   side
@@ -86,7 +86,7 @@
                   <q-btn
                     size="12px" flat dense round
                     icon="done"
-                    v-if="task.status != 9"
+                    v-if="task.status !== 9"
                     @click="doneTask(task)"
                   />
                   <router-link :to="`/task/edit?id=${task.id}`">
@@ -164,7 +164,6 @@
 
       const $q = useQuasar()
       const route = useRoute();
-
       const state = reactive({
         title: '',
         recordType: null,
