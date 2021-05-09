@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom';
-import {GetCode, GetCodeUrl, UserLogin} from "../../request/user";
+import {UserLogin} from "../../request/user";
 import {GlobalStore} from "../../store/global";
 import TextField from "@material-ui/core/TextField";
-import {Button, FormGroup} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import styled from 'styled-components';
 import {client} from "../../request/request";
 
