@@ -154,7 +154,7 @@
   import {taskList} from 'src/api/url'
   import {reactive, toRefs} from "@vue/reactivity";
   import {onMounted} from "@vue/runtime-core";
-  import {Loading} from "quasar";
+  import {Loading, useQuasar} from "quasar";
   import {useRoute} from "vue-router";
 
   export default {
@@ -162,6 +162,7 @@
     components: {DateTimePicker},
     setup() {
 
+      const $q = useQuasar()
       const route = useRoute();
 
       const state = reactive({
@@ -215,14 +216,20 @@
       const saveTitle = () => {
         if (state.title.length > 0) {
           saveTask({title: state.title}).then(res => {
+            $q.notify({
+              message: "新增成功",
+              position: 'bottom-left',
+              type: "positive"
+            })
             state.title = ''
-            this.list()
+            list()
           })
         }
       }
 
       // 完成任务
       const doneTask = (updatedTask) => {
+
         for (const i in state.tasks) {
           if (state.tasks[i].id === updatedTask.id) {
             updatedTask.status = 9
