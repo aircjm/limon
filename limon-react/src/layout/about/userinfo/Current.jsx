@@ -13,22 +13,20 @@ const Current = (props) => {
   const history = useHistory();
 
   const user = GetCurrentUser()
+  console.log(JSON.stringify(user))
   const setUser = user => {
     dispatch({type: 'user', payload: user});
     history.push(`/about/user/signin`);
   };
 
   const signOut = () => {
-    setLoading(true);
     UserLogout(setUser);
-    setLoading(false);
   }
   return <React.Fragment>
     <h3>当前用户信息</h3>
-    <Divider />
-    <h4> <StyledDescription>用户名: </StyledDescription> {user.name} </h4>
-    <h4> <StyledDescription>别名: </StyledDescription> {user.alias} </h4>
-    <h4> <StyledDescription>凭据(token): </StyledDescription> {user.token} </h4>
+    <Divider/>
+    <h4><StyledDescription>用户名: </StyledDescription> {user.username} </h4>
+    <h4><StyledDescription>凭据(token): </StyledDescription> {user.token} </h4>
     <Divider />
     <Button fluid color={theme} content='退出登录' onClick={() => signOut()}/>
 

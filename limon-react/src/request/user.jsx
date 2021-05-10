@@ -25,8 +25,10 @@ export const GetCode = (setCodeUrl, setUuid) => {
 export const UserLogin = (data, setLoading, callback) => {
     client.post('/login', data)
         .then(response => {
-            debugger
-            callback(response)
+            const user = {}
+            user.username = data.username
+            user.token = response.token
+            callback(user)
         }).catch(e => {
     }).finally(() => {
         setLoading(false);

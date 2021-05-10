@@ -28,7 +28,8 @@ const NavBar = (props) => {
     </NavLink>
     {
       loginStatus ? <NavLink to="/about/user/current" className={GetPath() === "/about/user/current" ? 'active' : ''}>
-            <div><Icon name="circle" color="green" /> </div>{user.alias}
+            <div><Icon name="circle" color="green"/></div>
+            {user.username}
           </NavLink> :
           <NavLink to="/login" className={GetPath() === "/about/user/login" ? 'active' : ''}>
             <div><Icon name="sign in"/></div>
