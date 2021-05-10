@@ -24,7 +24,7 @@ client.interceptors.request.use(function (config) {
 // 添加响应拦截器
 client.interceptors.response.use(function (response) {
     // 对响应数据做点什么
-    // console.log("response", response)
+    console.log("response", response)
     // debugger
     if (response.status) {
         return response.data;

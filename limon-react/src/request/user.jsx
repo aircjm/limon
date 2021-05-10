@@ -22,16 +22,15 @@ export const GetCode = (setCodeUrl, setUuid) => {
         })
 };
 
-export const UserLogin = async (data, setLoading, callback) => {
-    let response = {}
-   await client.post('/login', data)
-        .then(data => {
-            response = data
+export const UserLogin = (data, setLoading, callback) => {
+    client.post('/login', data)
+        .then(response => {
+            debugger
+            callback(response)
         }).catch(e => {
     }).finally(() => {
         setLoading(false);
     })
-    return response
 };
 
 

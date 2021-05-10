@@ -3,8 +3,8 @@ import {THEME} from "../utils/constants";
 
 
 export const defaultValue = {
-    // 登录用户信息
-    user: { //
+    // 用户信息
+    user: {
         name: "",
         alias: "",
         token: "",
@@ -12,7 +12,7 @@ export const defaultValue = {
     // 主题色
     theme: localStorage.getItem(THEME) ? localStorage.getItem(THEME) : 'violet',
     breadcrumb: [],
-    title: '主页',
+    title: '主页'
 };
 
 export const GlobalStore = createContext(defaultValue);

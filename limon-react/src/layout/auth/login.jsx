@@ -25,7 +25,6 @@ const Login = () => {
     const resetCode = () => {
         getCode()
     };
-
     const getCode = () => {
         client.get("/captchaImage").then(
             function (data) {
@@ -50,17 +49,15 @@ const Login = () => {
     const {dispatch} = useContext(GlobalStore);
     const history = useHistory();
 
-    const setUser = user => {
-        debugger
-        // dispatch({type: 'user', payload: user});
+    const updateUser = user => {
+        dispatch({type: 'user', payload: user});
         history.push(`/about/user/current`);
     };
 
-    const signIn =  () => {
-        const data = {username, password,code, uuid};
-        setLoading(true);
-        const userInfo =  UserLogin(data, setLoading, setUser);
-        setUser(userInfo)
+    const signIn = () => {
+        const data = {username, password, code, uuid};
+        const userInfo = UserLogin(data, setLoading, updateUser);
+        updateUser(userInfo)
     }
 
     return (
