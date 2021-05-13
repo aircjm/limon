@@ -2,11 +2,10 @@
   <div>
     <div style="height: 65px">
       <q-input
-        v-model="title"
         style="width: 400px"
         @keyup.enter="saveTitle"
         placeholder="Please Input Task"
-      >
+        model-value="title">
         <template v-slot:append>
           <q-btn>
             <q-icon
@@ -21,7 +20,7 @@
       <q-field style="max-width: 400px">
         <q-input
           label="title"
-          v-model="searchForm.title"
+          model-value="searchForm.title"
         />
       </q-field>
       <q-field style="max-width: 400px">
@@ -60,7 +59,7 @@
               :key="task.id"
               class="row list-task"
             >
-              <div class="col-8 q-gutter-auto">
+              <div class="col-8 q-gutter-auto" @click="edit(task.id)">
                 <div class="taskStr" :class="{ 'done': task.status === 9}"
                      style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
                   {{ task.title }}
@@ -161,7 +160,7 @@ import {taskList} from 'src/api/url'
 import {reactive, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {Loading, useQuasar} from "quasar";
-import {useRoute} from "vue-router";
+import {useRouter} from "vue-router";
 
 export default {
   name: 'AllTask',
@@ -169,17 +168,17 @@ export default {
   setup() {
 
     const $q = useQuasar()
-    const route = useRoute();
+    const router = useRouter();
     const state = reactive({
       title: '',
       recordType: null,
       date: null,
-        setTimeForm: {
-          loading: false,
-          task: {}
-        },
-        form: {
-          id: '',
+      setTimeForm: {
+        loading: false,
+        task: {}
+      },
+      form: {
+        id: '',
           title: '',
           type: null,
           dueTime: null,
@@ -249,8 +248,8 @@ export default {
 
 
       const edit = (id) => {
-        const path = '/task/edit?id==' + id
-        route.push(path)
+        const path = '/task/edit?id=' + id
+        router.push(path)
       }
 
       const deleteTask = (task) => {

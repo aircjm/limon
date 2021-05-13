@@ -135,22 +135,24 @@ import {Loading, useQuasar} from 'quasar'
 import {defineComponent} from "vue";
 import {reactive, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import DateTimePicker from "components/form/DateTimePicker";
+import MarkdownEditor from "components/editor/MarkdownEditor";
 
 
 export default defineComponent(
   {
     name: 'TaskEdit',
-    components:{
+    components: {
+      MarkdownEditor,
       DateTimePicker
     },
     setup() {
-
       let route = useRoute();
+      const router = useRouter();
       const $q = useQuasar();
 
-      const data = reactive({
+      const state = reactive({
         id: null,
         title: '',
         recordType: null,
@@ -163,7 +165,7 @@ export default defineComponent(
         tag: {
           editorFlag: false,
           filter: null,
-          tagList: [{id: 1, label: '测试'}, {id: 2, label: 'test'}],
+          tagList: [],
           selectList: []
         }
       });
@@ -176,12 +178,12 @@ export default defineComponent(
         Loading.show();
         const id = route.query.id
         if (id) {
-          data.id = id
+          state.id = id
           await getTaskDetail(id).then(res => {
-            data.form = res.data
-            data.editorFlag = true
+            state.form = res.data
+            state.editorFlag = true
           })
-          data.editorFlag = true
+          state.editorFlag = true
         }
         Loading.hide();
       }
@@ -189,18 +191,20 @@ export default defineComponent(
 
       // 同步添加标签
       const addTag = async (tagDetail) => {
-        console.log(data.tag.selectList.indexOf(tagDetail))
-        if (data.tag.selectList.indexOf(tagDetail) > -1) {
+        console.log(state.tag.selectList.indexOf(tagDetail))
+        if (state.tag.selectList.indexOf(tagDetail) > -1) {
         } else {
-          data.tag.selectList.push(tagDetail)
+          state.tag.selectList.push(tagDetail)
         }
       }
 
       const onSubmit = () => {
-        saveTask(this.form).then(res => {
+        $q.loading.show()
+        saveTask(state.form).then(res => {
           if (res.code === 200) {
-            this.$router.push('/task')
+            router.push('/alltask')
           }
+          $q.loading.hide()
         })
       }
 
@@ -215,8 +219,8 @@ export default defineComponent(
       }
 
       return {
-        ...toRefs(data),
-        addTag,onSubmit, autoSave
+        ...toRefs(state),
+        addTag, onSubmit, autoSave
       }
     },
 
