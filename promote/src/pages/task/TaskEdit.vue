@@ -205,7 +205,7 @@ export default defineComponent(
 
       // 跳转到添加标签
       const toAddTag = () => {
-        router.push('/addTag')
+        router.push('/tag')
       }
 
       const onSubmit = () => {

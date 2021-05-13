@@ -13,54 +13,25 @@
           <div class="text-h6">
             添加标签
           </div>
-          <q-form @reset="onReset">
-            <q-input
-              label="标签名称"
-              v-model="name"
-              :rules="[
-                val => val.length < 50 || '最大50个字符',
-                val => val.length > 0 || '不能为空'
-              ]"
-            />
-            <q-input
-              filled
-              label="标签颜色"
-              v-model="color"
-            >
-              <!--              todo 标签颜色-->
+          <q-form>
+            <q-input filled v-model="color" label="标签颜色">
               <template v-slot:append>
-                <q-icon
-                  name="colorize"
-                  class="cursor-pointer"
-                >
-                  <q-popup-proxy
-                    transition-show="scale"
-                    transition-hide="scale"
-                  >
-                    <q-color
-                      v-model="color"
-                    />
+                <q-icon name="colorize" class="cursor-pointer">
+                  <q-popup-proxy transition-show="scale" transition-hide="scale">
+                    <q-color v-model="color"/>
                   </q-popup-proxy>
                 </q-icon>
               </template>
             </q-input>
-            <q-space />
-
-            <q-separator />
-
-            <q-btn
-              flat
-              color="primary"
-              @click="submit()"
-            >
-              提交
-            </q-btn>
-            <q-btn
-              flat
-              type="reset"
-            >
-              取消
-            </q-btn>
+            <q-input label="标签名称" v-model="name"
+                     :rules="[
+          val => !!val || '* Required',
+          val => val.length < 50 || 'Please use maximum 50 character',
+        ]"/>
+            <q-space/>
+            <q-separator/>
+            <q-btn flat color="primary" @click="submit()">提交</q-btn>
+            <q-btn flat type="reset" @click="onReset">取消</q-btn>
           </q-form>
         </div>
       </q-card>
@@ -69,12 +40,12 @@
 </template>
 
 <script>
-import { saveTag } from 'src/api/tag'
-import { Notify } from 'quasar'
+import {saveTag} from 'src/api/tag'
+import {Notify} from 'quasar'
 
 export default {
   name: 'TagList',
-  data () {
+  data() {
     return {
       addFlag: false,
       name: null,
@@ -105,7 +76,6 @@ export default {
       })
     },
     onReset () {
-      console.log('reset')
       this.name = null
       this.color = null
       this.addFlag = false

@@ -23,12 +23,6 @@
         <q-btn
           stretch
           flat
-          label="TaskList"
-          to="/task"
-        />
-        <q-btn
-          stretch
-          flat
           label="AllTask"
           to="/alltask"
         />
