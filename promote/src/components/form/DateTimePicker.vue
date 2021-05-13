@@ -10,7 +10,7 @@
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" transition-hide="scale">
-            <q-date v-model="dateTime" mask="YYYY-MM-DD HH:mmZ" default-year-month="2020/01">
+            <q-date v-model="dateTime" mask="YYYY-MM-DD HH:mmZ">
               <div class="row items-center justify-end">
                 <q-btn v-close-popup label="Close" color="primary" flat/>
               </div>

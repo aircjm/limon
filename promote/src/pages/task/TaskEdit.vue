@@ -56,6 +56,8 @@
                   style="width: 330px"
                   input-debounce="0"
                   :options="tag.tagList"
+                  @filter="filterTag"
+                  @filter-abort="filterTagAbort"
                   label="标签"
                 >
                   <template v-slot:append>
@@ -64,6 +66,7 @@
                       dense
                       flat
                       icon="add"
+                      @click="toAddTag"
                     />
                   </template>
                 </q-select>
@@ -200,6 +203,11 @@ export default defineComponent(
         }
       }
 
+      // 跳转到添加标签
+      const toAddTag = () => {
+        router.push('/addTag')
+      }
+
       const onSubmit = () => {
         $q.loading.show()
         saveTask(state.form).then(res => {
@@ -220,9 +228,31 @@ export default defineComponent(
         })
       }
 
+      const stringOptions = [
+        'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
+      ]
+      const filterTagAbort = () => {
+        console.log('delayed filter aborted')
+      }
+
+      const filterTag = (val, update, abort) => {
+        console.log(state.tag.tagList)
+        if (state.tag.tagList.value !== null) {
+          // already loaded
+          update()
+          return
+        }
+
+        setTimeout(() => {
+          update(() => {
+            state.tag.tagList.value = stringOptions
+          })
+        }, 2000)
+      }
+
       return {
-        ...toRefs(state),
-        addTag, onSubmit, autoSave
+        ...toRefs(state), toAddTag, filterTag, filterTagAbort,
+        addTag, onSubmit, autoSave,
       }
     },
 
