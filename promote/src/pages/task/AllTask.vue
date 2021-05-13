@@ -24,6 +24,12 @@
           v-model="searchForm.title"
         />
       </q-field>
+      <q-field style="max-width: 400px">
+        <date-time-picker
+          label="记录时间"
+          v-model="searchForm.logTime"
+        />
+      </q-field>
 
       <div class="content-end">
         <q-btn
@@ -43,23 +49,23 @@
     </div>
     <div>
       <div class="row q-pa-md q-gutter-md ">
-        <div class="col col-md-4 col-sm-12">
+        <div class="col col-md-8 col-sm-12">
           <q-list
             dense
             bordered
-            class="rounded-borders"
+            class="rounded-borders list q-pa-xs q-gutter-xs"
           >
             <div
               v-for="(task) in tasks"
               :key="task.id"
-              class="row q-pa-sm q-gutter-sm"
+              class="row list-task"
             >
-              <div class="col-7 taskStr" :class="{ 'done': task.status === 9}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-                {{ task.title }}
-                <q-item-label
-                  side
-                  top
-                >
+              <div class="col-8 q-gutter-auto">
+                <div class="taskStr" :class="{ 'done': task.status === 9}"
+                     style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+                  {{ task.title }}
+                </div>
+                <q-item-label side top>
                   <q-badge
                     transparent
                     align="middle"
@@ -148,26 +154,26 @@
 </template>
 
 <script>
-  import {saveTask} from 'src/api/task'
-  import DateTimePicker from 'components/form/DateTimePicker'
-  import {doPost} from 'src/utils/axios'
-  import {taskList} from 'src/api/url'
-  import {reactive, toRefs} from "@vue/reactivity";
-  import {onMounted} from "@vue/runtime-core";
-  import {Loading, useQuasar} from "quasar";
-  import {useRoute} from "vue-router";
+import {saveTask} from 'src/api/task'
+import DateTimePicker from 'components/form/DateTimePicker'
+import {doPost} from 'src/utils/axios'
+import {taskList} from 'src/api/url'
+import {reactive, toRefs} from "@vue/reactivity";
+import {onMounted} from "@vue/runtime-core";
+import {Loading, useQuasar} from "quasar";
+import {useRoute} from "vue-router";
 
-  export default {
-    name: 'AllTask',
-    components: {DateTimePicker},
-    setup() {
+export default {
+  name: 'AllTask',
+  components: {DateTimePicker},
+  setup() {
 
-      const $q = useQuasar()
-      const route = useRoute();
-      const state = reactive({
-        title: '',
-        recordType: null,
-        date: null,
+    const $q = useQuasar()
+    const route = useRoute();
+    const state = reactive({
+      title: '',
+      recordType: null,
+      date: null,
         setTimeForm: {
           loading: false,
           task: {}
@@ -182,7 +188,8 @@
           context: null
         },
         searchForm: {
-          title: null
+          title: null,
+          logTime: null
         },
         filter: '',
         loading: false,
@@ -295,8 +302,31 @@
 </script>
 
 <style scoped>
-  .taskStr.done {
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, .36);
-  }
+.taskStr.done {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, .36);
+}
+
+.list {
+  background-color: #EBECF0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+}
+
+.list-task {
+  background-color: #FFFFFF;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+  cursor: pointer;
+  margin-bottom: 8px;
+  min-height: 46px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+}
 </style>
