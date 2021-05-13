@@ -8,38 +8,25 @@
       @blur="updateDateTime"
     >
       <template v-slot:prepend>
-        <q-icon
-          name="today"
-          class="cursor-pointer"
-        >
-          <q-popup-proxy
-            transition-show="scale"
-            transition-hide="scale"
-          >
-            <q-date
-              v-model="dateTime"
-              default-year-month="2020/01"
-              mask="YYYY-MM-DD HH:mmZ"
-            />
+        <q-icon name="event" class="cursor-pointer">
+          <q-popup-proxy transition-show="scale" transition-hide="scale">
+            <q-date v-model="dateTime" mask="YYYY-MM-DD HH:mmZ" default-year-month="2020/01">
+              <div class="row items-center justify-end">
+                <q-btn v-close-popup label="Close" color="primary" flat/>
+              </div>
+            </q-date>
           </q-popup-proxy>
         </q-icon>
       </template>
 
       <template v-slot:append>
-        <q-icon
-          name="access_time"
-          class="cursor-pointer"
-        >
-          <q-popup-proxy
-            transition-show="scale"
-            transition-hide="scale"
-          >
-            <q-time
-              v-model="dateTime"
-              format24h
-              mask="YYYY-MM-DD HH:mmZ"
-              now-btn
-            />
+        <q-icon name="access_time" class="cursor-pointer">
+          <q-popup-proxy transition-show="scale" transition-hide="scale">
+            <q-time v-model="dateTime" mask="YYYY-MM-DD HH:mmZ" format24h now-btn>
+              <div class="row items-center justify-end">
+                <q-btn v-close-popup label="Close" color="primary" flat/>
+              </div>
+            </q-time>
           </q-popup-proxy>
         </q-icon>
       </template>

@@ -69,28 +69,30 @@
                 </q-select>
               </div>
             </div>
-            <MarkdownEditor
-              label="context"
-              v-if="editorFlag"
-              :context.sync="form.taskDesc"
-            />
-            <div>
-              <q-btn
-                icon="save"
-                label="Submit"
-                type="submit"
-                color="primary"
-                @click="onSubmit"
-              />
-              <q-btn
-                class="mdi-book-cancel"
-                label="Cancel"
-                color="primary"
-                flat
-                v-close-popup
-              />
-            </div>
           </q-form>
+        </q-card-section>
+        <q-card-section>
+          <MarkdownEditor
+            label="context"
+            v-if="editorFlag"
+            :context.sync="form.taskDesc"
+          />
+          <div>
+            <q-btn
+              icon="save"
+              label="Submit"
+              type="submit"
+              color="primary"
+              @click="onSubmit"
+            />
+            <q-btn
+              class="mdi-book-cancel"
+              label="Cancel"
+              color="primary"
+              flat
+              v-close-popup
+            />
+          </div>
         </q-card-section>
       </q-card>
     </div>
