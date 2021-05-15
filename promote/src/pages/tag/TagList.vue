@@ -1,9 +1,5 @@
 <template>
   <div>
-    <q-btn
-      label="新增标签"
-      @click="addFlag = !addFlag"
-    />
     <q-dialog
       class="q-gutter-md"
       v-model="addFlag"
@@ -36,6 +32,20 @@
         </div>
       </q-card>
     </q-dialog>
+    <div class="q-gutter-md">
+      <q-btn
+        label="新增标签"
+        @click="addFlag = !addFlag"
+      />
+    </div>
+    <div class="q-gutter-md">
+      <q-table
+        title="Treats"
+        :rows="rows"
+        :columns="columns"
+        row-key="id"
+      />
+    </div>
   </div>
 </template>
 
@@ -44,15 +54,52 @@ import {saveTag} from 'src/api/tag'
 import {Notify} from 'quasar'
 import {reactive, ref, toRefs} from "@vue/reactivity";
 
+
+const columns = [
+  {
+    name: 'id',
+    required: true,
+    label: '标签编号',
+    align: 'left',
+    field: row => row.id,
+    format: val => `${val}`,
+    sortable: true
+  },
+  {
+    name: 'name',
+    required: true,
+    label: '标签名称',
+    align: 'left',
+    field: row => row.name,
+    format: val => `${val}`,
+    sortable: true
+  },  {
+    name: 'color',
+    required: true,
+    label: '标签颜色',
+    align: 'left',
+    field: row => row.color,
+    format: val => `${val}`,
+    sortable: true
+  },
+]
+
+
 export default {
   name: 'TagList',
   setup () {
     const inputRef = ref(null)
-    const       addFlag = ref(false)
+    const addFlag = ref(false)
     const state = reactive({
       name: null,
-      color: null
+      color: null,
+      rows:[]
     })
+
+
+    const list = () => {
+      console.log("kaish")
+    }
 
     const submit = ()  => {
       console.log('开始提交')
@@ -60,8 +107,6 @@ export default {
         name: state.name,
         color: state.color
       }).then(res => {
-        debugger
-        console.log(res)
         if (res.code === 200) {
           Notify.create({
             position: 'top',
@@ -89,7 +134,8 @@ export default {
       inputRef,
       addFlag,
       ...toRefs(state),
-      submit
+      submit,
+      columns
     }
   }
 }
