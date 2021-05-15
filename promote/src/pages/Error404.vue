@@ -9,7 +9,7 @@
         class="text-h2"
         style="opacity:.4"
       >
-        Oops. Nothing here...
+        Oops. Nothing here...  You can go home page
       </div>
 
       <q-btn

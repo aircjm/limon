@@ -8,7 +8,7 @@
       class="q-gutter-md"
       v-model="addFlag"
     >
-      <q-card style="min-width: 300px">
+      <q-card style="min-width: 400px">
         <div class="q-pa-md">
           <div class="text-h6">
             添加标签
@@ -23,7 +23,7 @@
                 </q-icon>
               </template>
             </q-input>
-            <q-input label="标签名称" v-model="name"
+            <q-input label="标签名称" v-model="name" ref="inputRef"
                      :rules="[
           val => !!val || '* Required',
           val => val.length < 50 || 'Please use maximum 50 character',
@@ -42,30 +42,33 @@
 <script>
 import {saveTag} from 'src/api/tag'
 import {Notify} from 'quasar'
+import {reactive, ref, toRefs} from "@vue/reactivity";
 
 export default {
   name: 'TagList',
-  data() {
-    return {
-      addFlag: false,
+  setup () {
+    const inputRef = ref(null)
+    const       addFlag = ref(false)
+    const state = reactive({
       name: null,
       color: null
-    }
-  },
-  methods: {
-    submit () {
+    })
+
+    const submit = ()  => {
       console.log('开始提交')
       saveTag({
-        name: this.name,
-        color: this.color
+        name: state.name,
+        color: state.color
       }).then(res => {
+        debugger
+        console.log(res)
         if (res.code === 200) {
           Notify.create({
             position: 'top',
             type: 'positive',
             message: '操作成功'
           })
-          this.onReset()
+          onReset()
         } else {
           Notify.create({
             position: 'top',
@@ -74,11 +77,18 @@ export default {
           })
         }
       })
-    },
-    onReset () {
-      this.name = null
-      this.color = null
-      this.addFlag = false
+    }
+
+    const onReset =() =>  {
+      state.name = null
+      state.color = null
+    }
+
+    return {
+      inputRef,
+      addFlag,
+      ...toRefs(state),
+      submit
     }
   }
 }

@@ -42,8 +42,8 @@
           <q-list>
             <q-item clickable>
               <q-item-section>
-                <q-item-label @click="jumpLink('http://www.quasarchs.com/start/pick-quasar-flavour/')">
-                  Docs
+                <q-item-label @click="jumpLink('https://next.quasar.dev/')">
+                  quasar Docs
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -63,27 +63,6 @@
       </q-toolbar>
     </q-header>
 
-    <!--<q-drawer
-      show-if-above
-      v-model="leftDrawerOpen"
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>-->
-
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -100,10 +79,10 @@ const linksData = [
     link: '/#/task'
   },
   {
-    title: 'Docs',
+    title: 'Quasar Docs',
     caption: 'quasar.dev',
-    icon: 'school',
-    link: 'http://www.quasarchs.com/start/pick-quasar-flavour/'
+    icon: 'help',
+    link: 'https://next.quasar.dev/'
   },
   {
     title: 'Discord Chat Channel',
