@@ -68,6 +68,7 @@ export default {
             type: 'positive',
             message: '操作成功'
           })
+          addFlag.value = false
           onReset()
         } else {
           Notify.create({
