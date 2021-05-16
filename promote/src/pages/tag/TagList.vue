@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="q-gutter-md">
     <q-dialog
-      class="q-gutter-md"
       v-model="addFlag"
     >
       <q-card style="min-width: 400px">
@@ -138,6 +137,7 @@ export default {
       addFlag,
       ...toRefs(state),
       submit,
+      onReset,
       columns
     }
   }
