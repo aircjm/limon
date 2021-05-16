@@ -51,7 +51,7 @@
 
 <script>
 import {saveTag} from 'src/api/tag'
-import {Notify} from 'quasar'
+import {Notify, useQuasar} from 'quasar'
 import {reactive, ref, toRefs} from "@vue/reactivity";
 
 
@@ -88,6 +88,7 @@ const columns = [
 export default {
   name: 'TagList',
   setup () {
+    const  $q = useQuasar()
     const inputRef = ref(null)
     const addFlag = ref(false)
     const state = reactive({
@@ -103,6 +104,7 @@ export default {
 
     const submit = ()  => {
       console.log('开始提交')
+      $q.loading.show()
       saveTag({
         name: state.name,
         color: state.color
@@ -113,6 +115,7 @@ export default {
             type: 'positive',
             message: '操作成功'
           })
+          $q.loading.hide()
           addFlag.value = false
           onReset()
         } else {
