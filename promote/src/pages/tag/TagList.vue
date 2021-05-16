@@ -32,12 +32,20 @@
       </q-card>
     </q-dialog>
     <div class="q-gutter-md">
-      <q-btn
-        label="新增标签"
-        @click="addFlag = !addFlag"
-      />
+      <q-input v-model="search.name" label="name" style="max-width: 200px"/>
     </div>
     <div class="q-gutter-md">
+      <div class="q-gutter-md">
+        <q-btn
+          label="search"
+          color="blue"
+          @click="list()"
+        />
+        <q-btn
+          label="新增标签"
+          @click="addFlag = !addFlag"
+        />
+      </div>
       <q-table
         title="Treats"
         :rows="rows"
@@ -54,7 +62,7 @@ import {Notify, useQuasar} from 'quasar'
 import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {doPost} from "src/utils/axios";
-import {tagList, taskList} from "src/api/url";
+import {tagList} from "src/api/url";
 
 
 const columns = [
@@ -96,6 +104,9 @@ export default {
     const state = reactive({
       name: null,
       color: null,
+      search:{
+        name: ''
+      },
       rows:[]
     })
 
@@ -110,7 +121,8 @@ export default {
     const list = () => {
       const queryRequest = {
         size: 100,
-        current: 1
+        current: 1,
+        name : state.search.name
       }
 
       doPost(tagList, queryRequest).then(res => {
@@ -155,6 +167,7 @@ export default {
       addFlag,
       ...toRefs(state),
       submit,
+      list,
       onReset,
       columns
     }
