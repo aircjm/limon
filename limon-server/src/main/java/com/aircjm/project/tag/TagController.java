@@ -43,9 +43,9 @@ public class TagController extends BaseController {
      * @param request request
      * @return 列表数据
      */
-    @PostMapping("/allList")
-    public RestResponse allList(@RequestBody @Valid GetTagRequest request) {
-        List<TagDetailResponse> list = tagService.list(request);
+    @PostMapping("/list")
+    public RestResponse<Page<TagDetailResponse> > allList(@RequestBody @Valid GetTagRequest request) {
+        Page<TagDetailResponse> list = tagService.list(request);
         return RestResponse.successData(list);
     }
 }

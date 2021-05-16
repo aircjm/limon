@@ -52,6 +52,9 @@
 import {saveTag} from 'src/api/tag'
 import {Notify, useQuasar} from 'quasar'
 import {reactive, ref, toRefs} from "@vue/reactivity";
+import {onMounted} from "@vue/runtime-core";
+import {doPost} from "src/utils/axios";
+import {tagList, taskList} from "src/api/url";
 
 
 const columns = [
@@ -97,8 +100,22 @@ export default {
     })
 
 
+
+    onMounted(() => {
+      list()
+    })
+
+
+
     const list = () => {
-      console.log("kaish")
+      const queryRequest = {
+        size: 100,
+        current: 1
+      }
+
+      doPost(tagList, queryRequest).then(res => {
+        state.rows = res.data.records
+      })
     }
 
     const submit = ()  => {
@@ -130,6 +147,7 @@ export default {
     const onReset =() =>  {
       state.name = null
       state.color = null
+      addFlag.value = false
     }
 
     return {

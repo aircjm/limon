@@ -1,12 +1,17 @@
 package com.aircjm.project.tag.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.aircjm.common.utils.StringUtils;
+import com.aircjm.project.card.domain.Task;
+import com.aircjm.project.card.vo.response.TaskDetailResponse;
 import com.aircjm.project.tag.domain.Tag;
 import com.aircjm.project.tag.mapper.TagMapper;
 import com.aircjm.project.tag.service.TagService;
 import com.aircjm.project.tag.vo.GetTagRequest;
 import com.aircjm.project.tag.vo.SaveTagRequest;
 import com.aircjm.project.tag.vo.response.TagDetailResponse;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -33,10 +38,18 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
     }
 
     @Override
-    public List<TagDetailResponse> list(GetTagRequest request) {
-        List<Tag> list = list();
-        return list.stream().map(item -> {
-            return BeanUtil.copyProperties(item, TagDetailResponse.class);
-        }).collect(Collectors.toList());
+    public Page<TagDetailResponse> list(GetTagRequest request) {
+        LambdaQueryWrapper<Tag> wrapper = new QueryWrapper<Tag>().lambda()
+                .orderByDesc(Tag::getId)
+                .like(StringUtils.isNotEmpty(request.getName()), Tag::getName, request.getName());
+        Page<Tag> tagPage = page(request, wrapper);
+        List<TagDetailResponse> taskDetailResponseList = tagPage.getRecords().stream()
+                .map( e-> BeanUtil.copyProperties(e, TagDetailResponse.class))
+                .collect(Collectors.toList());
+        Page<TagDetailResponse> responsePage = new Page<>();
+        responsePage.setTotal(tagPage.getTotal());
+        responsePage.setSize(tagPage.getSize());
+        responsePage.setRecords(taskDetailResponseList);
+        return responsePage;
     }
 }
