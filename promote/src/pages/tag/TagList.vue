@@ -47,11 +47,20 @@
         />
       </div>
       <q-table
-        title="Treats"
+        title="标签列表"
         :rows="rows"
         :columns="columns"
         row-key="id"
-      />
+      >
+        <template v-slot:body-cell-color="props">
+          <q-td :props="props">
+            <div>
+              <q-badge :label="props.value" :color="props.value" />
+            </div>
+          </q-td>
+        </template>
+
+      </q-table>
     </div>
   </div>
 </template>
@@ -91,6 +100,10 @@ const columns = [
     field: row => row.color,
     format: val => `${val}`,
     sortable: true
+  },{
+    required: false,
+    label: 'opt',
+    align: 'left'
   },
 ]
 
@@ -113,10 +126,9 @@ export default {
 
 
     onMounted(() => {
+      console.log("初始化列表页面")
       list()
     })
-
-
 
     const list = () => {
       const queryRequest = {
