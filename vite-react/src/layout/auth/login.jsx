@@ -1,15 +1,10 @@
 import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom';
-import {UserLogin} from "../../request/user";
-import {GlobalStore} from "../../store/global";
 import TextField from "@material-ui/core/TextField";
 import {Button} from "@material-ui/core";
-import styled from 'styled-components';
-import {client} from "../../request/request";
-
-
-const Img = styled.img`
-`
+import {client} from "../../requests/request";
+import {UserLogin} from "../../requests/user";
+import {GlobalStore} from "../../store/global";
 
 const Login = () => {
 
@@ -41,11 +36,6 @@ const Login = () => {
     }
 
 
-    useState(() => {
-        getCode()
-    })
-
-
     const {dispatch} = useContext(GlobalStore);
     const history = useHistory();
 
@@ -59,6 +49,12 @@ const Login = () => {
         const userInfo = UserLogin(data, setLoading, updateUser);
         updateUser(userInfo)
     }
+
+
+    useState(() => {
+        getCode()
+    })
+
 
     return (
         <React.Fragment>
@@ -105,7 +101,7 @@ const Login = () => {
                             />
                         </div>
                         <div className={"m-auto justify-center w-auto"}>
-                            <Img src={codeUrl} onClick={resetCode}/>
+                            <img src={codeUrl} onClick={resetCode}/>
                         </div>
                     </div>
                     <Button

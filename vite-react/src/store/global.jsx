@@ -1,0 +1,45 @@
+import {createContext, useReducer} from 'react';
+
+
+export const defaultValue = {
+    // 用户信息
+    user: {
+        username: "",
+        alias: "",
+        token: ""
+    },
+    // 主题色
+    theme: 'violet',
+    breadcrumb: [],
+    title: '主页'
+};
+
+export const GlobalStore = createContext(defaultValue);
+
+const reducer = (state, action) => {
+
+    switch (action.type) {
+        case 'user':
+            return {...state, user: action.payload};
+        case 'theme':
+            return {...state, theme: action.payload};
+
+        case 'title':
+            return {...state, title: action.payload};
+        default:
+            return {...state, ...action.payload}
+    }
+}
+
+
+const GlobalStoreProvider = props => {
+    const [store, dispatch] = useReducer(reducer, defaultValue);
+    return (
+        <GlobalStore.Provider value={{...store, dispatch}}>
+            {props.children}
+        </GlobalStore.Provider>
+    );
+};
+
+
+export default GlobalStoreProvider;

@@ -11,28 +11,29 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Task from "./layout/task/task";
+import Login from "./layout/auth/login";
+import {useHistory} from "react-router-dom";
+
 
 function App() {
   const [activeNav, setActiveNav] = useState(false);
   const path = GetPath();
-
-  const setActiveNavHandle = (value) => {
-    if (path === "/notes/new" || (path.startsWith("/notes") && path.endsWith("edit"))) {
-      return
-    }
-    setActiveNav(value)
-  }
-
-
   const [open, setOpen] = React.useState(false);
 
+  const history = useHistory();
+
   const handleDrawerOpen = () => {
-    setOpen(true);
+    console.log("hello")
+    // setOpen(true);
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const toLogin = () => {
+    history.push("/login");
+  }
 
   return (
       <React.Fragment>
@@ -40,26 +41,26 @@ function App() {
           <CssBaseline/>
           <AppBar position="relative">
             <Toolbar>
-              <IconButton edge="start" color="inherit" aria-label="menu">
+              <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen()}>
                 <MenuIcon/>
               </IconButton>
               <Typography variant="h6">
-                News
+                Home
               </Typography>
-              <Button color="inherit">Login</Button>
+              <Button color="inherit" variant="h6" onClick={toLogin}>Login</Button>
             </Toolbar>
           </AppBar>
           <Switch>
             {/*<Route path="/notes" component={Notes} exact={false}/>*/}
             <Route path="/task" component={Task} exact={false}/>
             {/*<Route path="/about" component={About} exact={false}/>*/}
-            {/*<Route path="/login" component={Login} exact={false}/>*/}
+            <Route path="/login" component={Login} exact={false}/>
           </Switch>
           {/*          <NavBar activeNav={activeNav} setActiveNav={setActiveNavHandle}/>
           <LayoutWrapper activeNav={activeNav}>
 
           </LayoutWrapper>*/}
-          <Copyright/>
+          {/*<Copyright/>*/}
           {/*<Hooks/>*/}
         </div>
       </React.Fragment>
