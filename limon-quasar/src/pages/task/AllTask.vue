@@ -113,7 +113,7 @@
       </div>
     </div>
     <q-dialog
-      v-model="setTimeForm.loading"
+      v-model="timeDialogFlag"
       persistent
       style="min-width: 300px"
     >
@@ -129,7 +129,7 @@
           />
         </q-toolbar>
         <q-card-section>
-          <date-time-picker :time.sync="setTimeForm.task.dueTime"/>
+          <date-time-picker :time.sync="setTimeForm.dueTime"/>
         </q-card-section>
         <q-card-actions
           align="right"
@@ -157,143 +157,140 @@ import {saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
 import client, {doPost} from 'src/utils/axios'
 import {taskList} from 'src/api/url'
-import {reactive, toRefs} from "@vue/reactivity";
+import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
-import {Loading, useQuasar} from "quasar";
+import {useQuasar} from "quasar";
 import {useRouter} from "vue-router";
 
 export default {
   name: 'AllTask',
   components: {DateTimePicker},
   setup() {
-
     const $q = useQuasar()
     const router = useRouter();
+    const timeDialogFlag = ref(false)
     const state = reactive({
       title: '',
       recordType: null,
       date: null,
       setTimeForm: {
-        loading: false,
-        task: {}
+        dueTime: null,
+        id: null
       },
       form: {
         id: '',
-          title: '',
-          type: null,
-          dueTime: null,
-          startTime: null,
-          endTime: null,
-          context: null
-        },
-        searchForm: {
-          title: null,
-          logTime: null
-        },
-        filter: '',
-        loading: false,
-        tasks: []
-      });
+        title: '',
+        type: null,
+        dueTime: null,
+        startTime: null,
+        endTime: null,
+        context: null
+      },
+      searchForm: {
+        title: null,
+        logTime: null
+      },
+      filter: '',
+      tasks: []
+    });
+
+    onMounted(() => {
+      list()
+      if (!state.form.startTime) {
+        state.form.startTime = Date.now()
+      }
+    })
 
 
-      onMounted(() => {
-        list()
-        if (!state.form.startTime) {
-          state.form.startTime = Date.now()
-        }
+    const list = () => {
+      const queryRequest = {
+        size: 50,
+        current: 1
+      }
+      queryRequest.title = state.searchForm.title
+
+      doPost(taskList, queryRequest).then(res => {
+        state.tasks = res.data.records
       })
+    }
 
-
-      const list = () => {
-        state.loading = true
-        const queryRequest = {
-          size: 50,
-          current: 1
-        }
-        queryRequest.title = state.searchForm.title
-
-        doPost(taskList, queryRequest).then(res => {
-          state.tasks = res.data.records
-        })
-        state.loading = false
-      }
-
-      const saveTitle = () => {
-        if (state.title.length > 0) {
-          saveTask({title: state.title}).then(res => {
-            $q.notify({
-              message: "新增成功",
-              position: 'bottom-left',
-              type: "positive"
-            })
-            state.title = ''
-            list()
-          })
-        }
-      }
-
-      // 完成任务
-      const doneTask = (updatedTask) => {
-
-        for (const i in state.tasks) {
-          if (state.tasks[i].id === updatedTask.id) {
-            updatedTask.status = 9
-            saveTask(updatedTask)
-            state.tasks.splice(i, 1)
-            state.tasks.push(updatedTask)
-            break
-          }
-        }
-      }
-
-
-      const edit = (id) => {
-        const path = '/task/edit?id=' + id
-        router.push(path)
-      }
-
-      const deleteTask = (task) => {
-        console.log('删除' + task.id)
-        // 删除任务
-        $q.loading.show()
-        client.post("/api/task/del", {
-          id: task.id
-        }).then(res => {
-          $q.loading.hide()
+    const saveTitle = () => {
+      if (state.title.length > 0) {
+        saveTask({title: state.title}).then(res => {
           $q.notify({
-            message: "删除成功",
+            message: "新增成功",
             position: 'bottom-left',
             type: "positive"
           })
+          state.title = ''
           list()
         })
       }
-      const setEndTime = (task) => {
-        console.log('开始设置时间' + task.id)
-        state.setTimeForm = {loading: true}
-        state.setTimeForm.task = task
-      }
-
-      const saveTaskDetail = async () => {
-        Loading.show()
-        await saveTask(state.setTimeForm.task)
-        Loading.hide()
-        state.setTimeForm.loading = false
-      }
-
-      return {
-        ...toRefs(state),
-        saveTaskDetail,
-        saveTitle,
-        list,
-        doneTask,
-        setEndTime,
-        deleteTask,
-        edit
-      }
-
     }
+
+    // 完成任务
+    const doneTask = (updatedTask) => {
+      for (const i in state.tasks) {
+        if (state.tasks[i].id === updatedTask.id) {
+          updatedTask.status = 9
+          saveTask(updatedTask)
+          state.tasks.splice(i, 1)
+          state.tasks.push(updatedTask)
+          break
+        }
+      }
+    }
+
+
+    const edit = (id) => {
+      const path = '/task/edit?id=' + id
+      router.push(path)
+    }
+
+    const deleteTask = (task) => {
+      console.log('删除' + task.id)
+      // 删除任务
+      $q.loading.show()
+      client.post("/api/task/del", {
+        id: task.id
+      }).then(res => {
+        $q.loading.hide()
+        $q.notify({
+          message: "删除成功",
+          position: 'bottom-left',
+          type: "positive"
+        })
+        list()
+      })
+    }
+    const setEndTime = (task) => {
+      timeDialogFlag.value = true
+      state.setTimeForm.id = task.id
+      state.setTimeForm.dueTime = task.dueTime
+    }
+
+    const saveTaskDetail = async () => {
+      await saveTask(state.setTimeForm)
+      console.log("保存时间" + JSON.stringify(state.setTimeForm))
+      timeDialogFlag.value = false
+      state.setTimeForm.dueTime = null
+      state.setTimeForm.id = null
+    }
+
+    return {
+      ...toRefs(state),
+      timeDialogFlag,
+      saveTaskDetail,
+      saveTitle,
+      list,
+      doneTask,
+      setEndTime,
+      deleteTask,
+      edit
+    }
+
   }
+}
 </script>
 
 <style scoped>
