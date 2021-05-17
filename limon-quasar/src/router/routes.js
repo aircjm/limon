@@ -12,11 +12,6 @@ export default [
         children: []
       },
       {
-        path: '/task',
-        component: () => import('pages/task/TaskList.vue'),
-        children: []
-      },
-      {
         path: '/allTask',
         component: () => import('pages/task/AllTask.vue'),
         children: []
