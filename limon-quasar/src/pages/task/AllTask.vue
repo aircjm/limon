@@ -20,7 +20,7 @@
       <q-field style="max-width: 400px">
         <q-input
           label="title"
-          model-value="searchForm.title"
+          v-model="searchForm.title"
         />
       </q-field>
       <q-field style="max-width: 400px">
@@ -280,21 +280,6 @@ export default {
         Loading.hide()
         state.setTimeForm.loading = false
       }
-      const onSubmitForm = (e) => {
-        // this.$refs.myForm.validate().then(success => {
-        //   if (success) {
-        //     // 是的，模型是正确的
-        //   } else {
-        //     // 哦，不，用户至少
-        //     // 填写了一个无效值
-        //   }
-        // })
-        //
-        // // 重置验证：
-        // this.$refs.myForm.resetValidation()
-        saveTask(state.form)
-      }
-
 
       return {
         ...toRefs(state),
@@ -306,7 +291,6 @@ export default {
         deleteTask,
         edit
       }
-
 
     }
   }

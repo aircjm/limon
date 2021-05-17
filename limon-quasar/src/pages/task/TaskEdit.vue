@@ -75,12 +75,16 @@
           </q-form>
         </q-card-section>
         <q-card-section>
-          <MarkdownEditor
-            label="context"
-            v-if="editorFlag"
-            :context.sync="form.taskDesc"
-          />
           <div>
+            <MarkdownEditor
+              label="context"
+              v-if="editorFlag"
+              :context.sync="form.taskDesc"
+            />
+          </div>
+        </q-card-section>
+        <q-card-section>
+          <div class="q-gutter-md">
             <q-btn
               icon="save"
               label="Submit"
