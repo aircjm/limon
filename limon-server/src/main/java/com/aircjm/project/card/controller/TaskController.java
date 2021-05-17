@@ -4,6 +4,7 @@ import com.aircjm.common.utils.SecurityUtils;
 import com.aircjm.common.vo.RestResponse;
 import com.aircjm.project.card.domain.TaskAttachment;
 import com.aircjm.project.card.service.TaskService;
+import com.aircjm.project.card.vo.request.DelTaskRequest;
 import com.aircjm.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.project.card.vo.response.TaskDetailResponse;
@@ -40,6 +41,19 @@ public class TaskController {
     @PostMapping("/save")
     public RestResponse save(@RequestBody @Valid SaveTaskRequest request) {
         taskService.save(request);
+        return RestResponse.successEmpty();
+    }
+
+
+    /**
+     * 新增或者更新记录
+     *
+     * @param request request
+     * @return 结果
+     */
+    @PostMapping("/del")
+    public RestResponse del(@RequestBody @Valid DelTaskRequest request) {
+        taskService.del(request.getId());
         return RestResponse.successEmpty();
     }
 

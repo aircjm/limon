@@ -48,9 +48,17 @@ public interface TaskService extends IService<Task> {
 
     /**
      * 添加附件
-     *  @param files    文件
+     *
+     * @param files    文件
      * @param taskId   taskId
      * @param username 操作用户
      */
     List<TaskAttachment> uploadFileList(List<MultipartFile> files, Long taskId, String username);
+
+    /**
+     * 删除任务
+     *
+     * @param id id
+     */
+    void del(Long id);
 }
