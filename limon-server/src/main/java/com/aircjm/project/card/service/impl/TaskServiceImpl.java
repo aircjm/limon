@@ -82,6 +82,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
         LambdaQueryWrapper<Task> wrapper = new QueryWrapper<Task>().lambda()
                 .orderByDesc(Task::getStatus)
                 .orderByDesc(Task::getId)
+                .eq(Task::getDeleted, 0)
                 .like(StringUtils.isNotEmpty(request.getTitle()), Task::getTitle, request.getTitle())
                 .eq(Objects.nonNull(request.getStatus()), Task::getStatus, request.getStatus());
         Page<Task> taskPage = page(request, wrapper);
@@ -119,5 +120,11 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
 
         return attachmentList;
 
+    }
+
+    @Override
+    public void del(Long id) {
+        removeById(id);
+        // todo 添加操作日志
     }
 }

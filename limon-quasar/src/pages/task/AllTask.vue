@@ -155,7 +155,7 @@
 <script>
 import {saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
-import {doPost} from 'src/utils/axios'
+import client, {doPost} from 'src/utils/axios'
 import {taskList} from 'src/api/url'
 import {reactive, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
@@ -255,6 +255,18 @@ export default {
       const deleteTask = (task) => {
         console.log('删除' + task.id)
         // 删除任务
+        $q.loading.show()
+        client.post("/api/task/del", {
+          id: task.id
+        }).then(res => {
+          $q.loading.hide()
+          $q.notify({
+            message: "删除成功",
+            position: 'bottom-left',
+            type: "positive"
+          })
+          list()
+        })
       }
       const setEndTime = (task) => {
         console.log('开始设置时间' + task.id)

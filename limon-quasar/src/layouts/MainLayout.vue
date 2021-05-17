@@ -71,6 +71,8 @@
 
 <script>
 
+import {reactive, toRefs} from "@vue/reactivity";
+
 const linksData = [
   {
     title: 'Task List',
@@ -106,16 +108,20 @@ const linksData = [
 
 export default {
   name: 'MainLayout',
-  data() {
-    return {
+  setup() {
+    const state = reactive({
       leftDrawerOpen: true,
       miniState: true,
       essentialLinks: linksData
-    }
-  },
-  methods: {
-    jumpLink(url) {
+    })
+
+    const jumpLink = (url) => {
       window.open(url)
+    }
+
+    return {
+      ...toRefs(state),
+      jumpLink
     }
 
   }

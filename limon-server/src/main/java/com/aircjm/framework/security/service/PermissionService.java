@@ -1,17 +1,18 @@
 package com.aircjm.framework.security.service;
 
-import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 import com.aircjm.common.utils.ServletUtils;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.framework.security.LoginUser;
 import com.aircjm.project.system.domain.SysRole;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Set;
 
 /**
- * RuoYi首创 自定义权限实现，ss取自SpringSecurity首字母
- * 
+ * 自定义权限实现，ss取自SpringSecurity首字母
+ *
  * @author aircjm
  */
 @Service("ss")
