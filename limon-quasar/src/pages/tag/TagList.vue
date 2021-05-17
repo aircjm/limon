@@ -66,11 +66,10 @@
 </template>
 
 <script>
-import {saveTag} from 'src/api/tag'
 import {Notify, useQuasar} from 'quasar'
 import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
-import {doPost} from "src/utils/axios";
+import client, {doPost} from "src/utils/axios";
 import {tagList} from "src/api/url";
 
 
@@ -145,7 +144,8 @@ export default {
     const submit = ()  => {
       console.log('开始提交')
       $q.loading.show()
-      saveTag({
+      debugger
+      client.post("/api/tag/save", {
         name: state.name,
         color: state.color
       }).then(res => {
