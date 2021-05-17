@@ -1,6 +1,7 @@
 package com.aircjm.project.card.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.aircjm.common.exception.CustomException;
 import com.aircjm.common.utils.DateUtils;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.framework.message.MessageService;
@@ -46,6 +47,9 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     public void save(SaveTaskRequest request) {
 
         if (Objects.isNull(request.getId())) {
+            if (StringUtils.isEmpty(request.getTitle())) {
+                throw new CustomException("title is not empty");
+            }
             Task task = Task.builder()
                     .title(request.getTitle())
                     .taskDesc(request.getTaskDesc())

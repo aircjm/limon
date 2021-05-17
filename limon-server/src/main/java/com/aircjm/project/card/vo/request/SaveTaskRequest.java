@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,8 +20,6 @@ public class SaveTaskRequest {
     @ApiModelProperty(value = "id")
     private Long id;
 
-
-    @NotEmpty(message = "title(标题) 不能为空")
     private String title;
 
     @ApiModelProperty(value = "内容")
