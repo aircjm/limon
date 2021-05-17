@@ -35,6 +35,11 @@ function App() {
     history.push("/login");
   }
 
+
+  const toHome = () => {
+    history.push("/");
+  }
+
   return (
       <React.Fragment>
         <div className="App">
@@ -44,9 +49,9 @@ function App() {
               <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen()}>
                 <MenuIcon/>
               </IconButton>
-              <Typography variant="h6">
+              <Button variant="h6" onClick={toHome}>
                 Home
-              </Typography>
+              </Button>
               <Button color="inherit" variant="h6" onClick={toLogin}>Login</Button>
             </Toolbar>
           </AppBar>
