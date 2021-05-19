@@ -2,43 +2,15 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-        <q-btn
-          flat
-          to="/"
-        >
-          Dash App
-        </q-btn>
-        <q-separator
-          dark
-          vertical
-        />
-        <q-btn
-          stretch
-          flat
-          label="AllTask"
-          to="/alltask"
-        />
-        <q-btn
-          stretch
-          flat
-          label="TAG"
-          to="/tag"
-        />
-        <q-space />
-        <q-btn-dropdown
-          flat
-          dense
-          round
-          icon="help"
-        >
+        <q-btn flat dense round icon="menu" aria-label="Menu"
+               @click="leftDrawerOpen = !leftDrawerOpen"/>
+        <q-btn flat to="/" aria-lable="Dash App"/>
+        <q-separator dark vertical/>
+        <q-btn stretch flat label="AllTask" to="/alltask"/>
+        <q-btn stretch flat label="TAG" to="/tag"/>
+        <q-btn stretch flat label="Timer" to="/timer"/>
+        <q-space/>
+        <q-btn-dropdown flat dense round icon="help">
           <q-list>
             <q-item clickable>
               <q-item-section>
@@ -49,22 +21,13 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
-        <q-separator
-          dark
-          vertical
-        />
-        <q-btn
-          flat
-          dense
-          round
-          icon="login"
-          aria-label="用户中心"
-        />
+        <q-separator dark vertical/>
+        <q-btn flat dense round icon="login" aria-label="用户中心"/>
       </q-toolbar>
     </q-header>
 
     <q-page-container>
-      <router-view />
+      <router-view/>
     </q-page-container>
   </q-layout>
 </template>
