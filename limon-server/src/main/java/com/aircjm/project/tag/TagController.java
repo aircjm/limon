@@ -3,8 +3,6 @@ package com.aircjm.project.tag;
 
 import com.aircjm.common.vo.RestResponse;
 import com.aircjm.framework.web.controller.BaseController;
-import com.aircjm.project.card.vo.request.GetCardRequest;
-import com.aircjm.project.card.vo.response.TaskDetailResponse;
 import com.aircjm.project.tag.domain.Tag;
 import com.aircjm.project.tag.service.TagService;
 import com.aircjm.project.tag.vo.GetTagRequest;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/tag/")
