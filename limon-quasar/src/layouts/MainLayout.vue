@@ -2,10 +2,10 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu"
+        <q-btn flat icon="menu" aria-label="Menu"
                @click="leftDrawerOpen = !leftDrawerOpen"/>
-        <q-btn flat to="/" aria-lable="Dash App"/>
         <q-separator dark vertical/>
+        <q-btn flat  icon="home"  to="/" aria-label="Dash App"/>
         <q-btn stretch flat label="AllTask" to="/alltask"/>
         <q-btn stretch flat label="TAG" to="/tag"/>
         <q-btn stretch flat label="Timer" to="/timer"/>
