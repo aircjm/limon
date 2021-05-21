@@ -23,19 +23,19 @@ public class RestResponse<T> {
     private RestResponse() {
     }
 
-    public static RestResponse successEmpty() {
+    public static <T>RestResponse <T> successEmpty() {
         return new RestResponse<>(200, "success", null);
     }
 
 
 
-    public static RestResponse successData(Object data) {
+    public static <T> RestResponse<T> successData(T data) {
         return new RestResponse<>(200, "success", data);
     }
 
 
 
-    public static RestResponse success(int code, String msg, Object data) {
+    public static <T> RestResponse<T> success(int code, String msg, T data) {
         return new RestResponse<>(code, msg, data);
     }
 
