@@ -13,14 +13,15 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "quasar": "^2.0.0-beta.12",
     "@quasar/extras": "^1.9.19",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "vditor": "^3.6.6"
+    "quasar": "^2.0.0-beta.15",
+    "vditor": "^3.6.6",
+    "vuex": "4"
   },
   "devDependencies": {
-    "@quasar/app": "^3.0.0-beta.1",
+    "@quasar/app": "^3.0.0-beta.28",
     "babel-eslint": "^10.0.1",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
