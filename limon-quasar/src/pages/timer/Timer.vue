@@ -1,53 +1,56 @@
 <template>
-  <q-card class="q-gutter-md q-pa-lg" style="max-width: 400px">
-    <q-card-section>
-      <div class="text-h3">番茄工作法</div>
-    </q-card-section>
-    <div v-if="!isTiming">开始番茄 UP UP</div>
-    <q-card-section v-else>
-      任务：
-      <q-badge>{{ taskName }}</q-badge>
-      正在开始
-      开始时间为：
-      <q-chip square color="blue" text-color="white" icon="alarm" :label="startTimeStr"/>
-      结束实际为：
-      <q-chip square color="red" text-color="white" icon="alarm" :label="stopTimeStr"/>
-    </q-card-section>
+  <div class="row justify-center">
+    <q-card class="q-card q-gutter-md q-pa-md col-md-4 col-sm-12">
+      <q-card-section>
+        <div class="text-h3">番茄工作法</div>
+      </q-card-section>
+      <div v-if="!isTiming">开始番茄 UP UP</div>
+      <q-card-section v-else>
+        任务：
+        <q-badge>{{ taskName }}</q-badge>
+        正在开始
+        开始时间为：
+        <q-chip square color="blue" text-color="white" icon="alarm" :label="startTimeStr"/>
+        结束实际为：
+        <q-chip square color="red" text-color="white" icon="alarm" :label="stopTimeStr"/>
+      </q-card-section>
 
-    <q-input label="工作名称" type="text" :readonly="isTiming" v-model="taskName"/>
-    <q-input label="工作时长(分钟)" type="text" v-model="workTime"/>
-    <q-input label="休息时长(分钟)" type="text" v-model="restTime"/>
+      <q-input label="工作名称" type="text" :readonly="isTiming" v-model="taskName"/>
+      <q-input label="工作时长(分钟)" type="text" v-model="workTime"/>
+      <q-input label="休息时长(分钟)" type="text" v-model="restTime"/>
 
-    <q-card-section>
-      <div class="q-gutter-md">
-        <q-btn color="blue" @click="startWorkButton" v-if="!isTiming">开始</q-btn>
-        <q-btn color="red" @click="stopButton">终止</q-btn>
+      <q-card-section>
+        <div class="q-gutter-md">
+          <q-btn color="blue" @click="startWorkButton" v-if="!isTiming">开始</q-btn>
+          <q-btn color="red" @click="stopButton">终止</q-btn>
+        </div>
+
+      </q-card-section>
+      <q-separator/>
+      <div class="text-h4">番茄进度</div>
+      <q-linear-progress stripe rounded size="20px" :value="progress" :buffer="buffer" color="warning" class="q-mt-sm"
+                         style="max-width: 400px">
+        <div class="absolute-full flex flex-center">
+          <q-badge color="white" text-color="red" :label="progressLabel" v-if="progress !== 0"/>
+        </div>
+      </q-linear-progress>
+
+      <q-separator/>
+
+      <div class="text-h4">番茄记录</div>
+      <div v-for="tomato in tomatoList" :key="tomato.startTime" class="row">
+        <div>{{ tomato.taskName }}</div>
+        <div>{{ tomato.startTimeStr }}</div>
+        <div>{{ tomato.stopTimeStr }}</div>
       </div>
-
-    </q-card-section>
-    <q-separator />
-    <div class="text-h4">番茄进度</div>
-    <q-linear-progress stripe rounded size="20px" :value="progress" :buffer="buffer" color="warning" class="q-mt-sm" style="max-width: 400px">
-      <div class="absolute-full flex flex-center">
-        <q-badge color="white" text-color="red" :label="progressLabel" v-if="progress !== 0"/>
-      </div>
-    </q-linear-progress>
-
-    <q-separator />
-
-    <div class="text-h4">番茄记录</div>
-    <div v-for="tomato in tomatoList" :key="tomato.startTime" class="row">
-      <div>{{tomato.taskName}}</div>
-      <div>{{tomato.startTimeStr}}</div>
-      <div>{{tomato.stopTimeStr}}</div>
-    </div>
-  </q-card>
+    </q-card>
+  </div>
 </template>
 
 <script>
 import {computed, reactive, ref, toRefs} from "@vue/reactivity";
-import {date, useQuasar} from "quasar";
-import {onBeforeUnmount, onMounted} from "@vue/runtime-core";
+import {useQuasar} from "quasar";
+import {onBeforeUnmount} from "@vue/runtime-core";
 import {convertMinToMs, getFormatDateTime, getTimestamp} from "src/utils/dateUtil";
 
 export default {
