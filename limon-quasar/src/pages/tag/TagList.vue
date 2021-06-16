@@ -64,6 +64,13 @@
           </q-td>
         </template>
 
+        <template v-slot:body-cell-opt="props">
+          <q-td :props="props">
+            <div>
+              <q-btn outline label="编辑" @click="editTag(props)" />
+            </div>
+          </q-td>
+        </template>
       </q-table>
     </div>
   </div>
@@ -104,6 +111,7 @@ const columns = [
     format: val => `${val}`,
     sortable: true
   },{
+  name: 'opt',
     required: false,
     label: 'opt',
     align: 'left'
@@ -118,6 +126,7 @@ export default {
     const inputRef = ref(null)
     const addFlag = ref(false)
     const state = reactive({
+      id: null,
       name: null,
       color: null,
       search:{
@@ -154,10 +163,19 @@ export default {
       })
     }
 
+    const editTag =(props) => {
+      addFlag.value = true
+      state.id = props.row.id
+      state.name = props.row.name
+      state.color = props.row.color
+      classColor.value = props.row.color
+    }
+
     const submit = ()  => {
       console.log('开始提交')
       $q.loading.show()
       client.post("/api/tag/save", {
+        id: state.id,
         name: state.name,
         color: state.color
       }).then(res => {
@@ -196,6 +214,7 @@ export default {
       onReset,
       changeColor,
       classColor,
+      editTag,
       columns
     }
   }
