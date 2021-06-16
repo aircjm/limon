@@ -702,7 +702,7 @@ create table anki_card
 ) engine = innodb
   auto_increment = 1 comment = '卡片表';
 
-
+drop table if exists trello_card;
 create table trello_card
 (
   id                 int auto_increment comment '主键'
@@ -710,7 +710,7 @@ create table trello_card
   card_id            varchar(200) default ''                null comment 'card id',
   card_title         varchar(5000) default ''                null comment 'card title',
   card_desc          text                                   null comment 'card desc',
-  card               json                                   null comment 'card的json内容',
+  card               text                                   null comment 'card的json内容',
   date_last_activity timestamp    default CURRENT_TIMESTAMP not null comment 'card最后更新时间',
   board_id           varchar(200) default ''                null comment 'board id',
   create_time           timestamp    NOT NULL DEFAULT current_timestamp comment '创建时间',
