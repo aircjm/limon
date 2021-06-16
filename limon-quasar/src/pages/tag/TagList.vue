@@ -59,7 +59,7 @@
         <template v-slot:body-cell-color="props">
           <q-td :props="props">
             <div>
-              <q-badge :label="props.value" :style="{background: props.value}"/>
+              <q-btn outline :label="props.value" :style="{color: props.value}"/>
             </div>
           </q-td>
         </template>
