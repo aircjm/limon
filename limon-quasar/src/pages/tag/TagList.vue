@@ -9,10 +9,14 @@
             添加标签
           </div>
           <q-form>
-            <q-input filled v-model="color" label="标签颜色">
+            <q-input v-model="color" label="标签颜色" @blur="changeColor">
+              <template v-slot:before>
+                <q-btn :style="{ background : classColor}">
+                </q-btn>
+              </template>
               <template v-slot:append>
                 <q-icon name="colorize" class="cursor-pointer">
-                  <q-popup-proxy transition-show="scale" transition-hide="scale">
+                  <q-popup-proxy transition-show="scale" transition-hide="scale" @blur="changeColor">
                     <q-color v-model="color"/>
                   </q-popup-proxy>
                 </q-icon>
@@ -55,7 +59,7 @@
         <template v-slot:body-cell-color="props">
           <q-td :props="props">
             <div>
-              <q-badge :label="props.value" :color="props.value" />
+              <q-badge :label="props.value" :style="{background: props.value}"/>
             </div>
           </q-td>
         </template>
@@ -123,6 +127,15 @@ export default {
     })
 
 
+    const classColor = ref(null)
+
+
+    const changeColor = () => {
+      console.log(state.color)
+      classColor.value = state.color
+      console.log(classColor.value)
+    }
+
 
     onMounted(() => {
       console.log("初始化列表页面")
@@ -144,7 +157,6 @@ export default {
     const submit = ()  => {
       console.log('开始提交')
       $q.loading.show()
-      debugger
       client.post("/api/tag/save", {
         name: state.name,
         color: state.color
@@ -157,6 +169,7 @@ export default {
           })
           $q.loading.hide()
           addFlag.value = false
+          list()
           onReset()
         } else {
           Notify.create({
@@ -181,6 +194,8 @@ export default {
       submit,
       list,
       onReset,
+      changeColor,
+      classColor,
       columns
     }
   }
