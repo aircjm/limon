@@ -2,7 +2,7 @@
   <q-layout>
     <q-page-container>
       <q-page class="flex bg-image flex-center">
-        <q-card :style="$q.screen.lt.sm?{'width': '80%'}:{'width':'45%'}">
+        <q-card :style="$q.screen.lt.sm?{'width': '80%'}:{'width':'30%'}">
           <q-card-section>
             <q-avatar
               size="103px"

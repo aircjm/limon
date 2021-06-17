@@ -17,7 +17,7 @@
               <template v-slot:append>
                 <q-icon name="colorize" class="cursor-pointer">
                   <q-popup-proxy transition-show="scale" transition-hide="scale" @blur="changeColor">
-                    <q-color v-model="color"/>
+                    <q-color v-model="color" default-view="palette"/>
                   </q-popup-proxy>
                 </q-icon>
               </template>
@@ -165,6 +165,7 @@ export default {
 
     const editTag =(props) => {
       addFlag.value = true
+      // 后面改成单个查询 保证数据实效性
       state.id = props.row.id
       state.name = props.row.name
       state.color = props.row.color
