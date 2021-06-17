@@ -35,43 +35,87 @@
         </div>
       </q-card>
     </q-dialog>
-    <div class="q-gutter-md">
-      <q-input v-model="search.name" label="name" style="max-width: 200px"/>
-    </div>
-    <div class="q-gutter-md">
-      <div class="q-gutter-md">
-        <q-btn
-          label="search"
-          color="blue"
-          @click="list()"
-        />
+    <div class="column q-gutter-md">
+      <div class="col-1">
+        <div class="col bg-white shadow-4 q-pa-md">
+          <div class="row items-center justify-start q-mb-md">
+            <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12">
+              <q-item-section class="col-3 text-right gt-sm">
+                <q-item-label>标签名：</q-item-label>
+              </q-item-section>
+              <q-item-section class="col">
+                <q-input outlined dense clearable v-model="search.name" label="标签名"/>
+              </q-item-section>
+            </q-item>
+            <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12">
+              <q-item-section class="col-3 text-right gt-sm">
+                <q-item-label>状态：</q-item-label>
+              </q-item-section>
+              <q-item-section class="col">
+                <q-input outlined dense clearable v-model="search.name" label="状态"/>
+              </q-item-section>
+            </q-item>
+
+            <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12 q-pr-sm">
+              <q-item-label class="col-12 text-right row no-wrap justify-center">
+                <q-btn
+                  label="查询"
+                  no-wrap
+                  color="primary"
+                  class="q-mr-sm"
+                  :loading="search.loading"
+                  @click="list"
+                >
+                  <template v-slot:loading>
+                    <q-spinner-ios/>
+                  </template>
+                </q-btn>
+                <q-btn
+                  outline
+                  label="重置"
+                  no-wrap
+                  class="q-mr-sm"
+                  color="secondary"
+                  @click="onReset"
+                />
+              </q-item-label>
+            </q-item>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-1 q-gutter-md">
         <q-btn
           label="新增标签"
           @click="addFlag = !addFlag"
         />
       </div>
-      <q-table
-        title="标签列表"
-        :rows="rows"
-        :columns="columns"
-        row-key="id"
-      >
-        <template v-slot:body-cell-color="props">
-          <q-td :props="props">
-            <div>
-              <q-btn outline :label="props.value" :style="{color: props.value}"/>
-            </div>
-          </q-td>
-        </template>
+      <div>
+        <q-table
+          title="标签列表"
+          :rows="rows"
+          :columns="columns"
+          row-key="id"
+        >
+          <template v-slot:body-cell-color="props">
+            <q-td :props="props">
+              <div>
+                <q-btn outline :label="props.value" :style="{color: props.value}"/>
+              </div>
+            </q-td>
+          </template>
 
-        <template v-slot:body-cell-opt="props">
-          <q-td :props="props">
-            <div>
-              <q-btn outline label="编辑" @click="editTag(props)" />
-            </div>
-          </q-td>
-        </template>
-      </q-table>
+          <template v-slot:body-cell-opt="props">
+            <q-td :props="props">
+              <div>
+                <q-btn outline label="编辑" @click="editTag(props)" />
+              </div>
+            </q-td>
+          </template>
+        </q-table>
+      </div>
+
     </div>
   </div>
 </template>
@@ -130,7 +174,8 @@ export default {
       name: null,
       color: null,
       search:{
-        name: ''
+        name: '',
+        loading: false
       },
       rows:[]
     })
@@ -152,6 +197,7 @@ export default {
     })
 
     const list = () => {
+      state.search.loading = true
       const queryRequest = {
         size: 100,
         current: 1,
@@ -161,6 +207,9 @@ export default {
       doPost(tagList, queryRequest).then(res => {
         state.rows = res.data.records
       })
+      state.search.loading = false
+      $q.loading.hide()
+
     }
 
     const editTag =(props) => {
