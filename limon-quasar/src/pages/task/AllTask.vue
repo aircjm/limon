@@ -1,122 +1,110 @@
 <template>
-  <div>
-    <div style="height: 65px">
-      <q-input
-        style="width: 400px"
-        @keyup.enter="saveTitle"
-        placeholder="Please Input Task"
-        model-value="title">
-        <template v-slot:append>
-          <q-btn>
-            <q-icon
-              name="add"
-              @click.native="saveTitle"
-            />
-          </q-btn>
-        </template>
-      </q-input>
-    </div>
-    <div class="q-gutter-md">
-      <q-field style="max-width: 400px">
-        <q-input
-          label="title"
-          v-model="searchForm.title"
-        />
-      </q-field>
-      <q-field style="max-width: 400px">
-        <date-time-picker
-          label="记录时间"
-          v-model="searchForm.logTime"
-        />
-      </q-field>
-
-      <div class="content-end">
-        <q-btn
-          label="Search"
-          type="submit"
-          @click="list"
-          color="primary"
-        />
-        <q-btn
-          label="Reset"
-          type="reset"
-          color="primary"
-          flat
-          class="q-ml-sm"
-        />
-      </div>
-    </div>
-    <div>
-      <div class="row q-pa-md q-gutter-md ">
-        <div class="col col-md-8 col-sm-12">
-          <q-list
-            dense
-            bordered
-            class="rounded-borders list q-pa-xs q-gutter-xs"
-          >
-            <div
-              v-for="(task) in tasks"
-              :key="task.id"
-              class="row list-task"
-            >
-              <div class="col-8 q-gutter-auto" @click="edit(task.id)">
-                <div class="taskStr" :class="{ 'done': task.status === 9}"
-                     style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-                  {{ task.title }}
-                </div>
-                <q-item-label side top>
-                  <q-badge
-                    transparent
-                    align="middle"
-                    color="red"
-                    v-if="task.dueTime"
-                  >
-                    <q-icon name="timer"/>
-                    {{ task.dueTime }}
-                  </q-badge>
-                </q-item-label>
-              </div>
-              <div class="col-4 q-gutter-xs column items-end">
-                <div>
-                  <q-btn
-                    size="12px" flat dense round
-                    icon="delete"
-                    @click="deleteTask(task)"
-                  />
-                  <q-btn
-                    size="12px" flat dense round
-                    icon="timer"
-                    @click="setEndTime(task)"
-                  />
-                  <q-btn
-                    size="12px" flat dense round
-                    icon="done"
-                    v-if="task.status !== 9"
-                    @click="doneTask(task)"
-                  />
-                  <router-link :to="`/task/edit?id=${task.id}`">
-                    <template>
-                      <q-btn
-                        size="12px"
-                        flat
-                        dense
-                        round
-                        icon="more_vert"
-                      />
-                    </template>
-                  </router-link>
-                </div>
-              </div>
-            </div>
-          </q-list>
+  <div class="column q-gutter-md">
+    <div class="col-1">
+      <div class="col bg-white shadow-4 q-pa-md">
+        <div class="row items-center justify-start q-mb-md">
+          <q-item class="">
+            <q-item-section class="col-3 text-right gt-sm">
+              <q-item-label>标题：</q-item-label>
+            </q-item-section>
+            <q-item-section class="col">
+              <q-input label="标题" v-model="searchForm.title"/>
+            </q-item-section>
+          </q-item>
+          <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12">
+            <q-item-section class="col-3 text-right gt-sm">
+              <q-item-label>记录时间：</q-item-label>
+            </q-item-section>
+            <q-item-section class="col">
+              <date-time-picker label="记录时间" v-model="searchForm.logTime"/>
+            </q-item-section>
+          </q-item>
+          <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12 q-pr-sm">
+            <q-item-label class="col-12 text-right row no-wrap justify-center">
+              <q-btn
+                label="查询"
+                no-wrap
+                color="primary"
+                class="q-mr-sm"
+                type="submit"
+                :loading="searchForm.loading"
+                @click="list"
+              >
+                <template v-slot:loading>
+                  <q-spinner-ios/>
+                </template>
+              </q-btn>
+              <q-btn
+                outline
+                label="重置"
+                no-wrap
+                class="q-mr-sm"
+                color="secondary"
+                @click="onReset"
+              />
+            </q-item-label>
+          </q-item>
         </div>
       </div>
     </div>
-    <q-dialog
-      v-model="timeDialogFlag"
-      persistent
-      style="min-width: 300px"
-    >
+    <div class="col-1 q-gutter">
+      <q-btn icon="add" @click="addTaskFlag = true"/>
+    </div>
+    <div class="col col-md-8 col-sm-12">
+      <q-list dense bordered class="rounded-borders list q-pa-xs q-gutter-xs">
+        <div v-for="(task) in tasks" :key="task.id" class="row list-task">
+          <div class="col-8 q-gutter-auto" @click="edit(task.id)">
+            <div class="taskStr" :class="{ 'done': task.status === 9}"
+                 style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+              {{ task.title }}
+            </div>
+            <q-item-label side top>
+              <q-badge
+                transparent
+                align="middle"
+                color="red"
+                v-if="task.dueTime"
+              >
+                <q-icon name="timer"/>
+                {{ task.dueTime }}
+              </q-badge>
+            </q-item-label>
+          </div>
+          <div class="col-4 q-gutter-xs column items-end">
+            <div>
+              <q-btn
+                size="12px" flat dense round
+                icon="delete"
+                @click="deleteTask(task)"
+              />
+              <q-btn
+                size="12px" flat dense round
+                icon="timer"
+                @click="setEndTime(task)"
+              />
+              <q-btn
+                size="12px" flat dense round
+                icon="done"
+                v-if="task.status !== 9"
+                @click="doneTask(task)"
+              />
+              <router-link :to="`/task/edit?id=${task.id}`">
+                <template>
+                  <q-btn
+                    size="12px"
+                    flat
+                    dense
+                    round
+                    icon="more_vert"
+                  />
+                </template>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </q-list>
+    </div>
+    <q-dialog v-model="timeDialogFlag" persistent style="min-width: 400px">
       <q-card>
         <q-toolbar>
           <q-toolbar-title><span class="text-weight-bold">设置截至时间</span></q-toolbar-title>
@@ -149,6 +137,44 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    <q-dialog v-model="addTaskFlag" persistent>
+      <q-card style="min-width: 500px;">
+        <q-toolbar>
+          <q-toolbar-title><span class="text-weight-bold">新增任务</span></q-toolbar-title>
+          <q-btn
+            flat
+            round
+            dense
+            icon="close"
+            v-close-popup
+          />
+        </q-toolbar>
+        <q-card-section>
+          <q-input
+            filled
+            v-model="title"
+            label="title *"
+            :rules='[(v) => !!v || "不可以为空"]'
+          />
+        </q-card-section>
+        <q-card-actions
+          align="right"
+          class="text-primary"
+        >
+          <q-btn
+            flat
+            label="submit"
+            icon="primary"
+            @click="saveTitle"
+          />
+          <q-btn
+            flat
+            label="Close"
+            v-close-popup
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -157,7 +183,7 @@ import {saveTask} from 'src/api/task'
 import DateTimePicker from 'components/form/DateTimePicker'
 import client, {doPost} from 'src/utils/axios'
 import {taskList} from 'src/api/url'
-import {reactive, ref, toRefs} from "@vue/reactivity";
+import {computed, reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useQuasar} from "quasar";
 import {useRouter} from "vue-router";
@@ -169,6 +195,8 @@ export default {
     const $q = useQuasar()
     const router = useRouter();
     const timeDialogFlag = ref(false)
+
+    const     addTaskFlag= ref(false)
     const state = reactive({
       title: '',
       recordType: null,
@@ -188,11 +216,13 @@ export default {
       },
       searchForm: {
         title: null,
-        logTime: null
+        logTime: null,
+        loading: false
       },
       filter: '',
       tasks: []
     });
+
 
     onMounted(() => {
       list()
@@ -215,17 +245,18 @@ export default {
     }
 
     const saveTitle = () => {
-      if (state.title.length > 0) {
-        saveTask({title: state.title}).then(res => {
-          $q.notify({
-            message: "新增成功",
-            position: 'bottom-left',
-            type: "positive"
-          })
-          state.title = ''
-          list()
+      // 缺少校验
+      saveTask({title: state.title}).then(res => {
+        $q.notify({
+          message: "新增成功",
+          position: 'bottom-left',
+          type: "positive"
         })
-      }
+        addTaskFlag.value = false
+        state.title = ''
+        list()
+
+      })
     }
 
     // 完成任务
@@ -269,6 +300,9 @@ export default {
       state.setTimeForm.dueTime = task.dueTime
     }
 
+    const onReset = () => {
+    }
+
     const saveTaskDetail = async () => {
       await saveTask(state.setTimeForm)
       console.log("保存时间" + JSON.stringify(state.setTimeForm))
@@ -284,9 +318,11 @@ export default {
       saveTitle,
       list,
       doneTask,
+      addTaskFlag,
       setEndTime,
       deleteTask,
-      edit
+      edit,
+      onReset
     }
 
   }

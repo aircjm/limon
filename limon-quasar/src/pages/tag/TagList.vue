@@ -39,7 +39,7 @@
       <div class="col-1">
         <div class="col bg-white shadow-4 q-pa-md">
           <div class="row items-center justify-start q-mb-md">
-            <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12">
+            <q-item class="">
               <q-item-section class="col-3 text-right gt-sm">
                 <q-item-label>标签名：</q-item-label>
               </q-item-section>
@@ -271,5 +271,4 @@ export default {
 }
 </script>
 <style scoped>
-
 </style>
