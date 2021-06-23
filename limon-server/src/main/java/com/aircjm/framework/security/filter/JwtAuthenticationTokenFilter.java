@@ -1,6 +1,7 @@
 package com.aircjm.framework.security.filter;
 
 import java.io.IOException;
+import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,13 +25,12 @@ import com.aircjm.framework.security.service.TokenService;
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter
 {
-    @Autowired
+    @Resource
     private TokenService tokenService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         LoginUser loginUser = tokenService.getLoginUser(request);
         if (StringUtils.isNotNull(loginUser) && StringUtils.isNull(SecurityUtils.getAuthentication()))
         {

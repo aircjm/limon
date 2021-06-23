@@ -36,6 +36,7 @@ client.interceptors.response.use(res => {
     const code = res.data.code || 200
     // 获取错误信息
     const message = res.data.msg || '系统错误'
+  debugger;
     if (code === 401) {
       Notify.create({
         message: '登录状态已过期，您可以继续留在该页面，或者重新登录',

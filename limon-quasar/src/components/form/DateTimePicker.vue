@@ -1,7 +1,6 @@
 <template>
   <div>
     <q-input
-      filled
       :label="label"
       clearable
       v-model="dateTime"
@@ -10,7 +9,7 @@
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" transition-hide="scale">
-            <q-date v-model="dateTime" mask="YYYY-MM-DD HH:mm">
+            <q-date v-model="dateTime" mask="YYYY-MM-DD HH:mm" today-btn>
               <div class="row items-center justify-end">
                 <q-btn v-close-popup label="Close" color="primary" flat/>
               </div>
@@ -37,6 +36,7 @@
 <script>
 
 import {date} from "quasar";
+import {ref} from "@vue/reactivity";
 
 export default {
   name: 'DateTimePicker',
@@ -53,20 +53,26 @@ export default {
       default: ''
     }
   },
-  data: function () {
+
+  setup(props, context) {
+    let time = props.time;
+    let timestamp = props.timestamp;
+    if (timestamp) {
+      time =  date.formatDate(timestamp, 'YYYY-MM-DD HH:mm:ss.SSS')
+    }
+
+    const dateTime = ref(time)
+
+    const updateDateTime = () => {
+      context.emit('update','time', dateTime.value)
+      context.emit('update','timestamp', date.formatDate(dateTime.value, 'x'))
+    }
+
     return {
-      dateTime: this.time
+      updateDateTime,
+      dateTime
     }
-  },
-  methods: {
-    updateDateTime() {
-      this.$emit('update:time', this.dateTime)
-      this.$emit('update:timestamp', date.formatDate(this.dateTime, 'x'))
-    }
+
   }
 }
 </script>
-
-<style scoped>
-
-</style>

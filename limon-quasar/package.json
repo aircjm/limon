@@ -14,6 +14,9 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.9.19",
+    "@tiptap/extension-image": "^2.0.0-beta.14",
+    "@tiptap/starter-kit": "^2.0.0-beta.80",
+    "@tiptap/vue-3": "^2.0.0-beta.44",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0-beta.15",

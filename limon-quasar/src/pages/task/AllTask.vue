@@ -16,7 +16,7 @@
               <q-item-label>记录时间：</q-item-label>
             </q-item-section>
             <q-item-section class="col">
-              <date-time-picker label="记录时间" v-model="searchForm.logTime"/>
+              <date-time-picker label="记录时间" style="width: 220px" v-model:time="searchForm.logTimeStr" v-model:timestamp="searchForm.logTime"/>
             </q-item-section>
           </q-item>
           <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12 q-pr-sm">
@@ -180,13 +180,13 @@
 
 <script>
 import {saveTask} from 'src/api/task'
-import DateTimePicker from 'components/form/DateTimePicker'
 import client, {doPost} from 'src/utils/axios'
 import {taskList} from 'src/api/url'
 import {computed, reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useQuasar} from "quasar";
 import {useRouter} from "vue-router";
+import DateTimePicker from "../../components/form/DateTimePicker";
 
 export default {
   name: 'AllTask',
@@ -217,6 +217,7 @@ export default {
       searchForm: {
         title: null,
         logTime: null,
+        logTimeStr: null,
         loading: false
       },
       filter: '',
