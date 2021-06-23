@@ -12,3 +12,12 @@ export function setToken (token) {
 export function removeToken () {
   return LocalStorage.remove(TokenKey)
 }
+
+
+const items = [
+  "/captchaImage"
+]
+
+export function noToken(url) {
+ return  items.includes(url)
+}

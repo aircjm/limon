@@ -77,12 +77,12 @@ module.exports = function (/* ctx */) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-      port: 8080,
+      port: 3000,
       open: true, // opens browser window automatically
       proxy: {
         // proxy all requests starting with /api to jsonplaceholder
         '/api': {
-          target: 'http://localhost:8085',
+          target: 'http://localhost:8085/',
           changeOrigin: true,
           pathRewrite: {
             '^/api': ''
@@ -134,8 +134,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'ban',
-        short_name: 'ban',
+        name: 'limon',
+        short_name: 'limon',
         description: 'A Self Space',
         display: 'standalone',
         orientation: 'portrait',
@@ -201,7 +201,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'quasar-ban'
+        appId: 'quasar-limon'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

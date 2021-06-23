@@ -33,7 +33,7 @@
                 v-model="password"
                 label="Password"
               />
-<!--              <q-field>
+              <q-field>
                 <q-input
                   filled
                   v-model="code"
@@ -45,7 +45,7 @@
                   @click="getCode"
                   style="height: 56px; max-width: 150px;"
                 />
-              </q-field>-->
+              </q-field>
               <q-toggle
                 label="记住密码"
                 v-model="rememberMe"
@@ -82,7 +82,6 @@ export default {
   setup() {
     const codeUrl = ref('')
 
-
     const router = useRouter();
     const route = useRoute()
 
@@ -111,7 +110,7 @@ export default {
     const submitLogin = () => {
         login(loginForm).then((res) => {
           setToken(res.token)
-          router.push({path: redirect || '/'})
+          router.push({path: redirect.value || '/'})
         }).catch(() => {
            getCode()
         })

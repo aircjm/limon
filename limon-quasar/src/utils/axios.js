@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {getToken} from 'src/utils/project'
+import {getToken, noToken} from 'src/utils/project'
 import {Notify} from 'quasar'
 import {logout} from 'src/api/login'
 import {router} from 'src/router/index'
@@ -20,7 +20,7 @@ client.interceptors.request.use(config => {
   // Do something before request is sent
   // console.log(config)
   // 是否需要设置 token
-  if (getToken()) {
+  if (!noToken(config.url) && getToken()) {
     config.headers.Authorization = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
   }
   return config
@@ -36,7 +36,6 @@ client.interceptors.response.use(res => {
     const code = res.data.code || 200
     // 获取错误信息
     const message = res.data.msg || '系统错误'
-  debugger;
     if (code === 401) {
       Notify.create({
         message: '登录状态已过期，您可以继续留在该页面，或者重新登录',
