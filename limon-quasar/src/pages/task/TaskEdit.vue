@@ -74,11 +74,12 @@
       </q-card-section>
       <q-card-section>
         <div>
-          <MarkdownEditor
-            label="context"
-            v-if="editorFlag"
-            :context.sync="form.taskDesc"
-          />
+<!--          <MarkdownEditor-->
+<!--            label="context"-->
+<!--            v-if="editorFlag"-->
+<!--            :context.sync="form.taskDesc"-->
+<!--          />-->
+          <TipTapEditor/>
         </div>
       </q-card-section>
       <q-card-section>
@@ -144,12 +145,14 @@ import {onMounted} from "@vue/runtime-core";
 import {useRoute, useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
 import MarkdownEditor from "../../components/editor/MarkdownEditor";
+import TipTapEditor from "../../components/tipTapEditor/TipTapEditor";
 
 
 export default defineComponent(
   {
     name: 'TaskEdit',
     components: {
+      TipTapEditor,
       MarkdownEditor,
       DateTimePicker
     },
@@ -167,6 +170,7 @@ export default defineComponent(
           startTime:null,
           endTime:null,
           dueTime:null,
+          contextJson: ''
         },
         recordType: null,
         date: null,
