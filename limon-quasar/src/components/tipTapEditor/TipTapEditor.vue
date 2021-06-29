@@ -60,7 +60,4 @@ export default {
 </script>
 
 <style scoped>
-.ProseMirror-focused {
-  outline: none;
-}
 </style>
