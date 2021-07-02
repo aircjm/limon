@@ -1,18 +1,19 @@
 package com.aircjm.project.common;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 import com.aircjm.common.constant.Constants;
 import com.aircjm.common.utils.IdUtils;
 import com.aircjm.common.utils.VerifyCodeUtils;
 import com.aircjm.common.utils.sign.Base64;
 import com.aircjm.framework.redis.RedisCache;
 import com.aircjm.framework.web.domain.AjaxResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 验证码操作处理
@@ -22,7 +23,7 @@ import com.aircjm.framework.web.domain.AjaxResult;
 @RestController
 public class CaptchaController
 {
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
     /**

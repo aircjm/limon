@@ -42,19 +42,14 @@ public class SysLoginController
     /**
      * 登录方法
      * 
-     * @param username 用户名
-     * @param password 密码
-     * @param captcha 验证码
-     * @param uuid 唯一标识
+     * @param loginBody 登陆信息
      * @return 结果
      */
     @PostMapping("/login")
-    public AjaxResult login(@RequestBody LoginBody loginBody)
-    {
+    public AjaxResult login(@RequestBody LoginBody loginBody) {
         AjaxResult ajax = AjaxResult.success();
         // 生成令牌
-        String token = loginService.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getCode(),
-                loginBody.getUuid());
+        String token = loginService.login(loginBody.getUsername(), loginBody.getPassword());
         ajax.put(Constants.TOKEN, token);
         return ajax;
     }

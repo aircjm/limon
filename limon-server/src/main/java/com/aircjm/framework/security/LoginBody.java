@@ -1,5 +1,7 @@
 package com.aircjm.framework.security;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * 用户登录对象
  * 
@@ -10,16 +12,19 @@ public class LoginBody
     /**
      * 用户名
      */
+    @NotBlank
     private String username;
 
     /**
      * 用户密码
      */
+    @NotBlank
     private String password;
 
     /**
      * 验证码
      */
+    @NotBlank
     private String code;
 
     /**
