@@ -3,6 +3,8 @@
     margin-top: 0.75em;
   }
 
+  padding: 1.25rem;
+
   :focus {
     outline: none
   }
@@ -213,18 +215,7 @@
     visibility: visible
   }
 
-  // editor__content
-  .editor__content {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    padding: 1.25rem 1rem;
-    min-height: 200px;
 
-    .ProseMirror {
-      white-space: pre-wrap
-    }
-  }
 
   .editor__content * {
     caret-color: currentColor

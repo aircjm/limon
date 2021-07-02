@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-2" autocorrect="off" spellcheck="false" autocapitalize="off">
+  <div class="shadow-2" spellcheck="false" autocapitalize="off">
     <bubble-menu
       :editor="editor"
       v-if="editor"
