@@ -24,23 +24,20 @@
             >
               <q-input
                 filled
-                v-model="loginForm.username"
+                v-model="username"
                 label="Username"
-                lazy-rules
               />
               <q-input
                 type="password"
                 filled
-                v-model="loginForm.password"
+                v-model="password"
                 label="Password"
-                lazy-rules
               />
               <q-field>
                 <q-input
                   filled
-                  v-model="loginForm.code"
+                  v-model="code"
                   label="code"
-                  lazy-rules
                   style="max-width: 50%"
                 />
                 <q-img
@@ -51,7 +48,7 @@
               </q-field>
               <q-toggle
                 label="记住密码"
-                v-model="loginForm.rememberMe"
+                v-model="rememberMe"
                 checked-icon="check"
                 color="green"
                 unchecked-icon="clear"
@@ -74,48 +71,53 @@
 </template>
 
 <script>
-import { getCodeImg, login } from 'src/api/login'
-import { setToken } from 'src/utils/project'
+import {getCodeImg, login} from 'src/api/login'
+import {setToken} from 'src/utils/project'
+import {reactive, ref, toRefs} from "@vue/reactivity";
+import {onMounted} from "@vue/runtime-core";
+import {useRoute, useRouter} from "vue-router";
 
 export default {
   name: 'Login',
-  data () {
-    return {
-      codeUrl: '',
-      loginForm: {
-        username: '',
-        password: '',
-        rememberMe: false,
-        code: '',
-        uuid: ''
-      }
-    }
-  },
-  watch: {
-    $route: {
-      handler: function (route) {
-        this.redirect = route.query && route.query.redirect
-      },
-      immediate: true
-    }
-  },
-  created () {
-    this.getCode()
-  },
-  methods: {
-    submitLogin () {
-      login(this.loginForm).then((res) => {
-        setToken(res.token)
-        this.$router.push({ path: this.redirect || '/' })
-      }).catch(() => {
-        this.getCode()
-      })
-    },
-    getCode () {
+  setup() {
+    const codeUrl = ref('')
+
+    const router = useRouter();
+    const route = useRoute()
+
+    const  redirect = ref( route.query && route.query.redirect)
+
+
+    onMounted(() => {
+      getCode();
+    })
+
+    const getCode = () => {
       getCodeImg().then(res => {
-        this.codeUrl = 'data:image/gif;base64,' + res.img
-        this.loginForm.uuid = res.uuid
+        codeUrl.value = 'data:image/gif;base64,' + res.img
+        loginForm.uuid = res.uuid
       })
+    }
+
+    const loginForm = reactive({
+      username: '',
+      password: '',
+      rememberMe: false,
+      code: '',
+      uuid: ''
+    });
+
+    const submitLogin = () => {
+        login(loginForm).then((res) => {
+          setToken(res.token)
+          router.push({path: redirect.value || '/'})
+        }).catch(() => {
+           getCode()
+        })
+    }
+
+    return {
+     ...toRefs(loginForm), submitLogin, codeUrl, redirect, getCode
     }
   }
 }

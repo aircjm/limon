@@ -11,7 +11,6 @@ export const FetchCurrentUser = (setUser) => {
 export const GetCode = (setCodeUrl, setUuid) => {
     client.get("/captchaImage")
         .then(response => {
-            debugger;
             const {data} = response;
             if (data.code === 200) {
                 console.log("get code success")

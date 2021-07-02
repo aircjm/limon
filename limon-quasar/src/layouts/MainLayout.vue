@@ -22,7 +22,7 @@
           </q-list>
         </q-btn-dropdown>
         <q-separator dark vertical/>
-        <q-btn flat dense round icon="login" aria-label="用户中心"/>
+        <q-btn flat dense round icon="login"/>
       </q-toolbar>
     </q-header>
 
