@@ -553,6 +553,11 @@
   .code-block {
     position: relative;
 
+    button {
+      position: absolute;
+      top: 2rem;
+      right: 0.5rem;
+    }
     select {
       position: absolute;
       top: 0.5rem;

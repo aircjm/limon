@@ -1,5 +1,6 @@
 <template>
   <node-view-wrapper class="code-block">
+    <button @click="copyCode">copy</button>
     <select contenteditable="false" v-model="selectedLanguage">
       <option :value="null">
         auto
@@ -17,6 +18,7 @@
 
 <script>
 import { NodeViewWrapper, NodeViewContent, nodeViewProps } from '@tiptap/vue-3'
+import { copyToClipboard } from 'quasar'
 
 export default {
   components: {
@@ -32,6 +34,23 @@ export default {
       languages: this.extension.options.lowlight.listLanguages(),
     }
   },
+
+  methods: {
+    copyCode() {
+      const code = this.node.textContent
+      console.log("copy code is:\n" + code)
+
+      copyToClipboard(code)
+        .then(() => {
+          console.log("复制成功")
+
+        })
+        .catch(() => {
+          // fail
+        })
+    }
+  },
+
 
   computed: {
     selectedLanguage: {
