@@ -555,121 +555,47 @@
       right: 0.5rem;
     }
   }
+}
 
-  // highlight
-  pre {
-    &::before {
-      content: attr(data-language);
-      text-transform: uppercase;
-      display: block;
-      text-align: right;
-      font-weight: bold;
-      font-size: 0.8rem;
+.bubble-menu {
+  display: flex;
+  background-color: #0D0D0D;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+
+  button {
+    border: none;
+    background: none;
+    color: #FFF;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    opacity: 0.6;
+
+    &:hover,
+    &.is-active {
+      opacity: 1;
     }
-
-    code {
-      .hljs-comment,
-      .hljs-quote {
-        color: #999999;
-      }
-
-      .hljs-variable,
-      .hljs-template-variable,
-      .hljs-attribute,
-      .hljs-tag,
-      .hljs-name,
-      .hljs-regexp,
-      .hljs-link,
-      .hljs-name,
-      .hljs-selector-id,
-      .hljs-selector-class {
-        color: #f2777a;
-      }
-
-      .hljs-number,
-      .hljs-meta,
-      .hljs-built_in,
-      .hljs-builtin-name,
-      .hljs-literal,
-      .hljs-type,
-      .hljs-params {
-        color: #f99157;
-      }
-
-      .hljs-string,
-      .hljs-symbol,
-      .hljs-bullet {
-        color: #99cc99;
-      }
-
-      .hljs-title,
-      .hljs-section {
-        color: #ffcc66;
-      }
-
-      .hljs-keyword,
-      .hljs-selector-tag {
-        color: #6699cc;
-      }
-
-      .hljs-emphasis {
-        font-style: italic;
-      }
-
-      .hljs-strong {
-        font-weight: 700;
-      }
-    }
-  }
-
-  .q-btn, .q-tab {
-    text-transform: unset
-  }
-
-  .icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: -0.15em;
-    fill: currentColor;
-    overflow: hidden;
   }
 }
 
+.floating-menu {
+  display: flex;
+  background-color: #0D0D0D10;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
 
-.o-menu {
-  min-width: 160px !important;
+  button {
+    border: none;
+    background: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    opacity: 0.6;
 
-  .q-avatar {
-    width: 2rem !important;
-    height: 2rem !important
-  }
-
-  .o-button {
-    cursor: pointer;
-    text-align: center;
-    padding: 4px 10px;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.1)
-    }
-
-    .q-icon {
-      font-size: 1.2rem
+    &:hover,
+    &.is-active {
+      opacity: 1;
     }
   }
-
-  .icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: -0.15em;
-    fill: currentColor;
-    overflow: hidden;
-  }
-}
-
-.q-tooltip {
-  color: #ffffff;
-  background: #272A3E
 }

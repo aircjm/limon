@@ -1,6 +1,7 @@
 <template>
   <div class="shadow-2" spellcheck="false" autocapitalize="off">
     <bubble-menu
+      class="bubble-menu"
       :editor="editor"
       v-if="editor"
     >
@@ -81,6 +82,7 @@
     </bubble-menu>
 
     <floating-menu
+      class="floating-menu"
       :editor="editor"
       v-if="editor"
     >
@@ -104,6 +106,9 @@
               :class="{ 'is-active': editor.isActive('orderedList') }">
         ordered list
       </button>
+      <button @click="addImage">
+        addImage
+      </button>
     </floating-menu>
     <editor-content :editor="editor"/>
   </div>
@@ -114,11 +119,42 @@
 import {BubbleMenu, EditorContent, FloatingMenu, useEditor, VueNodeViewRenderer} from '@tiptap/vue-3'
 import StarterKit from "@tiptap/starter-kit";
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
-
+import Image from '@tiptap/extension-image'
+import Table from '@tiptap/extension-table'
+import TableRow from '@tiptap/extension-table-row'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
 import CodeBlockComponent from "./CodeBlockComponent";
 import {onBeforeUnmount} from "@vue/runtime-core";
 
 import  lowlight from 'lowlight'
+
+
+
+const CustomTableCell = TableCell.extend({
+  addAttributes() {
+    return {
+      // extend the existing attributes …
+      ...this.parent?.(),
+
+      // and add a new one …
+      backgroundColor: {
+        default: null,
+        parseHTML: element => {
+          return {
+            backgroundColor: element.getAttribute('data-background-color'),
+          }
+        },
+        renderHTML: attributes => {
+          return {
+            'data-background-color': attributes.backgroundColor,
+            style: `background-color: ${attributes.backgroundColor}`,
+          }
+        },
+      },
+    }
+  },
+})
 
 export default {
   name: "TipTapEditor",
@@ -139,6 +175,13 @@ export default {
       },
       extensions: [
         StarterKit,
+        Image,
+        Table.configure({
+          resizable: true,
+        }),
+        TableRow,
+        TableHeader,
+        CustomTableCell,
         CodeBlockLowlight
           .extend({
             addNodeView() {
@@ -153,7 +196,15 @@ export default {
       editor.value.destroy()
     })
 
-    return {editor}
+
+   const addImage =() =>  {
+      const url = window.prompt('URL')
+      if (url) {
+        editor.chain().focus().setImage({ src: url }).run()
+      }
+    }
+
+    return {editor, addImage}
   }
 }
 </script>
