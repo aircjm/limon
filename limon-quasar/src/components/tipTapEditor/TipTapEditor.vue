@@ -124,6 +124,8 @@ import Table from '@tiptap/extension-table'
 import TableRow from '@tiptap/extension-table-row'
 import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
+import Highlight from '@tiptap/extension-highlight'
+import Typography from '@tiptap/extension-typography'
 import CodeBlockComponent from "./CodeBlockComponent";
 import {onBeforeUnmount} from "@vue/runtime-core";
 
@@ -166,15 +168,18 @@ export default {
     let json;
     const editor = useEditor({
       onCreate: (editor) => {
-        console.log("创建编辑器")
+        console.log("创建编辑器完成")
       },
       content: '',
       onUpdate: (editor) => {
         json = editor.editor.getJSON()
+        console.log("json结果为：")
         console.log(json)
       },
       extensions: [
         StarterKit,
+        Highlight,
+        Typography,
         Image,
         Table.configure({
           resizable: true,
