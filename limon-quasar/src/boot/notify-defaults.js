@@ -1,9 +1,11 @@
 import {Notify} from 'quasar'
 
-// NOtify 默认配置
+// Notify 默认配置
 Notify.setDefaults({
-  position: 'bottom-left',
-  timeout: 2500,
+  color: 'primary',
+  position: 'bottom',
+  progress: true,
+  timeout: 3000,
   textColor: 'white',
-  actions: [{icon: 'close', color: 'white'}]
+  actions: [{ icon: 'close', color: 'white' }],
 })
