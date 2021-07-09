@@ -234,7 +234,7 @@ export default defineComponent(
       }
 
       const autoSave = () => {
-        saveTask(this.form).then(res => {
+        saveTask(state.form).then(res => {
           if (res.code === 200) {
             $q.notify({
               message: '自动更新成功'
@@ -269,21 +269,7 @@ export default defineComponent(
         ...toRefs(state), toAddTag, filterTag, filterTagAbort,
         addTag, onSubmit, autoSave,
       }
-    },
-
-    // methods: {
-
-    //   resetForm() {
-    //     this.form.title = ''
-    //     this.form.dueTime = null
-    //     this.form.startTime = null
-    //     this.form.endTime = null
-    //     this.openDialog = false
-    //   },
-    //   goBack() {
-    //     this.$router.back()
-    //   }
-    // }
+    }
   }
 )
 </script>

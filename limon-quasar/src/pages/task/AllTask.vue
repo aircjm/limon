@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-gutter-md">
+  <div class="column q-gutter-md q-pa-md">
     <div class="col-1">
       <div class="col bg-white shadow-4 q-pa-md">
         <div class="row items-center justify-start q-mb-md">
@@ -47,8 +47,27 @@
         </div>
       </div>
     </div>
-    <div class="col-1 q-gutter">
-      <q-btn icon="add" @click="addTaskFlag = true"/>
+    <div class="col-1 q-gutter-y-md row">
+      <div class="col-md-7 col-sm-12">
+        <q-input outlined square v-model="addTaskValue" @keypress.enter="saveTitle">
+          <template v-slot:prepend>
+            <q-icon name="task"/>
+          </template>
+          <template v-slot:append>
+            <q-icon name="event" />
+            <q-separator  vertical spaced />
+            <q-btn-dropdown color="grey-3" size="0.7rem" dense>
+
+            </q-btn-dropdown>
+          </template>
+
+          <template v-slot:after>
+            <q-btn icon="add_task" color="green-4" @click="addTaskFlag = true"/>
+          </template>
+        </q-input>
+      </div>
+      <div>
+      </div>
     </div>
     <div class="col col-md-8 col-sm-12">
       <q-list dense bordered class="rounded-borders list q-pa-xs q-gutter-xs">
@@ -224,6 +243,8 @@ export default {
       tasks: []
     });
 
+    const addTaskValue = ref('')
+
 
     onMounted(() => {
       list()
@@ -323,6 +344,7 @@ export default {
       setEndTime,
       deleteTask,
       edit,
+      addTaskValue,
       onReset
     }
 
