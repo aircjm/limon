@@ -1,7 +1,7 @@
 <template>
   <div class="column q-gutter-md q-pa-md">
     <div class="col-1">
-      <div class="col bg-white shadow-4 q-pa-md">
+      <div class="col shadow-2 q-pa-md">
         <div class="row items-center justify-start q-mb-md">
           <q-item class="">
             <q-item-section class="col-3 text-right gt-sm">
@@ -47,17 +47,17 @@
         </div>
       </div>
     </div>
-    <div class="col-1 q-gutter-y-md row">
+    <div class="col col-md-8 col-sm-12">
       <div class="col-md-7 col-sm-12">
-        <q-input outlined square v-model="addTaskValue" @keypress.enter="saveTitle">
+        <q-input outlined standout v-model="addTaskValue" @keypress.enter="saveTitle">
           <template v-slot:prepend>
             <q-icon name="task"/>
           </template>
           <template v-slot:append>
             <q-icon name="event" />
             <q-separator  vertical spaced />
-            <q-btn-dropdown color="grey-3" size="0.7rem" dense>
-
+            <q-btn-dropdown flat color="black-3" size="0.7rem" dense>
+              <q-btn icon="">hello</q-btn>
             </q-btn-dropdown>
           </template>
 
@@ -66,11 +66,8 @@
           </template>
         </q-input>
       </div>
-      <div>
-      </div>
-    </div>
-    <div class="col col-md-8 col-sm-12">
-      <q-list dense bordered class="rounded-borders list q-pa-xs q-gutter-xs">
+      <q-separator spaced />
+      <q-list dense class="q-pa-xs q-gutter-xs">
         <div v-for="(task) in tasks" :key="task.id" class="row list-task">
           <div class="col-8 q-gutter-auto" @click="edit(task.id)">
             <div class="taskStr" :class="{ 'done': task.status === 9}"
@@ -356,17 +353,6 @@ export default {
 .taskStr.done {
   text-decoration: line-through;
   color: rgba(0, 0, 0, .36);
-}
-
-.list {
-  background-color: #EBECF0;
-  border-radius: 3px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
-  position: relative;
-  white-space: normal;
 }
 
 .list-task {
