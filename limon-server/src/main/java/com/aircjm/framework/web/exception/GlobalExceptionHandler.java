@@ -1,5 +1,10 @@
 package com.aircjm.framework.web.exception;
 
+import com.aircjm.common.constant.HttpStatus;
+import com.aircjm.common.exception.BaseException;
+import com.aircjm.common.exception.CustomException;
+import com.aircjm.common.utils.StringUtils;
+import com.aircjm.framework.web.domain.AjaxResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
@@ -10,16 +15,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import com.aircjm.common.constant.HttpStatus;
-import com.aircjm.common.exception.BaseException;
-import com.aircjm.common.exception.CustomException;
-import com.aircjm.common.exception.DemoModeException;
-import com.aircjm.common.utils.StringUtils;
-import com.aircjm.framework.web.domain.AjaxResult;
 
 /**
  * 全局异常处理器
- * 
+ *
  * @author aircjm
  */
 @RestControllerAdvice
@@ -101,17 +100,9 @@ public class GlobalExceptionHandler
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Object validExceptionHandler(MethodArgumentNotValidException e)
     {
+        // todo
         log.error(e.getMessage(), e);
         String message = e.getBindingResult().getFieldError().getDefaultMessage();
         return AjaxResult.error(message);
-    }
-
-    /**
-     * 演示模式异常
-     */
-    @ExceptionHandler(DemoModeException.class)
-    public AjaxResult demoModeException(DemoModeException e)
-    {
-        return AjaxResult.error("演示模式，不允许操作");
     }
 }

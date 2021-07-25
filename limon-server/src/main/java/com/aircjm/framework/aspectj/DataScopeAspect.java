@@ -20,7 +20,7 @@ import com.aircjm.project.system.domain.SysUser;
 
 /**
  * 数据过滤处理
- * 
+ *
  * @author aircjm
  */
 @Aspect
@@ -52,14 +52,13 @@ public class DataScopeAspect
      */
     public static final String DATA_SCOPE_SELF = "5";
 
-    // 配置织入点
     @Pointcut("@annotation(com.aircjm.framework.aspectj.lang.annotation.DataScope)")
     public void dataScopePointCut()
     {
     }
 
     @Before("dataScopePointCut()")
-    public void doBefore(JoinPoint point) throws Throwable
+    public void doBefore(JoinPoint point)
     {
         handleDataScope(point);
     }
@@ -88,10 +87,10 @@ public class DataScopeAspect
 
     /**
      * 数据范围过滤
-     * 
+     *
      * @param joinPoint 切点
      * @param user 用户
-     * @param alias 别名
+     * @param userAlias 别名
      */
     public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias)
     {
