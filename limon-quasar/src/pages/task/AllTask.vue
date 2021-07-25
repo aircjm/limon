@@ -49,7 +49,7 @@
     </div>
     <div class="col col-md-8 col-sm-12">
       <div class="col-md-7 col-sm-12">
-        <q-input outlined standout v-model="addTaskValue" @keypress.enter="saveTitle">
+        <q-input outlined standout v-model="title" @keypress.enter="saveTitle">
           <template v-slot:prepend>
             <q-icon name="task"/>
           </template>
