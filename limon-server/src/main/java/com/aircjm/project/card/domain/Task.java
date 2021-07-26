@@ -27,13 +27,13 @@ public class Task extends DbBaseEntity<Task> {
     private String name;
 
     @Builder.Default
-    @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
-    private Integer type = 0;
+    @ApiModelProperty(value = "内容类型，支持html1，markdown0")
+    private Integer descType = 0;
 
-    @ApiModelProperty(value = "卡片内容描述")
+    @ApiModelProperty(value = "内容描述")
     private String taskDesc;
 
-    @ApiModelProperty(value = "卡片内容描述HTML")
+    @ApiModelProperty(value = "内容描述HTML")
     private String taskHtml;
 
     @ApiModelProperty(value = "任务状态")
