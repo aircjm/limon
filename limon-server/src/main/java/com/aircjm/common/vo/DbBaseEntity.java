@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 /**
  * db基类
  *
+ * @author aircjm
  * @param <T> 实体
  */
 @Getter

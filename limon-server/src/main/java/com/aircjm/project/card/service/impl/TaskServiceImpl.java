@@ -47,6 +47,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     public void save(SaveTaskRequest request) {
 
         if (Objects.isNull(request.getId())) {
+            log.info("开始处理新增");
             if (StringUtils.isEmpty(request.getTitle())) {
                 throw new CustomException("title is not empty");
             }

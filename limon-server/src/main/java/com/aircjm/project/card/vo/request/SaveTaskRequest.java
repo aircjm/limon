@@ -1,5 +1,6 @@
 package com.aircjm.project.card.vo.request;
 
+import com.aircjm.common.utils.DateUtils;
 import com.aircjm.common.utils.StringUtils;
 import com.aircjm.project.tag.domain.Tag;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -20,7 +21,8 @@ public class SaveTaskRequest {
     @ApiModelProperty(value = "id")
     private Long id;
 
-    private String title;
+    @ApiModelProperty(value = "名称")
+    private String name;
 
     @ApiModelProperty(value = "内容")
     private String taskDesc = StringUtils.EMPTY;
