@@ -286,7 +286,7 @@ export default {
 
     const saveTitle = () => {
       const task = new TaskModel()
-      task.title = state.title
+      task.name = state.title
       // 缺少校验
       saveTask(task).then(res => {
         console.log(res)
