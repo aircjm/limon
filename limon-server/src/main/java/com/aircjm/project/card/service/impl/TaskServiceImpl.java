@@ -48,16 +48,17 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
 
         if (Objects.isNull(request.getId())) {
             log.info("开始处理新增");
-            if (StringUtils.isEmpty(request.getTitle())) {
+            if (StringUtils.isEmpty(request.getName())) {
                 throw new CustomException("title is not empty");
             }
             Task task = Task.builder()
-                    .title(request.getTitle())
+                    .name(request.getName())
                     .taskDesc(request.getTaskDesc())
                     .taskHtml("")
-                    .type(request.getType())
+                    .descType(request.getDescType())
                     .status(request.getStatus())
                     .startTime(request.getStartTime())
+                    .dueTime(request.getDueTime())
                     .endTime(request.getEndTime())
                     .dueTime(request.getDueTime())
                     .build();
@@ -88,7 +89,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
                 .orderByDesc(Task::getStatus)
                 .orderByDesc(Task::getId)
                 .eq(Task::getDeleted, 0)
-                .like(StringUtils.isNotEmpty(request.getTitle()), Task::getTitle, request.getTitle())
+                .like(StringUtils.isNotEmpty(request.getTitle()), Task::getName, request.getTitle())
                 .eq(Objects.nonNull(request.getStatus()), Task::getStatus, request.getStatus());
         Page<Task> taskPage = page(request, wrapper);
         List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(this::getTaskDetailResponse).collect(Collectors.toList());

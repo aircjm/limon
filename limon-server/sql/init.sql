@@ -728,9 +728,9 @@ drop table if exists lm_task;
 create table lm_task
 (
     id          bigint(20)   not null auto_increment comment 'id',
-    title       varchar(500) not null default '' comment '标题',
-    type        tinyint(1)   NOT NULL DEFAULT 0 comment '类型 0markdown 1html',
-    task_desc   text          comment '内容 只支持markdown',
+    name       varchar(500) not null default '' comment '标题',
+    desc_type        tinyint(1)   NOT NULL DEFAULT 0 comment '类型 0-markdown 1-html 2-prosemirror',
+    task_desc   text          comment '内容',
     task_html   text          comment '内容的html',
     status      tinyint(1)   NOT NULL DEFAULT 0 comment '状态',
     due_time    DATETIME comment '截至时间',
