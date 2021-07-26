@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class QueryTaskRequest extends Page<Task> {
 
-    private String title;
+    private String name;
 
     private Integer status;
 }

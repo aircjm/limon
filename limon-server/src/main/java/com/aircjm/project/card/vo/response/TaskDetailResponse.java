@@ -30,8 +30,8 @@ public class TaskDetailResponse {
     private Long id;
 
     @Excel(name = "Question")
-    @ApiModelProperty(value = "标题")
-    private String title;
+    @ApiModelProperty(value = "名称")
+    private String name;
 
 
     @ApiModelProperty(value = "卡片内容描述")

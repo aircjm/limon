@@ -9,9 +9,21 @@ export default class TaskModel extends AbstractModel {
     this.listId = Number(this.listId)
     /**
      * 名称
-     * @type {string}
+     * @type {string}  null
      */
     this.name = null
+
+    /**
+     * 内容描述
+     * @type {string}
+     */
+    this.taskDesc = ''
+
+    this.dueDate = null
+    this.startTime = null
+    this.endDate = null
+    this.hexColor =
+    this.dueDate = null
 
   }
 

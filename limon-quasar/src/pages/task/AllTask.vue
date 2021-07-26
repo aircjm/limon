@@ -8,7 +8,7 @@
               <q-item-label>标题：</q-item-label>
             </q-item-section>
             <q-item-section class="col">
-              <q-input label="标题" v-model="searchForm.title"/>
+              <q-input label="标题" v-model="searchForm.name"/>
             </q-item-section>
           </q-item>
           <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12">
@@ -16,7 +16,8 @@
               <q-item-label>记录时间：</q-item-label>
             </q-item-section>
             <q-item-section class="col">
-              <date-time-picker label="记录时间" style="width: 220px" v-model:time="searchForm.logTimeStr" v-model:timestamp="searchForm.logTime"/>
+              <date-time-picker label="记录时间" style="width: 220px" v-model:time="searchForm.logTimeStr"
+                                v-model:timestamp="searchForm.logTime"/>
             </q-item-section>
           </q-item>
           <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12 q-pr-sm">
@@ -36,7 +37,7 @@
               </q-btn>
               <q-btn
                 outline
-                label="重置"
+                label="reset"
                 no-wrap
                 class="q-mr-sm"
                 color="secondary"
@@ -49,26 +50,25 @@
     </div>
     <div class="col col-md-8 col-sm-12">
       <div class="col-md-7 col-sm-12">
-        <q-input outlined standout v-model="title" @keypress.enter="saveTitle">
+        <q-input outlined standout v-model="name" @keypress.enter="saveTitle">
           <template v-slot:prepend>
             <q-icon name="task"/>
           </template>
           <template v-slot:append>
-            <q-icon name="event" />
-            <q-separator  vertical spaced />
+            <q-icon name="event"/>
+            <q-separator vertical spaced/>
             <q-btn-dropdown outline flat color="black-3" dense>
               <div class="row no-wrap q-pa-md">
                 <div class="column">
                   <div class="text-h6 q-mb-md">Settings</div>
-                  <q-btn label="Use Mobile Data" />
-                  <q-btn label="Bluetooth" />
+                  <q-btn label="Use Mobile Data"/>
+                  <q-btn label="Bluetooth"/>
                 </div>
 
-                <q-separator vertical inset class="q-mx-lg" />
+                <q-separator vertical inset class="q-mx-lg"/>
 
                 <div class="column items-center">
                   <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
-
                   <q-btn
                     color="primary"
                     label="Logout"
@@ -86,13 +86,14 @@
           </template>
         </q-input>
       </div>
-      <q-separator spaced />
+      <q-separator spaced/>
+      <!--  任务列表    -->
       <q-list dense class="q-pa-xs q-gutter-xs">
         <div v-for="(task) in tasks" :key="task.id" class="row list-task">
-          <div class="col-8 q-gutter-auto" @click="edit(task.id)">
+          <div class="col-8 d" @click="edit(task.id)">
             <div class="taskStr" :class="{ 'done': task.status === 9}"
                  style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-              {{ task.title }}
+              {{ task.name }}
             </div>
             <q-item-label side top>
               <q-badge
@@ -188,8 +189,8 @@
         <q-card-section>
           <q-input
             filled
-            v-model="title"
-            label="title *"
+            v-model="name"
+            label="name *"
             :rules='[(v) => !!v || "不可以为空"]'
           />
         </q-card-section>
@@ -235,7 +236,7 @@ export default {
 
     const addTaskFlag = ref(false)
     const state = reactive({
-      title: '',
+      name: '',
       recordType: null,
       date: null,
       setTimeForm: {
@@ -252,7 +253,7 @@ export default {
         context: null
       },
       searchForm: {
-        title: null,
+        name: null,
         logTime: null,
         logTimeStr: null,
         loading: false
@@ -280,13 +281,15 @@ export default {
       queryRequest.title = state.searchForm.title
 
       doPost(taskList, queryRequest).then(res => {
-        state.tasks = res.data.records
+        if (res.data) {
+          state.tasks = res.data.records
+        }
       })
     }
 
-    const saveTitle = () => {
+    const saveTaskNam = () => {
       const task = new TaskModel()
-      task.name = state.title
+      task.name = state.name
       // 缺少校验
       saveTask(task).then(res => {
         console.log(res)
@@ -295,7 +298,7 @@ export default {
           type: "positive"
         })
         addTaskFlag.value = false
-        state.title = ''
+        state.name = ''
         list()
 
       })
@@ -357,7 +360,7 @@ export default {
       ...toRefs(state),
       timeDialogFlag,
       saveTaskDetail,
-      saveTitle,
+      saveTitle: saveTaskNam,
       list,
       doneTask,
       addTaskFlag,
