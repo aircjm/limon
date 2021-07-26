@@ -56,8 +56,28 @@
           <template v-slot:append>
             <q-icon name="event" />
             <q-separator  vertical spaced />
-            <q-btn-dropdown flat color="black-3" size="0.7rem" dense>
-              <q-btn icon="">hello</q-btn>
+            <q-btn-dropdown outline flat color="black-3" dense>
+              <div class="row no-wrap q-pa-md">
+                <div class="column">
+                  <div class="text-h6 q-mb-md">Settings</div>
+                  <q-btn label="Use Mobile Data" />
+                  <q-btn label="Bluetooth" />
+                </div>
+
+                <q-separator vertical inset class="q-mx-lg" />
+
+                <div class="column items-center">
+                  <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
+
+                  <q-btn
+                    color="primary"
+                    label="Logout"
+                    push
+                    size="sm"
+                    v-close-popup
+                  />
+                </div>
+              </div>
             </q-btn-dropdown>
           </template>
 
@@ -203,16 +223,17 @@ import {onMounted} from "@vue/runtime-core";
 import {useQuasar} from "quasar";
 import {useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
+import TaskModel from "src/classes/task";
 
 export default {
   name: 'AllTask',
   components: {DateTimePicker},
-  setup() {
+  setup: function () {
     const $q = useQuasar()
     const router = useRouter();
     const timeDialogFlag = ref(false)
 
-    const     addTaskFlag= ref(false)
+    const addTaskFlag = ref(false)
     const state = reactive({
       title: '',
       recordType: null,
@@ -264,11 +285,13 @@ export default {
     }
 
     const saveTitle = () => {
+      const task = new TaskModel()
+      task.title = state.title
       // 缺少校验
-      saveTask({title: state.title}).then(res => {
+      saveTask(task).then(res => {
+        console.log(res)
         $q.notify({
           message: "新增成功",
-          position: 'bottom-left',
           type: "positive"
         })
         addTaskFlag.value = false

@@ -23,8 +23,8 @@ public class Task extends DbBaseEntity<Task> {
 
     private Long id;
 
-    @ApiModelProperty(value = "标题")
-    private String title;
+    @ApiModelProperty(value = "名称")
+    private String name;
 
     @Builder.Default
     @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
@@ -43,5 +43,4 @@ public class Task extends DbBaseEntity<Task> {
     private LocalDateTime endTime;
     private LocalDateTime dueTime;
     private LocalDateTime doneTime;
-
 }
