@@ -89,7 +89,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
                 .orderByDesc(Task::getStatus)
                 .orderByDesc(Task::getId)
                 .eq(Task::getDeleted, 0)
-                .like(StringUtils.isNotEmpty(request.getTitle()), Task::getName, request.getTitle())
+                .like(StringUtils.isNotEmpty(request.getName()), Task::getName, request.getName())
                 .eq(Objects.nonNull(request.getStatus()), Task::getStatus, request.getStatus());
         Page<Task> taskPage = page(request, wrapper);
         List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(this::getTaskDetailResponse).collect(Collectors.toList());
