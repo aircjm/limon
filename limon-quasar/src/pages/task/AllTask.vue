@@ -1,97 +1,49 @@
 <template>
   <div class="column q-gutter-md q-pa-md">
-    <div class="col-1">
-      <div class="col shadow-2 q-pa-md">
-        <div class="row items-center justify-start q-mb-md">
-          <q-item class="">
-            <q-item-section class="col-3 text-right gt-sm">
-              <q-item-label>标题：</q-item-label>
-            </q-item-section>
-            <q-item-section class="col">
-              <q-input label="标题" v-model="searchForm.name"/>
-            </q-item-section>
-          </q-item>
-          <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12">
-            <q-item-section class="col-3 text-right gt-sm">
-              <q-item-label>记录时间：</q-item-label>
-            </q-item-section>
-            <q-item-section class="col">
-              <date-time-picker label="记录时间" style="width: 220px" v-model:time="searchForm.logTimeStr"
-                                v-model:timestamp="searchForm.logTime"/>
-            </q-item-section>
-          </q-item>
-          <q-item class="col-xl-2 col-md-3 col-sm-6 col-xs-12 q-pr-sm">
-            <q-item-label class="col-12 text-right row no-wrap justify-center">
-              <q-btn
-                label="查询"
-                no-wrap
-                color="primary"
-                class="q-mr-sm"
-                type="submit"
-                :loading="searchForm.loading"
-                @click="list"
-              >
-                <template v-slot:loading>
-                  <q-spinner-ios/>
-                </template>
-              </q-btn>
-              <q-btn
-                outline
-                label="reset"
-                no-wrap
-                class="q-mr-sm"
-                color="secondary"
-                @click="onReset"
-              />
-            </q-item-label>
-          </q-item>
-        </div>
-      </div>
-    </div>
-    <div class="col col-md-8 col-sm-12">
-      <div class="col-md-7 col-sm-12">
-        <q-input outlined standout v-model="name" @keypress.enter="saveTitle">
-          <template v-slot:prepend>
-            <q-icon name="task"/>
-          </template>
-          <template v-slot:append>
-            <q-icon name="event"/>
-            <q-separator vertical spaced/>
-            <q-btn-dropdown outline flat color="black-3" dense>
-              <div class="row no-wrap q-pa-md">
-                <div class="column">
-                  <div class="text-h6 q-mb-md">Settings</div>
-                  <q-btn label="Use Mobile Data"/>
-                  <q-btn label="Bluetooth"/>
-                </div>
-
-                <q-separator vertical inset class="q-mx-lg"/>
-
-                <div class="column items-center">
-                  <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
-                  <q-btn
-                    color="primary"
-                    label="Logout"
-                    push
-                    size="sm"
-                    v-close-popup
-                  />
-                </div>
+    <div class="col-md-6 col-sm-12 col-lg-4">
+      <q-input outlined standout v-model="name" @keypress.enter="saveTaskName">
+        <template v-slot:prepend>
+          <q-icon name="task"/>
+        </template>
+        <template v-slot:append>
+          <q-icon name="event"/>
+          <q-separator vertical spaced/>
+          <q-btn-dropdown outline flat color="black-3" dense>
+            <div class="row no-wrap q-pa-md">
+              <div class="column">
+                <div class="text-h6 q-mb-md">Settings</div>
+                <q-btn label="Use Mobile Data"/>
+                <q-btn label="Bluetooth"/>
               </div>
-            </q-btn-dropdown>
-          </template>
 
-          <template v-slot:after>
-            <q-btn icon="add_task" color="green-4" @click="addTaskFlag = true"/>
-          </template>
-        </q-input>
-      </div>
+              <q-separator vertical inset class="q-mx-lg"/>
+
+              <div class="column items-center">
+                <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
+                <q-btn
+                  color="primary"
+                  label="Logout"
+                  push
+                  size="sm"
+                  v-close-popup
+                />
+              </div>
+            </div>
+          </q-btn-dropdown>
+        </template>
+
+        <template v-slot:after>
+          <q-btn icon="add_task" color="green-4" @click="addTaskFlag = true"/>
+        </template>
+      </q-input>
+    </div>
+    <div class="col col-md-6 col-sm-12">
       <q-separator spaced/>
       <!--  任务列表    -->
       <q-list dense class="q-pa-xs q-gutter-xs">
         <div v-for="(task) in tasks" :key="task.id" class="row list-task">
           <div class="col-8 d" @click="edit(task.id)">
-            <div class="taskStr" :class="{ 'done': task.status === 9}"
+            <div class="taskStr" :class="{ 'done': task.taskStatus === 9}"
                  style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
               {{ task.name }}
             </div>
@@ -127,13 +79,7 @@
               />
               <router-link :to="`/task/edit?id=${task.id}`">
                 <template>
-                  <q-btn
-                    size="12px"
-                    flat
-                    dense
-                    round
-                    icon="more_vert"
-                  />
+                  <q-btn size="12px" flat dense round icon="more_vert"/>
                 </template>
               </router-link>
             </div>
@@ -202,7 +148,7 @@
             flat
             label="submit"
             icon="primary"
-            @click="saveTitle"
+            @click="saveTaskName"
           />
           <q-btn
             flat
@@ -219,7 +165,7 @@
 import {saveTask} from 'src/api/task'
 import client, {doPost} from 'src/utils/axios'
 import {taskList} from 'src/api/url'
-import {computed, reactive, ref, toRefs} from "@vue/reactivity";
+import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useQuasar} from "quasar";
 import {useRouter} from "vue-router";
@@ -235,6 +181,7 @@ export default {
     const timeDialogFlag = ref(false)
 
     const addTaskFlag = ref(false)
+
     const state = reactive({
       name: '',
       recordType: null,
@@ -266,10 +213,8 @@ export default {
 
 
     onMounted(() => {
+      // 1. 加载展示列表数据
       list()
-      if (!state.form.startTime) {
-        state.form.startTime = Date.now()
-      }
     })
 
 
@@ -278,7 +223,7 @@ export default {
         size: 50,
         current: 1
       }
-      queryRequest.title = state.searchForm.title
+      queryRequest.name = state.searchForm.name
 
       doPost(taskList, queryRequest).then(res => {
         if (res.data) {
@@ -287,7 +232,7 @@ export default {
       })
     }
 
-    const saveTaskNam = () => {
+    const saveTaskName = () => {
       const task = new TaskModel()
       task.name = state.name
       // 缺少校验
@@ -300,7 +245,6 @@ export default {
         addTaskFlag.value = false
         state.name = ''
         list()
-
       })
     }
 
@@ -360,7 +304,7 @@ export default {
       ...toRefs(state),
       timeDialogFlag,
       saveTaskDetail,
-      saveTitle: saveTaskNam,
+      saveTaskName,
       list,
       doneTask,
       addTaskFlag,
