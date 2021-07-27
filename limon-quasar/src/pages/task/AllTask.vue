@@ -196,26 +196,12 @@ export default {
     const state = reactive({
       taskId: 0,
       name: '',
-      recordType: null,
-      date: null,
       setTimeForm: {
         dueTime: null,
         id: null
       },
-      form: {
-        id: '',
-        title: '',
-        type: null,
-        dueTime: null,
-        startTime: null,
-        endTime: null,
-        context: null
-      },
       searchForm: {
-        name: null,
-        logTime: null,
-        logTimeStr: null,
-        loading: false
+        name: null
       },
       filter: '',
       tasks: []
