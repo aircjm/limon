@@ -156,7 +156,17 @@ export default defineComponent(
       MarkdownEditor,
       DateTimePicker
     },
-    setup() {
+    props: {
+      taskId : {
+        type: Number
+      }
+    },
+    setup(props) {
+      const {taskId} = toRefs(props)
+      debugger
+      if (taskId) {
+        console.log("taskId is " + taskId.value)
+      }
       let route = useRoute();
       const router = useRouter();
       const $q = useQuasar();

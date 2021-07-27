@@ -37,12 +37,14 @@
         </template>
       </q-input>
     </div>
+
+    <task-edit v-if="taskId !== 0" :taskId="taskId"/>
     <div class="col col-md-6 col-sm-12">
       <q-separator spaced/>
       <!--  任务列表    -->
       <q-list dense class="q-pa-xs q-gutter-xs">
         <div v-for="(task) in tasks" :key="task.id" class="row list-task">
-          <div class="col-8 d" @click="edit(task.id)">
+          <div class="col-8 d" @click="taskId = task.id">
             <div class="taskStr" :class="{ 'done': task.taskStatus === 9}"
                  style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
               {{ task.name }}
@@ -61,6 +63,11 @@
           </div>
           <div class="col-4 q-gutter-xs column items-end">
             <div>
+              <q-btn
+                size="12px" flat dense round
+                icon="close"
+                @click="resetTaskId"
+              />
               <q-btn
                 size="12px" flat dense round
                 icon="delete"
@@ -171,18 +178,23 @@ import {useQuasar} from "quasar";
 import {useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
 import TaskModel from "src/classes/task";
+import TaskEdit from "pages/task/TaskEdit";
 
 export default {
   name: 'AllTask',
-  components: {DateTimePicker},
+  components: {TaskEdit, DateTimePicker},
   setup: function () {
     const $q = useQuasar()
     const router = useRouter();
     const timeDialogFlag = ref(false)
 
     const addTaskFlag = ref(false)
+    const resetTaskId = () => {
+      state.taskId = 0
+    }
 
     const state = reactive({
+      taskId: 0,
       name: '',
       recordType: null,
       date: null,
@@ -312,6 +324,7 @@ export default {
       deleteTask,
       edit,
       addTaskValue,
+      resetTaskId,
       onReset
     }
 
