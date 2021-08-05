@@ -1,15 +1,15 @@
 package com.aircjm.limon.common.utils;
 
+import com.aircjm.limon.common.constant.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import com.aircjm.limon.common.constant.HttpStatus;
 import com.aircjm.limon.common.exception.CustomException;
 import com.aircjm.limon.framework.security.LoginUser;
 
 /**
  * 安全服务工具类
- * 
+ *
  * @author aircjm
  */
 public class SecurityUtils
@@ -79,7 +79,7 @@ public class SecurityUtils
 
     /**
      * 是否为管理员
-     * 
+     *
      * @param userId 用户ID
      * @return 结果
      */

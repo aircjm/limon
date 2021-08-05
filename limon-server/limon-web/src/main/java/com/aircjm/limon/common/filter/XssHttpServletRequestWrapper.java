@@ -14,7 +14,7 @@ import com.aircjm.limon.common.utils.html.EscapeUtil;
 
 /**
  * XSS过滤处理
- * 
+ *
  * @author aircjm
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
@@ -93,13 +93,12 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
 
     /**
      * 是否是Json请求
-     * 
+     *
      * @param request
      */
     public boolean isJsonRequest()
     {
         String header = super.getHeader(HttpHeaders.CONTENT_TYPE);
-        return MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(header)
-                || MediaType.APPLICATION_JSON_UTF8_VALUE.equalsIgnoreCase(header);
+        return MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(header);
     }
 }
