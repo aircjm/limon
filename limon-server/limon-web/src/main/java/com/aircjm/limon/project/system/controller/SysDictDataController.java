@@ -25,7 +25,7 @@ import com.aircjm.limon.project.system.service.ISysDictTypeService;
 
 /**
  * 数据字典信息
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -45,16 +45,6 @@ public class SysDictDataController extends BaseController
         startPage();
         List<SysDictData> list = dictDataService.selectDictDataList(dictData);
         return getDataTable(list);
-    }
-
-    @Log(title = "字典数据", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:dict:export')")
-    @GetMapping("/export")
-    public AjaxResult export(SysDictData dictData)
-    {
-        List<SysDictData> list = dictDataService.selectDictDataList(dictData);
-        ExcelUtil<SysDictData> util = new ExcelUtil<SysDictData>(SysDictData.class);
-        return util.exportExcel(list, "字典数据");
     }
 
     /**

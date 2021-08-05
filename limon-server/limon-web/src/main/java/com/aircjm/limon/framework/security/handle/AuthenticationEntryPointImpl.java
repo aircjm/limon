@@ -1,21 +1,21 @@
 package com.aircjm.limon.framework.security.handle;
 
-import java.io.IOException;
-import java.io.Serializable;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.aircjm.limon.common.constant.HttpStatus;
+import com.aircjm.limon.common.utils.ServletUtils;
+import com.aircjm.limon.framework.web.domain.AjaxResult;
+import com.alibaba.fastjson.JSON;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import com.alibaba.fastjson.JSON;
-import com.aircjm.limon.common.constant.HttpStatus;
-import com.aircjm.limon.common.utils.ServletUtils;
-import com.aircjm.limon.common.utils.StringUtils;
-import com.aircjm.limon.framework.web.domain.AjaxResult;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * 认证失败处理类 返回未授权
- * 
+ *
  * @author aircjm
  */
 @Component
@@ -28,7 +28,8 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint, S
             throws IOException
     {
         int code = HttpStatus.UNAUTHORIZED;
-        String msg = StringUtils.format("请求访问：{}，认证失败，无法访问系统资源", request.getRequestURI());
+
+        String msg = "请求访问："+request.getRequestURI()+"，认证失败，无法访问系统资源";
         ServletUtils.renderString(response, JSON.toJSONString(AjaxResult.error(code, msg)));
     }
 }

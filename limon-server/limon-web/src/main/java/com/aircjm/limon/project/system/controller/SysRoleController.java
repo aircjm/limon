@@ -25,7 +25,7 @@ import com.aircjm.limon.project.system.service.ISysRoleService;
 
 /**
  * 角色信息
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -42,16 +42,6 @@ public class SysRoleController extends BaseController
         startPage();
         List<SysRole> list = roleService.selectRoleList(role);
         return getDataTable(list);
-    }
-
-    @Log(title = "角色管理", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:role:export')")
-    @GetMapping("/export")
-    public AjaxResult export(SysRole role)
-    {
-        List<SysRole> list = roleService.selectRoleList(role);
-        ExcelUtil<SysRole> util = new ExcelUtil<SysRole>(SysRole.class);
-        return util.exportExcel(list, "角色数据");
     }
 
     /**

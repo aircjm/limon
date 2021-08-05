@@ -19,7 +19,7 @@ import com.aircjm.limon.framework.web.domain.AjaxResult;
 
 /**
  * 通用请求处理
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -32,7 +32,7 @@ public class CommonController
 
     /**
      * 通用下载请求
-     * 
+     *
      * @param fileName 文件名称
      * @param delete 是否删除
      */
@@ -43,7 +43,7 @@ public class CommonController
         {
             if (!FileUtils.isValidFilename(fileName))
             {
-                throw new Exception(StringUtils.format("文件名称({})非法，不允许下载。 ", fileName));
+                throw new Exception("文件名称( "+fileName+" )非法，不允许下载。 ");
             }
             String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
             String filePath = SystemConfig.getDownloadPath() + fileName;

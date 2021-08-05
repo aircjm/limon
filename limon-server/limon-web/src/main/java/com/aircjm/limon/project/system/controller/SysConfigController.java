@@ -25,7 +25,7 @@ import com.aircjm.limon.project.system.service.ISysConfigService;
 
 /**
  * 参数配置 信息操作处理
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -45,16 +45,6 @@ public class SysConfigController extends BaseController
         startPage();
         List<SysConfig> list = configService.selectConfigList(config);
         return getDataTable(list);
-    }
-
-    @Log(title = "参数管理", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:config:export')")
-    @GetMapping("/export")
-    public AjaxResult export(SysConfig config)
-    {
-        List<SysConfig> list = configService.selectConfigList(config);
-        ExcelUtil<SysConfig> util = new ExcelUtil<SysConfig>(SysConfig.class);
-        return util.exportExcel(list, "参数数据");
     }
 
     /**
