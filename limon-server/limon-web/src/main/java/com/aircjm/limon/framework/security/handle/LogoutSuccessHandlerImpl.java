@@ -4,13 +4,14 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.aircjm.limon.common.constant.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import com.alibaba.fastjson.JSON;
 import com.aircjm.limon.common.constant.Constants;
-import com.aircjm.limon.common.constant.HttpStatus;
 import com.aircjm.limon.common.utils.ServletUtils;
 import com.aircjm.limon.common.utils.StringUtils;
 import com.aircjm.limon.framework.manager.AsyncManager;
@@ -21,7 +22,7 @@ import com.aircjm.limon.framework.web.domain.AjaxResult;
 
 /**
  * 自定义退出处理类 返回成功
- * 
+ *
  * @author aircjm
  */
 @Configuration
@@ -32,7 +33,7 @@ public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler
 
     /**
      * 退出处理
-     * 
+     *
      * @return
      */
     @Override

@@ -33,6 +33,12 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>com.aircjm</groupId>
+			<artifactId>limon-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 		<!-- SpringBoot 核心包 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
