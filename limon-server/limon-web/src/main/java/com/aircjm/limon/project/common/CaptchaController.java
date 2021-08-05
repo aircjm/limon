@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 验证码操作处理
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -35,7 +35,7 @@ public class CaptchaController
         // 生成随机字串
         String verifyCode = VerifyCodeUtils.generateVerifyCode(4);
         // 唯一标识
-        String uuid = IdUtils.simpleUUID();
+        String uuid = String.valueOf(IdUtils.getId());
         String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
 
         redisCache.setCacheObject(verifyKey, verifyCode, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);

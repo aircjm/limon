@@ -4,10 +4,10 @@ import io.jsonwebtoken.Claims;
 
 /**
  * 通用常量信息
- * 
+ *
  * @author aircjm
  */
-public class Constants
+public interface Constants
 {
     /**
      * UTF-8 字符集
