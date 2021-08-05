@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.HandlerMapping;
 import com.alibaba.fastjson.JSON;
-import com.aircjm.limon.common.enums.HttpMethod;
 import com.aircjm.limon.common.utils.ServletUtils;
 import com.aircjm.limon.common.utils.StringUtils;
 import com.aircjm.limon.common.utils.ip.IpUtils;
@@ -32,7 +31,7 @@ import com.aircjm.limon.project.monitor.domain.SysOperLog;
 
 /**
  * 操作日志记录处理
- * 
+ *
  * @author aircjm
  */
 @Aspect
@@ -60,7 +59,7 @@ public class LogAspect
 
     /**
      * 拦截异常操作
-     * 
+     *
      * @param joinPoint 切点
      * @param e 异常
      */
@@ -126,7 +125,7 @@ public class LogAspect
 
     /**
      * 获取注解中对方法的描述信息 用于Controller层注解
-     * 
+     *
      * @param log 日志
      * @param operLog 操作日志
      * @throws Exception
@@ -149,14 +148,14 @@ public class LogAspect
 
     /**
      * 获取请求的参数，放到log中
-     * 
+     *
      * @param operLog 操作日志
      * @throws Exception 异常
      */
     private void setRequestValue(JoinPoint joinPoint, SysOperLog operLog) throws Exception
     {
         String requestMethod = operLog.getRequestMethod();
-        if (HttpMethod.PUT.name().equals(requestMethod) || HttpMethod.POST.name().equals(requestMethod))
+        if ("put".equalsIgnoreCase(requestMethod) || "post".equalsIgnoreCase(requestMethod))
         {
             String params = argsArrayToString(joinPoint.getArgs());
             operLog.setOperParam(StringUtils.substring(params, 0, 2000));
@@ -206,7 +205,7 @@ public class LogAspect
 
     /**
      * 判断是否需要过滤的对象。
-     * 
+     *
      * @param o 对象信息。
      * @return 如果是需要过滤的对象，则返回true；否则返回false。
      */
