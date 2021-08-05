@@ -18,12 +18,19 @@ limon 项目旨在打造一个以最简便的方式搭建简单、稳定和可�
 
 
 
+
+
 ## 注意事项
 - 需要指定对应的DB数据库
 
+### 初始化DB
+
+docker run -it --name limon-mysql -p 3306:3306 -v /d/dockerDrive/mysql:/app -e MYSQL_DATABASE=limon -e MYSQL_USER=db_test -e MYSQL_PASSWORD=123456 -e MYSQL_ROOT_PASSWORD=123456 mysql:8.0
+
+
 ## 备份还原
 ```shell script
-docker exec limon-mysql /usr/bin/mysqldump -u root --password=root dice > backup.sql
+docker exec limon-mysql /usr/bin/mysqldump -u root --password=root limon > backup.sql
 ```
 
 
