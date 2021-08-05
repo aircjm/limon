@@ -8,6 +8,7 @@ import com.aircjm.limon.common.utils.ip.AddressUtils;
 import com.aircjm.limon.common.utils.ip.IpUtils;
 import com.aircjm.limon.framework.redis.RedisCache;
 import com.aircjm.limon.framework.security.LoginUser;
+import com.google.common.collect.Maps;
 import eu.bitwalker.useragentutils.UserAgent;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -23,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * token验证处理
- * 
+ *
  * @author aircjm
  */
 @Component
@@ -58,7 +59,7 @@ public class TokenService
 
     /**
      * 获取用户身份信息
-     * 
+     *
      * @return 用户信息
      */
     public LoginUser getLoginUser(HttpServletRequest request)
@@ -102,18 +103,18 @@ public class TokenService
 
     /**
      * 创建令牌
-     * 
+     *
      * @param loginUser 用户信息
      * @return 令牌
      */
     public String createToken(LoginUser loginUser)
     {
-        String token = IdUtils.fastUUID();
+        String token = IdUtils.getIdStr();
         loginUser.setToken(token);
         setUserAgent(loginUser);
         refreshToken(loginUser);
 
-        Map<String, Object> claims = new HashMap<>();
+        Map<String, Object> claims = Maps.newHashMap();
         claims.put(Constants.LOGIN_USER_KEY, token);
         return createToken(claims);
     }
@@ -136,7 +137,7 @@ public class TokenService
 
     /**
      * 刷新令牌有效期
-     * 
+     *
      * @param loginUser 登录信息
      */
     public void refreshToken(LoginUser loginUser)
@@ -147,10 +148,10 @@ public class TokenService
         String userKey = getTokenKey(loginUser.getToken());
         redisCache.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
     }
-    
+
     /**
      * 设置用户代理信息
-     * 
+     *
      * @param loginUser 登录信息
      */
     public void setUserAgent(LoginUser loginUser)
@@ -162,7 +163,7 @@ public class TokenService
         loginUser.setBrowser(userAgent.getBrowser().getName());
         loginUser.setOs(userAgent.getOperatingSystem().getName());
     }
-    
+
     /**
      * 从数据声明生成令牌
      *
