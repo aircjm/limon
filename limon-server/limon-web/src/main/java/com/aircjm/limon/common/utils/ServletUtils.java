@@ -4,14 +4,15 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import cn.hutool.core.convert.Convert;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import com.aircjm.limon.common.core.text.Convert;
 
 /**
  * 客户端工具类
- * 
+ *
  * @author aircjm
  */
 public class ServletUtils
@@ -24,28 +25,14 @@ public class ServletUtils
         return getRequest().getParameter(name);
     }
 
-    /**
-     * 获取String参数
-     */
-    public static String getParameter(String name, String defaultValue)
-    {
-        return Convert.toStr(getRequest().getParameter(name), defaultValue);
-    }
 
     /**
      * 获取Integer参数
      */
     public static Integer getParameterToInt(String name)
     {
-        return Convert.toInt(getRequest().getParameter(name));
-    }
-
-    /**
-     * 获取Integer参数
-     */
-    public static Integer getParameterToInt(String name, Integer defaultValue)
-    {
-        return Convert.toInt(getRequest().getParameter(name), defaultValue);
+        String parameter = getRequest().getParameter(name);
+        return Convert.toInt(parameter);
     }
 
     /**
@@ -80,7 +67,7 @@ public class ServletUtils
 
     /**
      * 将字符串渲染到客户端
-     * 
+     *
      * @param response 渲染对象
      * @param string 待渲染的字符串
      * @return null
@@ -103,7 +90,7 @@ public class ServletUtils
 
     /**
      * 是否是Ajax异步请求
-     * 
+     *
      * @param request
      */
     public static boolean isAjaxRequest(HttpServletRequest request)

@@ -25,7 +25,7 @@ import com.aircjm.limon.project.system.service.ISysPostService;
 
 /**
  * 岗位信息操作处理
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -46,16 +46,7 @@ public class SysPostController extends BaseController
         List<SysPost> list = postService.selectPostList(post);
         return getDataTable(list);
     }
-    
-    @Log(title = "岗位管理", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:config:export')")
-    @GetMapping("/export")
-    public AjaxResult export(SysPost post)
-    {
-        List<SysPost> list = postService.selectPostList(post);
-        ExcelUtil<SysPost> util = new ExcelUtil<SysPost>(SysPost.class);
-        return util.exportExcel(list, "岗位数据");
-    }
+
 
     /**
      * 根据岗位编号获取详细信息

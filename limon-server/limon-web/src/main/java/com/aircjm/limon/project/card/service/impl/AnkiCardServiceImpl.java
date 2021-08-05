@@ -97,9 +97,8 @@ public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> i
     @Override
     public AjaxResult exportCard(GetCardRequest request) {
         Page<TaskDetailResponse> page = getCardList(request);
-        ExcelUtil<TaskDetailResponse> util = new ExcelUtil<>(TaskDetailResponse.class);
-
-        return util.exportExcel(page.getRecords(), "卡片集合");
+        // todo
+        return null;
     }
 
     public void updateAllCard() {

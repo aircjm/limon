@@ -2,6 +2,7 @@ package com.aircjm.limon.project.system.controller;
 
 import java.util.List;
 
+import com.aircjm.limon.common.utils.poi.EasyExcelUtil;
 import com.aircjm.limon.project.system.vo.request.ListUserRequest;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ import com.aircjm.limon.project.system.service.ISysUserService;
 
 /**
  * 用户信息
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -65,34 +66,17 @@ public class SysUserController extends BaseController
         return getDataTable(userPage);
     }
 
-    @Log(title = "用户管理", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:user:export')")
-    @PostMapping("/export")
-    public AjaxResult export(@RequestBody ListUserRequest user)
-    {
-        List<SysUser> list = userService.selectUserList(user).getRecords();
-        ExcelUtil<SysUser> util = new ExcelUtil<SysUser>(SysUser.class);
-        return util.exportExcel(list, "用户数据");
-    }
 
     @Log(title = "用户管理", businessType = BusinessType.IMPORT)
     @PreAuthorize("@ss.hasPermi('system:user:import')")
     @PostMapping("/importData")
     public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
     {
-        ExcelUtil<SysUser> util = new ExcelUtil<SysUser>(SysUser.class);
-        List<SysUser> userList = util.importExcel(file.getInputStream());
+        List<SysUser> userList = EasyExcelUtil.importExcel(file.getInputStream(), SysUser.class);
         LoginUser loginUser = tokenService.getLoginUser(ServletUtils.getRequest());
         String operName = loginUser.getUsername();
         String message = userService.importUser(userList, updateSupport, operName);
         return AjaxResult.success(message);
-    }
-
-    @GetMapping("/importTemplate")
-    public AjaxResult importTemplate()
-    {
-        ExcelUtil<SysUser> util = new ExcelUtil<SysUser>(SysUser.class);
-        return util.importTemplateExcel("用户数据");
     }
 
     /**
