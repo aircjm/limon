@@ -21,6 +21,9 @@ services:
 
   limon-server:
     container_name: limon-server
+    build:
+      context: ./
+      dockerfile: limon-server/Dockerfile
     environment:
       TZ: Asia/Shanghai
     volumes:
@@ -32,7 +35,6 @@ services:
       - "8085"
     ports:
       - 8085:8085
-    command: mvn clean build -Dspring-boot.run.profiles=docker -Dmaven.test.skip=true
     depends_on:
       - limon-mysql
       - limon-redis
