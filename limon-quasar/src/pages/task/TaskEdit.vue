@@ -83,6 +83,55 @@
         </div>
       </q-card-section>
       <q-card-section>
+        <q-uploader label="自动上传"
+                    auto-upload
+                    :factory="uploadPic"
+                    @finish="finishUploadPic"
+                    >
+          <template v-slot:list="scope">
+            <q-list separator>
+
+              <q-item v-for="file in scope.files" :key="file.name">
+                <q-item-section>
+                  <q-item-label class="full-width ellipsis">
+                    {{ file.name }}
+                  </q-item-label>
+
+                  <q-item-label caption>
+                    Status: {{ file.status }}
+                  </q-item-label>
+
+                  <q-item-label caption>
+                    {{ file.__sizeLabel }} / {{ file.__progressLabel }}
+                  </q-item-label>
+                </q-item-section>
+
+                <q-item-section
+                  v-if="file.__img"
+                  thumbnail
+                  class="gt-xs"
+                >
+                  <img :src="file.__img.src">
+                </q-item-section>
+
+                <q-item-section top side>
+                  <q-btn
+                    class="gt-xs"
+                    size="12px"
+                    flat
+                    dense
+                    round
+                    icon="delete"
+                    @click="scope.removeFile(file)"
+                  />
+                </q-item-section>
+              </q-item>
+
+            </q-list>
+          </template>
+        </q-uploader>
+      </q-card-section>
+      <q-card-section>
         <div class="q-gutter-md">
           <q-btn
             icon="save"
@@ -182,6 +231,7 @@ export default defineComponent(
           dueTime:null,
           contextJson: ''
         },
+        files:[],
         recordType: null,
         date: null,
         openDialog: false,
@@ -275,9 +325,28 @@ export default defineComponent(
         }, 2000)
       }
 
+      const uploadPic = (file) => {
+        debugger;
+        // return new Promise((resolve) => {
+        //   // simulating a delay of 2 seconds
+        //   setTimeout(() => {
+        //     resolve({
+        //       url: 'http://localhost:4444/upload'
+        //     })
+        //   }, 2000)
+        // })
+
+        return "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+
+
+      }
+      const finishUploadPic = (info) => {
+        console.log(info)
+      }
+
       return {
         ...toRefs(state), toAddTag, filterTag, filterTagAbort,
-        addTag, onSubmit, autoSave,
+        addTag, onSubmit, autoSave,uploadPic
       }
     }
   }
