@@ -1,6 +1,6 @@
 <template>
-  <div class="row rounded-borders">
-    <div class="q-pa-md col-3">
+  <div class="row">
+    <div class="col-md-3 col-12">
       <q-tree
         :nodes="simple"
         node-key="id"
@@ -10,7 +10,7 @@
         @update:selected="v => updateCurrentNote(v)"
       />
     </div>
-    <div class="q-pa-md col-9">
+    <div class="q-pa-md col-md-9 col-12">
       {{ selected }}
     </div>
   </div>
