@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-3 col-12">
+    <div class="q-pa-md col-md-3 col-12">
       <q-tree
         :nodes="simple"
         node-key="id"
