@@ -10,6 +10,10 @@ export default [
         path: '/tag',
         component: () => import('pages/tag/TagList.vue'),
         children: []
+      },{
+        path: '/note',
+        component: () => import('pages/note/AllNote.vue'),
+        children: []
       },
       {
         path: '/timer',
