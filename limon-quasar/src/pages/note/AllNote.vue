@@ -1,27 +1,18 @@
 <template>
-  <div>
-    <q-splitter class="column"
-      v-model="splitterModel"
-    >
-      <template v-slot:before>
-        <div class="q-pa-md col-3">
-          <q-tree
-            :nodes="simple"
-            node-key="id"
-            @lazy-load="lazyLoad"
-            selected-color="primary"
-            v-model:selected="selected"
-            @update:selected="v => updateCurrentNote(v)"
-          />
-        </div>
-      </template>
-
-      <template v-slot:after>
-        <div class="q-pa-md col-9">
-          {{selected}}
-        </div>
-      </template>
-    </q-splitter>
+  <div class="row rounded-borders">
+    <div class="q-pa-md col-3">
+      <q-tree
+        :nodes="simple"
+        node-key="id"
+        @lazy-load="lazyLoad"
+        selected-color="primary"
+        v-model:selected="selected"
+        @update:selected="v => updateCurrentNote(v)"
+      />
+    </div>
+    <div class="q-pa-md col-9">
+      {{ selected }}
+    </div>
   </div>
 </template>
 
@@ -60,10 +51,8 @@ export default {
     const selected = ref('');
 
     const updateCurrentNote = (v) => {
-      debugger;
       console.log(v)
     }
-
 
 
     return {
@@ -71,7 +60,7 @@ export default {
       updateCurrentNote,
       selected,
       splitterModel: ref(50),
-      simple:  [
+      simple: [
         {
           id: 1,
           label: 'Node 1',
