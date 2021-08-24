@@ -2,7 +2,7 @@
   <div class="row">
     <div class="q-pa-md col-md-4 col-12">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-6">
           <p></p>
           <q-tree
             :nodes="simple"
@@ -13,7 +13,7 @@
             @update:selected="v => updateCurrentNote(v)"
           />
         </div>
-        <div class="col-md-6">
+        <div class="col-6">
           <q-list>
             <q-item>
               <q-card>
