@@ -1,17 +1,33 @@
 <template>
   <div class="row">
-    <div class="q-pa-md col-md-3 col-12">
-      <q-tree
-        :nodes="simple"
-        node-key="id"
-        @lazy-load="lazyLoad"
-        selected-color="primary"
-        v-model:selected="selected"
-        @update:selected="v => updateCurrentNote(v)"
-      />
+    <div class="q-pa-md col-md-4 col-12">
+      <div class="row">
+        <div class="col-md-6">
+          <p></p>
+          <q-tree
+            :nodes="simple"
+            node-key="id"
+            @lazy-load="lazyLoad"
+            selected-color="primary"
+            v-model:selected="selected"
+            @update:selected="v => updateCurrentNote(v)"
+          />
+        </div>
+        <div class="col-md-6">
+          <q-list>
+            <q-item>
+              <q-card>
+                <q-card-section>title</q-card-section>
+                <q-card-section>context</q-card-section>
+              </q-card>
+            </q-item>
+          </q-list>
+        </div>
+      </div>
+
     </div>
-    <div class="q-pa-md col-md-9 col-12">
-      {{ selected }}
+    <div class="q-pa-md col-md-8 col-12">
+      <tip-tap-editor/>
     </div>
   </div>
 </template>
@@ -19,9 +35,11 @@
 <script>
 
 import {ref} from "@vue/reactivity";
+import TipTapEditor from "components/tipTapEditor/TipTapEditor";
 
 export default {
   name: 'AllNote',
+  components: {TipTapEditor},
   setup() {
 
 
