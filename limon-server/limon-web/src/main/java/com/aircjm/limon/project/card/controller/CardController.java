@@ -24,7 +24,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/api/card/")
-@Api(value = "CardController", description = "卡片博客API")
+@Api(value = "CardController", description = "卡片实体API")
 public class CardController {
 
 
