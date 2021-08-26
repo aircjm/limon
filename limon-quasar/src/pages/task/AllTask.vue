@@ -34,11 +34,14 @@
 
         <template v-slot:after>
           <q-btn icon="add_task" color="green-4" @click="addTaskFlag = true"/>
+          <q-btn icon="del_task" color="gray-4" @click="saveAnki"/>
         </template>
       </q-input>
     </div>
-
-    <task-edit v-if="taskId !== 0" :taskId="taskId"/>
+    <div v-if="taskId !== 0">
+      <task-edit v-if="taskId !== 0" :taskId="taskId"/>
+      <q-btn @click="taskId = 0"></q-btn>
+    </div>
     <div class="col col-md-6 col-sm-12">
       <q-separator spaced/>
       <!--  任务列表    -->
@@ -179,6 +182,7 @@ import {useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
 import TaskModel from "src/classes/task";
 import TaskEdit from "pages/task/TaskEdit";
+import axios from "axios";
 
 export default {
   name: 'AllTask',
@@ -214,6 +218,14 @@ export default {
       // 1. 加载展示列表数据
       list()
     })
+
+    const saveAnki =() =>  {
+      debugger;
+      axios.post("http://localhost:8765", {}).then(res => {
+        debugger;
+        console.log(res)
+      })
+    }
 
 
     const list = () => {
@@ -311,6 +323,7 @@ export default {
       edit,
       addTaskValue,
       resetTaskId,
+      saveAnki,
       onReset
     }
 

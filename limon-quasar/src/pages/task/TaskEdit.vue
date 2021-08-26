@@ -74,11 +74,6 @@
       </q-card-section>
       <q-card-section>
         <div>
-<!--          <MarkdownEditor-->
-<!--            label="context"-->
-<!--            v-if="editorFlag"-->
-<!--            :context.sync="form.taskDesc"-->
-<!--          />-->
           <TipTapEditor/>
         </div>
       </q-card-section>
@@ -211,8 +206,7 @@ export default defineComponent(
       }
     },
     setup(props) {
-      const {taskId} = toRefs(props)
-      debugger
+      const { taskId } = toRefs(props)
       if (taskId) {
         console.log("taskId is " + taskId.value)
       }

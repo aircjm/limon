@@ -167,9 +167,13 @@ export default {
   components: {
     EditorContent, BubbleMenu, FloatingMenu
   },
-  setup() {
-
-    let json;
+  props: {
+    json: String,
+    markdown: String
+  },
+  setup(props) {
+    const markdown = props.markdown;
+    let json = props.json;
     const editor = useEditor({
       onCreate: (editor) => {
         console.log("创建编辑器完成")
