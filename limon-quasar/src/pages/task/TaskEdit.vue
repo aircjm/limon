@@ -82,7 +82,7 @@
                     auto-upload
                     :factory="uploadPic"
                     @finish="finishUploadPic"
-                    >
+        >
           <template v-slot:list="scope">
             <q-list separator>
 
@@ -141,6 +141,7 @@
             color="primary"
             flat
             v-close-popup
+            @click="cancelTask"
           />
         </div>
       </q-card-section>
@@ -184,7 +185,7 @@
 import {getTaskDetail, saveTask} from 'src/api/task'
 import {Loading, useQuasar} from 'quasar'
 import {defineComponent} from "vue";
-import {reactive, toRefs} from "@vue/reactivity";
+import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useRoute, useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
@@ -201,38 +202,42 @@ export default defineComponent(
       DateTimePicker
     },
     props: {
-      taskId : {
+      taskId: {
         type: Number
       }
     },
     setup(props) {
-      const { taskId } = toRefs(props)
+      const {taskId} = toRefs(props)
       if (taskId) {
         console.log("taskId is " + taskId.value)
       }
+
+      let id = ref(taskId.value)
+
+
       let route = useRoute();
       const router = useRouter();
       const $q = useQuasar();
 
       const state = reactive({
-        id: null,
+        id: id,
         form: {
           title: '',
           recordType: null,
           openDialog: false,
-          startTime:null,
-          endTime:null,
-          dueTime:null,
+          startTime: null,
+          endTime: null,
+          dueTime: null,
           contextJson: ''
         },
-        files:[],
+        files: [],
         recordType: null,
         date: null,
         openDialog: false,
 
-        startTime:null,
-        endTime:null,
-        dueTime:null,
+        startTime: null,
+        endTime: null,
+        dueTime: null,
         filter: '',
         loading: false,
         editorFlag: false,
@@ -250,9 +255,10 @@ export default defineComponent(
       })
       const init = async () => {
         Loading.show();
-        const id = route.query.id
+        if (route.query.id) {
+          id = route.query.id
+        }
         if (id) {
-          state.id = id
           await getTaskDetail(id).then(res => {
             state.form = res.data
             state.editorFlag = true
@@ -338,9 +344,14 @@ export default defineComponent(
         console.log(info)
       }
 
+
+      const cancelTask = () => {
+        // 关闭当前task
+      }
+
       return {
         ...toRefs(state), toAddTag, filterTag, filterTagAbort,
-        addTag, onSubmit, autoSave,uploadPic
+        addTag, onSubmit, autoSave, uploadPic, cancelTask
       }
     }
   }

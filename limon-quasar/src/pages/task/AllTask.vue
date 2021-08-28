@@ -19,7 +19,7 @@
               <q-separator vertical inset class="q-mx-lg"/>
 
               <div class="column items-center">
-                <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
+                <div class="q-mt-md q-mb-xs">John Doe</div>
                 <q-btn
                   color="primary"
                   label="Logout"
