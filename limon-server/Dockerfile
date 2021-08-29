@@ -7,7 +7,7 @@ COPY . $APP_HOME
 WORKDIR $APP_HOME
 RUN pwd
 # package jar
-RUN mvn package -Dmaven.test.skip=true
+RUN mvn -X package -Dmaven.test.skip=true
 
 
 # Second stage: minimal runtime environment
