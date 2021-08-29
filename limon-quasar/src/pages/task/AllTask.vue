@@ -130,44 +130,6 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-    <q-dialog v-model="addTaskFlag" persistent>
-      <q-card style="min-width: 500px;">
-        <q-toolbar>
-          <q-toolbar-title><span class="text-weight-bold">新增任务</span></q-toolbar-title>
-          <q-btn
-            flat
-            round
-            dense
-            icon="close"
-            v-close-popup
-          />
-        </q-toolbar>
-        <q-card-section>
-          <q-input
-            filled
-            v-model="name"
-            label="name *"
-            :rules='[(v) => !!v || "不可以为空"]'
-          />
-        </q-card-section>
-        <q-card-actions
-          align="right"
-          class="text-primary"
-        >
-          <q-btn
-            flat
-            label="submit"
-            icon="primary"
-            @click="saveTaskName"
-          />
-          <q-btn
-            flat
-            label="Close"
-            v-close-popup
-          />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
   </div>
 </template>
 
@@ -211,7 +173,6 @@ export default {
       tasks: []
     });
 
-    const addTaskValue = ref('')
 
 
     onMounted(() => {
@@ -321,7 +282,6 @@ export default {
       setEndTime,
       deleteTask,
       edit,
-      addTaskValue,
       resetTaskId,
       saveAnki,
       onReset
