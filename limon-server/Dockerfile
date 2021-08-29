@@ -15,6 +15,7 @@ From openjdk:8-jre-alpine
 
 # copy jar from the first stage
 COPY --from=builder  /usr/src/app/limon-web/target/limon-web-1.0.0.jar app.jar
+RUN ls
 
 EXPOSE 8085
 
