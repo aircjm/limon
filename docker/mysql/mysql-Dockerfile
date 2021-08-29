@@ -1,4 +1,4 @@
-FROM mysql:5.7.23
+FROM mysql:8
 
 ENV LANG C.UTF-8
 
