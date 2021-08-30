@@ -43,7 +43,7 @@
             </template>
           </q-input>
         </div>
-        <div v-if="taskId !== 0">
+        <div class="q-pa-md" v-if="taskId !== 0">
           <task-edit v-if="taskId !== 0" :taskId="taskId"/>
           <q-btn @click="taskId = 0"></q-btn>
         </div>

@@ -174,9 +174,6 @@
           </q-item>
         </q-list>
       </q-card-section>
-      <q-card-actions>
-        <q-btn>submit</q-btn>
-      </q-card-actions>
     </q-card>
   </q-dialog>
 </template>
@@ -214,7 +211,7 @@ export default defineComponent(
 
       let id = ref(taskId.value)
 
-
+debugger;
       let route = useRoute();
       const router = useRouter();
       const $q = useQuasar();
@@ -258,8 +255,8 @@ export default defineComponent(
         if (route.query.id) {
           id = route.query.id
         }
-        if (id) {
-          await getTaskDetail(id).then(res => {
+        if (id.value) {
+          await getTaskDetail(id.value).then(res => {
             state.form = res.data
             state.editorFlag = true
           })
