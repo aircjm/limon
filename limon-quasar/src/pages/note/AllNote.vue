@@ -34,13 +34,21 @@
 
 <script>
 
-import {ref} from "@vue/reactivity";
+import {reactive, ref} from "@vue/reactivity";
 import TipTapEditor from "components/tipTapEditor/TipTapEditor";
 
 export default {
   name: 'AllNote',
   components: {TipTapEditor},
   setup() {
+
+
+
+    const state = reactive({
+      noteDetail :{
+        title: ''
+      }
+    })
 
 
     const lazyLoad = ({node, key, done, fail}) => {

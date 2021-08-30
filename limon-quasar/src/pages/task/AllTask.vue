@@ -1,102 +1,113 @@
 <template>
   <div class="column q-gutter-md q-pa-md">
-    <div class="col-md-6 col-sm-12 col-lg-4">
-      <q-input outlined standout v-model="name" @keypress.enter="saveTaskName">
-        <template v-slot:prepend>
-          <q-icon name="task"/>
-        </template>
-        <template v-slot:append>
-          <q-icon name="event"/>
-          <q-separator vertical spaced/>
-          <q-btn-dropdown outline flat color="black-3" dense>
-            <div class="row no-wrap q-pa-md">
-              <div class="column">
-                <div class="text-h6 q-mb-md">Settings</div>
-                <q-btn label="Use Mobile Data"/>
-                <q-btn label="Bluetooth"/>
-              </div>
+    <div class="row">
+      <div class="col-2">
+        <!--左列表-->
+      </div>
+      <div class="col-6">
+        <!--中间列表数据-->
+        <div class="col-md-6 col-sm-12 col-lg-4">
+          <q-input outlined standout v-model="newTask.name" @keydown.enter="saveTaskName">
+            <template v-slot:prepend>
+              <q-icon name="task"/>
+            </template>
+            <template v-slot:append>
+              <q-icon name="event"/>
+              <q-separator vertical spaced/>
+              <q-btn-dropdown outline flat color="black-3" dense>
+                <div class="row no-wrap q-pa-md">
+                  <div class="column">
+                    <div class="text-h6 q-mb-md">Settings</div>
+                    <q-btn label="Use Mobile Data"/>
+                    <q-btn label="Bluetooth"/>
+                  </div>
 
-              <q-separator vertical inset class="q-mx-lg"/>
+                  <q-separator vertical inset class="q-mx-lg"/>
 
-              <div class="column items-center">
-                <div class="q-mt-md q-mb-xs">John Doe</div>
-                <q-btn
-                  color="primary"
-                  label="Logout"
-                  push
-                  size="sm"
-                  v-close-popup
-                />
-              </div>
-            </div>
-          </q-btn-dropdown>
-        </template>
+                  <div class="column items-center">
+                    <div class="q-mt-md q-mb-xs">John Doe</div>
+                    <q-btn
+                      color="primary"
+                      label="Logout"
+                      push
+                      size="sm"
+                      v-close-popup
+                    />
+                  </div>
+                </div>
+              </q-btn-dropdown>
+            </template>
 
-        <template v-slot:after>
-          <q-btn icon="add_task" color="green-4" @click="addTaskFlag = true"/>
-          <q-btn icon="del_task" color="gray-4" @click="saveAnki"/>
-        </template>
-      </q-input>
-    </div>
-    <div v-if="taskId !== 0">
-      <task-edit v-if="taskId !== 0" :taskId="taskId"/>
-      <q-btn @click="taskId = 0"></q-btn>
-    </div>
-    <div class="col col-md-6 col-sm-12">
-      <q-separator spaced/>
-      <!--  任务列表    -->
-      <q-list dense class="q-pa-xs q-gutter-xs">
-        <div v-for="(task) in tasks" :key="task.id" class="row list-task">
-          <div class="col-8 d" @click="taskId = task.id">
-            <div class="taskStr" :class="{ 'done': task.taskStatus === 9}"
-                 style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-              {{ task.name }}
-            </div>
-            <q-item-label side top>
-              <q-badge
-                transparent
-                align="middle"
-                color="red"
-                v-if="task.dueTime"
-              >
-                <q-icon name="timer"/>
-                {{ task.dueTime }}
-              </q-badge>
-            </q-item-label>
-          </div>
-          <div class="col-4 q-gutter-xs column items-end">
-            <div>
-              <q-btn
-                size="12px" flat dense round
-                icon="close"
-                @click="resetTaskId"
-              />
-              <q-btn
-                size="12px" flat dense round
-                icon="delete"
-                @click="deleteTask(task)"
-              />
-              <q-btn
-                size="12px" flat dense round
-                icon="timer"
-                @click="setEndTime(task)"
-              />
-              <q-btn
-                size="12px" flat dense round
-                icon="done"
-                v-if="task.status !== 9"
-                @click="doneTask(task)"
-              />
-              <router-link :to="`/task/edit?id=${task.id}`">
-                <template>
-                  <q-btn size="12px" flat dense round icon="more_vert"/>
-                </template>
-              </router-link>
-            </div>
-          </div>
+            <template v-slot:after>
+              <q-btn icon="add_task" color="green-4" @click="addTaskFlag = true"/>
+            </template>
+          </q-input>
         </div>
-      </q-list>
+        <div v-if="taskId !== 0">
+          <task-edit v-if="taskId !== 0" :taskId="taskId"/>
+          <q-btn @click="taskId = 0"></q-btn>
+        </div>
+        <div class="col col-md-6 col-sm-12">
+          <q-separator spaced/>
+          <!--  任务列表    -->
+          <q-list dense class="q-pa-xs q-gutter-xs">
+            <div v-for="(task) in tasks" :key="task.id" class="row list-task">
+              <div class="col-8 d" @click="taskId = task.id">
+                <div class="taskStr" :class="{ 'done': task.taskStatus === 9}"
+                     style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+                  {{ task.name }}
+                </div>
+                <q-item-label side top>
+                  <q-badge
+                    transparent
+                    align="middle"
+                    color="red"
+                    v-if="task.dueTime"
+                  >
+                    <q-icon name="timer"/>
+                    {{ task.dueTime }}
+                  </q-badge>
+                </q-item-label>
+              </div>
+              <div class="col-4 q-gutter-xs column items-end">
+                <div>
+                  <q-btn
+                    size="12px" flat dense round
+                    icon="close"
+                    @click="resetTaskId"
+                  />
+                  <q-btn
+                    size="12px" flat dense round
+                    icon="delete"
+                    @click="deleteTask(task)"
+                  />
+                  <q-btn
+                    size="12px" flat dense round
+                    icon="timer"
+                    @click="setEndTime(task)"
+                  />
+                  <q-btn
+                    size="12px" flat dense round
+                    icon="done"
+                    v-if="task.status !== 9"
+                    @click="doneTask(task)"
+                  />
+                  <router-link :to="`/task/edit?id=${task.id}`">
+                    <template>
+                      <q-btn size="12px" flat dense round icon="more_vert"/>
+                    </template>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </q-list>
+        </div>
+      </div>
+      <div class="col-4">
+        <!--右弹框-->
+      </div>
     </div>
+
     <q-dialog v-model="timeDialogFlag" persistent style="min-width: 400px">
       <q-card>
         <q-toolbar>
@@ -162,6 +173,7 @@ export default {
     const state = reactive({
       taskId: 0,
       name: '',
+      newTask: new TaskModel(),
       setTimeForm: {
         dueTime: null,
         id: null
@@ -173,6 +185,8 @@ export default {
       tasks: []
     });
 
+
+    console.log(state.newTask)
 
 
     onMounted(() => {
@@ -204,17 +218,16 @@ export default {
     }
 
     const saveTaskName = () => {
-      const task = new TaskModel()
-      task.name = state.name
+      const newTask = state.newTask
       // 缺少校验
-      saveTask(task).then(res => {
+      saveTask(newTask).then(res => {
         console.log(res)
         $q.notify({
           message: "新增成功",
           type: "positive"
         })
         addTaskFlag.value = false
-        state.name = ''
+        state.newTask = new TaskModel()
         list()
       })
     }

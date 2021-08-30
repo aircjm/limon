@@ -15,7 +15,7 @@ export default class TaskModel extends AbstractModel {
 
     /**
      * 内容描述
-     * @type {string null}
+     * @type {string} null
      */
     this.taskDesc = ''
 
