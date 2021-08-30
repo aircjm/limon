@@ -52,8 +52,8 @@
           <!--  任务列表    -->
           <q-list dense class="q-pa-xs q-gutter-xs">
             <div v-for="(task) in tasks" :key="task.id" class="row list-task">
-              <div class="col-8 d" @click="taskId = task.id">
-                <div class="taskStr" :class="{ 'done': task.taskStatus === 9}"
+              <div class="col-8" @click="taskId = task.id">
+                <div class="taskStr" :class="{ 'done': task.status === 9}"
                      style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
                   {{ task.name }}
                 </div>
@@ -71,11 +71,6 @@
               </div>
               <div class="col-4 q-gutter-xs column items-end">
                 <div>
-                  <q-btn
-                    size="12px" flat dense round
-                    icon="close"
-                    @click="resetTaskId"
-                  />
                   <q-btn
                     size="12px" flat dense round
                     icon="delete"
@@ -182,7 +177,7 @@ export default {
         name: null
       },
       filter: '',
-      tasks: []
+      tasks: [new TaskModel()]
     });
 
 
@@ -195,7 +190,6 @@ export default {
     })
 
     const saveAnki =() =>  {
-      debugger;
       axios.post("http://localhost:8765", {}).then(res => {
         debugger;
         console.log(res)

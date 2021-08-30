@@ -11,13 +11,15 @@ export default class TaskModel extends AbstractModel {
      * 名称
      * @type {string}  null
      */
-    this.name = null
+    this.name = ''
 
     /**
      * 内容描述
      * @type {string} null
      */
     this.taskDesc = ''
+
+    this.status = 0
 
     this.dueDate = null
     this.startTime = null
