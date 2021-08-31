@@ -27,7 +27,6 @@
 		<bitwalker.version>1.19</bitwalker.version>
 		<jwt.version>0.9.0</jwt.version>
 		<swagger.version>2.9.2</swagger.version>
-		<poi.version>3.17</poi.version>
 		<oshi.version>3.9.1</oshi.version>
 	</properties>
 

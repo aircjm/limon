@@ -5,7 +5,7 @@
         <q-btn flat round icon="menu"
                @click="leftDrawerOpen = !leftDrawerOpen"/>
         <q-btn flat to="/" aria-label="Dash App"/>
-        <div v-if="$q.screen.gt.xs">
+        <div>
           <q-btn flat label="AllTask" to="/allTask"/>
           <q-btn flat label="TAG" to="/tag"/>
           <q-btn flat label="Timer" to="/timer"/>

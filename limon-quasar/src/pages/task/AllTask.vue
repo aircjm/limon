@@ -1,10 +1,10 @@
 <template>
   <div class="column q-gutter-md q-pa-md">
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-2 col-sm-12">
         <!--左列表-->
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <!--中间列表数据-->
         <div class="col-md-6 col-sm-12 col-lg-4">
           <q-input outlined standout v-model="newTask.name" @keydown.enter="saveTaskName">
@@ -13,29 +13,6 @@
             </template>
             <template v-slot:append>
               <q-icon name="event"/>
-              <q-separator vertical spaced/>
-              <q-btn-dropdown outline flat color="black-3" dense>
-                <div class="row no-wrap q-pa-md">
-                  <div class="column">
-                    <div class="text-h6 q-mb-md">Settings</div>
-                    <q-btn label="Use Mobile Data"/>
-                    <q-btn label="Bluetooth"/>
-                  </div>
-
-                  <q-separator vertical inset class="q-mx-lg"/>
-
-                  <div class="column items-center">
-                    <div class="q-mt-md q-mb-xs">John Doe</div>
-                    <q-btn
-                      color="primary"
-                      label="Logout"
-                      push
-                      size="sm"
-                      v-close-popup
-                    />
-                  </div>
-                </div>
-              </q-btn-dropdown>
             </template>
 
             <template v-slot:after>
@@ -98,7 +75,7 @@
           </q-list>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-md-4 col-sm-12">
         <!--右弹框-->
       </div>
     </div>
