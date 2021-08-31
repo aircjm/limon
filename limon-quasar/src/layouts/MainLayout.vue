@@ -4,8 +4,8 @@
       <q-toolbar class="bg-white-4 shadow-2">
         <q-btn flat round icon="menu"
                @click="leftDrawerOpen = !leftDrawerOpen"/>
-        <q-btn flat to="/" aria-label="Dash App"/>
         <div>
+          <q-btn flat to="/" aria-label="Dash App"/>
           <q-btn flat label="AllTask" to="/allTask"/>
           <q-btn flat label="TAG" to="/tag"/>
           <q-btn flat label="Timer" to="/timer"/>
@@ -13,10 +13,10 @@
 
         <q-space/>
         <q-btn-dropdown v-if="$q.screen.gt.xs" icon="help" flat>
-          <q-list  style="min-width: 100px">
-            <q-item clickable>
-              <q-item-section @click="jumpLink('https://next.quasar.dev/')">
-                quasar v2 Docs
+          <q-list>
+            <q-item clickable v-close-popup @click="jumpLink('https://next.quasar.dev/')">
+              <q-item-section>
+                <q-item-label>quasar v2 Docs</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>

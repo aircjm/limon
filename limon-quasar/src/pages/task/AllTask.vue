@@ -20,9 +20,8 @@
             </template>
           </q-input>
         </div>
-        <div class="q-pa-md" v-if="taskId !== 0">
+        <div v-if="taskId !== 0" class="q-pa-md">
           <task-edit v-if="taskId !== 0" :taskId="taskId"/>
-          <q-btn @click="taskId = 0"></q-btn>
         </div>
         <div class="col col-md-6 col-sm-12">
           <q-separator spaced/>
@@ -283,11 +282,10 @@ export default {
 
 .list-task {
   background-color: #FFFFFF;
-  border-radius: 3px;
   box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
   cursor: pointer;
   margin-bottom: 8px;
-  min-height: 46px;
+  min-height: 45px;
   position: relative;
   text-decoration: none;
   z-index: 0;
