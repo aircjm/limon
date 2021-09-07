@@ -1,6 +1,8 @@
 package com.aircjm.limon.project.card.controller;
 
 import com.aircjm.limon.common.vo.RestResponse;
+import com.aircjm.limon.framework.aspectj.lang.annotation.Log;
+import com.aircjm.limon.framework.aspectj.lang.enums.BusinessType;
 import com.aircjm.limon.framework.web.domain.AjaxResult;
 import com.aircjm.limon.project.card.service.AnkiCardService;
 import com.aircjm.limon.project.card.vo.request.GetCardRequest;
@@ -9,10 +11,7 @@ import com.aircjm.limon.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.limon.project.card.vo.response.TaskDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -30,6 +29,15 @@ public class CardController {
 
     @Resource
     private AnkiCardService ankiCardService;
+
+
+
+    @GetMapping("/refreshAllCard")
+    public RestResponse refreshAllCard() {
+        ankiCardService.asyncUpdateAllCard();
+        return RestResponse.successEmpty();
+    }
+
 
     @PostMapping("/save")
     public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
