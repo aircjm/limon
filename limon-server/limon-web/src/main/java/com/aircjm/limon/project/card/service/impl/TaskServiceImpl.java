@@ -52,11 +52,10 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
                 throw new CustomException("title is not empty");
             }
             Task task = Task.builder()
-                    .name(request.getName())
-                    .taskDesc(request.getTaskDesc())
-                    .taskHtml("")
-                    .descType(request.getDescType())
-                    .status(request.getStatus())
+                    .title(request.getName())
+                    .descJson(request.getTaskDesc())
+                    .descHtml("")
+                    .taskStatus(request.getStatus())
                     .startTime(request.getStartTime())
                     .dueTime(request.getDueTime())
                     .endTime(request.getEndTime())
@@ -86,11 +85,11 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
     @Override
     public Page<TaskDetailResponse> list(QueryTaskRequest request) {
         LambdaQueryWrapper<Task> wrapper = new QueryWrapper<Task>().lambda()
-                .orderByDesc(Task::getStatus)
+                .orderByDesc(Task::getTaskStatus)
                 .orderByDesc(Task::getId)
                 .eq(Task::getDeleted, 0)
-                .like(StringUtils.isNotEmpty(request.getName()), Task::getName, request.getName())
-                .eq(Objects.nonNull(request.getStatus()), Task::getStatus, request.getStatus());
+                .like(StringUtils.isNotEmpty(request.getName()), Task::getTitle, request.getName())
+                .eq(Objects.nonNull(request.getStatus()), Task::getTaskStatus, request.getStatus());
         Page<Task> taskPage = page(request, wrapper);
         List<TaskDetailResponse> taskDetailResponseList = taskPage.getRecords().stream().map(this::getTaskDetailResponse).collect(Collectors.toList());
         Page<TaskDetailResponse> responsePage = new Page<>();
