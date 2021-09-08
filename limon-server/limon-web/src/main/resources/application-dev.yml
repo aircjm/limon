@@ -6,13 +6,6 @@ server:
     servlet:
         # 应用的访问路径
         context-path: /
-    tomcat:
-        # tomcat的URI编码
-        uri-encoding: UTF-8
-        # tomcat最大线程数，默认为200
-        max-threads: 800
-        # Tomcat启动初始化的线程数，默认值25
-        min-spare-threads: 30
 
 # 日志配置
 logging:
@@ -76,7 +69,8 @@ aircjm:
     name: Limon
     # 版本
     # 版权年份
-    versionx    copyrightYear: 2020
+    version： 1.0.0
+    copyrightYear: 2020
     # 实例演示开关
     demoEnabled: true
     # 文件路径 示例（ Windows配置D:/aircjm/uploadPath，Linux配置 /home/aircjm/uploadPath）

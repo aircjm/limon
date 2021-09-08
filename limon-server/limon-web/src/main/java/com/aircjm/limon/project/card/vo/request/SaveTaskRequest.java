@@ -26,11 +26,8 @@ public class SaveTaskRequest {
     @ApiModelProperty(value = "内容")
     private String taskDesc = StringUtils.EMPTY;
 
+    @ApiModelProperty(value = "状态")
     private Integer status;
-
-    private List<Tag> tagList;
-
-    private Integer descType;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime startTime;
@@ -44,5 +41,7 @@ public class SaveTaskRequest {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime doneTime;
 
+
+    private List<Tag> tagList;
 
 }
