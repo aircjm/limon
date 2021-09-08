@@ -1,0 +1,24 @@
+server:
+# 指定端口
+  port: 6088
+
+spring:
+  profiles:
+    # 可通过命令行参数实现多环境切换配置文件
+    active: dev
+  application:
+    name: limon-server
+  mvc:
+    pathmatch:
+      # Boot 2.6+ 默认的路由匹配策略，Swagger 暂不兼容，使用老策略
+      matching-strategy: ant_path_matcher
+
+logging:
+  level:
+    com.aircjm: DEBUG
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  mapper-locations: classpath*:/mapper/**/*.xml
