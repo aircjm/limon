@@ -41,8 +41,13 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Build with Maven release
+        run: mvn -B package --file limon-server/pom.xml
+
+
       # 开始build
-      - name: Build with Maven
+      - name: Build with Maven release
+        if: github.event_name == 'release'
         run: mvn -B package versions:set -DnewVersion=${{ github.event.release.name }} --file limon-server/pom.xml
 
 
