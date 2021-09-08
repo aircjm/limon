@@ -48,7 +48,10 @@ jobs:
       # 开始build
       - name: Build with Maven release
         if: github.event_name == 'release'
-        run: mvn -B package versions:set -DnewVersion=${{ github.event.release.name }} --file limon-server/pom.xml
+        run: |
+        mvn versions:set -DnewVersion=${{ github.event.release.name }} --file limon-server/pom.xml
+        mvn -B package --file limon-server/pom.xml
+
 
 
       - name: Upload asset to release
