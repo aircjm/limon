@@ -5,7 +5,7 @@ name: Publish And Deploy Maven APP # 自动部署的名称
 on:
   push:
     tags: # 当我们提交代码为tag 是以'v'开头的时候才会触发自动部署到服务端 如 git push tag v0.1.0
-      - 'v*'
+      - '*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
 
       # 开始build
       - name: Build with Maven
-        run: mvn -B package --file limon-server/pom.xml
+        run: mvn -B package versions:set -DnewVersion=${{ github.ref }} --file limon-server/pom.xml
 
       # 第三步：发布 Release
       - name: Create Release # 创建Release，可以在仓库看到一个个版本
