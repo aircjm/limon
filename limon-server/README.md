@@ -29,5 +29,5 @@ wangxian/alpine-mysql
 
 
 # release log
-0.1.3
+1.0.5
 
