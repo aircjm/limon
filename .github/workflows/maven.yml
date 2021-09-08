@@ -50,5 +50,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          file: 'limon-server/limon-web/target/limon-web-*.jar'
+          file: 'limon-server/limon-web/target/limon-web-${{ github.ref }}.jar'
           type: 'application/octet-stream'
