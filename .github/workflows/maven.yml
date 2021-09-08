@@ -48,6 +48,7 @@ jobs:
           CURRENT_TAG: ${{ steps.version_tag.outputs.VERSION }}
         run: |
           cp limon-server/limon-web/target/limon-web-1.0.0.jar app.jar
+          docker pull quay.io/git-chglog/git-chglog:latest
           docker run -v "$PWD":/workdir quay.io/git-chglog/git-chglog $CURRENT_TAG > CHANGELOG.md
       - name: Release
         uses: softprops/action-gh-release@v1
