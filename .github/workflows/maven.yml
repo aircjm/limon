@@ -43,7 +43,7 @@ jobs:
 
       # 开始build
       - name: Build with Maven
-        run: mvn -B package versions:set -DnewVersion=${{ github.event.release.id }} --file limon-server/pom.xml
+        run: mvn -B package versions:set -DnewVersion=${{ github.event.release.name }} --file limon-server/pom.xml
 
 
       - name: Upload asset to release
@@ -52,5 +52,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          file: 'limon-server/limon-web/target/limon-web-${{ github.event.release.id }}.jar'
+          file: 'limon-server/limon-web/target/limon-web-${{ github.event.release.name }}.jar'
           type: 'application/octet-stream'
