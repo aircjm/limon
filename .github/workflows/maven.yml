@@ -49,10 +49,8 @@ jobs:
       - name: Build with Maven release
         if: github.event_name == 'release'
         run: |
-        mvn versions:set -DnewVersion=${{ github.event.release.name }} --file limon-server/pom.xml
-        mvn -B package --file limon-server/pom.xml
-
-
+          mvn versions:set -DnewVersion=${{ github.event.release.name }} --file limon-server/pom.xml
+          mvn -B package --file limon-server/pom.xml
 
       - name: Upload asset to release
         uses: gacts/upload-to-release@master
