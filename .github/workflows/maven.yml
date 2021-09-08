@@ -10,7 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      -
       # 拉取代码
       - name: checkout
       - uses: actions/checkout@v2
