@@ -69,7 +69,7 @@ aircjm:
     name: Limon
     # 版本
     # 版权年份
-    version： 1.0.0
+    version: 1.0.0
     copyrightYear: 2020
     # 实例演示开关
     demoEnabled: true
