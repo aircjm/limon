@@ -14,9 +14,9 @@ on:
     paths:
       - '**'
       - '!**.md'
-  release:
-    types:
-      - created
+  tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
 
 jobs:
   build:
@@ -47,16 +47,17 @@ jobs:
 
       # 开始build
       - name: Build with Maven release
-        if: github.event_name == 'release'
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          CURRENT_TAG: ${{ steps.version_tag.outputs.VERSION }}
         run: |
-          mvn versions:set -DnewVersion=${{ github.event.release.name }} --file limon-server/pom.xml
-          mvn -B package --file limon-server/pom.xml
-
-      - name: Upload asset to release
-        uses: gacts/upload-to-release@master
-        if: github.event_name == 'release'
+          cp limon-server/limon-web/target/limon-web-1.0.0.jar app.jar
+          docker run -v "$PWD":/workdir quay.io/git-chglog/git-chglog $CURRENT_TAG > CHANGELOG.md
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body_path: CHANGELOG.md
+          files: app.jar
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          file: 'limon-server/limon-web/target/limon-web-${{ github.event.release.name }}.jar'
-          type: 'application/octet-stream'
