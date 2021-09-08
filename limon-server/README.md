@@ -26,3 +26,8 @@ docker run -it \
 -e MYSQL_ROOT_PASSWORD=123456 \
 wangxian/alpine-mysql
 ```
+
+
+# release log
+0.2.0
+
