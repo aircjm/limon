@@ -29,5 +29,6 @@ wangxian/alpine-mysql
 
 
 # release log
-1.0.5
+git tag v**
+git push origin v**
 
