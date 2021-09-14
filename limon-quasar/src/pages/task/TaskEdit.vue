@@ -186,7 +186,7 @@ import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useRoute, useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
-import MarkdownEditor from "../../components/editor/MarkdownEditor";
+// import MarkdownEditor from "components/editor/MarkdownEditor.vue";
 import TipTapEditor from "../../components/tipTapEditor/TipTapEditor";
 
 
@@ -195,7 +195,7 @@ export default defineComponent(
     name: 'TaskEdit',
     components: {
       TipTapEditor,
-      MarkdownEditor,
+      // MarkdownEditor,
       DateTimePicker
     },
     props: {
@@ -203,7 +203,8 @@ export default defineComponent(
         type: Number
       }
     },
-    setup(props) {
+    emits: ['close'],
+    setup(props, {emit}) {
       const {taskId} = toRefs(props)
       if (taskId) {
         console.log("taskId is " + taskId.value)
@@ -288,6 +289,8 @@ debugger;
           }
           $q.loading.hide()
         })
+
+        emit('close')
       }
 
       const autoSave = () => {
