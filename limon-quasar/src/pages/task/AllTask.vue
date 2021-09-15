@@ -28,7 +28,7 @@
               <div class="col-8" @click="editTask(task)">
                 <div class="taskStr" :class="{ 'done': task.status === 9}"
                      style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-                  {{ task.name }}
+                  {{ task.title }}
                 </div>
                 <q-item-label side top>
                   <q-badge
@@ -154,7 +154,7 @@ export default {
         name: null
       },
       filter: '',
-      tasks: [new TaskModel()]
+      tasks: null
     });
 
     const closeTaskEdit = () => {

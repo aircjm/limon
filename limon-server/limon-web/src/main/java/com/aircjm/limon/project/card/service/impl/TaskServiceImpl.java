@@ -87,7 +87,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
         LambdaQueryWrapper<Task> wrapper = new QueryWrapper<Task>().lambda()
                 .orderByDesc(Task::getTaskStatus)
                 .orderByDesc(Task::getId)
-                .eq(Task::getDeleted, 0)
+                .eq(Task::getIsDel, 0)
                 .like(StringUtils.isNotEmpty(request.getName()), Task::getTitle, request.getName())
                 .eq(Objects.nonNull(request.getStatus()), Task::getTaskStatus, request.getStatus());
         Page<Task> taskPage = page(request, wrapper);
