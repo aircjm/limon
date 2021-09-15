@@ -36,11 +36,12 @@
 		<lombok.version>1.18.12</lombok.version>
 		<commons-net.version>3.6</commons-net.version>
 		<fastjson.version>1.2.76</fastjson.version>
-		<druid.version>1.1.21</druid.version>
+		<druid.version>1.1.5</druid.version>
 		<bitwalker.version>1.19</bitwalker.version>
 		<jwt.version>0.9.0</jwt.version>
 		<swagger.version>2.9.2</swagger.version>
 		<oshi.version>3.9.1</oshi.version>
+		<commons-fileupload.version>1.4</commons-fileupload.version>
 		<commons-text.version>1.8</commons-text.version>
 		<commons-pool2.version>2.8.0</commons-pool2.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
@@ -148,6 +149,14 @@
 			</dependency>
 			<!-- spring-boot end -->
 
+
+			<!--阿里数据库连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
 			<!-- mybatis-plus begin -->
 			<dependency>
 				<groupId>com.baomidou</groupId>
@@ -201,39 +210,6 @@
 				<version>${commons-text.version}</version>
 			</dependency>
 			<!-- apache commons end -->
-
-			<!-- 项目模块start -->
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>config</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>blog</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>generator</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>framework</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>admin</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>nav</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<!-- 项目模块end -->
 			<dependency>
 				<groupId>com.github.xiaoymin</groupId>
 				<artifactId>knife4j-spring-boot-starter</artifactId>
@@ -248,6 +224,18 @@
 				<groupId>org.reflections</groupId>
 				<artifactId>reflections</artifactId>
 				<version>${reflections.version}</version>
+			</dependency>
+			<!-- 获取系统信息 -->
+			<dependency>
+				<groupId>com.github.oshi</groupId>
+				<artifactId>oshi-core</artifactId>
+				<version>${oshi.version}</version>
+			</dependency>
+			<!--文件上传工具类 -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

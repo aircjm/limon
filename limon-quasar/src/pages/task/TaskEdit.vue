@@ -1,152 +1,150 @@
 <template>
-  <q-page class="q-gutter">
-    <q-card class="q-gutter">
-      <q-card-section>
-        <div class="text-h7" v-if="id">
-          Edit Record {{ id }}
-        </div>
-        <div class="text-h7" v-else>
-          Add Record {{ id }}
-        </div>
-      </q-card-section>
-      <q-separator/>
-      <q-card-section>
-        <q-form class="q-gutter-y-md">
-          <q-input
-            v-model="form.title"
-            label="title"
-            :rules="[ val => val && val.length > 0 && val.length < 500 || 'Please type something']"
+  <q-card class="q-gutter">
+    <q-card-section>
+      <div class="text-h7" v-if="id">
+        Edit Record {{ id }}
+      </div>
+      <div class="text-h7" v-else>
+        Add Record {{ id }}
+      </div>
+    </q-card-section>
+    <q-separator/>
+    <q-card-section>
+      <q-form class="q-gutter-y-md">
+        <q-input
+          v-model="form.title"
+          label="title"
+          :rules="[ val => val && val.length > 0 && val.length < 500 || 'Please type something']"
+        />
+        <div class="q-gutter-md">
+          <q-badge
+            v-for="tagDetail in tag.selectList"
+            :key="tagDetail.id"
+            :label="tagDetail.label"
           />
-          <div class="q-gutter-md">
-            <q-badge
-              v-for="tagDetail in tag.selectList"
-              :key="tagDetail.id"
-              :label="tagDetail.label"
+        </div>
+        <div class="row q-gutter-sm">
+          <div style="width: 330px">
+            <date-time-picker
+              label="通知时间"
+              :time.sync="form.endTime"
             />
           </div>
-          <div class="row q-gutter-sm">
-            <div style="width: 330px">
-              <date-time-picker
-                label="通知时间"
-                :time.sync="form.endTime"
-              />
-            </div>
-            <div style="width: 330px">
-              <date-time-picker
-                label="开始时间"
-                :time.sync="form.startTime"
-              />
-            </div>
-            <div style="width: 330px">
-              <date-time-picker
-                label="截止时间"
-                :time.sync="form.dueTime"
-              />
-            </div>
+          <div style="width: 330px">
+            <date-time-picker
+              label="开始时间"
+              :time.sync="form.startTime"
+            />
           </div>
-          <div>
-            <div>
-              <q-select
-                filled
-                v-model="tag.selectList"
-                use-input
-                multiple
-                style="width: 330px"
-                input-debounce="0"
-                :options="tag.tagList"
-                @filter="filterTag"
-                @filter-abort="filterTagAbort"
-                label="标签"
-              >
-                <template v-slot:append>
-                  <q-btn
-                    round
-                    dense
-                    flat
-                    icon="add"
-                    @click="toAddTag"
-                  />
-                </template>
-              </q-select>
-            </div>
+          <div style="width: 330px">
+            <date-time-picker
+              label="截止时间"
+              :time.sync="form.dueTime"
+            />
           </div>
-        </q-form>
-      </q-card-section>
-      <q-card-section>
+        </div>
         <div>
-          <TipTapEditor/>
+          <div>
+            <q-select
+              filled
+              v-model="tag.selectList"
+              use-input
+              multiple
+              style="width: 330px"
+              input-debounce="0"
+              :options="tag.tagList"
+              @filter="filterTag"
+              @filter-abort="filterTagAbort"
+              label="标签"
+            >
+              <template v-slot:append>
+                <q-btn
+                  round
+                  dense
+                  flat
+                  icon="add"
+                  @click="toAddTag"
+                />
+              </template>
+            </q-select>
+          </div>
         </div>
-      </q-card-section>
-      <q-card-section>
-        <q-uploader label="自动上传"
-                    auto-upload
-                    :factory="uploadPic"
-                    @finish="finishUploadPic"
-        >
-          <template v-slot:list="scope">
-            <q-list separator>
+      </q-form>
+    </q-card-section>
+    <q-card-section>
+      <div>
+        <TipTapEditor/>
+      </div>
+    </q-card-section>
+    <q-card-section>
+      <q-uploader label="自动上传"
+                  auto-upload
+                  :factory="uploadPic"
+                  @finish="finishUploadPic"
+      >
+        <template v-slot:list="scope">
+          <q-list separator>
 
-              <q-item v-for="file in scope.files" :key="file.name">
-                <q-item-section>
-                  <q-item-label class="full-width ellipsis">
-                    {{ file.name }}
-                  </q-item-label>
+            <q-item v-for="file in scope.files" :key="file.name">
+              <q-item-section>
+                <q-item-label class="full-width ellipsis">
+                  {{ file.name }}
+                </q-item-label>
 
-                  <q-item-label caption>
-                    Status: {{ file.status }}
-                  </q-item-label>
+                <q-item-label caption>
+                  Status: {{ file.status }}
+                </q-item-label>
 
-                  <q-item-label caption>
-                    {{ file.__sizeLabel }} / {{ file.__progressLabel }}
-                  </q-item-label>
-                </q-item-section>
+                <q-item-label caption>
+                  {{ file.__sizeLabel }} / {{ file.__progressLabel }}
+                </q-item-label>
+              </q-item-section>
 
-                <q-item-section
-                  v-if="file.__img"
-                  thumbnail
+              <q-item-section
+                v-if="file.__img"
+                thumbnail
+                class="gt-xs"
+              >
+                <img :src="file.__img.src">
+              </q-item-section>
+
+              <q-item-section top side>
+                <q-btn
                   class="gt-xs"
-                >
-                  <img :src="file.__img.src">
-                </q-item-section>
+                  size="12px"
+                  flat
+                  dense
+                  round
+                  icon="delete"
+                  @click="scope.removeFile(file)"
+                />
+              </q-item-section>
+            </q-item>
 
-                <q-item-section top side>
-                  <q-btn
-                    class="gt-xs"
-                    size="12px"
-                    flat
-                    dense
-                    round
-                    icon="delete"
-                    @click="scope.removeFile(file)"
-                  />
-                </q-item-section>
-              </q-item>
-
-            </q-list>
-          </template>
-        </q-uploader>
-      </q-card-section>
-      <q-card-section>
-        <div class="q-gutter-md">
-          <q-btn
-            icon="save"
-            label="Submit"
-            type="submit"
-            color="primary"
-            @click="onSubmit"
-          />
-          <q-btn
-            class="mdi-book-cancel"
-            label="Cancel"
-            color="primary"
-            flat
-            v-close-popup
-            @click="cancelTask"
-          />
-        </div>
-      </q-card-section>
-    </q-card>
-  </q-page>
+          </q-list>
+        </template>
+      </q-uploader>
+    </q-card-section>
+    <q-card-section>
+      <div class="q-gutter-md">
+        <q-btn
+          icon="save"
+          label="Submit"
+          type="submit"
+          color="primary"
+          @click="onSubmit"
+        />
+        <q-btn
+          class="mdi-book-cancel"
+          label="Cancel"
+          color="primary"
+          flat
+          v-close-popup
+          @click="cancelTask"
+        />
+      </div>
+    </q-card-section>
+  </q-card>
   <q-dialog
     v-model="tag.editorFlag"
     style="min-width: 300px"
@@ -222,6 +220,13 @@ export default defineComponent(
           selectList: []
         }
       });
+
+
+      const closeDialog = () => {
+        debugger
+        emit('close')
+      }
+
 
       // 初始化
       onMounted(() => {
@@ -302,7 +307,6 @@ export default defineComponent(
       }
 
       const uploadPic = (file) => {
-        debugger;
         // return new Promise((resolve) => {
         //   // simulating a delay of 2 seconds
         //   setTimeout(() => {
@@ -323,6 +327,7 @@ export default defineComponent(
 
       const cancelTask = () => {
         // 关闭当前task
+        closeDialog()
       }
 
       return {
