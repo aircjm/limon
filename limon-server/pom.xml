@@ -148,6 +148,14 @@
 			</dependency>
 			<!-- spring-boot end -->
 
+
+			<!--阿里数据库连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
 			<!-- mybatis-plus begin -->
 			<dependency>
 				<groupId>com.baomidou</groupId>
@@ -201,39 +209,6 @@
 				<version>${commons-text.version}</version>
 			</dependency>
 			<!-- apache commons end -->
-
-			<!-- 项目模块start -->
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>config</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>blog</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>generator</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>framework</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>admin</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.bihell</groupId>
-				<artifactId>nav</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<!-- 项目模块end -->
 			<dependency>
 				<groupId>com.github.xiaoymin</groupId>
 				<artifactId>knife4j-spring-boot-starter</artifactId>
