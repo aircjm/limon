@@ -120,36 +120,6 @@ public class Task extends DbBaseEntity<Task> {
     private Long userId;
 
     /**
-     * 创建时间
-     */
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    /**
-     * 创建人
-     */
-    @ApiModelProperty(value = "创建人")
-    private String createBy;
-
-    /**
-     * 更新时间
-     */
-    @ApiModelProperty(value = "更新时间")
-    private LocalDateTime updateTime;
-
-    /**
-     * 修改人
-     */
-    @ApiModelProperty(value = "修改人")
-    private Long updateBy;
-
-    /**
-     * 逻辑删除标识(0.未删除,1.已删除)
-     */
-    @ApiModelProperty(value = "逻辑删除标识(0.未删除,1.已删除)")
-    private Integer isDel;
-
-    /**
      * 清单集合id
      */
     @ApiModelProperty(value = "清单集合id")

@@ -33,17 +33,17 @@ public class DbBaseEntity<T extends Model<?>> extends Model<T> {
     /**
      * 创建人
      */
-    private Integer creator;
+    private Long createBy;
 
     /**
      * 最后修改人
      */
-    private Integer modifier;
+    private Long updateBy;
 
     /**
      * 逻辑删除标识
      */
     @TableLogic
     @TableField(select = false)
-    private Integer deleted = 0;
+    private Integer isDel = 0;
 }
