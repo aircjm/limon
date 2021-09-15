@@ -7,7 +7,7 @@ import com.aircjm.limon.common.utils.StringUtils;
 import com.aircjm.limon.framework.message.MessageService;
 import com.aircjm.limon.project.card.domain.Task;
 import com.aircjm.limon.project.card.domain.TaskAttachment;
-import com.aircjm.limon.project.card.mapper.RecordMapper;
+import com.aircjm.limon.project.card.mapper.TaskMapper;
 import com.aircjm.limon.project.card.service.TaskService;
 import com.aircjm.limon.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.limon.project.card.vo.request.SaveTaskRequest;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
-public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements TaskService {
+public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements TaskService {
 
     @Resource
     private MessageService emailService;
@@ -87,7 +87,7 @@ public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements 
         LambdaQueryWrapper<Task> wrapper = new QueryWrapper<Task>().lambda()
                 .orderByDesc(Task::getTaskStatus)
                 .orderByDesc(Task::getId)
-                .eq(Task::getDeleted, 0)
+                .eq(Task::getIsDel, 0)
                 .like(StringUtils.isNotEmpty(request.getName()), Task::getTitle, request.getName())
                 .eq(Objects.nonNull(request.getStatus()), Task::getTaskStatus, request.getStatus());
         Page<Task> taskPage = page(request, wrapper);

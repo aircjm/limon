@@ -29,33 +29,108 @@ public class TaskDetailResponse {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
-    @Excel(name = "Question")
-    @ApiModelProperty(value = "名称")
-    private String name;
 
+    /**
+     * 标题
+     */
+    @ApiModelProperty(value = "标题")
+    private String title;
 
-    @ApiModelProperty(value = "卡片内容描述")
-    @Excel(name = "Answer")
-    private String taskDesc;
+    /**
+     * 内容的html
+     */
+    @ApiModelProperty(value = "内容的html")
+    private String descHtml;
 
-    @ApiModelProperty(value = "卡片内容描述HTML")
-    private String taskHtml;
+    /**
+     * 内容的md
+     */
+    @ApiModelProperty(value = "内容的md,")
+    private String descMd;
 
-    @ApiModelProperty(value = "卡片状态")
-    private Integer status;
+    /**
+     * 描述的json
+     */
+    @ApiModelProperty(value = "描述的json")
+    private String descJson;
 
+    /**
+     * 状态
+     */
+    @ApiModelProperty(value = "状态")
+    private Integer taskStatus;
 
-    private String listId;
+    /**
+     * 是否全天 0：不是 1：是
+     */
+    @ApiModelProperty(value = "是否全天 0：不是 1：是")
+    private Integer allDay;
 
-    @ApiModelProperty(value = "截止时间")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    /**
+     * 时区
+     */
+    @ApiModelProperty(value = "时区")
+    private String timeZone;
+
+    /**
+     * 截至时间
+     */
+    @ApiModelProperty(value = "截至时间")
     private LocalDateTime dueTime;
 
+    /**
+     * 完成时间
+     */
+    @ApiModelProperty(value = "完成时间")
+    private LocalDateTime doneTime;
 
-    @Builder.Default
-    @ApiModelProperty(value = "细胞内容类型，支持html1，markdown0")
-    private Integer type = 0;
+    /**
+     * 持续时间-开始时间
+     */
+    @ApiModelProperty(value = "持续时间-开始时间")
+    private LocalDateTime startTime;
 
+    /**
+     * 持续时间-结束时间
+     */
+    @ApiModelProperty(value = "持续时间-结束时间")
+    private LocalDateTime endTime;
+
+    /**
+     * 提醒时间
+     */
+    @ApiModelProperty(value = "提醒时间")
+    private LocalDateTime reminderTime;
+
+    /**
+     * 位置
+     */
+    @ApiModelProperty(value = "位置")
+    private Double position;
+
+    /**
+     * 对应的url
+     */
+    @ApiModelProperty(value = "对应的url")
+    private String url;
+
+    /**
+     * 项目id
+     */
+    @ApiModelProperty(value = "项目id")
+    private Long projectId;
+
+    /**
+     * 所属用户id
+     */
+    @ApiModelProperty(value = "所属用户id")
+    private Long userId;
+
+    /**
+     * 清单集合id
+     */
+    @ApiModelProperty(value = "清单集合id")
+    private Long listId;
 
     private List<Tag> tagList;
 

@@ -186,8 +186,8 @@ import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useRoute, useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
-import MarkdownEditor from "../../components/editor/MarkdownEditor";
 import TipTapEditor from "../../components/tipTapEditor/TipTapEditor";
+import TaskModel from "src/classes/task";
 
 
 export default defineComponent(
@@ -195,7 +195,6 @@ export default defineComponent(
     name: 'TaskEdit',
     components: {
       TipTapEditor,
-      MarkdownEditor,
       DateTimePicker
     },
     props: {
@@ -203,40 +202,18 @@ export default defineComponent(
         type: Number
       }
     },
-    setup(props) {
+    emits: ['close'],
+    setup(props, {emit}) {
       const {taskId} = toRefs(props)
-      if (taskId) {
-        console.log("taskId is " + taskId.value)
-      }
-
       let id = ref(taskId.value)
-
-debugger;
       let route = useRoute();
       const router = useRouter();
       const $q = useQuasar();
 
       const state = reactive({
         id: id,
-        form: {
-          title: '',
-          recordType: null,
-          openDialog: false,
-          startTime: null,
-          endTime: null,
-          dueTime: null,
-          contextJson: ''
-        },
+        form: new TaskModel(),
         files: [],
-        recordType: null,
-        date: null,
-        openDialog: false,
-
-        startTime: null,
-        endTime: null,
-        dueTime: null,
-        filter: '',
-        loading: false,
         editorFlag: false,
         tag: {
           editorFlag: false,
@@ -288,6 +265,8 @@ debugger;
           }
           $q.loading.hide()
         })
+
+        emit('close')
       }
 
       const autoSave = () => {

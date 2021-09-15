@@ -12,26 +12,23 @@
               <q-icon name="task"/>
             </template>
             <template v-slot:append>
-              <q-icon name="event"/>
+                <q-icon name="event"/>
+                <q-btn size="small" icon="add_task" color="green-4" @click="addTaskFlag = true"/>
             </template>
 
             <template v-slot:after>
-              <q-btn icon="add_task" color="green-4" @click="addTaskFlag = true"/>
             </template>
           </q-input>
-        </div>
-        <div v-if="taskId !== 0" class="q-pa-md">
-          <task-edit v-if="taskId !== 0" :taskId="taskId"/>
         </div>
         <div class="col col-md-6 col-sm-12">
           <q-separator spaced/>
           <!--  任务列表    -->
           <q-list dense class="q-pa-xs q-gutter-xs">
             <div v-for="(task) in tasks" :key="task.id" class="row list-task">
-              <div class="col-8" @click="taskId = task.id">
+              <div class="col-8" @click="editTask(task)">
                 <div class="taskStr" :class="{ 'done': task.status === 9}"
                      style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-                  {{ task.name }}
+                  {{ task.title }}
                 </div>
                 <q-item-label side top>
                   <q-badge
@@ -78,6 +75,10 @@
         <!--右弹框-->
       </div>
     </div>
+
+    <q-dialog v-model="addTaskFlag">
+      <task-edit @close="closeTaskEdit" :taskId="taskId"/>
+    </q-dialog>
 
     <q-dialog v-model="timeDialogFlag" persistent style="min-width: 400px">
       <q-card>
@@ -153,10 +154,19 @@ export default {
         name: null
       },
       filter: '',
-      tasks: [new TaskModel()]
+      tasks: null
     });
 
+    const closeTaskEdit = () => {
+      addTaskFlag.value = false;
+      resetTaskId()
+    }
 
+
+    const editTask = (task) => {
+      addTaskFlag.value = true;
+      state.taskId = task.id
+    }
     console.log(state.newTask)
 
 
@@ -265,7 +275,9 @@ export default {
       setEndTime,
       deleteTask,
       edit,
+      editTask,
       resetTaskId,
+      closeTaskEdit,
       saveAnki,
       onReset
     }

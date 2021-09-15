@@ -6,6 +6,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 /**
  * @author chenjiaming
  */
-public interface RecordMapper extends BaseMapper<Task> {
+public interface TaskMapper extends BaseMapper<Task> {
 
 }

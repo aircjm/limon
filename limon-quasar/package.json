@@ -1,8 +1,8 @@
 {
-  "name": "quasar-ban",
+  "name": "limon-quasar",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "ban",
+  "description": "limon  quasar app",
+  "productName": "limon",
   "author": "aircjm <aircjm@gmail.com>",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.10.12",
+    "@quasar/extras": "^1.10.8",
     "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.31",
     "@tiptap/extension-highlight": "^2.0.0-beta.14",
     "@tiptap/extension-image": "^2.0.0-beta.14",
@@ -28,12 +28,12 @@
     "core-js": "^3.15.1",
     "lowlight": "^1.20.0",
     "prosemirror-markdown": "^1.5.1",
-    "quasar": "^2.0.4",
+    "quasar": "^2.0.1",
     "vditor": "^3.6.6",
     "vuex": "4.0.2"
   },
   "devDependencies": {
-    "@quasar/app": "^3.1.0",
+    "@quasar/app": "^3.0.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
