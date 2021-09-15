@@ -1,8 +1,8 @@
 {
-  "name": "quasar-ban",
+  "name": "limon-quasar",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "ban",
+  "description": "limon  quasar app",
+  "productName": "limon",
   "author": "aircjm <aircjm@gmail.com>",
   "private": true,
   "scripts": {

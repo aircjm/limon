@@ -7,7 +7,7 @@ import com.aircjm.limon.common.utils.StringUtils;
 import com.aircjm.limon.framework.message.MessageService;
 import com.aircjm.limon.project.card.domain.Task;
 import com.aircjm.limon.project.card.domain.TaskAttachment;
-import com.aircjm.limon.project.card.mapper.RecordMapper;
+import com.aircjm.limon.project.card.mapper.TaskMapper;
 import com.aircjm.limon.project.card.service.TaskService;
 import com.aircjm.limon.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.limon.project.card.vo.request.SaveTaskRequest;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
-public class TaskServiceImpl extends ServiceImpl<RecordMapper, Task> implements TaskService {
+public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements TaskService {
 
     @Resource
     private MessageService emailService;
