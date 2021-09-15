@@ -76,8 +76,8 @@
       </div>
     </div>
 
-    <q-dialog v-model="addTaskFlag">
-      <task-edit @close="closeTaskEdit" :taskId="taskId"/>
+    <q-dialog v-model="addTaskFlag" persistent>
+        <task-edit @close="closeTaskEdit" :taskId="taskId"/>
     </q-dialog>
 
     <q-dialog v-model="timeDialogFlag" persistent style="min-width: 400px">
@@ -143,7 +143,7 @@ export default {
     }
 
     const state = reactive({
-      taskId: 0,
+      taskId: '',
       name: '',
       newTask: new TaskModel(),
       setTimeForm: {
@@ -167,7 +167,7 @@ export default {
       addTaskFlag.value = true;
       state.taskId = task.id
     }
-    console.log(state.newTask)
+
 
 
     onMounted(() => {
@@ -177,7 +177,6 @@ export default {
 
     const saveAnki =() =>  {
       axios.post("http://localhost:8765", {}).then(res => {
-        debugger;
         console.log(res)
       })
     }
