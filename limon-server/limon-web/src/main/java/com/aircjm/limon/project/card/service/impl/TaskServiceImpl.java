@@ -45,26 +45,15 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements Ta
 
     @Override
     public void save(SaveTaskRequest request) {
-
-        if (Objects.isNull(request.getId())) {
+        Task task = BeanUtil.copyProperties(request, Task.class);
+        if (Objects.isNull(task.getId())) {
             log.info("开始处理新增");
-            if (StringUtils.isEmpty(request.getName())) {
+            if (StringUtils.isEmpty(request.getTitle())) {
                 throw new CustomException("title is not empty");
             }
-            Task task = Task.builder()
-                    .title(request.getName())
-                    .descJson(request.getTaskDesc())
-                    .descHtml("")
-                    .taskStatus(request.getStatus())
-                    .startTime(request.getStartTime())
-                    .dueTime(request.getDueTime())
-                    .endTime(request.getEndTime())
-                    .dueTime(request.getDueTime())
-                    .build();
             task.setCreateTime(LocalDateTime.now());
             saveOrUpdate(task);
         } else {
-            Task task = BeanUtil.copyProperties(request, Task.class);
             saveOrUpdate(task);
         }
 

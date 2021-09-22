@@ -26,7 +26,7 @@
 	<properties>
 		<spring-boot.version>2.3.3.RELEASE</spring-boot.version>
 		<java.version>8</java.version>
-		<mybatis-plus-boot-starter.version>3.4.1</mybatis-plus-boot-starter.version>
+		<mybatis-plus-boot-starter.version>3.4.3</mybatis-plus-boot-starter.version>
 		<knife4j.version>2.0.2</knife4j.version>
 		<hutool.version>5.6.2</hutool.version>
 		<jwt.version>3.10.1</jwt.version>
@@ -36,7 +36,7 @@
 		<lombok.version>1.18.12</lombok.version>
 		<commons-net.version>3.6</commons-net.version>
 		<fastjson.version>1.2.76</fastjson.version>
-		<druid.version>1.1.10</druid.version>
+		<druid.version>1.2.6</druid.version>
 		<bitwalker.version>1.19</bitwalker.version>
 		<jwt.version>0.9.0</jwt.version>
 		<swagger.version>2.9.2</swagger.version>
