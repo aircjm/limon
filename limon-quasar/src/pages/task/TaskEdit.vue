@@ -73,7 +73,7 @@
     </q-card-section>
     <q-card-section>
       <div>
-        <TipTapEditor @html="form.descHtml" @updateEditorValue="updateEditorValue"/>
+        <TipTapEditor :html="form.descHtml" @updateEditorValue="updateEditorValue"/>
       </div>
     </q-card-section>
     <q-card-section>

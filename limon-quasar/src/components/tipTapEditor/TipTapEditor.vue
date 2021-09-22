@@ -134,6 +134,7 @@ import CodeBlockComponent from "./CodeBlockComponent";
 import {onBeforeUnmount} from "@vue/runtime-core";
 
 import  lowlight from 'lowlight'
+import {toRefs} from "@vue/reactivity";
 
 
 
@@ -173,12 +174,14 @@ export default {
     html: String
   },
   setup(props, context) {
-    let html = props.html;
+    debugger
+    let { html } = toRefs(props)
+    console.log("html is ", html)
     const editor = useEditor({
       onCreate: (editor) => {
         console.log("创建编辑器完成")
       },
-      content: html,
+      content: html.value,
       onUpdate: (editor) => {
         html = editor.editor.getHTML()
         const editorValue = {"descHtml":html, "descJson":editor.editor.getJSON()}
