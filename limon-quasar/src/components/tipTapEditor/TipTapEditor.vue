@@ -169,20 +169,20 @@ export default {
   },
   props: {
     json: String,
-    markdown: String
+    markdown: String,
+    html: String
   },
-  setup(props) {
-    const markdown = props.markdown;
-    let json = props.json;
+  setup(props, context) {
+    let html = props.html;
     const editor = useEditor({
       onCreate: (editor) => {
         console.log("创建编辑器完成")
       },
-      content: '',
+      content: html,
       onUpdate: (editor) => {
-        json = editor.editor.getJSON()
-        console.log("json结果为：")
-        console.log(json)
+        html = editor.editor.getHTML()
+        const editorValue = {"descHtml":html, "descJson":editor.editor.getJSON()}
+        context.emit('updateEditorValue', editorValue)
       },
       extensions: [
         StarterKit,
