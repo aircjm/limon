@@ -3,6 +3,8 @@ package com.aircjm.limon.project.card.vo.request;
 import com.aircjm.limon.common.utils.StringUtils;
 import com.aircjm.limon.project.tag.domain.Tag;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -17,30 +19,111 @@ import java.util.List;
 @Data
 public class SaveTaskRequest {
 
-    @ApiModelProperty(value = "id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
-    @ApiModelProperty(value = "名称")
-    private String name;
 
-    @ApiModelProperty(value = "内容")
-    private String taskDesc = StringUtils.EMPTY;
+    /**
+     * 标题
+     */
+    @ApiModelProperty(value = "标题")
+    private String title;
 
+    /**
+     * 内容的html
+     */
+    @ApiModelProperty(value = "内容的html")
+    private String descHtml;
+
+    /**
+     * 内容的md
+     */
+    @ApiModelProperty(value = "内容的md,")
+    private String descMd;
+
+    /**
+     * 描述的json
+     */
+    @ApiModelProperty(value = "描述的json")
+    private String descJson;
+
+    /**
+     * 状态
+     */
     @ApiModelProperty(value = "状态")
-    private Integer status;
+    private Integer taskStatus;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime startTime;
+    /**
+     * 是否全天 0：不是 1：是
+     */
+    @ApiModelProperty(value = "是否全天 0：不是 1：是")
+    private Integer allDay;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime endTime;
+    /**
+     * 时区
+     */
+    @ApiModelProperty(value = "时区")
+    private String timeZone;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    /**
+     * 截至时间
+     */
+    @ApiModelProperty(value = "截至时间")
     private LocalDateTime dueTime;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    /**
+     * 完成时间
+     */
+    @ApiModelProperty(value = "完成时间")
     private LocalDateTime doneTime;
 
+    /**
+     * 持续时间-开始时间
+     */
+    @ApiModelProperty(value = "持续时间-开始时间")
+    private LocalDateTime startTime;
+
+    /**
+     * 持续时间-结束时间
+     */
+    @ApiModelProperty(value = "持续时间-结束时间")
+    private LocalDateTime endTime;
+
+    /**
+     * 提醒时间
+     */
+    @ApiModelProperty(value = "提醒时间")
+    private LocalDateTime reminderTime;
+
+    /**
+     * 位置
+     */
+    @ApiModelProperty(value = "位置")
+    private Double position;
+
+    /**
+     * 对应的url
+     */
+    @ApiModelProperty(value = "对应的url")
+    private String url;
+
+    /**
+     * 项目id
+     */
+    @ApiModelProperty(value = "项目id")
+    private Long projectId;
+
+    /**
+     * 所属用户id
+     */
+    @ApiModelProperty(value = "所属用户id")
+    private Long userId;
+
+    /**
+     * 清单集合id
+     */
+    @ApiModelProperty(value = "清单集合id")
+    private Long listId;
 
     private List<Tag> tagList;
 

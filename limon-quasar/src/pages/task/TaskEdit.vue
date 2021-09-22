@@ -73,7 +73,7 @@
     </q-card-section>
     <q-card-section>
       <div>
-        <TipTapEditor/>
+        <TipTapEditor @html="form.descHtml" @updateEditorValue="updateEditorValue"/>
       </div>
     </q-card-section>
     <q-card-section>
@@ -222,9 +222,15 @@ export default defineComponent(
       });
 
 
+      // 关闭当前弹窗
       const closeDialog = () => {
-        debugger
         emit('close')
+      }
+
+      // 更新编辑器的值
+      const updateEditorValue = (editorValue) => {
+        state.form.descHtml = editorValue.descHtml
+        state.form.descJson = JSON.stringify(editorValue.descJson)
       }
 
 
@@ -332,7 +338,7 @@ export default defineComponent(
 
       return {
         ...toRefs(state), toAddTag, filterTag, filterTagAbort,
-        addTag, onSubmit, autoSave, uploadPic, cancelTask
+        addTag, onSubmit, autoSave, uploadPic, cancelTask, updateEditorValue
       }
     }
   }
