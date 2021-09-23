@@ -133,9 +133,8 @@ import Typography from '@tiptap/extension-typography'
 import CodeBlockComponent from "./CodeBlockComponent";
 import {onBeforeUnmount} from "@vue/runtime-core";
 
-import  lowlight from 'lowlight'
+import lowlight from 'lowlight'
 import {toRefs} from "@vue/reactivity";
-
 
 
 const CustomTableCell = TableCell.extend({
@@ -174,8 +173,7 @@ export default {
     html: String
   },
   setup(props, context) {
-    debugger
-    let { html } = toRefs(props)
+    let {html} = toRefs(props)
     console.log("html is ", html)
     const editor = useEditor({
       onCreate: (editor) => {
@@ -184,7 +182,7 @@ export default {
       content: html.value,
       onUpdate: (editor) => {
         html = editor.editor.getHTML()
-        const editorValue = {"descHtml":html, "descJson":editor.editor.getJSON()}
+        const editorValue = {"descHtml": html, "descJson": editor.editor.getJSON()}
         context.emit('updateEditorValue', editorValue)
       },
       extensions: [
@@ -213,10 +211,10 @@ export default {
     })
 
 
-   const addImage =() =>  {
+    const addImage = () => {
       const url = window.prompt('URL')
       if (url) {
-        editor.chain().focus().setImage({ src: url }).run()
+        editor.chain().focus().setImage({src: url}).run()
       }
     }
 
