@@ -14,12 +14,12 @@ import com.aircjm.limon.framework.aspectj.lang.enums.BusinessType;
 import com.aircjm.limon.framework.web.controller.BaseController;
 import com.aircjm.limon.framework.web.domain.AjaxResult;
 import com.aircjm.limon.framework.web.page.TableDataInfo;
-import com.aircjm.limon.project.monitor.domain.SysLogininfor;
+import com.aircjm.limon.project.monitor.domain.SysLogininfo;
 import com.aircjm.limon.project.monitor.service.ISysLogininforService;
 
 /**
  * 系统访问记录
- * 
+ *
  * @author aircjm
  */
 @RestController
@@ -31,20 +31,20 @@ public class SysLogininforController extends BaseController
 
     @PreAuthorize("@ss.hasPermi('monitor:logininfor:list')")
     @GetMapping("/list")
-    public TableDataInfo list(SysLogininfor logininfor)
+    public TableDataInfo list(SysLogininfo logininfor)
     {
         startPage();
-        List<SysLogininfor> list = logininforService.selectLogininforList(logininfor);
+        List<SysLogininfo> list = logininforService.selectLogininforList(logininfor);
         return getDataTable(list);
     }
 
     @Log(title = "登陆日志", businessType = BusinessType.EXPORT)
     @PreAuthorize("@ss.hasPermi('monitor:logininfor:export')")
     @GetMapping("/export")
-    public AjaxResult export(SysLogininfor logininfor)
+    public AjaxResult export(SysLogininfo logininfor)
     {
-        List<SysLogininfor> list = logininforService.selectLogininforList(logininfor);
-        ExcelUtil<SysLogininfor> util = new ExcelUtil<SysLogininfor>(SysLogininfor.class);
+        List<SysLogininfo> list = logininforService.selectLogininforList(logininfor);
+        ExcelUtil<SysLogininfo> util = new ExcelUtil<SysLogininfo>(SysLogininfo.class);
         return util.exportExcel(list, "登陆日志");
     }
 

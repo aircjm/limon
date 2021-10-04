@@ -119,7 +119,7 @@
 <script>
 import {saveTask} from 'src/api/task'
 import client, {doPost} from 'src/utils/axios'
-import {taskList} from 'src/api/url'
+import {apiTaskList} from 'src/api/url'
 import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useQuasar} from "quasar";
@@ -189,7 +189,7 @@ export default {
       }
       queryRequest.name = state.searchForm.name
 
-      doPost(taskList, queryRequest).then(res => {
+      doPost(apiTaskList, queryRequest).then(res => {
         if (res.data) {
           state.tasks = res.data.records
         }

@@ -8,10 +8,10 @@ import com.aircjm.limon.framework.web.domain.BaseEntity;
 
 /**
  * 系统访问记录表 sys_logininfor
- * 
+ *
  * @author aircjm
  */
-public class SysLogininfor extends BaseEntity
+public class SysLogininfo extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
