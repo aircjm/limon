@@ -8,12 +8,11 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import java.util.TimeZone;
 
 /**
- * 程序注解配置
+ * 程序注解配置 @EnableAspectJAutoProxy表示通过aop框架暴露该代理对象,AopContext能够访问
  *
  * @author aircjm
  */
 @Configuration
-// 表示通过aop框架暴露该代理对象,AopContext能够访问
 @EnableAspectJAutoProxy(exposeProxy = true)
 public class ApplicationConfig
 {
