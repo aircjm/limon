@@ -1,10 +1,10 @@
-package com.aircjm.limon.common.utils.sql;
+package com.aircjm.limon.common.utils;
 
 import com.aircjm.limon.common.utils.StringUtils;
 
 /**
  * sql操作工具类
- * 
+ *
  * @author aircjm
  */
 public class SqlUtil
