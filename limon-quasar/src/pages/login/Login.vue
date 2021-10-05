@@ -72,7 +72,7 @@
 
 <script>
 import {getCodeImg, login} from 'src/api/login'
-import {setToken} from 'src/utils/project'
+import {setLoginUserInfo, setToken} from 'src/utils/project'
 import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useRoute, useRouter} from "vue-router";
@@ -109,7 +109,8 @@ export default {
 
     const submitLogin = () => {
         login(loginForm).then((res) => {
-          setToken(res.token)
+          setLoginUserInfo(res.data)
+          console.log(redirect.value)
           router.push({path: redirect.value || '/'})
         }).catch(() => {
            getCode()

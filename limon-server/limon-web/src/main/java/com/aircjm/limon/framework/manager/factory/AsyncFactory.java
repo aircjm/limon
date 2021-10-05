@@ -9,7 +9,7 @@ import com.aircjm.limon.common.utils.ServletUtils;
 import com.aircjm.limon.common.utils.ip.AddressUtils;
 import com.aircjm.limon.common.utils.ip.IpUtils;
 import com.aircjm.limon.common.utils.spring.SpringUtils;
-import com.aircjm.limon.project.monitor.domain.SysLogininfor;
+import com.aircjm.limon.project.monitor.domain.SysLogininfo;
 import com.aircjm.limon.project.monitor.domain.SysOperLog;
 import com.aircjm.limon.project.monitor.service.ISysLogininforService;
 import com.aircjm.limon.project.monitor.service.ISysOperLogService;
@@ -17,7 +17,7 @@ import eu.bitwalker.useragentutils.UserAgent;
 
 /**
  * 异步工厂（产生任务用）
- * 
+ *
  * @author aircjm
  */
 public class AsyncFactory
@@ -26,7 +26,7 @@ public class AsyncFactory
 
     /**
      * 记录登陆信息
-     * 
+     *
      * @param username 用户名
      * @param status 状态
      * @param message 消息
@@ -57,7 +57,7 @@ public class AsyncFactory
                 // 获取客户端浏览器
                 String browser = userAgent.getBrowser().getName();
                 // 封装对象
-                SysLogininfor logininfor = new SysLogininfor();
+                SysLogininfo logininfor = new SysLogininfo();
                 logininfor.setUserName(username);
                 logininfor.setIpaddr(ip);
                 logininfor.setLoginLocation(address);
@@ -81,7 +81,7 @@ public class AsyncFactory
 
     /**
      * 操作日志记录
-     * 
+     *
      * @param operLog 操作日志信息
      * @return 任务task
      */

@@ -1,8 +1,6 @@
 package com.aircjm.limon.project.card.controller;
 
-import com.aircjm.limon.common.vo.RestResponse;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Log;
-import com.aircjm.limon.framework.aspectj.lang.enums.BusinessType;
+import com.aircjm.limon.common.vo.RestReult;
 import com.aircjm.limon.framework.web.domain.AjaxResult;
 import com.aircjm.limon.project.card.service.AnkiCardService;
 import com.aircjm.limon.project.card.vo.request.GetCardRequest;
@@ -33,36 +31,36 @@ public class CardController {
 
 
     @GetMapping("/refreshAllCard")
-    public RestResponse refreshAllCard() {
+    public RestReult refreshAllCard() {
         ankiCardService.asyncUpdateAllCard();
-        return RestResponse.successEmpty();
+        return RestReult.successEmpty();
     }
 
 
     @PostMapping("/save")
-    public RestResponse savePage(@RequestBody @Valid SaveCardRequest request) {
+    public RestReult savePage(@RequestBody @Valid SaveCardRequest request) {
         ankiCardService.saveCard(request);
-        return RestResponse.successEmpty();
+        return RestReult.successEmpty();
     }
 
     @PostMapping("/exportCard")
-    public RestResponse exportCard(@RequestBody @Valid GetCardRequest request) {
+    public RestReult exportCard(@RequestBody @Valid GetCardRequest request) {
         AjaxResult ajaxResult = ankiCardService.exportCard(request);
-        return RestResponse.successData(ajaxResult);
+        return RestReult.successData(ajaxResult);
     }
 
 
     @PostMapping("/list")
-    public RestResponse getCardList(@RequestBody @Valid GetCardRequest request) {
+    public RestReult getCardList(@RequestBody @Valid GetCardRequest request) {
         Page<TaskDetailResponse> page = ankiCardService.getCardList(request);
-        return RestResponse.successData(page);
+        return RestReult.successData(page);
     }
 
 
     @PostMapping("/setAnki")
-    public RestResponse setAnki(@RequestBody @Valid SetAnkiRequest request) {
+    public RestReult setAnki(@RequestBody @Valid SetAnkiRequest request) {
         ankiCardService.setAnki(request);
-        return RestResponse.successEmpty();
+        return RestReult.successEmpty();
     }
 
 

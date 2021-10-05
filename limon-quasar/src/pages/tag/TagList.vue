@@ -125,7 +125,7 @@ import {Notify, useQuasar} from 'quasar'
 import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import client, {doPost} from "src/utils/axios";
-import {tagList} from "src/api/url";
+import {apiLagList} from "src/api/url";
 
 
 const columns = [
@@ -204,7 +204,7 @@ export default {
         name : state.search.name
       }
 
-      doPost(tagList, queryRequest).then(res => {
+      doPost(apiLagList, queryRequest).then(res => {
         state.rows = res.data.records
       })
       state.search.loading = false

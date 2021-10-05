@@ -22,7 +22,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Swagger2的接口配置
- * 
+ *
  * @author aircjm
  */
 @Configuration
@@ -112,7 +112,7 @@ public class SwaggerConfig
         // 用ApiInfoBuilder进行定制
         return new ApiInfoBuilder()
                 // 设置标题
-                .title("标题：后台管理系统_接口文档")
+                .title("标题：接口文档")
                 // 作者信息
                 .contact(new Contact(systemConfig.getName(), null, null))
                 // 版本

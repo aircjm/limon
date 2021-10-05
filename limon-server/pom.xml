@@ -36,7 +36,6 @@
 		<lombok.version>1.18.12</lombok.version>
 		<commons-net.version>3.6</commons-net.version>
 		<fastjson.version>1.2.76</fastjson.version>
-		<druid.version>1.2.6</druid.version>
 		<bitwalker.version>1.19</bitwalker.version>
 		<jwt.version>0.9.0</jwt.version>
 		<swagger.version>2.9.2</swagger.version>
@@ -148,14 +147,6 @@
 				<scope>test</scope>
 			</dependency>
 			<!-- spring-boot end -->
-
-
-			<!--阿里数据库连接池 -->
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>druid-spring-boot-starter</artifactId>
-				<version>${druid.version}</version>
-			</dependency>
 
 			<!-- mybatis-plus begin -->
 			<dependency>

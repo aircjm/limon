@@ -73,7 +73,7 @@
     </q-card-section>
     <q-card-section>
       <div>
-        <TipTapEditor :html="form.descHtml" @updateEditorValue="updateEditorValue"/>
+        <TipTapEditor v-if="editorFlag" :html="form.descHtml" @updateEditorValue="updateEditorValue"/>
       </div>
     </q-card-section>
     <q-card-section>
@@ -238,6 +238,8 @@ export default defineComponent(
       onMounted(() => {
         init()
       })
+
+
       const init = async () => {
         Loading.show();
         if (route.query.id) {

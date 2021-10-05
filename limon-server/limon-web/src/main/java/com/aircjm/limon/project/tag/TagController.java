@@ -1,7 +1,7 @@
 package com.aircjm.limon.project.tag;
 
 
-import com.aircjm.limon.common.vo.RestResponse;
+import com.aircjm.limon.common.vo.RestReult;
 import com.aircjm.limon.framework.web.controller.BaseController;
 import com.aircjm.limon.project.tag.domain.Tag;
 import com.aircjm.limon.project.tag.service.TagService;
@@ -35,8 +35,8 @@ public class TagController extends BaseController {
      * @return 结果
      */
     @PostMapping("/save")
-    public RestResponse<Tag> save(@RequestBody @Valid SaveTagRequest request) {
-        return RestResponse.successData(tagService.save(request));
+    public RestReult<Tag> save(@RequestBody @Valid SaveTagRequest request) {
+        return RestReult.successData(tagService.save(request));
     }
 
     /**
@@ -45,8 +45,8 @@ public class TagController extends BaseController {
      * @return 列表数据
      */
     @PostMapping("/list")
-    public RestResponse<Page<TagDetailResponse> > allList(@RequestBody @Valid GetTagRequest request) {
+    public RestReult<Page<TagDetailResponse> > allList(@RequestBody @Valid GetTagRequest request) {
         Page<TagDetailResponse> list = tagService.list(request);
-        return RestResponse.successData(list);
+        return RestReult.successData(list);
     }
 }
