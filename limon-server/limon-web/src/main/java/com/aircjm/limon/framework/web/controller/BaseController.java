@@ -12,7 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import com.aircjm.limon.common.utils.DateUtils;
 import com.aircjm.limon.common.utils.StringUtils;
-import com.aircjm.limon.common.utils.sql.SqlUtil;
+import com.aircjm.limon.common.utils.SqlUtil;
 import com.aircjm.limon.framework.web.domain.AjaxResult;
 import com.aircjm.limon.framework.web.page.PageDomain;
 import com.aircjm.limon.framework.web.page.TableDataInfo;

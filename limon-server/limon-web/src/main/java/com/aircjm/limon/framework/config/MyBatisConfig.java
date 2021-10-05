@@ -13,11 +13,12 @@ import org.springframework.context.annotation.Configuration;
  * @author johnniang
  */
 @Configuration
-// 指定要扫描的Mapper类的包的路径
 @MapperScan("com.aircjm.limon.project.**.mapper")
 public class MyBatisConfig {
 
-    // 最新版
+    /**
+     * 最新版的mybatis分页拦截器
+     */
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();

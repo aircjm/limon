@@ -1,10 +1,9 @@
 package com.aircjm.limon.project.card.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.aircjm.limon.common.exception.CustomException;
 import com.aircjm.limon.common.utils.LocalDateUtils;
 import com.aircjm.limon.common.utils.StringUtils;
-import com.aircjm.limon.common.utils.bean.BeanUtils;
-import com.aircjm.limon.common.utils.poi.ExcelUtil;
 import com.aircjm.limon.framework.web.domain.AjaxResult;
 import com.aircjm.limon.project.anki.response.AnkiRespVo;
 import com.aircjm.limon.project.card.domain.AnkiCard;
@@ -86,10 +85,10 @@ public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> i
 
         Page<AnkiCard> boardCards = page(request, queryWrapper);
         Page<TaskDetailResponse> response = new Page<>();
-        BeanUtils.copyProperties(boardCards, response);
+        BeanUtil.copyProperties(boardCards, response);
         response.setRecords(boardCards.getRecords().stream().map(item -> {
             TaskDetailResponse detail = new TaskDetailResponse();
-            BeanUtils.copyProperties(item, detail);
+            BeanUtil.copyProperties(item, detail);
             return detail;
         }).collect(Collectors.toList()));
         return response;
