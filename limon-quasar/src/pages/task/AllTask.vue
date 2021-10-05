@@ -76,7 +76,7 @@
       </div>
     </div>
 
-    <q-dialog v-model="addTaskFlag" persistent>
+    <q-dialog v-model="addTaskFlag" persistent position="right">
         <task-edit @close="closeTaskEdit" :taskId="taskId"/>
     </q-dialog>
 
