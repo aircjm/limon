@@ -85,7 +85,7 @@ export default {
     const router = useRouter();
     const route = useRoute()
 
-    const  redirect = ref( route.query && route.query.redirect)
+    const redirect = ref(route.query && route.query.redirect)
 
 
     onMounted(() => {
@@ -108,17 +108,17 @@ export default {
     });
 
     const submitLogin = () => {
-        login(loginForm).then((res) => {
-          setLoginUserInfo(res.data)
-          console.log(redirect.value)
-          router.push({path: redirect.value || '/'})
-        }).catch(() => {
-           getCode()
-        })
+      login(loginForm).then((res) => {
+        setLoginUserInfo(res.data)
+        console.log(redirect.value)
+        router.push({path: redirect.value || '/'})
+      }).catch(() => {
+        getCode()
+      })
     }
 
     return {
-     ...toRefs(loginForm), submitLogin, codeUrl, redirect, getCode
+      ...toRefs(loginForm), submitLogin, codeUrl, redirect, getCode
     }
   }
 }

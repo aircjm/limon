@@ -27,19 +27,19 @@
           <div style="width: 330px">
             <date-time-picker
               label="通知时间"
-              :time.sync="form.endTime"
+              v-model="form.endTime"
             />
           </div>
           <div style="width: 330px">
             <date-time-picker
               label="开始时间"
-              :time.sync="form.startTime"
+              v-model="form.startTime"
             />
           </div>
           <div style="width: 330px">
             <date-time-picker
               label="截止时间"
-              :time.sync="form.dueTime"
+              v-model="form.dueTime"
             />
           </div>
         </div>
