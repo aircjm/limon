@@ -4,9 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.aircjm</groupId>
-	<artifactId>limon</artifactId>
+	<artifactId>limon-server</artifactId>
 	<version>1.0.0</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
+
+	<name>limon-server</name>
+	<description>limon项目</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -14,14 +17,6 @@
 		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
-	<name>limon</name>
-	<description>后台管理系统</description>
-
-	<modules>
-		<module>limon-common</module>
-		<module>limon-web</module>
-	</modules>
 
 	<properties>
 		<spring-boot.version>2.3.3.RELEASE</spring-boot.version>
@@ -57,179 +52,255 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		<!-- 对象属性复制 https://mapstruct.org/ -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+		<!-- spring-boot start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-json</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-quartz</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring-boot.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- spring-boot end -->
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>fastjson</artifactId>
-				<version>${fastjson.version}</version>
-			</dependency>
-			<!-- 对象属性复制 https://mapstruct.org/ -->
-			<dependency>
-				<groupId>org.mapstruct</groupId>
-				<artifactId>mapstruct</artifactId>
-				<version>${mapstruct.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<!-- spring-boot start -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-aop</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-tomcat</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-jdbc</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-data-redis</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-json</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-validation</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-configuration-processor</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-security</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-quartz</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-mail</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-test</artifactId>
-				<version>${spring-boot.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<!-- spring-boot end -->
+		<!-- mybatis-plus begin -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus-boot-starter.version}</version>
+		</dependency>
+		<!-- mybatis-plus end -->
 
-			<!-- mybatis-plus begin -->
-			<dependency>
-				<groupId>com.baomidou</groupId>
-				<artifactId>mybatis-plus-boot-starter</artifactId>
-				<version>${mybatis-plus-boot-starter.version}</version>
-			</dependency>
-			<!-- mybatis-plus end -->
+		<!-- ini格式处理 -->
+		<dependency>
+			<groupId>org.ini4j</groupId>
+			<artifactId>ini4j</artifactId>
+			<version>${ini4j.version}</version>
+		</dependency>
 
-			<!-- ini格式处理 -->
-			<dependency>
-				<groupId>org.ini4j</groupId>
-				<artifactId>ini4j</artifactId>
-				<version>${ini4j.version}</version>
-			</dependency>
+		<!-- apache commons start -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons-collections4.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>${commons-net.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>${commons-pool2.version}</version>
+		</dependency>
+		<!-- XSS -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>${commons-text.version}</version>
+		</dependency>
+		<!-- apache commons end -->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>${knife4j.version}</version>
+		</dependency>
 
-			<!-- apache commons start -->
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>${commons-lang3.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-collections4</artifactId>
-				<version>${commons-collections4.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>${commons-io.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-codec</groupId>
-				<artifactId>commons-codec</artifactId>
-				<version>${commons-codec.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-net</groupId>
-				<artifactId>commons-net</artifactId>
-				<version>${commons-net.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-pool2</artifactId>
-				<version>${commons-pool2.version}</version>
-			</dependency>
-			<!-- XSS -->
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-text</artifactId>
-				<version>${commons-text.version}</version>
-			</dependency>
-			<!-- apache commons end -->
-			<dependency>
-				<groupId>com.github.xiaoymin</groupId>
-				<artifactId>knife4j-spring-boot-starter</artifactId>
-				<version>${knife4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>cn.hutool</groupId>
-				<artifactId>hutool-all</artifactId>
-				<version>${hutool.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.reflections</groupId>
-				<artifactId>reflections</artifactId>
-				<version>${reflections.version}</version>
-			</dependency>
-			<!-- 获取系统信息 -->
-			<dependency>
-				<groupId>com.github.oshi</groupId>
-				<artifactId>oshi-core</artifactId>
-				<version>${oshi.version}</version>
-			</dependency>
-			<!--文件上传工具类 -->
-			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-				<version>${commons-fileupload.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.0.1-jre</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>${reflections.version}</version>
+		</dependency>
+		<!-- 获取系统信息 -->
+		<dependency>
+			<groupId>com.github.oshi</groupId>
+			<artifactId>oshi-core</artifactId>
+			<version>${oshi.version}</version>
+		</dependency>
+		<!--文件上传工具类 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aliyun.oss</groupId>
+			<artifactId>aliyun-sdk-oss</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+
+		<!-- Mysql驱动包 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.taskadapter</groupId>
+			<artifactId>trello-java-wrapper</artifactId>
+			<version>0.13</version>
+		</dependency>
+
+
+		<!-- 解析客户端操作系统、浏览器等 -->
+		<dependency>
+			<groupId>eu.bitwalker</groupId>
+			<artifactId>UserAgentUtils</artifactId>
+			<version>1.21</version>
+		</dependency>
+
+
+		<!--Token生成与解析-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jwt.version}</version>
+		</dependency>
+
+		<!-- swagger2-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.swagger</groupId>
+					<artifactId>swagger-annotations</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>io.swagger</groupId>
+					<artifactId>swagger-models</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!--防止进入swagger页面报类型转换错误，排除2.9.2中的引用，手动增加1.5.21版本-->
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-models</artifactId>
+			<version>1.5.21</version>
+		</dependency>
+
+		<!-- swagger2-UI-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>easyexcel</artifactId>
+			<version>2.2.8</version>
+		</dependency>
+	</dependencies>
 
 
 	<repositories>
@@ -242,19 +313,6 @@
 			</releases>
 		</repository>
 	</repositories>
-
-	<build>
-		<plugins>
-			<!-- 打包时跳过测试 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 	<pluginRepositories>
 		<pluginRepository>
