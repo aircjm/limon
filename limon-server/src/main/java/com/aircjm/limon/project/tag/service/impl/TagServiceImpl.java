@@ -1,7 +1,7 @@
 package com.aircjm.limon.project.tag.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.aircjm.limon.common.utils.StringUtils;
+import com.aircjm.limon.utils.StringUtils;
 import com.aircjm.limon.project.tag.domain.Tag;
 import com.aircjm.limon.project.tag.mapper.TagMapper;
 import com.aircjm.limon.project.tag.service.TagService;

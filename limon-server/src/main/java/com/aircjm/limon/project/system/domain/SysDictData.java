@@ -4,10 +4,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.aircjm.limon.common.constant.UserConstants;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excel;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excel.ColumnType;
-import com.aircjm.limon.framework.web.domain.BaseEntity;
+import com.aircjm.limon.constant.UserConstants;
+import com.aircjm.limon.aspectj.lang.annotation.Excel;
+import com.aircjm.limon.aspectj.lang.annotation.Excel.ColumnType;
+import com.aircjm.limon.web.domain.BaseEntity;
 
 /**
  * 字典数据表 sys_dict_data

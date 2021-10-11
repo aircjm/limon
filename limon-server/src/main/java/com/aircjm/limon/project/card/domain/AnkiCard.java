@@ -1,7 +1,7 @@
 package com.aircjm.limon.project.card.domain;
 
 
-import com.aircjm.limon.common.vo.DbBaseEntity;
+import com.aircjm.limon.vo.DbBaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

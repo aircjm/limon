@@ -1,6 +1,6 @@
 package com.aircjm.limon.project.system.vo.request;
 
-import com.aircjm.limon.framework.web.page.PageDomain;
+import com.aircjm.limon.web.page.PageDomain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

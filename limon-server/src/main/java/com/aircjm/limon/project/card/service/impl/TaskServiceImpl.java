@@ -1,10 +1,10 @@
 package com.aircjm.limon.project.card.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.aircjm.limon.common.exception.CustomException;
-import com.aircjm.limon.common.utils.DateUtils;
-import com.aircjm.limon.common.utils.StringUtils;
-import com.aircjm.limon.framework.message.MessageService;
+import com.aircjm.limon.exception.CustomException;
+import com.aircjm.limon.utils.DateUtils;
+import com.aircjm.limon.utils.StringUtils;
+import com.aircjm.limon.message.MessageService;
 import com.aircjm.limon.project.card.domain.Task;
 import com.aircjm.limon.project.card.domain.TaskAttachment;
 import com.aircjm.limon.project.card.mapper.TaskMapper;

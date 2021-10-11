@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import com.aircjm.limon.common.constant.Constants;
-import com.aircjm.limon.common.utils.StringUtils;
-import com.aircjm.limon.common.utils.file.FileUploadUtils;
-import com.aircjm.limon.common.utils.file.FileUtils;
-import com.aircjm.limon.framework.config.SystemConfig;
-import com.aircjm.limon.framework.config.ServerConfig;
-import com.aircjm.limon.framework.web.domain.AjaxResult;
+import com.aircjm.limon.constant.Constants;
+import com.aircjm.limon.utils.StringUtils;
+import com.aircjm.limon.utils.file.FileUploadUtils;
+import com.aircjm.limon.utils.file.FileUtils;
+import com.aircjm.limon.config.SystemConfig;
+import com.aircjm.limon.config.ServerConfig;
+import com.aircjm.limon.web.domain.AjaxResult;
 
 /**
  * 通用请求处理

@@ -1,11 +1,11 @@
 package com.aircjm.limon.project.common;
 
-import com.aircjm.limon.common.constant.Constants;
-import com.aircjm.limon.common.utils.IdUtils;
-import com.aircjm.limon.common.utils.VerifyCodeUtils;
-import com.aircjm.limon.common.utils.sign.Base64;
-import com.aircjm.limon.framework.redis.RedisCache;
-import com.aircjm.limon.framework.web.domain.AjaxResult;
+import com.aircjm.limon.constant.Constants;
+import com.aircjm.limon.utils.IdUtils;
+import com.aircjm.limon.utils.VerifyCodeUtils;
+import com.aircjm.limon.utils.sign.Base64;
+import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.web.domain.AjaxResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

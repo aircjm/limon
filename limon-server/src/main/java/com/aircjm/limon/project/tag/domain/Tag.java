@@ -1,6 +1,6 @@
 package com.aircjm.limon.project.tag.domain;
 
-import com.aircjm.limon.common.vo.DbBaseEntity;
+import com.aircjm.limon.vo.DbBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

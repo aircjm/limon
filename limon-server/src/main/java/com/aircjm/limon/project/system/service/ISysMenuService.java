@@ -2,7 +2,7 @@ package com.aircjm.limon.project.system.service;
 
 import java.util.List;
 import java.util.Set;
-import com.aircjm.limon.framework.web.domain.TreeSelect;
+import com.aircjm.limon.web.domain.TreeSelect;
 import com.aircjm.limon.project.system.domain.SysMenu;
 import com.aircjm.limon.project.system.domain.vo.RouterVo;
 

@@ -3,7 +3,7 @@ package com.aircjm.limon.project.system.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.aircjm.limon.common.utils.DictUtils;
+import com.aircjm.limon.utils.DictUtils;
 import com.aircjm.limon.project.system.domain.SysDictData;
 import com.aircjm.limon.project.system.mapper.SysDictDataMapper;
 import com.aircjm.limon.project.system.service.ISysDictDataService;

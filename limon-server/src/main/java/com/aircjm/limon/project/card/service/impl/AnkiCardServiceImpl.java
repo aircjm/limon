@@ -1,10 +1,10 @@
 package com.aircjm.limon.project.card.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.aircjm.limon.common.exception.CustomException;
-import com.aircjm.limon.common.utils.LocalDateUtils;
-import com.aircjm.limon.common.utils.StringUtils;
-import com.aircjm.limon.framework.web.domain.AjaxResult;
+import com.aircjm.limon.exception.CustomException;
+import com.aircjm.limon.utils.LocalDateUtils;
+import com.aircjm.limon.utils.StringUtils;
+import com.aircjm.limon.web.domain.AjaxResult;
 import com.aircjm.limon.project.anki.response.AnkiRespVo;
 import com.aircjm.limon.project.card.domain.AnkiCard;
 import com.aircjm.limon.project.card.mapper.AnkiCardMapper;

@@ -1,6 +1,6 @@
 package com.aircjm.limon.project.card.vo.request;
 
-import com.aircjm.limon.common.utils.StringUtils;
+import com.aircjm.limon.utils.StringUtils;
 import com.aircjm.limon.project.tag.domain.Tag;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

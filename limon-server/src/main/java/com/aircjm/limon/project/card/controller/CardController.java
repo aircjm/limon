@@ -1,7 +1,7 @@
 package com.aircjm.limon.project.card.controller;
 
-import com.aircjm.limon.common.vo.RestReult;
-import com.aircjm.limon.framework.web.domain.AjaxResult;
+import com.aircjm.limon.vo.RestReult;
+import com.aircjm.limon.web.domain.AjaxResult;
 import com.aircjm.limon.project.card.service.AnkiCardService;
 import com.aircjm.limon.project.card.vo.request.GetCardRequest;
 import com.aircjm.limon.project.card.vo.request.SaveCardRequest;

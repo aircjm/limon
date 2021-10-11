@@ -2,9 +2,9 @@ package com.aircjm.limon.project.monitor.domain;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excel;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excel.ColumnType;
-import com.aircjm.limon.framework.web.domain.BaseEntity;
+import com.aircjm.limon.aspectj.lang.annotation.Excel;
+import com.aircjm.limon.aspectj.lang.annotation.Excel.ColumnType;
+import com.aircjm.limon.web.domain.BaseEntity;
 
 /**
  * 操作日志记录表 oper_log

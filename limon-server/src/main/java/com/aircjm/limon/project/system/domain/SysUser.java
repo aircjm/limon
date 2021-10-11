@@ -1,10 +1,10 @@
 package com.aircjm.limon.project.system.domain;
 
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excel;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excel.ColumnType;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excel.Type;
-import com.aircjm.limon.framework.aspectj.lang.annotation.Excels;
-import com.aircjm.limon.framework.web.domain.BaseEntity;
+import com.aircjm.limon.aspectj.lang.annotation.Excel;
+import com.aircjm.limon.aspectj.lang.annotation.Excel.ColumnType;
+import com.aircjm.limon.aspectj.lang.annotation.Excel.Type;
+import com.aircjm.limon.aspectj.lang.annotation.Excels;
+import com.aircjm.limon.web.domain.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;

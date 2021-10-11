@@ -1,6 +1,6 @@
 package com.aircjm.limon.project.monitor.service.impl;
 
-import com.aircjm.limon.common.exception.CustomException;
+import com.aircjm.limon.exception.CustomException;
 import com.aircjm.limon.project.monitor.service.RescueTimeService;
 import com.aircjm.limon.project.system.domain.SysUser;
 import com.aircjm.limon.project.system.service.ISysUserService;

@@ -1,6 +1,6 @@
 package com.aircjm.limon.project.system.service;
 
-import com.aircjm.limon.framework.security.LoginUser;
+import com.aircjm.limon.security.LoginUser;
 import com.aircjm.limon.project.monitor.domain.SysUserOnline;
 
 /**

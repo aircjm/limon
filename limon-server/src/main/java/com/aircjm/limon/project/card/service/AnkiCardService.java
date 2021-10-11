@@ -1,6 +1,6 @@
 package com.aircjm.limon.project.card.service;
 
-import com.aircjm.limon.framework.web.domain.AjaxResult;
+import com.aircjm.limon.web.domain.AjaxResult;
 import com.aircjm.limon.project.card.vo.request.GetCardRequest;
 import com.aircjm.limon.project.card.vo.request.SaveCardRequest;
 import com.aircjm.limon.project.card.vo.request.SetAnkiRequest;

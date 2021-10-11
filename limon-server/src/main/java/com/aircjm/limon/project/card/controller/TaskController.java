@@ -1,7 +1,7 @@
 package com.aircjm.limon.project.card.controller;
 
-import com.aircjm.limon.common.utils.SecurityUtils;
-import com.aircjm.limon.common.vo.RestReult;
+import com.aircjm.limon.utils.SecurityUtils;
+import com.aircjm.limon.vo.RestReult;
 import com.aircjm.limon.project.card.domain.TaskAttachment;
 import com.aircjm.limon.project.card.service.TaskService;
 import com.aircjm.limon.project.card.vo.request.DelTaskRequest;
