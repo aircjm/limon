@@ -6,7 +6,7 @@ import com.aircjm.limon.utils.ServletUtils;
 import com.aircjm.limon.utils.StringUtils;
 import com.aircjm.limon.utils.ip.AddressUtils;
 import com.aircjm.limon.utils.ip.IpUtils;
-import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.redis.RedisCacheService;
 import com.aircjm.limon.security.LoginUser;
 import com.google.common.collect.Maps;
 import eu.bitwalker.useragentutils.UserAgent;
@@ -54,7 +54,7 @@ public class TokenService
     private static final Long MILLIS_MINUTE_TEN = 20 * 60 * 1000L;
 
     @Resource
-    private RedisCache redisCache;
+    private RedisCacheService redisCacheService;
 
     /**
      * 获取用户身份信息
@@ -71,7 +71,7 @@ public class TokenService
             // 解析对应的权限以及用户信息
             String uuid = (String) claims.get(Constants.LOGIN_USER_KEY);
             String userKey = getTokenKey(uuid);
-            LoginUser user = redisCache.getCacheObject(userKey);
+            LoginUser user = redisCacheService.getCacheObject(userKey);
             return user;
         }
         return null;
@@ -96,7 +96,7 @@ public class TokenService
         if (StringUtils.isNotEmpty(token))
         {
             String userKey = getTokenKey(token);
-            redisCache.deleteObject(userKey);
+            redisCacheService.deleteObject(userKey);
         }
     }
 
@@ -145,7 +145,7 @@ public class TokenService
         loginUser.setExpireTime(loginUser.getLoginTime() + expireTime * MILLIS_MINUTE);
         // 根据uuid将loginUser缓存
         String userKey = getTokenKey(loginUser.getToken());
-        redisCache.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
+        redisCacheService.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
     }
 
     /**

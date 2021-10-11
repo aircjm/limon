@@ -8,7 +8,7 @@ import com.aircjm.limon.exception.user.UserPasswordNotMatchException;
 import com.aircjm.limon.utils.MessageUtils;
 import com.aircjm.limon.manager.AsyncManager;
 import com.aircjm.limon.manager.factory.AsyncFactory;
-import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.redis.RedisCacheService;
 import com.aircjm.limon.security.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,7 +34,7 @@ public class SysLoginService
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private RedisCache redisCache;
+    private RedisCacheService redisCacheService;
 
     /**
      * 登录验证
@@ -48,8 +48,8 @@ public class SysLoginService
     public String login(String username, String password, String code, String uuid)
     {
         String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
-        String captcha = redisCache.getCacheObject(verifyKey);
-        redisCache.deleteObject(verifyKey);
+        String captcha = redisCacheService.getCacheObject(verifyKey);
+        redisCacheService.deleteObject(verifyKey);
         if (captcha == null)
         {
             AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.captcha.expire")));

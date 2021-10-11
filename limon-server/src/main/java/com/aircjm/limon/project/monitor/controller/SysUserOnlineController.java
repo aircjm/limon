@@ -15,7 +15,7 @@ import com.aircjm.limon.constant.Constants;
 import com.aircjm.limon.utils.StringUtils;
 import com.aircjm.limon.aspectj.lang.annotation.Log;
 import com.aircjm.limon.aspectj.lang.enums.BusinessType;
-import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.redis.RedisCacheService;
 import com.aircjm.limon.security.LoginUser;
 import com.aircjm.limon.web.controller.BaseController;
 import com.aircjm.limon.web.domain.AjaxResult;
@@ -36,17 +36,17 @@ public class SysUserOnlineController extends BaseController
     private ISysUserOnlineService userOnlineService;
 
     @Autowired
-    private RedisCache redisCache;
+    private RedisCacheService redisCacheService;
 
     @PreAuthorize("@ss.hasPermi('monitor:online:list')")
     @GetMapping("/list")
     public TableDataInfo list(String ipaddr, String userName)
     {
-        Collection<String> keys = redisCache.keys(Constants.LOGIN_TOKEN_KEY + "*");
+        Collection<String> keys = redisCacheService.keys(Constants.LOGIN_TOKEN_KEY + "*");
         List<SysUserOnline> userOnlineList = new ArrayList<SysUserOnline>();
         for (String key : keys)
         {
-            LoginUser user = redisCache.getCacheObject(key);
+            LoginUser user = redisCacheService.getCacheObject(key);
             if (StringUtils.isNotEmpty(ipaddr) && StringUtils.isNotEmpty(userName))
             {
                 if (StringUtils.equals(ipaddr, user.getIpaddr()) && StringUtils.equals(userName, user.getUsername()))
@@ -86,7 +86,7 @@ public class SysUserOnlineController extends BaseController
     @DeleteMapping("/{tokenId}")
     public AjaxResult forceLogout(@PathVariable String tokenId)
     {
-        redisCache.deleteObject(Constants.LOGIN_TOKEN_KEY + tokenId);
+        redisCacheService.deleteObject(Constants.LOGIN_TOKEN_KEY + tokenId);
         return AjaxResult.success();
     }
 }

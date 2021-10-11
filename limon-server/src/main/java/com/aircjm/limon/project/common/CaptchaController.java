@@ -4,7 +4,7 @@ import com.aircjm.limon.constant.Constants;
 import com.aircjm.limon.utils.IdUtils;
 import com.aircjm.limon.utils.VerifyCodeUtils;
 import com.aircjm.limon.utils.sign.Base64;
-import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.redis.RedisCacheService;
 import com.aircjm.limon.web.domain.AjaxResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class CaptchaController
 {
     @Resource
-    private RedisCache redisCache;
+    private RedisCacheService redisCacheService;
 
     /**
      * 生成验证码
@@ -38,7 +38,7 @@ public class CaptchaController
         String uuid = String.valueOf(IdUtils.getId());
         String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
 
-        redisCache.setCacheObject(verifyKey, verifyCode, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
+        redisCacheService.setCacheObject(verifyKey, verifyCode, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
         // 生成图片
         int w = 111, h = 36;
         ByteArrayOutputStream stream = new ByteArrayOutputStream();

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.aircjm.limon.constant.Constants;
 import com.aircjm.limon.constant.UserConstants;
 import com.aircjm.limon.utils.StringUtils;
-import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.redis.RedisCacheService;
 import com.aircjm.limon.project.system.domain.SysConfig;
 import com.aircjm.limon.project.system.mapper.SysConfigMapper;
 import com.aircjm.limon.project.system.service.ISysConfigService;
@@ -27,7 +27,7 @@ public class SysConfigServiceImpl implements ISysConfigService
     private SysConfigMapper configMapper;
 
     @Autowired
-    private RedisCache redisCache;
+    private RedisCacheService redisCacheService;
 
     /**
      * 项目启动时，初始化参数到缓存
@@ -38,7 +38,7 @@ public class SysConfigServiceImpl implements ISysConfigService
         List<SysConfig> configsList = configMapper.selectConfigList(new SysConfig());
         for (SysConfig config : configsList)
         {
-            redisCache.setCacheObject(getCacheKey(config.getConfigKey()), config.getConfigValue());
+            redisCacheService.setCacheObject(getCacheKey(config.getConfigKey()), config.getConfigValue());
         }
     }
 
@@ -65,7 +65,7 @@ public class SysConfigServiceImpl implements ISysConfigService
     @Override
     public String selectConfigByKey(String configKey)
     {
-        String configValue = Convert.toStr(redisCache.getCacheObject(getCacheKey(configKey)));
+        String configValue = Convert.toStr(redisCacheService.getCacheObject(getCacheKey(configKey)));
         if (StringUtils.isNotEmpty(configValue))
         {
             return configValue;
@@ -75,7 +75,7 @@ public class SysConfigServiceImpl implements ISysConfigService
         SysConfig retConfig = configMapper.selectConfig(config);
         if (StringUtils.isNotNull(retConfig))
         {
-            redisCache.setCacheObject(getCacheKey(configKey), retConfig.getConfigValue());
+            redisCacheService.setCacheObject(getCacheKey(configKey), retConfig.getConfigValue());
             return retConfig.getConfigValue();
         }
         return StringUtils.EMPTY;
@@ -105,7 +105,7 @@ public class SysConfigServiceImpl implements ISysConfigService
         int row = configMapper.insertConfig(config);
         if (row > 0)
         {
-            redisCache.setCacheObject(getCacheKey(config.getConfigKey()), config.getConfigValue());
+            redisCacheService.setCacheObject(getCacheKey(config.getConfigKey()), config.getConfigValue());
         }
         return row;
     }
@@ -122,7 +122,7 @@ public class SysConfigServiceImpl implements ISysConfigService
         int row = configMapper.updateConfig(config);
         if (row > 0)
         {
-            redisCache.setCacheObject(getCacheKey(config.getConfigKey()), config.getConfigValue());
+            redisCacheService.setCacheObject(getCacheKey(config.getConfigKey()), config.getConfigValue());
         }
         return row;
     }
@@ -139,8 +139,8 @@ public class SysConfigServiceImpl implements ISysConfigService
         int count = configMapper.deleteConfigByIds(configIds);
         if (count > 0)
         {
-            Collection<String> keys = redisCache.keys(Constants.SYS_CONFIG_KEY + "*");
-            redisCache.deleteObject(keys);
+            Collection<String> keys = redisCacheService.keys(Constants.SYS_CONFIG_KEY + "*");
+            redisCacheService.deleteObject(keys);
         }
         return count;
     }
@@ -151,8 +151,8 @@ public class SysConfigServiceImpl implements ISysConfigService
     @Override
     public void clearCache()
     {
-        Collection<String> keys = redisCache.keys(Constants.SYS_CONFIG_KEY + "*");
-        redisCache.deleteObject(keys);
+        Collection<String> keys = redisCacheService.keys(Constants.SYS_CONFIG_KEY + "*");
+        redisCacheService.deleteObject(keys);
     }
 
     /**

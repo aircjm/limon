@@ -1,9 +1,9 @@
 package com.aircjm.limon.redis;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -14,8 +14,10 @@ import java.util.concurrent.TimeUnit;
  **/
 @SuppressWarnings(value = {"unchecked", "rawtypes"})
 @Component
-public class RedisCache {
-    @Autowired
+public class RedisCacheService {
+
+
+    @Resource
     public RedisTemplate redisTemplate;
 
     /**

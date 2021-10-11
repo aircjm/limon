@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import com.aircjm.limon.constant.Constants;
 import com.aircjm.limon.utils.spring.SpringUtils;
-import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.redis.RedisCacheService;
 import com.aircjm.limon.project.system.domain.SysDictData;
 
 /**
@@ -22,7 +22,7 @@ public class DictUtils
      */
     public static void setDictCache(String key, List<SysDictData> dictDatas)
     {
-        SpringUtils.getBean(RedisCache.class).setCacheObject(getCacheKey(key), dictDatas);
+        SpringUtils.getBean(RedisCacheService.class).setCacheObject(getCacheKey(key), dictDatas);
     }
 
     /**
@@ -33,7 +33,7 @@ public class DictUtils
      */
     public static List<SysDictData> getDictCache(String key)
     {
-        Object cacheObj = SpringUtils.getBean(RedisCache.class).getCacheObject(getCacheKey(key));
+        Object cacheObj = SpringUtils.getBean(RedisCacheService.class).getCacheObject(getCacheKey(key));
         if (StringUtils.isNotNull(cacheObj))
         {
             List<SysDictData> DictDatas = StringUtils.cast(cacheObj);
@@ -47,8 +47,8 @@ public class DictUtils
      */
     public static void clearDictCache()
     {
-        Collection<String> keys = SpringUtils.getBean(RedisCache.class).keys(Constants.SYS_DICT_KEY + "*");
-        SpringUtils.getBean(RedisCache.class).deleteObject(keys);
+        Collection<String> keys = SpringUtils.getBean(RedisCacheService.class).keys(Constants.SYS_DICT_KEY + "*");
+        SpringUtils.getBean(RedisCacheService.class).deleteObject(keys);
     }
 
     /**

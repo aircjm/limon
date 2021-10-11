@@ -11,7 +11,7 @@ import com.aircjm.limon.filter.RepeatedlyRequestWrapper;
 import com.aircjm.limon.utils.StringUtils;
 import com.aircjm.limon.utils.http.HttpHelper;
 import com.aircjm.limon.interceptor.RepeatSubmitInterceptor;
-import com.aircjm.limon.redis.RedisCache;
+import com.aircjm.limon.redis.RedisCacheService;
 
 /**
  * 判断请求url和数据是否和上一次相同，
@@ -29,7 +29,7 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor
     public final String CACHE_REPEAT_KEY = "repeatData";
 
     @Autowired
-    private RedisCache redisCache;
+    private RedisCacheService redisCacheService;
 
     /**
      * 间隔时间，单位:秒 默认10秒
@@ -62,7 +62,7 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor
         // 请求地址（作为存放cache的key值）
         String url = request.getRequestURI();
 
-        Object sessionObj = redisCache.getCacheObject(CACHE_REPEAT_KEY);
+        Object sessionObj = redisCacheService.getCacheObject(CACHE_REPEAT_KEY);
         if (sessionObj != null)
         {
             Map<String, Object> sessionMap = (Map<String, Object>) sessionObj;
@@ -77,7 +77,7 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor
         }
         Map<String, Object> cacheMap = new HashMap<String, Object>();
         cacheMap.put(url, nowDataMap);
-        redisCache.setCacheObject(CACHE_REPEAT_KEY, cacheMap, intervalTime, TimeUnit.SECONDS);
+        redisCacheService.setCacheObject(CACHE_REPEAT_KEY, cacheMap, intervalTime, TimeUnit.SECONDS);
         return false;
     }
 
