@@ -1,5 +1,5 @@
 <template>
-  <q-card class="q-gutter">
+  <q-card class="q-gutter" style="width: 800px; max-width: 70vw;">
     <q-card-section>
       <div class="text-h7" v-if="id">
         Edit Record {{ id }}
