@@ -25,19 +25,19 @@
         </div>
         <div class="row q-gutter-sm">
           <div style="width: 330px">
-            <date-time-picker
+            <date-time-stamp-picker
               label="通知时间"
               v-model="form.endTime"
             />
           </div>
           <div style="width: 330px">
-            <date-time-picker
+            <date-time-stamp-picker
               label="开始时间"
               v-model="form.startTime"
             />
           </div>
           <div style="width: 330px">
-            <date-time-picker
+            <date-time-stamp-picker
               label="截止时间"
               v-model="form.dueTime"
             />
@@ -184,6 +184,7 @@ import {reactive, ref, toRefs} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useRoute, useRouter} from "vue-router";
 import DateTimePicker from "../../components/form/DateTimePicker";
+import DateTimeStampPicker from "../../components/form/DateTimeStampPicker";
 import TipTapEditor from "../../components/tipTapEditor/TipTapEditor";
 import TaskModel from "src/classes/task";
 
@@ -193,7 +194,8 @@ export default defineComponent(
     name: 'TaskEdit',
     components: {
       TipTapEditor,
-      DateTimePicker
+      DateTimePicker,
+      DateTimeStampPicker
     },
     props: {
       taskId: {

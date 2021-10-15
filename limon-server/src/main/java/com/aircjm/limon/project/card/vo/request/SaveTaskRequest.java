@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -68,35 +69,30 @@ public class SaveTaskRequest {
      * 截至时间
      */
     @ApiModelProperty(value = "截至时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dueTime;
 
     /**
      * 完成时间
      */
     @ApiModelProperty(value = "完成时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime doneTime;
 
     /**
      * 持续时间-开始时间
      */
     @ApiModelProperty(value = "持续时间-开始时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime startTime;
 
     /**
      * 持续时间-结束时间
      */
     @ApiModelProperty(value = "持续时间-结束时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endTime;
 
     /**
      * 提醒时间
      */
     @ApiModelProperty(value = "提醒时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime reminderTime;
 
     /**
