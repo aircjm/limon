@@ -19,7 +19,11 @@ export default class TaskModel extends AbstractModel {
      */
     this.taskHtml = ''
 
-    /**
+
+    this.reminderTime = null
+
+
+      /**
      * 内容json
      * @type {null}
      */

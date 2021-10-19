@@ -10,7 +10,6 @@
     </q-card-section>
     <q-separator/>
     <q-card-section>
-      <q-form class="q-gutter-y-md">
         <q-input
           v-model="form.title"
           label="title"
@@ -27,19 +26,19 @@
           <div style="width: 330px">
             <date-time-stamp-picker
               label="通知时间"
-              v-model="form.endTime"
+              v-model:timestamp="form.reminderTime"
             />
           </div>
           <div style="width: 330px">
             <date-time-stamp-picker
               label="开始时间"
-              v-model="form.startTime"
+              v-model:timestamp="form.startTime"
             />
           </div>
           <div style="width: 330px">
             <date-time-stamp-picker
               label="截止时间"
-              v-model="form.dueTime"
+              v-model:timestamp="form.endTime"
             />
           </div>
         </div>
@@ -69,7 +68,6 @@
             </q-select>
           </div>
         </div>
-      </q-form>
     </q-card-section>
     <q-card-section>
       <div>
@@ -199,7 +197,7 @@ export default defineComponent(
     },
     props: {
       taskId: {
-        type: Number
+        type: String
       }
     },
     emits: ['close'],
@@ -341,7 +339,7 @@ export default defineComponent(
       }
 
       return {
-        ...toRefs(state), toAddTag, filterTag, filterTagAbort,
+        ...toRefs(state), toAddTag, filterTag, filterTagAbort,finishUploadPic,
         addTag, onSubmit, autoSave, uploadPic, cancelTask, updateEditorValue
       }
     }

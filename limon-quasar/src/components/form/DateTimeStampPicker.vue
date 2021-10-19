@@ -6,7 +6,7 @@
     v-model="text"
     :label="label"
     clearable
-    @clear="value = 0"
+    @clear="value = null"
   >
     <template v-slot:append>
       <q-icon name="event" class="cursor-pointer">
@@ -14,10 +14,10 @@
           <div>
             <div v-if="switchDate">
               <q-date v-model="value" mask="x">
-                  <div class="row items-center justify-between">
-                    <q-btn label="Time" color="primary" @click="switchDate= false"></q-btn>
-                    <q-btn v-close-popup label="Close" color="primary" flat/>
-                  </div>
+                <div class="row items-center justify-between">
+                  <q-btn label="Time" color="primary" @click="switchDate= false"></q-btn>
+                  <q-btn v-close-popup label="Close" color="primary" flat/>
+                </div>
               </q-date>
             </div>
             <div v-else>
@@ -39,24 +39,22 @@
 </template>
 
 <script>
-import {computed, defineComponent, ref} from "vue";
+import {computed, defineComponent, ref, watch} from "vue";
 import {date} from "quasar";
 
 export default defineComponent({
   props: {
-    modelValue: {
-      type: [Number, Object],
-      default: 0
+    timestamp: {
+      type: [Number, Object]
     },
     label: {
       type: String,
       required: true
     }
   },
-  emits: ["update:modelValue"],
-  setup(props, {emit}) {
-
-    const model = ref(props.modelValue);
+  emits: ["update:timestamp"],
+  setup(props, ctx) {
+    const model = ref(props.timestamp);
     const value = computed({
       get: () => {
         if (model.value) {
@@ -65,8 +63,16 @@ export default defineComponent({
       },
       set: (val) => {
         model.value = val;
-        return emit("update:modelValue", val);
+        console.log("timestamp set "+ val)
+        return ctx.emit('update:timestamp', val);
       }
+    });
+
+    watch(() => props.timestamp, (first, second) => {
+      if (first) {
+        value.value = null
+      }
+      value.value = first
     });
 
 
@@ -76,7 +82,7 @@ export default defineComponent({
       value,
       switchDate,
       text: computed(() => {
-        if (model.value === 0) {
+        if (model.value === null) {
           return '';
         }
         return date.formatDate(new Date(Number(model.value)), "YYYY-MM-DD HH:mm:ss");
