@@ -1,5 +1,5 @@
 <template>
-  <q-card class="q-gutter" style="width: 800px; max-width: 70vw;">
+  <q-card class="q-gutter" bordered="bordered" style="width: 800px; max-width: 70vw;">
     <q-card-section>
       <div class="text-h7" v-if="id">
         Edit Record {{ id }}
@@ -123,25 +123,27 @@
         </template>
       </q-uploader>
     </q-card-section>
-    <q-card-section>
-      <div class="q-gutter-md">
-        <q-btn
-          icon="save"
-          label="Submit"
-          type="submit"
-          color="primary"
-          @click="onSubmit"
-        />
-        <q-btn
-          class="mdi-book-cancel"
-          label="Cancel"
-          color="primary"
-          flat
-          v-close-popup
-          @click="cancelTask"
-        />
+    <q-card-actions vertical>
+      <div class="column items-end">
+        <div>
+          <q-btn
+            icon="save"
+            label="Submit"
+            type="submit"
+            color="primary"
+            @click="onSubmit"
+          />
+          <q-btn
+            class="mdi-book-cancel"
+            label="Cancel"
+            color="primary"
+            flat
+            v-close-popup
+            @click="cancelTask"
+          />
+        </div>
       </div>
-    </q-card-section>
+    </q-card-actions>
   </q-card>
   <q-dialog
     v-model="tag.editorFlag"
