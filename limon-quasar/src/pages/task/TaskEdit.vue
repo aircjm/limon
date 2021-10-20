@@ -1,5 +1,5 @@
 <template>
-  <q-card class="q-gutter" bordered="bordered" style="width: 800px; max-width: 70vw;">
+  <q-card class="q-gutter" bordered="bordered" style="width: 800px; max-width: 75vw;">
     <q-card-section>
       <div class="text-h7" v-if="id">
         Edit Record {{ id }}
@@ -9,7 +9,9 @@
       </div>
     </q-card-section>
     <q-separator/>
-    <q-card-section>
+
+    <q-card-section style="max-height: 75vh" class="scroll">
+      <q-card-section>
         <q-input
           v-model="form.title"
           label="title"
@@ -68,80 +70,78 @@
             </q-select>
           </div>
         </div>
-    </q-card-section>
-    <q-card-section>
-      <div>
-        <TipTapEditor v-if="editorFlag" :html="form.descHtml" @updateEditorValue="updateEditorValue"/>
-      </div>
-    </q-card-section>
-    <q-card-section>
-      <q-uploader label="自动上传"
-                  auto-upload
-                  :factory="uploadPic"
-                  @finish="finishUploadPic"
-      >
-        <template v-slot:list="scope">
-          <q-list separator>
+      </q-card-section>
+      <q-card-section>
+          <TipTapEditor v-if="editorFlag" :html="form.descHtml" @updateEditorValue="updateEditorValue"/>
+      </q-card-section>
+      <q-card-section>
+        <q-uploader label="自动上传"
+                    auto-upload
+                    :factory="uploadPic"
+                    @finish="finishUploadPic"
+        >
+          <template v-slot:list="scope">
+            <q-list separator>
 
-            <q-item v-for="file in scope.files" :key="file.name">
-              <q-item-section>
-                <q-item-label class="full-width ellipsis">
-                  {{ file.name }}
-                </q-item-label>
+              <q-item v-for="file in scope.files" :key="file.name">
+                <q-item-section>
+                  <q-item-label class="full-width ellipsis">
+                    {{ file.name }}
+                  </q-item-label>
 
-                <q-item-label caption>
-                  Status: {{ file.status }}
-                </q-item-label>
+                  <q-item-label caption>
+                    Status: {{ file.status }}
+                  </q-item-label>
 
-                <q-item-label caption>
-                  {{ file.__sizeLabel }} / {{ file.__progressLabel }}
-                </q-item-label>
-              </q-item-section>
+                  <q-item-label caption>
+                    {{ file.__sizeLabel }} / {{ file.__progressLabel }}
+                  </q-item-label>
+                </q-item-section>
 
-              <q-item-section
-                v-if="file.__img"
-                thumbnail
-                class="gt-xs"
-              >
-                <img :src="file.__img.src">
-              </q-item-section>
-
-              <q-item-section top side>
-                <q-btn
+                <q-item-section
+                  v-if="file.__img"
+                  thumbnail
                   class="gt-xs"
-                  size="12px"
-                  flat
-                  dense
-                  round
-                  icon="delete"
-                  @click="scope.removeFile(file)"
-                />
-              </q-item-section>
-            </q-item>
+                >
+                  <img :src="file.__img.src">
+                </q-item-section>
 
-          </q-list>
-        </template>
-      </q-uploader>
+                <q-item-section top side>
+                  <q-btn
+                    class="gt-xs"
+                    size="12px"
+                    flat
+                    dense
+                    round
+                    icon="delete"
+                    @click="scope.removeFile(file)"
+                  />
+                </q-item-section>
+              </q-item>
+
+            </q-list>
+          </template>
+        </q-uploader>
+      </q-card-section>
     </q-card-section>
-    <q-card-actions vertical>
-      <div class="column items-end">
-        <div>
-          <q-btn
-            icon="save"
-            label="Submit"
-            type="submit"
-            color="primary"
-            @click="onSubmit"
-          />
-          <q-btn
-            class="mdi-book-cancel"
-            label="Cancel"
-            color="primary"
-            flat
-            v-close-popup
-            @click="cancelTask"
-          />
-        </div>
+
+    <q-card-actions vertical align="right">
+      <div>
+        <q-btn
+          icon="save"
+          label="Submit"
+          type="submit"
+          color="primary"
+          @click="onSubmit"
+        />
+        <q-btn
+          class="mdi-book-cancel"
+          label="Cancel"
+          color="primary"
+          flat
+          v-close-popup
+          @click="cancelTask"
+        />
       </div>
     </q-card-actions>
   </q-card>
