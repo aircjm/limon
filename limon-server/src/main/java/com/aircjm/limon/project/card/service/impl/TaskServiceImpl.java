@@ -2,8 +2,6 @@ package com.aircjm.limon.project.card.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.aircjm.limon.exception.CustomException;
-import com.aircjm.limon.utils.DateUtils;
-import com.aircjm.limon.utils.StringUtils;
 import com.aircjm.limon.message.MessageService;
 import com.aircjm.limon.project.card.domain.Task;
 import com.aircjm.limon.project.card.domain.TaskAttachment;
@@ -13,6 +11,8 @@ import com.aircjm.limon.project.card.vo.request.QueryTaskRequest;
 import com.aircjm.limon.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.limon.project.card.vo.response.TaskDetailResponse;
 import com.aircjm.limon.project.system.service.AliyunOssService;
+import com.aircjm.limon.utils.DateUtils;
+import com.aircjm.limon.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -54,7 +54,7 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements Ta
             task.setCreateTime(LocalDateTime.now());
             saveOrUpdate(task);
         } else {
-            saveOrUpdate(task);
+            updateById(task);
         }
 
     }

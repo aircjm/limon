@@ -1,6 +1,8 @@
 package com.aircjm.limon.project.card.domain;
 
 import com.aircjm.limon.vo.DbBaseEntity;
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -69,30 +71,35 @@ public class Task extends DbBaseEntity<Task> {
      * 截至时间
      */
     @ApiModelProperty(value = "截至时间")
+    @TableField(updateStrategy= FieldStrategy.IGNORED)
     private LocalDateTime dueTime;
 
     /**
      * 完成时间
      */
     @ApiModelProperty(value = "完成时间")
+    @TableField(updateStrategy=FieldStrategy.IGNORED)
     private LocalDateTime doneTime;
 
     /**
      * 持续时间-开始时间
      */
     @ApiModelProperty(value = "持续时间-开始时间")
+    @TableField(updateStrategy= FieldStrategy.IGNORED)
     private LocalDateTime startTime;
 
     /**
      * 持续时间-结束时间
      */
     @ApiModelProperty(value = "持续时间-结束时间")
+    @TableField(updateStrategy= FieldStrategy.IGNORED)
     private LocalDateTime endTime;
 
     /**
      * 提醒时间
      */
     @ApiModelProperty(value = "提醒时间")
+    @TableField(updateStrategy= FieldStrategy.IGNORED)
     private LocalDateTime reminderTime;
 
     /**
