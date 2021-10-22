@@ -59,10 +59,6 @@ public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> i
     private Executor asyncExecutor;
 
     @Resource
-    private AnkiCardMapper ankiCardMapper;
-
-
-    @Resource
     private SystemConfigService systemConfigService;
 
     @Override
