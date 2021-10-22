@@ -1,4 +1,4 @@
-package com.aircjm.limon.project.card.constants;
+package com.aircjm.limon.business.card.constants;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.baomidou.mybatisplus.annotation.IEnum;
@@ -23,7 +23,6 @@ public enum TaskStatusEnum implements IEnum<Integer> {
 
 
     @Setter
-    @Getter
     @EnumValue
     private int value;
 
