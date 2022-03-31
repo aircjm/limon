@@ -24,7 +24,7 @@
 	</modules>
 
 	<properties>
-		<spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+		<spring-boot.version>2.5.12</spring-boot.version>
 		<java.version>8</java.version>
 		<mybatis-plus-boot-starter.version>3.4.3</mybatis-plus-boot-starter.version>
 		<knife4j.version>2.0.2</knife4j.version>
