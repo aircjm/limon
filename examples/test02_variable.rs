@@ -1,6 +1,5 @@
 fn main() {
     println!("Hello, world!");
-
     let mut x = 5;
     println!("x  is : {}", x.to_string());
     x = 6;
@@ -71,6 +70,6 @@ fn main() {
 
     let tuple:(i32, i32, u32, u64) = (1,2, 3,4);
 
-    println!("tuple is :{}", tuple.10)
+    // println!("tuple is :{}", tuple.10)
 
 }
