@@ -15,7 +15,7 @@ fn test_push_str() {
 }
 
 fn create_phone_number(numbers: &[u8]) -> String {
-    return "(" + ")";
+    return ["{", "}"].concat();
 }
 
 /// 转化对应数字为字符串
