@@ -1,0 +1,68 @@
+server:
+  # 服务器的HTTP端口，默认为8085
+  port: 8085
+  servlet:
+    # 应用的访问路径
+    context-path: /
+
+# 日志配置
+logging:
+  level:
+    com.aircjm: debug
+    org.springframework: warn
+
+# token配置
+token:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌秘钥
+  secret: abcdefghijklmnopqrstuvwxyzLIMON
+  # 令牌有效期（单位/分钟）
+  expireTime: 6000
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: flag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  mapper-locations: classpath*:mybatis/**/*Mapper.xml
+
+oss:
+  endpoint: https://oss-cn-beijing.aliyuncs.com
+  accessKeyId: LTAI4G2nebsvMQEiFfcXrqmo
+  accessKeySecret: UjFSzAz2NX7X1j1snGcvLckERLUW
+  bucketName: mingdrive
+  filePath: dash/
+
+
+# 防止XSS攻击
+xss:
+  # 过滤开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /system/notice/*
+  # 匹配链接
+  urlPatterns: /system/*,/monitor/*,/tool/*
+
+
+# 数据源配置
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db.limon.com:3306/limon?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: db_test
+    password: 12345678
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size:  10MB
+      # 设置总上传的文件大小
+      max-request-size:  20MB
