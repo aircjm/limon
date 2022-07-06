@@ -1,8 +1,4 @@
-/dist
-/src-bex/www
-/src-capacitor
-/src-cordova
-/.quasar
-/node_modules
-/src/assets
-/src/statics
+node_modules
+dist
+public
+package.json
