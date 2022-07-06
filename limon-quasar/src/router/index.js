@@ -1,29 +1,28 @@
-// default src/router/index.js content:
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+import { setupRouterGuard } from './guard'
+import { basicRoutes } from './routes'
 
-import {createMemoryHistory, createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
-import routes from './routes'
+const isHash = !!import.meta.env.VITE_APP_USE_HASH
+export const router = createRouter({
+  history: isHash ? createWebHashHistory('/') : createWebHistory('/'),
+  routes: [],
+  scrollBehavior: () => ({ left: 0, top: 0 }),
+})
 
-let router = null
-
-export default function (/* { store, ssrContext } */) {
-  const createHistory = process.env.SERVER
-    ? createMemoryHistory
-    : process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory
-
-  const Router = createRouter({
-    scrollBehavior: () => ({left: 0, top: 0}),
-    routes,
-
-    // Leave this as is and make changes in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
-    history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
+export function resetRouter() {
+  router.getRoutes().forEach((route) => {
+    const { name } = route
+    router.hasRoute(name) && router.removeRoute(name)
   })
-
-  router = Router
-
-  return Router
+  basicRoutes.forEach((route) => {
+    !router.hasRoute(route.name) && router.addRoute(route)
+  })
 }
 
-
-export {router}
+export function setupRouter(app) {
+  basicRoutes.forEach((route) => {
+    !router.hasRoute(route.name) && router.addRoute(route)
+  })
+  app.use(router)
+  setupRouterGuard(router)
+}
