@@ -14,7 +14,8 @@ os.system("npm install && export VUE_APP_PUBLIC_PATH=https://cdn.chenjiaming.org
 
 
 allfile = []
-curdir = "dist/spa"; #os.path.abspath(os.curdir)
+# index.html对应的目录
+curdir = "dist"; #os.path.abspath(os.curdir)
 def dirlist(path):
 
     for file in os.listdir(path):
