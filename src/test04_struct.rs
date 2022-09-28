@@ -18,8 +18,6 @@ mod test {
 
 
     #[test]
-    
-    
     struct User {
         id : u32,
         username : String,
