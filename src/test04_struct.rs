@@ -4,8 +4,7 @@ mod test {
     #[test]
     fn test() {
         println!("Hello, world!");
-    
-    
+
         let user = User {
             id : 10,
             username: String::from("test"),
@@ -30,7 +29,6 @@ mod test {
 
 
 }
-
 
 fn  main() {
     println!("hello");

@@ -1,3 +1,4 @@
+mod test_type;
 
 #[cfg(test)]
 mod tests {
