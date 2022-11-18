@@ -69,4 +69,15 @@ pub fn test_type_str() {
 }
 
 
+#[test]
+pub  fn test_int_add() {
+    let option = 100_i32.checked_add(50);
+    println!("{}", option.unwrap());
+
+
+
+    let git = 5_f64.sqrt() * 5_f64.sqrt();
+    assert_eq!(git, 5.);
+}
+
 
