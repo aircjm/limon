@@ -41,7 +41,7 @@
 		<swagger.version>2.9.2</swagger.version>
 		<oshi.version>3.9.1</oshi.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
-		<commons-text.version>1.8</commons-text.version>
+		<commons-text.version>1.10.0</commons-text.version>
 		<commons-pool2.version>2.8.0</commons-pool2.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
