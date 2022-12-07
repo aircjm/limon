@@ -1,4 +1,4 @@
-use std::any::{type_name};
+use std::any::type_name;
 
 ///
 /// rust type类型使用实践
@@ -10,17 +10,14 @@ pub struct Arguments {
     pub output: String,
 }
 
-
 #[test]
 pub fn print_usage() {
     eprintln!("123");
 }
 
-
-
 /*
- 对应类型的判断
- */
+对应类型的判断
+*/
 #[test]
 pub fn test_type() {
     let type_str = "";
@@ -30,13 +27,8 @@ pub fn test_type() {
 }
 
 fn type_print<T>(_: T) {
-    println!("{:?}", {type_name::<T>() });
+    println!("{:?}", { type_name::<T>() });
 }
-
-
-
-
-
 
 #[test]
 pub fn test_type_bool() {
@@ -50,8 +42,6 @@ pub fn test_type_bool() {
     println!("{}", true_type);
 }
 
-
-
 #[test]
 pub fn test_type_char() {
     // char 代表一个单独的 Unicode 字符,是一个 32 位的值
@@ -62,22 +52,14 @@ pub fn test_type_char() {
     assert_eq!(97 as char, 'a');
 }
 
+#[test]
+pub fn test_type_str() {}
 
 #[test]
-pub fn test_type_str() {
-
-}
-
-
-#[test]
-pub  fn test_int_add() {
+pub fn test_int_add() {
     let option = 100_i32.checked_add(50);
     println!("{}", option.unwrap());
-
-
 
     let git = 5_f64.sqrt() * 5_f64.sqrt();
     assert_eq!(git, 5.);
 }
-
-

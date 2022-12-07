@@ -1,4 +1,6 @@
 mod test_type;
+mod test_str;
+mod test_box;
 
 #[cfg(test)]
 mod tests {
