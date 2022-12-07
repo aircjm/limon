@@ -15,6 +15,19 @@ pub fn test_box() {
     person.name = None;
 
     println!("{:?}", person);
+
+    let mut list = Vec::new();
+
+    list.push(Person {
+        id: 1,
+        name: Some("lisa".to_string()),
+    });
+
+    list.push(Person {
+        id: 2,
+        name: Some("andy".to_string()),
+    });
+    println!("{:?}", list);
 }
 
 #[derive(Debug)]

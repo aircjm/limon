@@ -1,6 +1,7 @@
 mod test_type;
 mod test_str;
 mod test_box;
+mod test_owner;
 
 #[cfg(test)]
 mod tests {
