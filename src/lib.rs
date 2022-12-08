@@ -2,6 +2,7 @@ mod test_type;
 mod test_str;
 mod test_box;
 mod test_owner;
+mod test_vec;
 
 #[cfg(test)]
 mod tests {
