@@ -1,3 +1,5 @@
+use std::{collections::HashMap, ops::Add, rc::Rc};
+
 // 所有权只能被移动一次 移动了之后 变量就会变成未初始化的状态
 // 1. 不能在循环中移动
 #[test]
@@ -51,4 +53,28 @@ pub fn test_for_vec() {
     // let third = v[2]; // 错误:不能移动 Vec 的索引
     let third = v[2].clone(); // 错误:不能移动 Vec 的索引
     println!("{}", third);
+}
+
+#[test]
+pub fn test_rc() {
+    let new = Rc::new(5);
+    println!("{}", new); // 5
+    let int = 15;
+    println!("{}", new.add(int)); // 20
+
+    let old = new.clone();
+    println!("{}", old); // 5
+
+    let new_str = Rc::new("hello ".to_string());
+    // new_str.push_str("world"); // cannot borrow data in an `Rc` as mutable
+    println!("{}", new_str);
+}
+
+type Table = HashMap<String, Vec<String>>;
+
+#[test]
+pub fn test_table_type() {}
+
+fn show(table: Table) {
+    for ele in table {}
 }
