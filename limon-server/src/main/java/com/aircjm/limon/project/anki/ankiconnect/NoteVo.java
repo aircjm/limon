@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * @author aircjm
+ */
 @Data
 public class NoteVo {
     private String deckName = "Default";

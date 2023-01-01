@@ -35,7 +35,7 @@ public class TagController {
      */
     @PostMapping("/save")
     public Result<Tag> save(@RequestBody @Valid SaveTagRequest request) {
-        return Result.successData(tagService.save(request));
+        return Result.success(tagService.save(request));
     }
 
     /**
@@ -46,6 +46,6 @@ public class TagController {
     @PostMapping("/list")
     public Result<Page<TagDetailResponse> > allList(@RequestBody @Valid GetTagRequest request) {
         Page<TagDetailResponse> list = tagService.list(request);
-        return Result.successData(list);
+        return Result.success(list);
     }
 }

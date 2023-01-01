@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.util.Map;
 
+/**
+ * @author aircjm
+ */
 @Data
 public class AnkiVo {
 

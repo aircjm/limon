@@ -40,7 +40,7 @@ public class TaskController {
     @PostMapping("/save")
     public Result save(@RequestBody @Valid SaveTaskRequest request) {
         taskService.save(request);
-        return Result.successEmpty();
+        return Result.success();
     }
 
 
@@ -53,7 +53,7 @@ public class TaskController {
     @PostMapping("/del")
     public Result del(@RequestBody @Valid DelTaskRequest request) {
         taskService.del(request.getId());
-        return Result.successEmpty();
+        return Result.success();
     }
 
 
@@ -65,7 +65,7 @@ public class TaskController {
      */
     @GetMapping("/detail")
     public Result<TaskDetailResponse> detail(@RequestParam(value = "id") Long id) {
-        return Result.successData(taskService.detail(id));
+        return Result.success(taskService.detail(id));
     }
 
 
@@ -77,7 +77,7 @@ public class TaskController {
     @GetMapping("/notice")
     public Result noticeAdd() {
         taskService.noticeAdd();
-        return Result.successEmpty();
+        return Result.success();
     }
 
     /**
@@ -88,7 +88,7 @@ public class TaskController {
     @PostMapping("/list")
     public Result<Page<TaskDetailResponse>> list(@RequestBody @Valid QueryTaskRequest request) {
         Page<TaskDetailResponse> responsePage = taskService.list(request);
-        return Result.successData(responsePage);
+        return Result.success(responsePage);
     }
 
     /**
@@ -99,6 +99,6 @@ public class TaskController {
     @PostMapping(value = "/upload")
     public Result<List<TaskAttachment>> uploadFileList(@RequestParam(value = "file[]") List<MultipartFile> files, @RequestParam(value = "id") Long id) {
         // username todo
-        return Result.successData(taskService.uploadFileList(files, id, "username"));
+        return Result.success(taskService.uploadFileList(files, id, "username"));
     }
 }

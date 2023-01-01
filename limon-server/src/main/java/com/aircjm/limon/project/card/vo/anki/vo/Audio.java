@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * @author aircjm
+ */
 @Data
 public class Audio {
 

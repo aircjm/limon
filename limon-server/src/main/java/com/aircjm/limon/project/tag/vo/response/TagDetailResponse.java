@@ -1,10 +1,11 @@
 package com.aircjm.limon.project.tag.vo.response;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+/**
+ * @author aircjm
+ */
+@Data
 public class TagDetailResponse {
 
     private Long id;

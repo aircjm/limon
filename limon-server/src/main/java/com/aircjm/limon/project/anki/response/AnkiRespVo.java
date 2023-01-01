@@ -4,6 +4,9 @@ package com.aircjm.limon.project.anki.response;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * @author aircjm
+ */
 @Data
 public class AnkiRespVo {
 
