@@ -20,3 +20,10 @@ spring:
         maxwait: 20000
         # 连接池中的最小空闲连接
         minidle: 1
+
+
+knife4j:
+  enable: true
+  openapi:
+    title: Knife4j官方文档
+    description: "测试"
