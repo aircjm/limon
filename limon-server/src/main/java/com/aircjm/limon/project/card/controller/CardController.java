@@ -32,34 +32,34 @@ public class CardController {
     @GetMapping("/refreshAllCard")
     public Result refreshAllCard() {
         ankiCardService.asyncUpdateAllCard();
-        return Result.successEmpty();
+        return Result.success();
     }
 
 
     @PostMapping("/save")
     public Result savePage(@RequestBody @Valid SaveCardRequest request) {
         ankiCardService.saveCard(request);
-        return Result.successEmpty();
+        return Result.success();
     }
 
     @PostMapping("/exportCard")
     public Result exportCard(@RequestBody @Valid GetCardRequest request) {
         Result ajaxResult = ankiCardService.exportCard(request);
-        return Result.successData(ajaxResult);
+        return Result.success(ajaxResult);
     }
 
 
     @PostMapping("/list")
     public Result getCardList(@RequestBody @Valid GetCardRequest request) {
         Page<TaskDetailResponse> page = ankiCardService.getCardList(request);
-        return Result.successData(page);
+        return Result.success(page);
     }
 
 
     @PostMapping("/setAnki")
     public Result setAnki(@RequestBody @Valid SetAnkiRequest request) {
         ankiCardService.setAnki(request);
-        return Result.successEmpty();
+        return Result.success();
     }
 
 
