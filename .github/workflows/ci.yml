@@ -7,7 +7,6 @@ on:
 jobs:
   push-image:
     name: Push Docker image
-#    needs: [ test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,22 +15,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-#          cache: maven
       - name: Build Image with Maven
         run: |
-#          cd limon-ui && mvn -B install
           cd ../limon-server
           mvn -B -Dmaven.test.skip=true spring-boot:build-image -Ddocker.image-name=aircjm/limon:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }}
-      - name: Caching Maven Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
   push-native-image:
     name: Push Docker native image
-    #    needs: [ test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -40,10 +29,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: maven
       - name: Build Image with Maven
         run: |
-          #          cd limon-ui && mvn -B install
           cd ../limon-server
           mvn -B -Dmaven.test.skip=true -Pnative spring-boot:build-image -Ddocker.image-name=aircjm/limon-native:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }}
 #  deploy:
