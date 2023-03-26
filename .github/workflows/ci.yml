@@ -16,7 +16,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: maven
+#          cache: maven
       - name: Build Image with Maven
         run: |
 #          cd limon-ui && mvn -B install
