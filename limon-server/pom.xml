@@ -94,6 +94,9 @@
 							<url>https://index.docker.io/v2</url>
 						</publishRegistry>
 					</docker>
+					<compilerArguments>
+						<parameters>true</parameters>
+					</compilerArguments>
 				</configuration>
 			</plugin>
 			<plugin>
