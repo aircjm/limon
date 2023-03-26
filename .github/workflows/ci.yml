@@ -5,20 +5,20 @@ on:
     branches: [ master ]
 
 jobs:
-  push-image:
-    name: Push Docker image
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-      - name: Build Image with Maven
-        run: |
-          cd limon-server
-          mvn -B -Dmaven.test.skip=true spring-boot:build-image -Ddocker.image-name=aircjm/limon:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }}
+#  push-image:
+  #    name: Push Docker image
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      - uses: actions/checkout@v2
+  #      - name: Set up JDK 17
+  #        uses: actions/setup-java@v2
+  #        with:
+  #          java-version: '17'
+  #          distribution: 'temurin'
+  #      - name: Build Image with Maven
+  #        run: |
+  #          cd limon-server
+  #          mvn -B -Dmaven.test.skip=true spring-boot:build-image -Ddocker.image-name=aircjm/limon:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }}
   push-native-image:
     name: Push Docker native image
     runs-on: ubuntu-latest
@@ -32,4 +32,4 @@ jobs:
       - name: Build Image with Maven
         run: |
           cd limon-server
-          mvn -B -Dmaven.test.skip=true -Pnative spring-boot:build-image -Ddocker.image-name=aircjm/limon-native:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }} -Dspring.native.build-args="-H:EnableURLProtocols=http -H:+AddAllCharsets -H:ReflectionConfigurationFiles=./reflect-config.json -J-XX:+UseContainerSupport -J--add-opens=java.base/java.lang.invoke=ALL-UNNAMED -J--add-opens=java.base/java.nio=ALL-UNNAMED -J--add-opens=java.base/java.util=ALL-UNNAMED -J--add-opens=java.base/sun.nio.ch=ALL-UNNAMED -J--add-opens=java.management/sun.management=ALL-UNNAMED -J--add-modules=java.xml.bind"
+          mvn -B -Dmaven.test.skip=true -Pnative spring-boot:build-image
