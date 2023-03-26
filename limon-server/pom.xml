@@ -82,22 +82,25 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<image>
-						<name>${docker.image-name}</name>
-						<publish>true</publish>
-					</image>
-					<docker>
-						<publishRegistry>
-							<username>${docker.username}</username>
-							<password>${docker.password}</password>
-							<url>https://index.docker.io/v2</url>
-						</publishRegistry>
-					</docker>
-					<compilerArguments>
-						<parameters>true</parameters>
-					</compilerArguments>
-				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-image</goal>
+						</goals>
+						<configuration>
+							<image>
+								<name>${docker.image-name}</name>
+								<tag>${project.version}</tag>
+								<publish>true</publish>
+								<registry>
+									<username>${docker.username}</username>
+									<password>${docker.password}</password>
+									<url>https://index.docker.io/v2</url>
+								</registry>
+							</image>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
