@@ -1,9 +1,9 @@
 package com.aircjm.limon.project.tag.vo;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
 
 /**
  * 请求保存标签数据vo
@@ -13,13 +13,13 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class SaveTagRequest {
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     private Long id;
 
-    @ApiModelProperty(value = "标签名称")
+    @Schema(name = "标签名称")
     @NotEmpty(message = "名称 不能为空")
     private String name;
 
-    @ApiModelProperty(value = "颜色 默认无色")
+    @Schema(name = "颜色 默认无色")
     private String color = "#fff";
 }

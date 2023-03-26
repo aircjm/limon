@@ -2,10 +2,10 @@ package com.aircjm.limon.project.card.vo.request;
 
 import cn.hutool.core.util.StrUtil;
 import com.aircjm.limon.project.tag.domain.Tag;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
@@ -17,28 +17,28 @@ import java.util.List;
 public class SaveCardRequest {
 
     @NotEmpty(message = "title(标题) 不能为空")
-    @ApiModelProperty(value = "标题")
+    @Schema(name = "标题")
     private String title;
 
-    @ApiModelProperty(value = "内容MD")
+    @Schema(name = "内容MD")
     private String contentMd = StrUtil.EMPTY;
-    @ApiModelProperty(value = "内容HTML")
+    @Schema(name = "内容HTML")
     private String contentHtml = StrUtil.EMPTY;
-    @ApiModelProperty(value = "内容Json")
+    @Schema(name = "内容Json")
     private String contentJson = StrUtil.EMPTY;
 
-    @ApiModelProperty(value = "清单id")
+    @Schema(name = "清单id")
     private Long listId;
 
-    @ApiModelProperty(value = "项目id")
+    @Schema(name = "项目id")
     private Long projectId;
 
-    @ApiModelProperty(value = "类型")
+    @Schema(name = "类型")
     private Integer type;
 
-    @ApiModelProperty(value = "状态")
+    @Schema(name = "状态")
     private Integer status;
 
-    @ApiModelProperty(value = "标签集合")
+    @Schema(name = "标签集合")
     private List<Tag> tagList;
 }

@@ -4,8 +4,6 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-
-
 import com.aircjm.limon.project.anki.response.AnkiRespVo;
 import com.aircjm.limon.project.card.domain.AnkiCard;
 import com.aircjm.limon.project.card.mapper.AnkiCardMapper;
@@ -28,10 +26,10 @@ import com.julienvey.trello.domain.Board;
 import com.julienvey.trello.domain.Card;
 import com.julienvey.trello.domain.Label;
 import com.julienvey.trello.domain.Member;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +94,7 @@ public class AnkiCardServiceImpl extends ServiceImpl<AnkiCardMapper, AnkiCard> i
 
     @Override
     public Result exportCard(GetCardRequest request) {
-        Page<TaskDetailResponse> page = getCardList(request);
+//        Page<TaskDetailResponse> page = getCardList(request);
         // todo
         return null;
     }

@@ -2,15 +2,14 @@ package com.aircjm.limon.project.tag.domain;
 
 import com.aircjm.limon.system.vo.DbBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 /**
  * @author aircjm
  */
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(description = "标签")
+@Schema(description = "标签")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -19,12 +18,12 @@ import lombok.*;
 @TableName(value = "lm_tag")
 public class Tag extends DbBaseEntity<Tag> {
 
-    @ApiModelProperty(value = "主键id")
+    @Schema(name = "主键id")
     private Long id;
 
-    @ApiModelProperty(value = "标签名称")
+    @Schema(name = "标签名称")
     private String name;
 
-    @ApiModelProperty(value = "标签颜色")
+    @Schema(name = "标签颜色")
     private String color;
 }

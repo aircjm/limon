@@ -5,8 +5,7 @@ import com.aircjm.limon.system.vo.DbBaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,7 +15,7 @@ import java.util.Date;
  * @author aircjm
  */
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value = "卡片")
+@Schema(name = "卡片")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +29,7 @@ public class AnkiCard extends DbBaseEntity<AnkiCard> {
     private String cardId;
 
 
-    @ApiModelProperty(value = "卡片标题")
+    @Schema(name = "卡片标题")
     private String cardTitle;
 
 
@@ -39,23 +38,23 @@ public class AnkiCard extends DbBaseEntity<AnkiCard> {
     private String boardId;
 
 //
-//    @ApiModelProperty(value = "细胞内容类型，支持html，markdown ")
+//    @Schema(name = "细胞内容类型，支持html，markdown ")
 //    private String descType;
 
-    @ApiModelProperty(value = "卡片内容描述")
+    @Schema(name = "卡片内容描述")
     private String cardDesc;
 
-    @ApiModelProperty(value = "anki 笔记id")
+    @Schema(name = "anki 笔记id")
     private String ankiNoteId;
 
-    @ApiModelProperty(value = "anki note 更新时间")
+    @Schema(name = "anki note 更新时间")
     private LocalDateTime ankiNoteUpdateTime;
 
 
-    @ApiModelProperty(value = "卡片内容描述HTML")
+    @Schema(name = "卡片内容描述HTML")
     private String descHtml;
 
-    @ApiModelProperty(value = "卡片状态")
+    @Schema(name = "卡片状态")
     private Integer status;
 
     private Date trelloUpdateTime;

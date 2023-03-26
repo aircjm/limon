@@ -1,9 +1,9 @@
 package com.aircjm.limon.project.card.vo.request;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * del 数据vo
@@ -14,6 +14,6 @@ import javax.validation.constraints.NotNull;
 public class DelTaskRequest {
 
     @NotNull
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     private Long id;
 }
