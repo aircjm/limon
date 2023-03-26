@@ -32,23 +32,4 @@ jobs:
       - name: Build Image with Maven
         run: |
           cd limon-server
-          mvn -B -Dmaven.test.skip=true -Pnative spring-boot:build-image -Ddocker.image-name=aircjm/limon-native:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }}
-#  deploy:
-#    name: Deploy to remote server
-#    needs: [ test, push-image ]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Deploy Docker Image
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.HOST }}
-#          username: ${{ secrets.SSH_USER }}
-#          key: ${{ secrets.SSH_KEY }}
-#          command_timeout: 10m
-#          script: |
-#            docker pull aircjm/limon:latest
-#            docker rm -f limon || true
-#            docker run -p 8082:6088 -e JAVA_OPTS="-Dfile.encoding=UTF-8 -Duser.timezone=GMT+8 -Dspring.jpa.hibernate.ddl-auto=create -Dspring.datasource.url=${{ secrets.DS_JDBC_URL }} -Dspring.datasource.username=${{ secrets.DS_USERNAME }} -Dspring.datasource.password=${{ secrets.DS_PASSWORD }}" -d --name limon aircjm/limon:latest
-
-
-
+          mvn -B -Dmaven.test.skip=true -Pnative spring-boot:build-image -Ddocker.image-name=aircjm/limon-native:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }} -Dspring.native.build-args="-H:EnableURLProtocols=http -H:+AddAllCharsets -H:ReflectionConfigurationFiles=./reflect-config.json -J-XX:+UseContainerSupport -J--add-opens=java.base/java.lang.invoke=ALL-UNNAMED -J--add-opens=java.base/java.nio=ALL-UNNAMED -J--add-opens=java.base/java.util=ALL-UNNAMED -J--add-opens=java.base/sun.nio.ch=ALL-UNNAMED -J--add-opens=java.management/sun.management=ALL-UNNAMED -J--add-modules=java.xml.bind"
