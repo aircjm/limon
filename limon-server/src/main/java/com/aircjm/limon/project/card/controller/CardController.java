@@ -7,11 +7,11 @@ import com.aircjm.limon.project.card.vo.request.SetAnkiRequest;
 import com.aircjm.limon.project.card.vo.response.TaskDetailResponse;
 import com.aircjm.limon.system.vo.Result;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import javax.validation.Valid;
 
 /**
  * trello对外卡片card提供接口
@@ -20,7 +20,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/api/card/")
-@Api(value = "CardController", description = "卡片实体API")
+@Tag(name = "CardController", description = "卡片实体API")
 public class CardController {
 
 

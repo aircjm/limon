@@ -8,12 +8,12 @@ import com.aircjm.limon.project.card.vo.request.SaveTaskRequest;
 import com.aircjm.limon.project.card.vo.response.TaskDetailResponse;
 import com.aircjm.limon.system.vo.Result;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/api/task/")
-@Api(value = "记录API")
+@Tag(name = "记录API")
 public class TaskController {
 
 

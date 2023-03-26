@@ -1,8 +1,8 @@
 package com.aircjm.limon.project.card.vo.request;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * 设置卡片的集合

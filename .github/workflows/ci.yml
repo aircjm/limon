@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build Image with Maven
+        run: |
+          mvn -B test
+      - name: Caching Maven Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+  push-image:
+    name: Push Docker image
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build Image with Maven
+        run: |
+          cd limon-ui && mvn -B install
+          cd ../limon-server
+          mvn -B -Dmaven.test.skip=true spring-boot:build-image -Ddocker.image-name=aircjm/limon:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }}
+      - name: Caching Maven Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+  push-native-image:
+    name: Push Docker native image
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build Image with Maven
+        run: |
+          cd limon-ui && mvn -B install
+          cd ../limon-server
+          mvn -B -Dmaven.test.skip=true -Pnative spring-boot:build-image -Ddocker.image-name=aircjm/limon-native:latest -Ddocker.username=${{ secrets.DOCKER_USERNAME }} -Ddocker.password=${{ secrets.DOCKER_PASSWORD }}
+  deploy:
+    name: Deploy to remote server
+    needs: [ test, push-image ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Docker Image
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          command_timeout: 10m
+          script: |
+            docker pull aircjm/limon:latest
+            docker rm -f limon || true
+            docker run -p 8082:6088 -e JAVA_OPTS="-Dfile.encoding=UTF-8 -Duser.timezone=GMT+8 -Dspring.jpa.hibernate.ddl-auto=create -Dspring.datasource.url=${{ secrets.DS_JDBC_URL }} -Dspring.datasource.username=${{ secrets.DS_USERNAME }} -Dspring.datasource.password=${{ secrets.DS_PASSWORD }}" -d --name limon aircjm/limon:latest
+
+
+

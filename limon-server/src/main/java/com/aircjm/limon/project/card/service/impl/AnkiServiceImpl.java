@@ -6,18 +6,13 @@ import com.aircjm.limon.project.card.service.AnkiService;
 import com.aircjm.limon.project.card.vo.anki.vo.Note;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 /**
  * @author aircjm
- * https://foosoft.net/projects/anki-connect/
+ * <a href="https://foosoft.net/projects/anki-connect/">anki-connect</a>
  */
 @Service
 @Slf4j
@@ -32,7 +27,7 @@ public class AnkiServiceImpl implements AnkiService {
 
     @Override
     public AnkiRespVo postAnki(AnkiVo ankiVo) {
-        HttpHeaders headers = new HttpHeaders();
+//        HttpHeaders headers = new HttpHeaders();
 //        String ankiUrl = configService.selectConfigByKey("anki.connect.url");
 //        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
 //        headers.setContentType(type);

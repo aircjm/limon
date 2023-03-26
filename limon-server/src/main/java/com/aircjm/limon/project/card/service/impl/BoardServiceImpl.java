@@ -1,13 +1,13 @@
 package com.aircjm.limon.project.card.service.impl;
 
+import com.aircjm.limon.project.card.service.BoardService;
+import com.aircjm.limon.project.card.vo.request.GetBoardRequest;
 import com.julienvey.trello.Trello;
 import com.julienvey.trello.domain.Board;
 import com.julienvey.trello.domain.Member;
-import com.aircjm.limon.project.card.service.BoardService;
-import com.aircjm.limon.project.card.vo.request.GetBoardRequest;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
