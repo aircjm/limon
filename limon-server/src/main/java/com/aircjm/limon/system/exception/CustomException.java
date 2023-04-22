@@ -1,6 +1,6 @@
 package com.aircjm.limon.system.exception;
 
-public class CustomException  extends RuntimeException {
+public class CustomException extends RuntimeException {
 
     private Integer code;
     private String msg;
