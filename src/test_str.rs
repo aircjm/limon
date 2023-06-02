@@ -1,13 +1,13 @@
 #[test]
 pub fn test_lowercase() {
     // lowercase
-    assert!("One".to_lowercase() == "one");
+    assert_eq!("One".to_lowercase(), "one");
 
     // contains
     assert!("I like".contains("like"));
 
     // trim
-    assert!(" like".trim() == "like");
+    assert_eq!(" like".trim(), "like");
 
     // start with
     for word in "veni, vidi, vici".split(", ") {

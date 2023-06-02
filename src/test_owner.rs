@@ -76,5 +76,5 @@ type Table = HashMap<String, Vec<String>>;
 pub fn test_table_type() {}
 
 fn show(table: Table) {
-    for ele in table {}
+    for _ele in table {}
 }

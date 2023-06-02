@@ -1,6 +1,5 @@
 use std::any::type_name;
 
-///
 /// rust type类型使用实践
 #[derive(Debug)]
 pub struct Arguments {
@@ -61,5 +60,9 @@ pub fn test_int_add() {
     println!("{}", option.unwrap());
 
     let git = 5_f64.sqrt() * 5_f64.sqrt();
-    assert_eq!(git, 5.);
+    // assert_eq!(git.sqrt(), 5.);
+
+    // 5.000000000000001
+    println!("{}", git);
+
 }

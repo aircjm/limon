@@ -2,7 +2,7 @@
 mod test_if {
     #[test]
     pub fn test_if() {
-        let mut a = 1;
+        let a = 1;
 
         if a > 0 {
             println!("{}", a);

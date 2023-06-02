@@ -6,14 +6,10 @@ mod test_vec;
 
 mod test_generics;
 
-mod  test_if;
 
-#[cfg(test)]
-mod tests {
+mod test_path;
 
-    #[test]
-    fn use_cat() {
-        // variable_use();
-    }
 
-}
+mod test_if;
+
+mod test_variable;
