@@ -20,3 +20,22 @@ pub fn test_mulit<T: Display, U :Display +Debug>(t: T, u: U) -> T {
     println!("{}, u is :{:?}", t, u);
     t
 }
+
+
+
+#[test]
+pub fn test_where(){
+    use_test_where("hello".to_string(), "world".to_string());
+}
+
+
+
+pub fn use_test_where<T, U>(t: T, u: U) -> T
+    where  T:Display,
+           U:Debug
+{
+
+    println!("{}", t);
+    println!("{}", u);
+    return t;
+}
