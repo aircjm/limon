@@ -13,3 +13,4 @@ mod test_path;
 mod test_if;
 
 mod test_variable;
+mod test_option;

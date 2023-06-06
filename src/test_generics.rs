@@ -32,10 +32,12 @@ pub fn test_where(){
 
 pub fn use_test_where<T, U>(t: T, u: U) -> T
     where  T:Display,
-           U:Debug
+           U:Display
 {
 
     println!("{}", t);
     println!("{}", u);
     return t;
 }
+
+
