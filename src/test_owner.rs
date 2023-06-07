@@ -73,7 +73,11 @@ pub fn test_rc() {
 type Table = HashMap<String, Vec<String>>;
 
 #[test]
-pub fn test_table_type() {}
+pub fn test_table_type() {
+    let a: HashMap<String, Vec<String>> = HashMap::default();
+    show(a);
+
+}
 
 fn show(table: Table) {
     for _ele in table {}

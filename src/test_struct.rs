@@ -2,7 +2,7 @@ use std::any::type_name;
 use std::f32::consts::PI;
 
 /// rust type类型使用实践
-#[derive(Debug)]
+#[derive(Debug,Default)]
 pub struct Arguments {
     pub target: String,
     pub replacement: String,
@@ -94,7 +94,7 @@ impl Arguments {
 
 #[test]
 pub fn function_new() {
-    let arguments = Arguments::new();
+    let arguments =  Arguments::default();
     println!("{:?}", arguments);
 
     assert_eq!(arguments.check(), false);

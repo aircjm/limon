@@ -43,6 +43,14 @@ fn take_fifth_option(number_list: &Vec<i32>) -> Option<i32> {
 }
 
 
+#[test]
+pub fn test_take_fifth() {
+    let i = take_fifth(vec![20, 30, 34, 203, 12]);
+    println!("{}", i);
+    assert_eq!(i, 12);
+}
+
+
 
 #[test]
 pub fn test_some_unwrap() {

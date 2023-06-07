@@ -2,7 +2,7 @@ use std::fmt::{Display, Debug};
 
 #[test]
 pub fn test() {
-    // test_single(12);
+    test_single(12);
 
     test_mulit(50, "string".to_string());
 }
