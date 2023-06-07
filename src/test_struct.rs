@@ -1,4 +1,5 @@
 use std::any::type_name;
+use std::f32::consts::PI;
 
 /// rust type类型使用实践
 #[derive(Debug)]
@@ -66,3 +67,38 @@ pub fn test_int_add() {
     println!("{}", git);
 
 }
+
+
+impl Arguments {
+
+    pub fn new() -> Self {
+        Arguments {
+            target: "".to_string(),
+            replacement: "".to_string(),
+            filename: "".to_string(),
+            output: "".to_string(),
+        }
+    }
+
+
+    fn check(&self) -> bool {
+        return self.replacement == "hello".to_string();
+    }
+
+    fn check_out(&self, out: String) -> bool {
+        return self.replacement == out;
+    }
+
+}
+
+
+#[test]
+pub fn function_new() {
+    let arguments = Arguments::new();
+    println!("{:?}", arguments);
+
+    assert_eq!(arguments.check(), false);
+    assert_eq!(arguments.check_out("".to_string()), true);
+}
+
+

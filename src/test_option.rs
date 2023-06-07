@@ -73,7 +73,7 @@ pub fn test_none_unwrap() {
 
 #[test]
 pub fn test_unwrap_2() {
-    let str = "";
+    let input_str = "";
 }
 
 
