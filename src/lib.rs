@@ -16,3 +16,4 @@ mod test_variable;
 mod test_option;
 mod test_result;
 mod test_hashmap;
+mod test_for;
