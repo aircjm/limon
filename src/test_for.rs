@@ -1,3 +1,5 @@
+use std::ops::Add;
+
 #[test]
 pub fn for_simple() {
 
@@ -30,3 +32,18 @@ pub fn for_vec() {
         println!("{}", x);
     }
 }
+
+
+#[test]
+pub fn vec_mut_inter() {
+    let mut vec_list: Vec<String> = vec!["hello".to_string(), "world".to_string(), "github".to_string()];
+    vec_list.iter_mut().for_each(|x| {
+        x.push_str(" you");
+        println!("{}", x);
+    });
+
+
+    println!("{:?}", vec_list);
+}
+
+
