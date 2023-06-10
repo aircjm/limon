@@ -41,3 +41,27 @@ pub fn use_test_where<T, U>(t: T, u: U) -> T
 }
 
 
+#[derive(Default)]
+pub struct GenericsPoint<T: Display, U: Display> {
+    x: T,
+    y: U
+}
+
+
+impl<T: Display, U: Display> GenericsPoint<T, U> {
+    pub fn x(&self) -> &T {
+        println!("{}", self.x);
+        &self.x
+    }
+}
+
+
+#[test]
+pub fn point() {
+    let mut point:GenericsPoint<i32, i32> = GenericsPoint::default();
+    point.x = 100;
+
+    let x1 = point.x;
+
+    println!("{}", x1);
+}
