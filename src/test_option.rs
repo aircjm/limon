@@ -77,11 +77,3 @@ pub fn test_none_unwrap() {
     // called `Option::unwrap()` on a `None` value
 }
 
-
-
-#[test]
-pub fn test_unwrap_2() {
-    let input_str = "";
-}
-
-

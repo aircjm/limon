@@ -1,5 +1,4 @@
 use std::any::type_name;
-use std::f32::consts::PI;
 
 /// rust type类型使用实践
 #[derive(Debug,Default)]
@@ -70,7 +69,6 @@ pub fn test_int_add() {
 
 
 impl Arguments {
-
     pub fn new() -> Self {
         Arguments {
             target: "".to_string(),
@@ -94,7 +92,7 @@ impl Arguments {
 
 #[test]
 pub fn function_new() {
-    let arguments =  Arguments::default();
+    let arguments =  Arguments::new();
     println!("{:?}", arguments);
 
     assert_eq!(arguments.check(), false);

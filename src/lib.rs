@@ -19,3 +19,4 @@ mod test_hashmap;
 mod test_for;
 mod test_trait;
 mod test_lambda;
+mod test_thread;

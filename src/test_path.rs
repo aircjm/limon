@@ -1,4 +1,3 @@
-use crate::test_path::path::test_path_sub2::path_fn_2;
 
 #[cfg(test)]
 mod path {
@@ -31,7 +30,7 @@ pub fn test_pt() {
     crate::test_path::path::test_path_sub::path_fn();
     path::test_path_sub::path_fn();
 
-    path_fn_2();
+    path::test_path_sub2::path_fn_2();
 
 
 }
