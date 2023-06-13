@@ -46,3 +46,25 @@ pub fn vec_mut_inter() {
 }
 
 
+#[test]
+pub fn list_inter() {
+
+    let a = ["12","13","14","15"];
+
+    for i in a {
+        println!("{}", i);
+    }
+    for c in a {
+        println!("{}", c);
+    }
+
+    println!("{:?}", a);
+
+    a.into_iter().for_each(|x| {
+        println!("{}", x.to_string().pop().unwrap());
+    });
+
+    println!("{:?}", a);
+
+}
+

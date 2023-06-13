@@ -20,3 +20,5 @@ mod test_for;
 mod test_trait;
 mod test_lambda;
 mod test_thread;
+mod test_time;
+mod test_file;
