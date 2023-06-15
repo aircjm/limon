@@ -56,6 +56,14 @@ impl<T: Display, U: Display> GenericsPoint<T, U> {
 }
 
 
+impl  GenericsPoint<i32, i32> {
+    pub fn y(&self) -> &i32 {
+        println!("{}", self.y);
+        &self.y
+    }
+}
+
+
 #[test]
 pub fn point() {
     let mut point:GenericsPoint<i32, i32> = GenericsPoint::default();
