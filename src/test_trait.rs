@@ -15,11 +15,11 @@ struct Animal {
 
 impl Dog for Animal {
     fn eat(&self) {
-        todo!()
+        println!("{}", "Dog is eat")
     }
 
     fn sit(&self) {
-        todo!()
+        println!("{}", "Dog is sit")
     }
 }
 
@@ -41,3 +41,27 @@ pub fn test_display() {
     println!("{}", animal);
 }
 
+
+
+mod trait_demo {
+    use std::io::Write;
+    use std::io::Result;
+
+    #[test]
+    pub fn test_demo_write() {
+        println!("{}", "hello trait");
+    }
+
+
+
+
+    pub fn say_hello<W: Write>(out: &mut W) ->  Result<()>{
+        out.write_all(b"hello world\n")?;
+        out.flush()
+    }
+
+
+
+
+
+}

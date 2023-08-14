@@ -10,4 +10,8 @@ pub fn hashmap_simple() {
 
     // hashmap的键值可以存储什么样的类型
 
+    for x in hash_map {
+        println!("{} , {}", x.0,x.1);
+    }
+
 }
