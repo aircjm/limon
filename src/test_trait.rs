@@ -55,13 +55,51 @@ mod trait_demo {
 
 
 
-    pub fn say_hello<W: Write>(out: &mut W) ->  Result<()>{
-        out.write_all(b"hello world\n")?;
-        out.flush()
+    // pub fn say_hello<W: Write>(out: &mut W) ->  Result<()>{
+    //     out.write_all(b"hello world\n")?;
+    //     out.flush()
+    // }
+}
+
+
+
+mod  sheep_trait {
+
+    struct Sheep {
+        name: String,
+        naked: bool
+    }
+
+    // 定义一个trait
+
+    trait Animal {
+        fn new(name: String) -> Self;
+        fn name(self) -> String;
     }
 
 
+    // 实现trait
 
 
+    impl Animal for Sheep{
+        fn new(name: String) -> Self {
+            Sheep {
+                name,
+                naked: false,
+            }
+
+        }
+
+        fn name(self) -> String {
+            self.name
+        }
+    }
+
+
+    #[test]
+    pub fn sheep_test() {
+        let sheep: Sheep = Animal::new("".to_string());
+        println!("{}, {}", sheep.name, sheep.naked)
+    }
 
 }

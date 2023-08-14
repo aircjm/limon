@@ -49,18 +49,18 @@ pub struct GenericsPoint<T: Display, U: Display> {
 
 
 impl<T: Display, U: Display> GenericsPoint<T, U> {
-    pub fn x(&self) -> &T {
-        println!("{}", self.x);
-        &self.x
-    }
+    // pub fn x(&self) -> &T {
+    //     println!("{}", self.x);
+    //     &self.x
+    // }
 }
 
 
 impl  GenericsPoint<i32, i32> {
-    pub fn y(&self) -> &i32 {
-        println!("{}", self.y);
-        &self.y
-    }
+    // pub fn y(&self) -> &i32 {
+    //     println!("{}", self.y);
+    //     &self.y
+    // }
 }
 
 
