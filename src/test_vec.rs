@@ -7,6 +7,11 @@ pub fn test_vec_capacity() {
 
 
 
+#[test]
+pub fn base_vec_use_get() {
+}
+
+
 pub fn get_test_str_vec() -> Vec<String> {
     let mut vec:Vec<String> = Vec::new();
 

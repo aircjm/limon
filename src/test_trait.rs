@@ -103,3 +103,17 @@ mod  sheep_trait {
     }
 
 }
+
+
+mod test_default_trait {
+
+    #[test]
+    pub fn  test_from () {
+
+        let string = String::from("hello world");
+        println!("{}", string);
+
+    }
+
+
+}
