@@ -42,17 +42,14 @@ pub fn test_display() {
 }
 
 
-
 mod trait_demo {
-    use std::io::Write;
     use std::io::Result;
+    use std::io::Write;
 
     #[test]
     pub fn test_demo_write() {
         println!("{}", "hello trait");
     }
-
-
 
 
     // pub fn say_hello<W: Write>(out: &mut W) ->  Result<()>{
@@ -62,12 +59,10 @@ mod trait_demo {
 }
 
 
-
-mod  sheep_trait {
-
+mod sheep_trait {
     struct Sheep {
         name: String,
-        naked: bool
+        naked: bool,
     }
 
     // 定义一个trait
@@ -81,13 +76,12 @@ mod  sheep_trait {
     // 实现trait
 
 
-    impl Animal for Sheep{
+    impl Animal for Sheep {
         fn new(name: String) -> Self {
             Sheep {
                 name,
                 naked: false,
             }
-
         }
 
         fn name(self) -> String {
@@ -101,19 +95,62 @@ mod  sheep_trait {
         let sheep: Sheep = Animal::new("".to_string());
         println!("{}, {}", sheep.name, sheep.naked)
     }
-
 }
 
 
 mod test_default_trait {
 
-    #[test]
-    pub fn  test_from () {
 
-        let string = String::from("hello world");
-        println!("{}", string);
+    pub trait Animal {
+        fn name(&self) -> String {
+            "an Animal".to_string()
+        }
+    }
 
+    pub struct Dog {
+        pub name: String,
+        pub sex: i32,
+    }
+
+    impl Animal for Dog {
+        fn name(&self) -> String {
+            self.name()
+        }
     }
 
 
+    #[test]
+    pub fn test_default_trait() {
+        let x: Dog = Dog { name: "".to_string(), sex: 0 };
+        println!("{}", x.name());
+    }
+}
+
+
+mod test_trait {
+    pub trait Jira {
+        fn summary(self) -> String;
+    }
+
+    pub struct Issue {
+        pub title: String,
+        pub context: String,
+    }
+
+    impl Jira for Issue {
+        fn summary(self) -> String {
+            self.title
+        }
+    }
+
+
+    #[test]
+    pub fn test_jira() {
+        let x = Issue {
+            title: "hello".to_string(),
+            context: "world".to_string(),
+        };
+
+        println!("{}", x.summary());
+    }
 }
