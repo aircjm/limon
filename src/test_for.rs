@@ -66,5 +66,16 @@ pub fn list_inter() {
 
     println!("{:?}", a);
 
+
 }
 
+
+
+#[test]
+fn test_for_step() {
+
+    for i in (0..10).step_by(2) {
+        println!("i: {i}");
+    }
+
+}

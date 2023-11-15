@@ -22,3 +22,4 @@ mod test_lambda;
 mod test_thread;
 mod test_time;
 mod test_file;
+mod exercises;

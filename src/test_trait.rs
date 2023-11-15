@@ -43,8 +43,7 @@ pub fn test_display() {
 
 
 mod trait_demo {
-    use std::io::Result;
-    use std::io::Write;
+
 
     #[test]
     pub fn test_demo_write() {
@@ -52,6 +51,8 @@ mod trait_demo {
     }
 
 
+    // use std::io::Result;
+    // use std::io::Write;
     // pub fn say_hello<W: Write>(out: &mut W) ->  Result<()>{
     //     out.write_all(b"hello world\n")?;
     //     out.flush()
