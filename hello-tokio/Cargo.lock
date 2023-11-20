@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "learn_rust"
+name = "hello-tokio"
 version = "0.1.0"
