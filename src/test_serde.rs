@@ -3,7 +3,6 @@ use serde_json::Value;
 
 #[derive(Serialize, Deserialize)]
 pub struct Person {
-    #[serde(rename= "fullName")]
     name: String,
     age: u8,
 }
@@ -26,8 +25,35 @@ pub fn test_deserialize() {
 
 #[test]
 pub fn test_serde_json_value() {
-
-
-    let json_str = "{\"name\":\"John\",\"age\":30}";
+    let json_str = "{\"name\":\"Allen\",\"age\":40}";
     let v: Value = serde_json::from_str(json_str).unwrap();
 }
+
+
+#[test]
+pub fn test_from_value() {
+    let value: Value = serde_json::json!({"name": "John", "age": 30});
+    let p: Person = serde_json::from_value(value).unwrap();
+    println!("Name: {}, Age: {}", p.name, p.age);
+}
+
+
+#[test]
+pub fn test_vec_serialize() {
+    let person1 = Person {
+        name: "1".to_string(),
+        age: 1,
+    };
+    let person2 = Person {
+        name: "2".to_string(),
+        age: 2,
+    };
+
+    let vec1 = vec![person2, person1];
+    println!("{}", serde_json::to_string(&vec1).unwrap());
+}
+
+
+
+
+
