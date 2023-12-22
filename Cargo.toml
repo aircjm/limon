@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [workspace]
-remebers = ["learn_axum", "learn_actix"]
+remebers = ["learn_axum", "learn_actix", "hello-tokio"]
 
 [dependencies]
 serde = {version = "1.0.186", features = ["derive"]}

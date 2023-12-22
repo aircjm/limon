@@ -18,3 +18,5 @@ mod test_time;
 mod test_file;
 mod exercises;
 mod test_serde;
+
+mod test_enum;
