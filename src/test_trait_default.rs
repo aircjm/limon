@@ -19,6 +19,16 @@ mod default {
     }
 
 
+    fn add_number(number: &mut i32) -> i32 {
+        *number += 3;
+        *number
+    }
 
+
+    #[test]
+    fn test_add_number() {
+        let i = add_number(&mut 12);
+        println!("{i}");
+    }
 
 }
