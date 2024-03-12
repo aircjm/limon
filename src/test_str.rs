@@ -1,5 +1,37 @@
 
 
+// Define a struct named User with a field name of type String
+pub struct User {
+    // when use str in struct, you can use String instance &str,because String use the lifetime of Struct.
+    name: String
+}
+
+// Define a struct named RoleUser with a lifetime parameter 'a and a field name of type reference to str
+pub struct RoleUser<'a> {
+    name: &'a str
+}
+
+// Define a test function to demonstrate usage of str in struct
+#[test]
+pub fn test_str_in_struct () {
+
+    // Create an instance of User struct with name field set to "kitty"
+    let user = User {
+        name: "kitty".to_string(),
+    };
+    // Print the name field of user struct
+    println!("{}", user.name);
+
+    // Create an instance of RoleUser struct with name field set to "admin"
+    let role_user = RoleUser {
+        name: "admin",
+    };
+    // Print the name field of role_user struct
+    println!("{}", role_user.name);
+}
+
+
+
 #[test]
 // Function to demonstrate different ways of creating and manipulating Strings
 pub fn test_string_guide() {
