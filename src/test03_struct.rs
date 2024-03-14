@@ -67,8 +67,9 @@ pub fn test_int_add() {
 
 }
 
-
+// Rust 将调用它的值作为第一个参数传递给方法，该参数必须具有特殊名称 self，self 的类型可以省略，所以 self，&self 或者 &mut self 实际上是 self: Queue， self: &Queue， 或者 self: &mut Queue 的简写。
 impl Arguments {
+
     pub fn new() -> Self {
         Arguments {
             target: "".to_string(),
@@ -76,6 +77,13 @@ impl Arguments {
             filename: "".to_string(),
             output: "".to_string(),
         }
+    }
+
+
+
+    pub fn get_only_self(self) -> String {
+        println!("{}", self.output);
+        return self.filename
     }
 
 
@@ -87,6 +95,39 @@ impl Arguments {
         return self.replacement == out;
     }
 
+
+    fn update_filename(&mut self, new_filename: &str) {
+        self.filename= new_filename.to_string()
+    }
+}
+
+
+
+#[test]
+fn test_update_free_ownership() {
+    let mut arg = Arguments {
+        target: "".to_string(),
+        replacement: "".to_string(),
+        filename: "123".to_string(),
+        output: "".to_string(),
+    };
+    let filename = arg.get_only_self();
+    println!("{filename}");
+    // value borrowed here after move
+    println!("arg filename is {}", arg.filename);
+}
+
+
+#[test]
+fn test_update_mut_self_param() {
+    let mut arg = Arguments {
+        target: "".to_string(),
+        replacement: "".to_string(),
+        filename: "".to_string(),
+        output: "".to_string(),
+    };
+    arg.update_filename("update field");
+    println!("{:?}", arg);
 }
 
 
