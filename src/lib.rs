@@ -1,4 +1,4 @@
-mod test_struct;
+mod test03_struct;
 mod test_str;
 mod test_box;
 mod test_owner;
