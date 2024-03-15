@@ -114,7 +114,7 @@ fn test_update_free_ownership() {
     let filename = arg.get_only_self();
     println!("{filename}");
     // value borrowed here after move
-    println!("arg filename is {}", arg.filename);
+    // println!("arg filename is {}", arg.filename);
 }
 
 

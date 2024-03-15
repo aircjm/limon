@@ -1,7 +1,7 @@
 mod test03_struct;
 mod test_str;
 mod test_box;
-mod test_owner;
+mod test_ownership;
 mod test_vec;
 mod test_generics;
 mod test_path;
