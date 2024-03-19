@@ -77,7 +77,7 @@ mod test_if {
         // if match two condition，only use the first one
         match a {
             a if a <= 50 => { println!("{a} <= 50") }
-            a if a > 6 => { println!("{a} > 6") }
+            // a if a > 6 => { println!("{a} > 6") }
             _ => {}
         }
     }
