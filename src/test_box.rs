@@ -1,4 +1,4 @@
-use std::fmt::{Debug, Formatter};
+use std::fmt::{Debug};
 
 #[test]
 pub fn test_box() {

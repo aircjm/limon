@@ -105,7 +105,7 @@ impl Arguments {
 
 #[test]
 fn test_update_free_ownership() {
-    let mut arg = Arguments {
+    let arg = Arguments {
         target: "".to_string(),
         replacement: "".to_string(),
         filename: "123".to_string(),

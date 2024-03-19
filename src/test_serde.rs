@@ -27,6 +27,7 @@ pub fn test_deserialize() {
 pub fn test_serde_json_value() {
     let json_str = "{\"name\":\"Allen\",\"age\":40}";
     let v: Value = serde_json::from_str(json_str).unwrap();
+    println!("{v}")
 }
 
 
