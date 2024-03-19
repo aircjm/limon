@@ -1,7 +1,8 @@
+use std::time::Duration;
+use crate::test_str::print;
 
 #[test]
 pub fn for_simple() {
-
     let mut a = 1;
     loop {
         println!("a is {}", a);
@@ -14,6 +15,36 @@ pub fn for_simple() {
     assert_eq!(a, 10000);
 }
 
+
+
+#[test]
+pub fn for_loop_break() {
+
+    // break can't break parent loop
+    loop {
+        println!("first loop");
+        let mut line = String::new();
+        loop {
+            println!("second loop");
+            std::thread::sleep(Duration::from_secs(3));
+            let b1 = std::io::stdin().read_line(&mut line).unwrap();
+            if line.eq("") {  }
+            break;
+        }
+    }
+
+
+    loop {
+        println!("first loop");
+        loop {
+            println!("second loop");
+            std::thread::sleep(Duration::from_secs(3));
+            break;
+        }
+    }
+
+
+}
 
 #[test]
 pub fn for_in() {
