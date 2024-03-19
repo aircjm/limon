@@ -71,13 +71,23 @@ mod test_if {
     }
 
 
+    #[test]
+    pub fn test_match_two_condition() {
+        let a = 10;
+        // if match two condition，only use the first one
+        match a {
+            a if a <= 50 => { println!("{a} <= 50") }
+            (a) if a > 6 => { println!("{a} > 6") }
+            _ => {}
+        }
+    }
 
     #[test]
     pub fn test_match_if() {
         let a = 10;
         let b = match a {
-            a if a <=0 => 0,
-            a if a >=0 => a,
+            a if a <= 0 => 0,
+            a if a >= 0 => a,
             _ => { -1 }
         };
         println!("{}", b);
