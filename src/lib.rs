@@ -21,3 +21,4 @@ mod test_serde;
 
 mod test_enum;
 mod test_trait_default;
+mod test04_fn;
