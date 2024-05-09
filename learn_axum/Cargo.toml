@@ -1,5 +1,5 @@
 [package]
-name = "hello-tokio"
+name = "hello-axum"
 version = "0.1.0"
 edition = "2021"
 

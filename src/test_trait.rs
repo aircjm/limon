@@ -71,6 +71,10 @@ mod sheep_trait {
     trait Animal {
         fn new(name: String) -> Self;
         fn name(self) -> String;
+
+        fn default_fn() {
+            println!("default fn, can be override");
+        }
     }
 
 
