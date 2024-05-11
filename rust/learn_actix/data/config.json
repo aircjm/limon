@@ -1,0 +1,7 @@
+{
+    "setting": "hello",
+    "git": 1,
+    "web": {
+      "port": 8080
+    }
+  }
