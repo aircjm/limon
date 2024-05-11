@@ -1,0 +1,8 @@
+FROM mysql:5.7.23
+
+ENV LANG C.UTF-8
+
+# 拷贝初始化sql
+COPY ./limon-server/sql/init.sql /docker-entrypoint-initdb.d/init.sql
+# 复制mysql配置文件
+COPY ./docker/mysql/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
