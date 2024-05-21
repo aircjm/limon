@@ -1409,6 +1409,7 @@ name = "learn_reqwest"
 version = "0.1.0"
 dependencies = [
  "reqwest",
+ "tokio 1.37.0",
 ]
 
 [[package]]
