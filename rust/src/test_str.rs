@@ -1,4 +1,4 @@
-
+use std::mem::replace;
 
 // Define a struct named User with a field name of type String
 pub struct User {
@@ -81,6 +81,22 @@ pub fn print(str: &str) {
 pub fn print_string(str: &String) {
     println!("str result is {}", str);
 }
+
+
+#[test]
+pub fn test_replace_String() {
+    let mut str: String  = String::from("hello_world");
+    println!("{}", str);
+    replace_string(& mut str);
+    println!("{}", str);
+
+}
+
+
+pub fn replace_string(str: &mut String) {
+    *str = String::from("replaced");
+}
+
 
 #[test]
 pub fn test_lowercase() {
