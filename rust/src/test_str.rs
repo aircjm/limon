@@ -1,5 +1,3 @@
-use std::mem::replace;
-
 // Define a struct named User with a field name of type String
 pub struct User {
     // when use str in struct, you can use String instance &str,because String use the lifetime of Struct.
