@@ -23,7 +23,7 @@ async fn main() {
 
     // run our app with hyper
     // `axum::Server` is a re-export of `hyper::Server`
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([127, 0, 0, 1], 3003));
     tracing::debug!("listening on {}", addr);
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
@@ -62,7 +62,9 @@ async fn test_uuid_new(
     let uuid = Uuid::new_v4();
     // this will be converted into a JSON response
     // with a status code of `201 Created`
-    (StatusCode::OK, Json(uuid.to_string()))
+    (StatusCode::OK, Json(DemoResponse {
+        id: uuid,
+    }))
 }
 
 // the input to our `create_user` handler
@@ -79,7 +81,7 @@ struct User {
 }
 
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 struct DemoResponse {
-    id: uuid::Uuid
+    id: Uuid
 }
