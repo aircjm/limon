@@ -14,7 +14,7 @@ serde_with = { version = "3.1.0", features = ["base64"] }
 tokio = { version = "1.38.0", features = ["full"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-axum = "0.6.20"
+axum = "0.7.5"
 uuid = {version = "1.8.0", features = ["v4", "v7", "fast-rng", "macro-diagnostics", "serde"]}
 
 
