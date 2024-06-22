@@ -5,7 +5,6 @@ use axum::{
     Json, Router,
 };
 use serde::{Deserialize, Serialize};
-use std::net::SocketAddr;
 use uuid::Uuid;
 
 #[tokio::main]
