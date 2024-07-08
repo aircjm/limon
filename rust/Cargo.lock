@@ -1550,6 +1550,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "learn_chrono"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "serde_json",
+ "serde_with",
+ "uuid",
+]
+
+[[package]]
 name = "learn_reqwest"
 version = "0.1.0"
 dependencies = [
