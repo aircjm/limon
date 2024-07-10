@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Matching Result"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 198
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 198
+        initialized_from_dependency: false
+        encrypted_possible_answer: r0fiGc4Ru7P4nrsHLm+xBQ==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Error+Handling+/+Error+Handling+/+Matching+Result
+status: Unchecked
+record: -1

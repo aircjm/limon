@@ -1,0 +1,60 @@
+type: edu
+custom_name: "Task: String Transformer"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 189
+        length: 25
+        placeholder_text: /* Write type of input */
+        initial_state:
+          length: 25
+          offset: 189
+        initialized_from_dependency: false
+        encrypted_possible_answer: WA7DI9mtJULJBAr7mp1FKbDOhmhcO9sJX2yu6IFF4QQ=
+        selected: false
+        status: Unchecked
+      - offset: 219
+        length: 26
+        placeholder_text: /* Write type of result */
+        initial_state:
+          length: 26
+          offset: 219
+        initialized_from_dependency: false
+        encrypted_possible_answer: 2OoEF0aVc6E4eLfnqQbNVQ==
+        selected: false
+        status: Unchecked
+      - offset: 289
+        length: 36
+        placeholder_text: "// TODO: Complete the function body!"
+        initial_state:
+          length: 36
+          offset: 289
+        initialized_from_dependency: false
+        encrypted_possible_answer: LmDz/Ikng69mD2swXKjBOnJ9lqpAcyvXRR5CwWBv2SsMtU4QrzEPkj3tMHfXzJxx4ceOXy2V+axsWkNMXqKwed7ncDRnXF9DRj4tCgICKAPwo7A6/1MO7wiMyvvwQeUWXTVSgB0vyRPOsFWfYO0hIooLGwO7CYzkmLXu6B13nwQprV2uow4HMr0Mx3aqzsHg5wd0xzIgwguRBYf423h+NfpboaKY2XGwNeBqt2kZU//poBKaPOTf7GihXsCMXMUiUXvfpxcLo7nCahOKoGDpRcQVpd9aEBp0RagkQjMiT3plTaKw4hy3sKfT92JGoJs9FfcKr7dJAK00mZKaJiKhXNW8w3/sDFoyg1Kx8vsoB0l8/q99OwV0BtLW4sVJd611Bn+Obo2FZvGJth/F1QEGqZHf4vuD8QN0iMcuxhpvTU5DHmOBo8Sqk0Wp2rHG4Pv96TSvQD8ywN0sMaPb8+gBoA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 25
+        length: 36
+        placeholder_text: "/* TODO: Complete use declaration */"
+        initial_state:
+          length: 36
+          offset: 25
+        initialized_from_dependency: false
+        encrypted_possible_answer: /jD2OwBSu0Uia9VX5/YhCN+hsvBEZ0xSTqoWfMtM7fQQ1Wqbw2srYNXwqJv4Am+Q
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Collections+/+Strings+/+String+Transformer
+status: Unchecked
+record: -1

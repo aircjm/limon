@@ -1,0 +1,58 @@
+type: edu
+custom_name: "Task: Eating Some Snacks"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 27
+        length: 69
+        placeholder_text: /*insert a modifier here to make the module accessible from
+          outside*/
+        initial_state:
+          length: 69
+          offset: 27
+        initialized_from_dependency: false
+        encrypted_possible_answer: Ek5n1xVO6F+uh3wYJynyng==
+        selected: false
+        status: Unchecked
+      - offset: 123
+        length: 8
+        placeholder_text: /*TODO*/
+        initial_state:
+          length: 8
+          offset: 123
+        initialized_from_dependency: false
+        encrypted_possible_answer: xRV66TSis6H1Fs2VOU4Q7Q==
+        selected: false
+        status: Unchecked
+      - offset: 137
+        length: 69
+        placeholder_text: /*insert a modifier here to make the module accessible from
+          outside*/
+        initial_state:
+          length: 69
+          offset: 137
+        initialized_from_dependency: false
+        encrypted_possible_answer: Ek5n1xVO6F+uh3wYJynyng==
+        selected: false
+        status: Unchecked
+      - offset: 238
+        length: 8
+        placeholder_text: /*TODO*/
+        initial_state:
+          length: 8
+          offset: 238
+        initialized_from_dependency: false
+        encrypted_possible_answer: eg+Zq4s8fjfEhZGf8vhk+g==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Modules+/+Modules+/+Eating+Some+Snacks
+status: Unchecked
+record: -1

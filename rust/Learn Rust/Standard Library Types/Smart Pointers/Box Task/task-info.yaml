@@ -1,0 +1,49 @@
+type: edu
+custom_name: "Task: Use a Box"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 58
+        length: 4
+        placeholder_text: List
+        initial_state:
+          length: 4
+          offset: 58
+        initialized_from_dependency: false
+        encrypted_possible_answer: j/+iTtBNdYQtLykFM5Uvhw==
+        selected: false
+        status: Unchecked
+      - offset: 119
+        length: 16
+        placeholder_text: unimplemented!()
+        initial_state:
+          length: 16
+          offset: 119
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9JsWD0JtxU3L0hxSELvf0w==
+        selected: false
+        status: Unchecked
+      - offset: 184
+        length: 16
+        placeholder_text: unimplemented!()
+        initial_state:
+          length: 16
+          offset: 184
+        initialized_from_dependency: false
+        encrypted_possible_answer: bBgqMswAXdsysoHwOT8s/h3Hb/2B0fMxL9sR/t8zsJIMOeLpY2sq3oZChNNCjW92
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Smart+Pointers+/+Box+Task
+status: Unchecked
+record: -1

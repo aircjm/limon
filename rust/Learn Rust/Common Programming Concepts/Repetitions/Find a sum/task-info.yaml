@@ -1,0 +1,36 @@
+type: output
+custom_name: "Task: Find a Sum"
+files:
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 42
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 42
+        initialized_from_dependency: false
+        encrypted_possible_answer: KYbu5T9bs/cneb2aNJ0rxkcFtGAo3c5lTQJi9s58ztM=
+        selected: false
+        status: Unchecked
+      - offset: 63
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 63
+        initialized_from_dependency: false
+        encrypted_possible_answer: gFfEf2FAm/djfd3JA1Bvzg==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Programming+Concepts+/+Repetitions+/+Find+a+sum
+status: Unchecked
+record: -1

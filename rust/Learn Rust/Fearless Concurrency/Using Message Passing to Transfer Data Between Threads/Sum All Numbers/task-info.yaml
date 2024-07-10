@@ -1,0 +1,57 @@
+type: edu
+custom_name: "Task: Sum All Numbers"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 231
+        length: 27
+        placeholder_text: "/* TODO: Send value here */"
+        initial_state:
+          length: 27
+          offset: 231
+        initialized_from_dependency: false
+        encrypted_possible_answer: vpOPM8+j/AqPoKrrufHyNQLZ5ExDLhoNEStidLYj/vM=
+        selected: false
+        status: Unchecked
+      - offset: 410
+        length: 37
+        placeholder_text: "/* TODO: pass the transmitting end */"
+        initial_state:
+          length: 37
+          offset: 410
+        initialized_from_dependency: false
+        encrypted_possible_answer: 7Afbe8EM/cR0XiTA+sON2g==
+        selected: false
+        status: Unchecked
+      - offset: 479
+        length: 37
+        placeholder_text: "/* TODO: pass the transmitting end */"
+        initial_state:
+          length: 37
+          offset: 479
+        initialized_from_dependency: false
+        encrypted_possible_answer: 6pMn29IAMg6aeUn+UCYbXg==
+        selected: false
+        status: Unchecked
+      - offset: 613
+        length: 62
+        placeholder_text: /* What should you iterate over to receive all the numbers?
+          */
+        initial_state:
+          length: 62
+          offset: 613
+        initialized_from_dependency: false
+        encrypted_possible_answer: OZQBHuEcTFC4h57EoSrXQg==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Fearless+Concurrency+/+Using+Message+Passing+to+Transfer+Data+Between+Threads+/+Sum+All+Numbers
+status: Unchecked
+record: -1

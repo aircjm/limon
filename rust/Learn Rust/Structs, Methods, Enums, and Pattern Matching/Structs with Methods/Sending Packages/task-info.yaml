@@ -1,0 +1,66 @@
+type: output
+custom_name: "Task: Sending Packages"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 359
+        length: 34
+        placeholder_text: /* Instantiate the package here */
+        initial_state:
+          length: 34
+          offset: 359
+        initialized_from_dependency: false
+        encrypted_possible_answer: vu6KTnC1kVTeP9F+CxU+EbNkd90jNFS5HC0735awZxgjVJxM896L6IM/AsQz6odaEZJXbKWtkTRaPF4FfcMKMs/Ptacsjr1tbQKPPdudtiIGWXVwcDx9pi2nhAmxB6Q8jA2LlGgTexcBEXJzj40SOg==
+        selected: false
+        status: Unchecked
+      - offset: 435
+        length: 21
+        placeholder_text: /* Add return type */
+        initial_state:
+          length: 21
+          offset: 435
+        initialized_from_dependency: false
+        encrypted_possible_answer: cIBykhzvWSahGq6AC7El3g==
+        selected: false
+        status: Unchecked
+      - offset: 466
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 466
+        initialized_from_dependency: false
+        encrypted_possible_answer: 69E4CvLJbJrve7cjQJWYDmO4zYnUhXPJrszs3moS3FlSGG8SiGXdGDNX95EgqyP0MakpkmT+fEiyVTlJjTw4xQ==
+        selected: false
+        status: Unchecked
+      - offset: 546
+        length: 21
+        placeholder_text: /* Add return type */
+        initial_state:
+          length: 21
+          offset: 546
+        initialized_from_dependency: false
+        encrypted_possible_answer: KRsXgGJbhz14t8DPzg7i7g==
+        selected: false
+        status: Unchecked
+      - offset: 578
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 578
+        initialized_from_dependency: false
+        encrypted_possible_answer: QI/K37gcF2dBIaN6FJb6fTLHrFsJutr/tNMjv75XsO3xE14A57Ezb1CO6qbrHy7z
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Structs+Methods+Enums+and+Pattern+Matching+/+Structs+with+Methods+/+Sending+Packages
+status: Unchecked
+record: -1

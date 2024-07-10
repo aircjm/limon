@@ -1,0 +1,36 @@
+type: edu
+custom_name: "Task: Use Arc"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 124
+        length: 40
+        placeholder_text: /*it should be an Arc from the numbers*/
+        initial_state:
+          length: 40
+          offset: 124
+        initialized_from_dependency: false
+        encrypted_possible_answer: SngbiKyWOeKZQI3oTf9NltsgLPxRFCj2O3xdg29woKY=
+        selected: false
+        status: Unchecked
+      - offset: 238
+        length: 25
+        placeholder_text: /*declare child_numbers*/
+        initial_state:
+          length: 25
+          offset: 238
+        initialized_from_dependency: false
+        encrypted_possible_answer: r6bMF8LZh9Dz/hr8dJqTBeicgBTxSXTExqrOwySNcCbAsTD22cdGSxTOc6OIy7yn
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Fearless+Concurrency+/+Shared-State+Concurrency+/+Arc
+status: Unchecked
+record: -1

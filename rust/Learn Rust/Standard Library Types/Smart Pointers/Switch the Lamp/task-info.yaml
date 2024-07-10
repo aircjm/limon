@@ -1,0 +1,126 @@
+type: edu
+custom_name: "Task: Switch the Lamp"
+files:
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: src/switcher.rs
+    visible: true
+    placeholders:
+      - offset: 60
+        length: 12
+        placeholder_text: '&''a mut Lamp'
+        initial_state:
+          length: 12
+          offset: 60
+        initialized_from_dependency: false
+        encrypted_possible_answer: 1pR33ObwPM9F3p+fEd9GGA==
+        selected: false
+        status: Unchecked
+      - offset: 121
+        length: 12
+        placeholder_text: '&''a mut Lamp'
+        initial_state:
+          length: 12
+          offset: 121
+        initialized_from_dependency: false
+        encrypted_possible_answer: 1pR33ObwPM9F3p+fEd9GGA==
+        selected: false
+        status: Unchecked
+      - offset: 195
+        length: 9
+        placeholder_text: '&mut self'
+        initial_state:
+          length: 9
+          offset: 195
+        initialized_from_dependency: false
+        encrypted_possible_answer: w85YO4eyFlsn9P9QFTCnGQ==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+  - name: src/lamp.rs
+    visible: true
+    placeholders:
+      - offset: 0
+        length: 35
+        placeholder_text: /* You may need to use something */
+        initial_state:
+          length: 35
+          offset: 0
+        initialized_from_dependency: false
+        encrypted_possible_answer: GHuD14OfreD59A/zK3vZdJNulbr0JVAoI6WRJD+jwQg=
+        selected: false
+        status: Unchecked
+      - offset: 88
+        length: 4
+        placeholder_text: bool
+        initial_state:
+          length: 4
+          offset: 88
+        initialized_from_dependency: false
+        encrypted_possible_answer: wSyLUkuNUgRerEqlLiNH4A==
+        selected: false
+        status: Unchecked
+      - offset: 150
+        length: 7
+        placeholder_text: self.on
+        initial_state:
+          length: 7
+          offset: 150
+        initialized_from_dependency: false
+        encrypted_possible_answer: kx0UeyZ3RCBORHZMV70p7Q==
+        selected: false
+        status: Unchecked
+      - offset: 185
+        length: 9
+        placeholder_text: '&mut self'
+        initial_state:
+          length: 9
+          offset: 185
+        initialized_from_dependency: false
+        encrypted_possible_answer: w85YO4eyFlsn9P9QFTCnGQ==
+        selected: false
+        status: Unchecked
+      - offset: 206
+        length: 14
+        placeholder_text: self.on = true
+        initial_state:
+          length: 14
+          offset: 206
+        initialized_from_dependency: false
+        encrypted_possible_answer: ptSeuUfIWEs1O2Xh87GG0+fUNnbx2WIJcin+uvlzzlQ=
+        selected: false
+        status: Unchecked
+      - offset: 249
+        length: 9
+        placeholder_text: '&mut self'
+        initial_state:
+          length: 9
+          offset: 249
+        initialized_from_dependency: false
+        encrypted_possible_answer: w85YO4eyFlsn9P9QFTCnGQ==
+        selected: false
+        status: Unchecked
+      - offset: 270
+        length: 15
+        placeholder_text: self.on = false
+        initial_state:
+          length: 15
+          offset: 270
+        initialized_from_dependency: false
+        encrypted_possible_answer: D5l5LDYc1rm7rD+A+J2gQHXtsizXre97YoXL/V9G2JU=
+        selected: false
+        status: Unchecked
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Smart+Pointers+/+Switch+the+Lamp
+status: Unchecked
+record: -1

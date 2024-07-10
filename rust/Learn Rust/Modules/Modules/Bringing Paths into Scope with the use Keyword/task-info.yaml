@@ -1,0 +1,15 @@
+type: theory
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    learner_created: false
+  - name: runConfigurations/Build.run.xml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Modules+/+Modules+/+Bringing+Paths+into+Scope+with+the+use+Keyword
+status: Unchecked
+record: -1
+post_submission_on_open: true

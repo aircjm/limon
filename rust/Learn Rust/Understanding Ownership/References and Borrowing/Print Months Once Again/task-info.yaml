@@ -1,0 +1,36 @@
+type: edu
+custom_name: "Task: Print Months Once Again"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 235
+        length: 6
+        placeholder_text: months
+        initial_state:
+          length: 6
+          offset: 235
+        initialized_from_dependency: false
+        encrypted_possible_answer: ZIVbShUV4nUKWW7m0P6nRA==
+        selected: false
+        status: Unchecked
+      - offset: 417
+        length: 22
+        placeholder_text: "mut months: [&str; 12]"
+        initial_state:
+          length: 22
+          offset: 417
+        initialized_from_dependency: false
+        encrypted_possible_answer: jcmDLWYCUkaWT3hYU/VfYAEuOBRGp0icfAtPSSZIVPw=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Understanding+Ownership+/+References+and+Borrowing+/+Print+Months+Once+Again
+status: Unchecked
+record: -1

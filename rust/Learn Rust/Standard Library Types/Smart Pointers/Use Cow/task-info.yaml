@@ -1,0 +1,96 @@
+type: edu
+custom_name: "Task: Use Cow"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 427
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 427
+        initialized_from_dependency: false
+        encrypted_possible_answer: MLuR3BY8qm8XtwiFgA/hyg==
+        selected: false
+        status: Unchecked
+      - offset: 545
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 545
+        initialized_from_dependency: false
+        encrypted_possible_answer: MLuR3BY8qm8XtwiFgA/hyg==
+        selected: false
+        status: Unchecked
+      - offset: 744
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 744
+        initialized_from_dependency: false
+        encrypted_possible_answer: MLuR3BY8qm8XtwiFgA/hyg==
+        selected: false
+        status: Unchecked
+      - offset: 862
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 862
+        initialized_from_dependency: false
+        encrypted_possible_answer: yncgIhXa8OUYjdkPePBE1w==
+        selected: false
+        status: Unchecked
+      - offset: 1055
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 1055
+        initialized_from_dependency: false
+        encrypted_possible_answer: yncgIhXa8OUYjdkPePBE1w==
+        selected: false
+        status: Unchecked
+      - offset: 1173
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 1173
+        initialized_from_dependency: false
+        encrypted_possible_answer: yncgIhXa8OUYjdkPePBE1w==
+        selected: false
+        status: Unchecked
+      - offset: 1367
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 1367
+        initialized_from_dependency: false
+        encrypted_possible_answer: yncgIhXa8OUYjdkPePBE1w==
+        selected: false
+        status: Unchecked
+      - offset: 1485
+        length: 24
+        placeholder_text: /* Borrowed or Owned? */
+        initial_state:
+          length: 24
+          offset: 1485
+        initialized_from_dependency: false
+        encrypted_possible_answer: yncgIhXa8OUYjdkPePBE1w==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Smart+Pointers+/+Use+Cow
+status: Unchecked
+record: -1

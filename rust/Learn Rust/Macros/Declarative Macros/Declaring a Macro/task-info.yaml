@@ -1,0 +1,39 @@
+type: edu
+custom_name: "Task: Declaring a Macro"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 0
+        length: 30
+        placeholder_text: |-
+          fn main() {
+              my_macro!();
+          }
+        initial_state:
+          length: 30
+          offset: 0
+        initialized_from_dependency: false
+        encrypted_possible_answer: gUVAuO1lVMcXtR+Yw3CjJDYAfjc86Un24K7zma5ziUejhPEh2QmsZxJP/ugy4KHJ1sfOhTrdR48jokvy0zK7EwmpSC1KRsIure8l/0zpRA3FG4ar0JKCX09dDT641szekWBf837TyRVsV9LvnL52al+F1v9nUxdcTIt9Q5lV5O8=
+        selected: false
+        status: Unchecked
+      - offset: 119
+        length: 71
+        placeholder_text: /*the main function declaration should be below the macro declaration*/
+        initial_state:
+          length: 71
+          offset: 119
+        initialized_from_dependency: false
+        encrypted_possible_answer: sl3O59VlDkdl7u9JaiP8DMYsG9GGb/3fYE8J+oVWyMg=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Macros+/+Declarative+Macros+/+Declaring+a+Macro
+status: Unchecked
+record: -1

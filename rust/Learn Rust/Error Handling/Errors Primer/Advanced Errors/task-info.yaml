@@ -1,0 +1,43 @@
+type: edu
+custom_name: "Task: Advanced Errors"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 363
+        length: 92
+        placeholder_text: "// TODO: complete this implementation so that the `?` operator\
+      \ will work for `CreationError`"
+        initial_state:
+          length: 92
+          offset: 363
+        initialized_from_dependency: false
+        encrypted_possible_answer: bX+bNw9tATTeBCc+nxYT707nvaR6oRNXlTjXGP/pqQradHvcIZsaoNB2VU/TGPOw
+        selected: false
+        status: Unchecked
+      - offset: 465
+        length: 159
+        placeholder_text: |-
+          // TODO: implement another instance of the `From` trait here so that the
+          // `?` operator will work in the other place in the `FromStr`
+          // implementation below.
+        initial_state:
+          length: 159
+          offset: 465
+        initialized_from_dependency: false
+        encrypted_possible_answer: gflxMgSRmua7+J5IPiOc2qtHgDxxbyuEct6Y3/Uzh/gjRAfD1go8hHiONiX2kl2aFLccYmOP8bwngK5gM0AlN8et0Y0+O3Lbgm5zdCaE2EDdK7f++mm8uPojX/AnrqigwzYlRinm5kdP4VG0EZfOBMOkb5OPjSJ9jhXbLAGVYIp2DCoAMxgzp6//pBM799cj
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Error+Handling+/+Errors+Primer+/+Advanced+Errors
+status: Unchecked
+record: -1

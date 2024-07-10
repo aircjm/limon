@@ -1,0 +1,26 @@
+type: output
+custom_name: "Task: Build String from Literals"
+files:
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 117
+        length: 23
+        placeholder_text: // Write your code here
+        initial_state:
+          length: 23
+          offset: 117
+        initialized_from_dependency: false
+        encrypted_possible_answer: 1ROVL2xZkvW9yfAylnsv0Y0SUnKpexp6Nxv0M2m2n3XyfGA4rkX+0ItQNesQ5YrckmI+Xoa/UwNjz8nO4Vp7wHCbeDODHzwS0uBuF1nKfVFpRHCQzSi2dBXpHmFl/fvWCP28n1goVPx4qifK+uuneQ==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Understanding+Ownership+/+What+is+ownership+/+Build+String+from+Literals
+status: Unchecked
+record: -1

@@ -1,0 +1,116 @@
+type: output
+custom_name: "Task: Workers in the Engine"
+files:
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/worker.rs
+    visible: true
+    placeholders:
+      - offset: 0
+        length: 35
+        placeholder_text: /* You may need to use something */
+        initial_state:
+          length: 35
+          offset: 0
+        initialized_from_dependency: false
+        encrypted_possible_answer: LzhpDCypNNO04yX6RjT017fVgGy8zxA/2cY/2E0OXSc1LllVHFqvn6l6rB8IYPZM
+        selected: false
+        status: Unchecked
+      - offset: 81
+        length: 12
+        placeholder_text: '&Vec<String>'
+        initial_state:
+          length: 12
+          offset: 81
+        initialized_from_dependency: false
+        encrypted_possible_answer: koXL2mFeEzoRqmFduPB79iyGNf4fJRVkaddYVDTwaWI=
+        selected: false
+        status: Unchecked
+      - offset: 142
+        length: 12
+        placeholder_text: '&Vec<String>'
+        initial_state:
+          length: 12
+          offset: 142
+        initialized_from_dependency: false
+        encrypted_possible_answer: koXL2mFeEzoRqmFduPB79iyGNf4fJRVkaddYVDTwaWI=
+        selected: false
+        status: Unchecked
+      - offset: 241
+        length: 41
+        placeholder_text: /* `push` requires a mutable reference */
+        initial_state:
+          length: 41
+          offset: 241
+        initialized_from_dependency: false
+        encrypted_possible_answer: 4Ty4pr2uOIupGI9An5n+vg==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/engine.rs
+    visible: true
+    placeholders:
+      - offset: 27
+        length: 35
+        placeholder_text: /* You may need to use something */
+        initial_state:
+          length: 35
+          offset: 27
+        initialized_from_dependency: false
+        encrypted_possible_answer: LzhpDCypNNO04yX6RjT017fVgGy8zxA/2cY/2E0OXSc1LllVHFqvn6l6rB8IYPZM
+        selected: false
+        status: Unchecked
+      - offset: 93
+        length: 11
+        placeholder_text: Vec<String>
+        initial_state:
+          length: 11
+          offset: 93
+        initialized_from_dependency: false
+        encrypted_possible_answer: koXL2mFeEzoRqmFduPB79iyGNf4fJRVkaddYVDTwaWI=
+        selected: false
+        status: Unchecked
+      - offset: 209
+        length: 6
+        placeholder_text: "vec![]"
+        initial_state:
+          length: 6
+          offset: 209
+        initialized_from_dependency: false
+        encrypted_possible_answer: 3i9/UUD0r2jY/wiI0cOlrrdd8Sj6H3eNobxcboMu+mI=
+        selected: false
+        status: Unchecked
+      - offset: 350
+        length: 9
+        placeholder_text: '&self.log'
+        initial_state:
+          length: 9
+          offset: 350
+        initialized_from_dependency: false
+        encrypted_possible_answer: Rb4ARw7HL3Eb/LEkQhgUOndEaM5xCBRSkE/+MFc0xZY=
+        selected: false
+        status: Unchecked
+      - offset: 502
+        length: 9
+        placeholder_text: '&self.log'
+        initial_state:
+          length: 9
+          offset: 502
+        initialized_from_dependency: false
+        encrypted_possible_answer: XFaxyX8GXJz6VGGOuaX656kt2wdzGHkriR1JMD2pLlY=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Smart+Pointers+/+Workers+in+the+Engine
+status: Unchecked
+record: -1

@@ -1,0 +1,26 @@
+type: output
+custom_name: "Task: Print Months"
+files:
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 182
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 182
+        initialized_from_dependency: false
+        encrypted_possible_answer: J/jU+HkCGcqAfAcGBjdpY4rqLH628ctV4w6e4pBUwkglPcEQYUjJ5IdnTCPUANTPHSybwcJTRKQWDBpslFxfow==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Programming+Concepts+/+Repetitions+/+Print+Months
+status: Unchecked
+record: -1

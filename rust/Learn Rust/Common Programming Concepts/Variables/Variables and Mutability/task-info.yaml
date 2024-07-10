@@ -1,0 +1,25 @@
+type: theory
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 73
+        length: 10
+        placeholder_text: x = 6;
+        initial_state:
+          length: 6
+          offset: 73
+        initialized_from_dependency: false
+        encrypted_possible_answer: NC2Y3HcPl2uJ9h0lK4ovKg==
+        selected: false
+        status: Solved
+        is_visible: false
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Programming+Concepts+/+Variables+/+Variables+and+Mutability
+status: Solved
+record: -1
+solution_hidden: true
+post_submission_on_open: true

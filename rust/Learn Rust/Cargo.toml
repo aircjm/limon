@@ -1,0 +1,46 @@
+[workspace]
+
+members = [
+    "Introduction/Getting started/*/",
+    "Common Programming Concepts/Variables/*/",
+    "Common Programming Concepts/Basic Data Types/*/",
+    "Common Programming Concepts/Functions/*/",
+    "Common Programming Concepts/Variables, Functions, and Conditions Test/*/",
+    "Common Programming Concepts/Conditions/*/",
+    "Common Programming Concepts/Repetitions/*/",
+    "Common Programming Concepts/Tuples and Arrays/*/",
+    "Modules/Modules/*/",
+    "Understanding Ownership/What is ownership/*/",
+    "Understanding Ownership/References and Borrowing/*/",
+    "Understanding Ownership/The Slice Type/*/",
+    "Structs, Methods, Enums, and Pattern Matching/Structs/*/",
+    "Structs, Methods, Enums, and Pattern Matching/Structs with Methods/*/",
+    "Structs, Methods, Enums, and Pattern Matching/Enums/*/",
+    "Structs, Methods, Enums, and Pattern Matching/Pattern Matching/*/",
+    "Common Collections/Vectors/*/",
+    "Common Collections/Hashmaps/*/",
+    "Common Collections/Strings/*/",
+    "Common Collections/Options/*/",
+    "Error Handling/Error Handling/*/",
+    "Error Handling/Errors Primer/*/",
+    "Generic Types, Traits, and Lifetime/Intro/*/",
+    "Generic Types, Traits, and Lifetime/Generic Data Types/*/",
+    "Generic Types, Traits, and Lifetime/Traits/*/",
+    "Generic Types, Traits, and Lifetime/Lifetimes/*/",
+    "Writing Automated Tests/Running and Organizing Tests/*/",
+    "Writing Automated Tests/How to Write Tests/*/",
+    "Standard Library Types/Iterators/*/",
+    "Standard Library Types/Smart Pointers/*/",
+    "Standard Library Types/Type Conversions/*/",
+    "Standard Library Types/Closures/*/",
+    "Fearless Concurrency/Using Threads to Run Code Simultaneously/*/",
+    "Fearless Concurrency/Using Message Passing to Transfer Data Between Threads/*/",
+    "Fearless Concurrency/Shared-State Concurrency/*/",
+    "Macros/Intro/*/",
+    "Macros/Declarative Macros/*/",
+    "Macros/Procedural Macros/*/",
+]
+
+exclude = [
+    "**/*.yaml"
+]

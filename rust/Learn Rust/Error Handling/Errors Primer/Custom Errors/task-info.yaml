@@ -1,0 +1,39 @@
+type: edu
+custom_name: "Task: Custom Errors"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 383
+        length: 64
+        placeholder_text: // Add another error conversion function for ParseIntError here.
+        initial_state:
+          length: 64
+          offset: 383
+        initialized_from_dependency: false
+        encrypted_possible_answer: lKroCT069bzsLH7ffimPjy3bnZIkz81aXH3MQw006fcy5lNnAJp78vhwkoxmXLaqumwnPeL5wsQRsoYLn49FTFXqhhQKatuYLe88IbpAXQh3vZx96nBe1f0sIdK14YEFD0pg1mWET7xIwv6mpAnXrz9H04tO2EgxAwodBRsHJVU=
+        selected: false
+        status: Unchecked
+      - offset: 701
+        length: 10
+        placeholder_text: .unwrap();
+        initial_state:
+          length: 10
+          offset: 701
+        initialized_from_dependency: false
+        encrypted_possible_answer: KWhO+pLg0E/gfNRX4ptjHcztkt8GfQ9ISsSsb/POW+p/Z9O1ceY5qHtZBLLDucOVAEXmVGoSIaabZ92W70rJfA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Error+Handling+/+Errors+Primer+/+Custom+Errors
+status: Unchecked
+record: -1

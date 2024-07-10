@@ -1,0 +1,91 @@
+type: ide
+custom_name: "Task: Removing Duplication by Refactorings"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 66
+        length: 142
+        placeholder_text: |-
+          let mut largest = number_list[0];
+          
+              for number in number_list {
+                  if number > largest {
+                      largest = number;
+                  }
+              }
+        initial_state:
+          length: 142
+          offset: 66
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9ePZ6B0MsRzOzoskgIbDVmAaKldxar4RmOfYm6fl1dRQzWQre/RrKM91R27wOShu
+        selected: false
+        status: Unchecked
+      - offset: 251
+        length: 7
+        placeholder_text: largest
+        initial_state:
+          length: 7
+          offset: 251
+        initialized_from_dependency: false
+        encrypted_possible_answer: VnmpXOitpbtJURXUQPMW4w==
+        selected: false
+        status: Unchecked
+      - offset: 332
+        length: 11
+        placeholder_text: mut largest
+        initial_state:
+          length: 11
+          offset: 332
+        initialized_from_dependency: false
+        encrypted_possible_answer: VnmpXOitpbtJURXUQPMW4w==
+        selected: false
+        status: Unchecked
+      - offset: 346
+        length: 124
+        placeholder_text: |-
+          number_list[0];
+          
+              for number in number_list {
+                  if number > largest {
+                      largest = number;
+                  }
+              }
+        initial_state:
+          length: 124
+          offset: 346
+        initialized_from_dependency: false
+        encrypted_possible_answer: /fCHS1CwW5ZkCjbGLtEs3LVIuoLdls4zMzK89ccSBoY=
+        selected: false
+        status: Unchecked
+      - offset: 513
+        length: 7
+        placeholder_text: largest
+        initial_state:
+          length: 7
+          offset: 513
+        initialized_from_dependency: false
+        encrypted_possible_answer: VnmpXOitpbtJURXUQPMW4w==
+        selected: false
+        status: Unchecked
+      - offset: 526
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 526
+        initialized_from_dependency: false
+        encrypted_possible_answer: Ulh3p33OW6cepKfUDhZuuaEbuLqJNTidTPJrtexgNGqSRTE/fLFL9iNvAtjInC5qoZZ9lMQ2vXoKCEuZmfVVJzzPYJVEyOwMpmy0GVz3DCHrvlZllV7wUnjIgQ5/gNBX3y8oWzVSsoT037TX13c40Nijm2Fn/EIlAAsKOtazEU1upxebEfebHLmPZGczoz0+RnymGb39YnSYQqoHnULZNfLWoVf4DbhXeWiWpi53ZL1LMPybMDRBQ5OHGrzySaoI
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: images/ExtractFunction.png
+    visible: false
+    is_binary: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Generic+Types+Traits+and+Lifetime+/+Intro+/+Removing+Duplication+by+Refactorings
+status: Unchecked
+record: -1

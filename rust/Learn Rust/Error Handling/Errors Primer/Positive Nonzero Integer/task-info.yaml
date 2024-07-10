@@ -1,0 +1,36 @@
+type: edu
+custom_name: "Task: Positive Nonzero Integer"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 265
+        length: 71
+        placeholder_text: /*here could be the expression to compare if the value is appropriate*/
+        initial_state:
+          length: 71
+          offset: 265
+        initialized_from_dependency: false
+        encrypted_possible_answer: Rc2ZXzMQIZ/KtLyDazNG0A==
+        selected: false
+        status: Unchecked
+      - offset: 398
+        length: 50
+        placeholder_text: /*here could be the other arms of the comparison*/
+        initial_state:
+          length: 50
+          offset: 398
+        initialized_from_dependency: false
+        encrypted_possible_answer: WeYpPl79pXxztcb7UatZ5bGKcrs4ulWi9t33CkvrfFYqFtJmS4od1ykn5vo3VmqsUPxtWTPfqRhniUqJ3+tGcO+unbJeL3Iri4gD46Nya7vchD8+jNPNqkIhodqpxMDImbe+mSK+67lOkhdO9cmH0/KhJrQc73rkTykbGZ0Fnit/q7kCgDh2uOiGCtKXOkTH
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Error+Handling+/+Errors+Primer+/+Positive+Nonzero+Integer
+status: Unchecked
+record: -1

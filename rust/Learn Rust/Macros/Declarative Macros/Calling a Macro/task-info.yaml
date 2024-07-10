@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Calling a Macro"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 111
+        length: 23
+        placeholder_text: /*call the macro here*/
+        initial_state:
+          length: 23
+          offset: 111
+        initialized_from_dependency: false
+        encrypted_possible_answer: p7ftXJJazjxieWvZ3tE6DA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Macros+/+Declarative+Macros+/+Calling+a+Macro
+status: Unchecked
+record: -1

@@ -1,0 +1,49 @@
+type: edu
+custom_name: "Task: Implement TryFrom"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 538
+        length: 23
+        placeholder_text: // Write your code here
+        initial_state:
+          length: 23
+          offset: 538
+        initialized_from_dependency: false
+        encrypted_possible_answer: iueFyJka7kvpiGp4lpkRbGgVQzqsxg+9tIzIsSLZlMda33DpNn3b8H/igaf8JMBNkkmAqj3AUIUjYVX6ia6zWbBdDXW+WPn7ql7ddrRvmD881UB9py3zVDMC3VJiJ0oDIiqW/URxIJbve6H3n++wbu9tP/dKsSKGyuMZSDFp1Qv2G0yBJGiL1inwBzUAWOvTpXbD8RwgCuIuxuo7vPPOuU+VMz5xnvgaPJTIIYeY5xCIetPQriUeqRLQepeiQn3VBDR4KVbql8w6HUAYRVGUcDRUuCG5tSv/w6jxZdcewmWiZc9weLfPJPVAZT4j4X/JkXd/qi1qRJYmJ4Oi5B0wHNSP1jrA8Wb/CoiNq3KubOJMtshXUSyBR9p2GhvuPlEU7xNrEo5u51gZyT1psgUsFB1PDOZnEXJKfNAs4AYMIZNS8KQ8A8pcA3HZPw2Q66+TNnWfmr14yJZKfPM5m96p69ef6i5BYqo6qN5QkMtBqoX2cPFwfUjt9jMnuhHVN+2l8xCj04su00GRBOEPstLQTA==
+        selected: false
+        status: Unchecked
+      - offset: 733
+        length: 23
+        placeholder_text: // Write your code here
+        initial_state:
+          length: 23
+          offset: 733
+        initialized_from_dependency: false
+        encrypted_possible_answer: C/+jrtPgw/BbAne4+o6T4H7cirfvzG++ry5lLnAadbg=
+        selected: false
+        status: Unchecked
+      - offset: 926
+        length: 23
+        placeholder_text: // Write your code here
+        initial_state:
+          length: 23
+          offset: 926
+        initialized_from_dependency: false
+        encrypted_possible_answer: cNI9gpVEWPBrdqf9j77JlwX0naFtS0KAMFNmHCo1yXi0pv5asQsPr216TCt4dFcl72ttQ+/IzbFoeNcjUIYASeCpy40ok1ryRa+D7j4OkEswXFPK9NRsRulvW2iLtTq7ckW42k+qzBq9mZFl7bjLxp7XIGSlbXPgh+VG9r7U1LJPq5tcvvrr4Z38sXpAPIVH
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Type+Conversions+/+Try+From+Into
+status: Unchecked
+record: -1

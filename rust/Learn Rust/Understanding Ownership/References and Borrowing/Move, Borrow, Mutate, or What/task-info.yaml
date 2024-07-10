@@ -1,0 +1,56 @@
+type: edu
+custom_name: "Task: Move, Borrow, Mutate, or What"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 89
+        length: 8
+        placeholder_text: /*TODO*/
+        initial_state:
+          length: 8
+          offset: 89
+        initialized_from_dependency: false
+        encrypted_possible_answer: E0dke4ZnqfcQekd2Lh291w==
+        selected: false
+        status: Unchecked
+      - offset: 163
+        length: 8
+        placeholder_text: /*TODO*/
+        initial_state:
+          length: 8
+          offset: 163
+        initialized_from_dependency: false
+        encrypted_possible_answer: M1k6QLajE5dBwz9fgFmmtg==
+        selected: false
+        status: Unchecked
+      - offset: 194
+        length: 8
+        placeholder_text: /*TODO*/
+        initial_state:
+          length: 8
+          offset: 194
+        initialized_from_dependency: false
+        encrypted_possible_answer: dsqgndfAJPQS0hUl1AKyUA==
+        selected: false
+        status: Unchecked
+      - offset: 272
+        length: 8
+        placeholder_text: /*TODO*/
+        initial_state:
+          length: 8
+          offset: 272
+        initialized_from_dependency: false
+        encrypted_possible_answer: AVSVBEJR4RQt8C/yRTJbDA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Understanding+Ownership+/+References+and+Borrowing+/+Move+Borrow+Mutate+or+What
+status: Unchecked
+record: -1

@@ -1,0 +1,56 @@
+type: output
+custom_name: "Task: Play with Color Structs"
+files:
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 32
+        length: 22
+        placeholder_text: // Something goes here
+        initial_state:
+          length: 22
+          offset: 32
+        initialized_from_dependency: false
+        encrypted_possible_answer: 2TFBeVRnPG4MTz5iIb4DawSsft8MQUJShEaaJ5fbdjA=
+        selected: false
+        status: Unchecked
+      - offset: 82
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 82
+        initialized_from_dependency: false
+        encrypted_possible_answer: qxg/GOfAZHkMDjG2Cnq5hw==
+        selected: false
+        status: Unchecked
+      - offset: 174
+        length: 34
+        placeholder_text: // Instantiate a classic c struct!
+        initial_state:
+          length: 34
+          offset: 174
+        initialized_from_dependency: false
+        encrypted_possible_answer: WOsj8dMDHAgxl7zblUXNzzZjrZ/3E2YO07/i85T7zTRUlZzQnd0Wf/NEo1ryBwfqLOGbkqqv+NE18lJqtJOolBPPNpm2naFLD9itLJOpL3kZnEfnYIznaaut3Icc/glmNtUjgwTTYBdCTOMVp1fgfw==
+        selected: false
+        status: Unchecked
+      - offset: 286
+        length: 30
+        placeholder_text: // Instantiate a tuple struct!
+        initial_state:
+          length: 30
+          offset: 286
+        initialized_from_dependency: false
+        encrypted_possible_answer: svLB7K358o4OT34SZvI8QYgQK+fXDyjkAdHuOOe8JfZO1En/G8tKJb/IpLmumFPfC3EbBuli5Op7JpP2utaDGPvNS2jUBET7wv9857AMKAo=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Structs+Methods+Enums+and+Pattern+Matching+/+Structs+/+Play+with+Color+Structs
+status: Unchecked
+record: -1

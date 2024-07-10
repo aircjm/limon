@@ -1,0 +1,47 @@
+type: edu
+custom_name: "Task: Count Completed Jobs"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 157
+        length: 50
+        placeholder_text: "JobStatus { jobs_completed: 0 }/*try using Mutex*/"
+        initial_state:
+          length: 50
+          offset: 157
+        initialized_from_dependency: false
+        encrypted_possible_answer: YzylwNL2M3N+tppVxEhBK3aXNVqxNNqVpdfaDY+3v2oRbEPB0VveFk3o9CXj4giq
+        selected: false
+        status: Unchecked
+      - offset: 384
+        length: 72
+        placeholder_text: /*you probably would like to lock the value modified in another
+          thread*/
+        initial_state:
+          length: 72
+          offset: 384
+        initialized_from_dependency: false
+        encrypted_possible_answer: ecEGb7n/zdvwYP0z0HxBhF9MSue8Q5z9anyoR5waxlA=
+        selected: false
+        status: Unchecked
+      - offset: 512
+        length: 41
+        placeholder_text: /*you should lock the status value here*/
+        initial_state:
+          length: 41
+          offset: 512
+        initialized_from_dependency: false
+        encrypted_possible_answer: ecEGb7n/zdvwYP0z0HxBhF9MSue8Q5z9anyoR5waxlA=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Fearless+Concurrency+/+Shared-State+Concurrency+/+Threads+Task
+status: Unchecked
+record: -1

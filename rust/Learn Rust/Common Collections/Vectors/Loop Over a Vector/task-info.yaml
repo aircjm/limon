@@ -1,0 +1,40 @@
+type: edu
+custom_name: "Task: Loop Over a Vector"
+files:
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 60
+        length: 39
+        placeholder_text: /* What should we iterate over here? */
+        initial_state:
+          length: 39
+          offset: 60
+        initialized_from_dependency: false
+        encrypted_possible_answer: 0w8qf2kJhkePUlHZgwRzTw==
+        selected: false
+        status: Unchecked
+      - offset: 110
+        length: 71
+        placeholder_text: // Fill this up so that each element in the Vec `v` is multiplied
+          by 2.
+        initial_state:
+          length: 71
+          offset: 110
+        initialized_from_dependency: false
+        encrypted_possible_answer: QQkOdZrK1ecvHJkXTJr3WQ==
+        selected: false
+        status: Unchecked
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Collections+/+Vectors+/+Loop+Over+a+Vector
+status: Unchecked
+record: -1

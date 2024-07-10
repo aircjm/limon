@@ -1,0 +1,39 @@
+type: edu
+custom_name: "Task: Options in pattern matching"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 174
+        length: 22
+        placeholder_text: word = optional_target
+        initial_state:
+          length: 22
+          offset: 174
+        initialized_from_dependency: false
+        encrypted_possible_answer: D8PFuXPFKSB4wapbzTcwbzVCCQca29ue+0nS7HHCQAIWPGW4qXp+Ij3RLhjJUVN5
+        selected: false
+        status: Unchecked
+      - offset: 609
+        length: 33
+        placeholder_text: integer = optional_integers.pop()
+        initial_state:
+          length: 33
+          offset: 609
+        initialized_from_dependency: false
+        encrypted_possible_answer: qxLU1QW19M80ZQVU7I7crJsqqYV/Yy1r0dfQKT3D1KOyXkN7oRjIcptqVR6QBaC3NcZElGv30+X3yUN12F+aDw==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+  - name: runConfigurations/Test.run.xml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Collections+/+Options+/+Optional+Value
+status: Unchecked
+record: -1

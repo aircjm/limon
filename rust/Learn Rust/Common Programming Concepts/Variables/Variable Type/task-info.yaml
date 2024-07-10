@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Variable Type"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 21
+        length: 31
+        placeholder_text: /*insert here missing part(s)*/
+        initial_state:
+          length: 31
+          offset: 21
+        initialized_from_dependency: false
+        encrypted_possible_answer: c7PuLZhDhQrD0om4JOPwxw==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Programming+Concepts+/+Variables+/+Variable+Type
+status: Unchecked
+record: -1

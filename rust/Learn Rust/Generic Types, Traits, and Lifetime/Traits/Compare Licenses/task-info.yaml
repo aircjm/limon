@@ -1,0 +1,39 @@
+type: edu
+custom_name: "Task: Compare Licenses"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 313
+        length: 2
+        placeholder_text: ??
+        initial_state:
+          length: 2
+          offset: 313
+        initialized_from_dependency: false
+        encrypted_possible_answer: wLmZxrQixD9SDgDf9Bsn6w==
+        selected: false
+        status: Unchecked
+      - offset: 331
+        length: 2
+        placeholder_text: ??
+        initial_state:
+          length: 2
+          offset: 331
+        initialized_from_dependency: false
+        encrypted_possible_answer: wLmZxrQixD9SDgDf9Bsn6w==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Generic+Types+Traits+and+Lifetime+/+Traits+/+Compare+Licenses
+status: Unchecked
+record: -1

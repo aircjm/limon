@@ -1,0 +1,37 @@
+type: edu
+custom_name: "Task: Test a Function"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 170
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 170
+        initialized_from_dependency: false
+        encrypted_possible_answer: 1jv4oI924ZkXwBNnWzUX/A==
+        selected: false
+        status: Unchecked
+      - offset: 191
+        length: 85
+        placeholder_text: /* Write a test function called `is_false_when_odd` here and
+          test for `is_even(5)` */
+        initial_state:
+          length: 85
+          offset: 191
+        initialized_from_dependency: false
+        encrypted_possible_answer: KwsGSHEX/nRMgMSG/Qk5gb6vEnQgVMtygeqbizS/w6Dmy8bh1vL63quGLUrrrTCFAttpHIcozMyOIF+FaTzmlGLKOISUYRWOW1Wj1XDWu/Y=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Writing+Automated+Tests+/+How+to+Write+Tests+/+Testing+a+Function
+status: Unchecked
+record: -1
