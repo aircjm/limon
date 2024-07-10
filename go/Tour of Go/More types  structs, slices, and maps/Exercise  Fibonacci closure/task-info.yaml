@@ -1,0 +1,25 @@
+type: output
+custom_name: "Exercise: Fibonacci closure"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 134
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 134
+        initialized_from_dependency: false
+        encrypted_possible_answer: ejZFv56JxRkkErHCHwMT/F4rjJfDV6tMAUWwn40UL50n99ImpzoJvuBbZZPeTN6NOMsSWDvjt67BlNTbGwp1LA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+status: Unchecked
+record: -1

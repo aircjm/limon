@@ -1,0 +1,35 @@
+type: output
+custom_name: "Exercise: rot13Reader"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 76
+        length: 8
+        placeholder_text: return b
+        initial_state:
+          length: 8
+          offset: 76
+        initialized_from_dependency: false
+        encrypted_possible_answer: FkXq+zdUOUUwiY1Pg4eBPSFDRDYSB2VdZaR4Io2h0YCrHLtLAOl1es5ECtVi47Hri6+u0rQdwdPTkwbDMZyzGHId979zTC4IHswhK5Otq1PN7qxf847a5c4BcmaxS3N/wSrfO3euN5snPFA57fp3J190DXh+h+UMOVHXCEQsPRz4mIBe2mfsb5VceZLSzJgZ+KX02g0GmKtW3uYBu8ntt7DR9c2zhM5qZ8TjlC8hjzg=
+        selected: false
+        status: Unchecked
+      - offset: 188
+        length: 6
+        placeholder_text: return
+        initial_state:
+          length: 6
+          offset: 188
+        initialized_from_dependency: false
+        encrypted_possible_answer: qk8IqpVUiB/DiERRk0Fa71IAQa2f4SLlpOYzQYnr3lPZUDON/KgfjMXFKzdmA4+Nf75jkQzzWo/oO/h9quYBf8Rh6lWEw9AjS4MHbpYiM/c=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+status: Unchecked
+record: -1

@@ -1,0 +1,29 @@
+type: output
+custom_name: "Exercise: Readers"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 73
+        length: 106
+        placeholder_text: "// TODO: Implement a Read method for the MyReader type. The\
+      \ method should return \"int\" and \"error\" values."
+        initial_state:
+          length: 106
+          offset: 73
+        initialized_from_dependency: false
+        encrypted_possible_answer: 94pBusalkN/bPL94CtVnBqjDZUQMMqDczejGRhwHVF6R9yDbGuRQ8SEi9l2ZoP1dUSxSSWWPqWh09i4J30imd3AJBHUi80NoCjQh66g9h2zIujL+cU+x1gLI2IcKtqlV8UhDcY1YST34NNjlArIo7g==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+  - name: go.sum
+    visible: true
+    learner_created: false
+status: Unchecked
+record: -1

@@ -1,0 +1,26 @@
+content:
+  - Methods
+  - Methods are functions
+  - Methods continued
+  - Pointer receivers
+  - Pointers and functions
+  - Methods and pointer indirection
+  - Methods and pointer indirection (2)
+  - Choosing a value or pointer receiver
+  - Interfaces
+  - Interfaces are implemented implicitly
+  - Interface values
+  - Interface values with nil underlying values
+  - Nil interface values
+  - The empty interface
+  - Type assertions
+  - Type switches
+  - Stringers
+  - Exercise  Stringers
+  - Errors
+  - Exercise  Errors
+  - Readers
+  - Exercise  Readers
+  - Exercise  rot13Reader
+  - Images
+  - Exercise  Images

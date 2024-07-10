@@ -1,0 +1,35 @@
+type: output
+custom_name: "Exercise: Loops and Functions"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 73
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 73
+        initialized_from_dependency: false
+        encrypted_possible_answer: 1ecGs/I5fartD3nounn47sBYaIbR34kbc2HfjIL+zJY5TEqxnpDcTG+C3xWEIs2tQXDvh9+VWqGKs4RRmD1Ucw5Po+yObJ35fLAq/lyOcU1T6d3pC7+a7GhdNRzPDee/Ug5GBYvLupSJiGiddP8XOw==
+        selected: false
+        status: Unchecked
+      - offset: 102
+        length: 20
+        placeholder_text: fmt.Println(Sqrt(2))
+        initial_state:
+          length: 20
+          offset: 102
+        initialized_from_dependency: false
+        encrypted_possible_answer: r0QRkAR77DamiFKQ+iC7f+zbbsaAmVe23tKu6BXDqm/EOLirQWGroDCLd7vDrtHn+4Y43tqYHMYzdo2IExFDYQbGSpqSEkj4zECDin4Sc5F9knKH0xCq3/sz/X36CJfc
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+status: Unchecked
+record: -1

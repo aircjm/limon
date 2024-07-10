@@ -1,0 +1,31 @@
+type: marketplace
+title: Tour of Go
+language: English
+summary: "<p>Welcome to the JetBrains Academy adaptation of <a href=\"https://go.dev/tour/list\"\
+  >\"A Tour of Go\"</a>. This course aims to provide an in-depth introduction to the\
+  \ Go programming language. Originally presented in a web-based format at Tour of\
+  \ Go, this version of the course has been converted to suit the learning environment\
+  \ of JetBrains Academy.</p> \n\n<p>What Will You Learn?\n</p><ul>\n<li> Basic Syntax\
+  \ and Data Structures</li>\n<li> Functions, Methods, and Interfaces</li>\n<li> Concurrency\
+  \ in Go </li>\n<li> Generics </li>\n</ul>\n<p></p>\n<p>Who Is This Course For?</p>\n\
+  <p>This course is designed for both beginners to Go and those with some experience\
+  \ in other programming languages looking to transition to Go.</p>\n\n<p>Adaptation\
+  \ Notice: Please note that certain elements, primarily those describing interaction\
+  \ with the original website, have been omitted for relevance and clarity in this\
+  \ new format. This adaptation is in compliance with the <a href=\"https://cs.opensource.google/go/x/website/+/master:LICENSE\"\
+  >BSD license</a> under which the original \"A Tour of Go\" is distributed.</p>\n\
+  \n<p>We hope you enjoy learning Go on the JetBrains Academy platform!</p>\n<p>P.S.\
+  \ Want to contribute? Feel free to send a pull request to this course’s <a href=\"\
+  https://github.com/jetbrains-academy/https://github.com/jetbrains-academy/tour-of-go\"\
+  >git repo</a>.</p>"
+programming_language: Go
+content:
+  - Introduction
+  - "Packages, variables, and functions"
+  - "Flow control statements  for, if, else, switch and defer"
+  - "More types  structs, slices, and maps"
+  - Methods and interfaces
+  - Generics
+  - Concurrency
+mode: Study
+feedback_link: https://plugins.jetbrains.com/plugin/23135-tour-of-go/reviews

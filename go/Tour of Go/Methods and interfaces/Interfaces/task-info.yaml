@@ -1,0 +1,24 @@
+type: output
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 514
+        length: 7
+        placeholder_text: '*Vertex'
+        initial_state:
+          length: 7
+          offset: 514
+        initialized_from_dependency: false
+        encrypted_possible_answer: laqdYt8Gt83Nu1Yn9hBlHg==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+status: Unchecked
+record: -1
