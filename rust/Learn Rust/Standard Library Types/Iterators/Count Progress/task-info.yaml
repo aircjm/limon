@@ -1,0 +1,39 @@
+type: edu
+custom_name: "Task: Count Progress"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 416
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 416
+        initialized_from_dependency: false
+        encrypted_possible_answer: M05057KV750T6B6bdS1kUNMJjMnFsG98rkJPvZ7xARWRicyXR0cDbR/ZXKtwdFn3rZRnXAJA4UCfX9iOk7zt9g==
+        selected: false
+        status: Unchecked
+      - offset: 788
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 788
+        initialized_from_dependency: false
+        encrypted_possible_answer: epFU1+4gUwvnnbtstNqabJNi3JkgS1HoH98EA/Xa3gpGb+36sev8qPXVWLLMevHmekkIy3ZWhrH1tE5ufENp4jBEnjvYrXRCun5uFXI4MB1IpSvk40iSkWWZPlVwmJH9PaTBwaVp4sKKUVAAHiTwSqvuj3DOyJB4mkjQJXvuxFIEdXQz9IkQaaS/0h00fvq8
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Iterators+/+Count+Progress
+status: Unchecked
+record: -1

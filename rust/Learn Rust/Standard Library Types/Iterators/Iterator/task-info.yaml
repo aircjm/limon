@@ -1,0 +1,86 @@
+type: edu
+custom_name: "Task: Deal with Division"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 418
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 418
+        initialized_from_dependency: false
+        encrypted_possible_answer: wSlEipsm94VRnv8WOjVqQn0NnDJswTFXn8K0tXETmO5P85G96mvTT4G829SkUUPN
+        selected: false
+        status: Unchecked
+      - offset: 468
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 468
+        initialized_from_dependency: false
+        encrypted_possible_answer: lWApdfxGUXeXQ8iiXKdMXg==
+        selected: false
+        status: Unchecked
+      - offset: 504
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 504
+        initialized_from_dependency: false
+        encrypted_possible_answer: wSlEipsm94VRnv8WOjVqQmLjiynGzvx+5TQuaQxmeHm98JtL0j0sfMwkRvZXpCWsIDfL4Gmk1zKBNtnPDY+k6eJHCYUWYOuCpJU5E4mp+UM=
+        selected: false
+        status: Unchecked
+      - offset: 677
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 677
+        initialized_from_dependency: false
+        encrypted_possible_answer: zLAzfxUa1WWDBCxh5EegHhB0kGtVLpvMq2QSIQYNgXQ=
+        selected: false
+        status: Unchecked
+      - offset: 824
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 824
+        initialized_from_dependency: false
+        encrypted_possible_answer: hDbCr1EkzsRuE9Seu+e9AmjUpjaZjFqF5AY0DskrllEMiE5ydhZCmkPsEwXKu+adxQqwewwRJHs8k32zzTx9mK0A/xNMsEnUZz0fk/6uF0k=
+        selected: false
+        status: Unchecked
+      - offset: 1017
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 1017
+        initialized_from_dependency: false
+        encrypted_possible_answer: ksrBbZvSDjPVBu7lNkMoa4iR6X1uOp1zNxYAveaGPc8=
+        selected: false
+        status: Unchecked
+      - offset: 1164
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 1164
+        initialized_from_dependency: false
+        encrypted_possible_answer: aVVlkek7BLMJRKqediEb9LKjlSf60F2CKcWGN/tmVooSwwLEHFbluMCen0lEIuV/yT/4EjwYklvsF06UV/WF7N2MslvvZkomssBHMbRo+mg=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Iterators+/+Iterator
+status: Unchecked
+record: -1

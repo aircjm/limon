@@ -1,0 +1,24 @@
+type: theory
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 264
+        length: 22
+        placeholder_text: '|| self.most_stocked()'
+        initial_state:
+          length: 22
+          offset: 264
+        initialized_from_dependency: false
+        encrypted_possible_answer: +n6I2VCuoH+npoerOPedb5jsSyu6mJUGW09jmV2qp6E=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Closures+/+Capturing+the+Environment+with+Closures
+status: Unchecked
+record: -1
+solution_hidden: true
+post_submission_on_open: true

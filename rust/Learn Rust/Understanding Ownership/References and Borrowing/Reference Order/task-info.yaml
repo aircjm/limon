@@ -1,0 +1,31 @@
+type: edu
+custom_name: "Task: Reference order"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 16
+        length: 87
+        placeholder_text: |-
+          let mut x = 100;
+              let y = &mut x;
+              let z = &mut x;
+              *y += 100;
+              *z += 1000;
+        initial_state:
+          length: 87
+          offset: 16
+        initialized_from_dependency: false
+        encrypted_possible_answer: 6HB0O8zr92TRrUVbY8nvuz7SamirrNU42OH1zpDIrcfWvBM4tJsS9KM3wG7DXrxn0v8RSyudQ6mx9sC/raYxvPLZ+CQrG8FbZC0gKGIlA8ZtXiBB62yy6b4IKuNYSa1K
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Understanding+Ownership+/+References+and+Borrowing+/+Reference+Order
+status: Unchecked
+record: -1

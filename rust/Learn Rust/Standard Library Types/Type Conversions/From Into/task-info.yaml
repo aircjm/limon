@@ -1,0 +1,29 @@
+type: edu
+custom_name: "Task: From and Into"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 305
+        length: 23
+        placeholder_text: // Write your code here
+        initial_state:
+          length: 23
+          offset: 305
+        initialized_from_dependency: false
+        encrypted_possible_answer: C9IQWY5s1aOSPGWSjbs3+ufk5q0g/CPtcmMZtoLAZjGr74eNaKjUxgsNj4iMZ3QZl1VKvk2/qSUCzNTLfSTq7evq0VrHkjOZcNfV79fSSZuMdkD5WHAxB7dn0o3uAp3sSjUlTgK4mFCuJ5o3tSbhdQUqUQ1TwyTa04tuvX8dcJXG1DHJFelbCsxpXfeHoZG1Lage8Socrsj4yXacICS8Y6udXFSrRFFf/VU7HYaNbfL/ZsO9nH2VvKVXksJWFDhRjqkoPrygONedmdV7HvdFIj7XfPiqpFDxp/xz4gAydSk7bEtYb8cBcPBxSdCniVsrPHI7wiUnVdx5jbfP9nxvNIGzxUoiu9/6UhwsgenJUIMWfYYzC3HFmTSws1RkpaTyCxw8nHUwomEWoHg3GA4RPhKhf3TI4sjh9eRDjR26beYGkEU6nq8NT06fmhrqm7quWZQg7lU1tndRhzqwmXu+eHhhwu5zWjeTHIqTZ5WD9Vc=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Type+Conversions+/+From+Into
+status: Unchecked
+record: -1

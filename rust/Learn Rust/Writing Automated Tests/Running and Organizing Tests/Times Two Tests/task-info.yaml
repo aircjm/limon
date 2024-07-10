@@ -1,0 +1,36 @@
+type: edu
+custom_name: "Task: Times Two"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: true
+    placeholders:
+      - offset: 151
+        length: 65
+        placeholder_text: /*insert the value we assume to get from the times_two function*/
+        initial_state:
+          length: 65
+          offset: 151
+        initialized_from_dependency: false
+        encrypted_possible_answer: 5O5Mveu3vza2kqJwIItxvg==
+        selected: false
+        status: Unchecked
+      - offset: 291
+        length: 39
+        placeholder_text: /*write an assert for `times_two(-2)`*/
+        initial_state:
+          length: 39
+          offset: 291
+        initialized_from_dependency: false
+        encrypted_possible_answer: BOYGgEBGGmX4N+9w6B9Fk2lB8nljvDiW2NpCr+F/vFo=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Writing+Automated+Tests+/+Running+and+Organizing+Tests+/+Times+Two+Tests
+status: Unchecked
+record: -1

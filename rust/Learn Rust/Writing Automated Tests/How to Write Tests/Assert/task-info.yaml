@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Play with assert!"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 79
+        length: 4
+        placeholder_text: /**/
+        initial_state:
+          length: 4
+          offset: 79
+        initialized_from_dependency: false
+        encrypted_possible_answer: B32H4xjFtl8yhKC200kQ5w==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Writing+Automated+Tests+/+How+to+Write+Tests+/+Assert
+status: Unchecked
+record: -1

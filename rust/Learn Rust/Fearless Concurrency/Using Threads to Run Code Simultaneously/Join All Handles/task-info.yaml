@@ -1,0 +1,46 @@
+type: edu
+custom_name: "Task: Join All Handles"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 165
+        length: 32
+        placeholder_text: "/* TODO: Save the handle here */"
+        initial_state:
+          length: 32
+          offset: 165
+        initialized_from_dependency: false
+        encrypted_possible_answer: ePT2ZXu9ATkQ3HDxAFZdHA==
+        selected: false
+        status: Unchecked
+      - offset: 346
+        length: 42
+        placeholder_text: "/* TODO: Push the handle into `handles` */"
+        initial_state:
+          length: 42
+          offset: 346
+        initialized_from_dependency: false
+        encrypted_possible_answer: vDb5nlEGrQT7BF+LNpu5AXqcRFmC4bQHwnXdQNroZVw=
+        selected: false
+        status: Unchecked
+      - offset: 467
+        length: 32
+        placeholder_text: "/* TODO: Join the handle here */"
+        initial_state:
+          length: 32
+          offset: 467
+        initialized_from_dependency: false
+        encrypted_possible_answer: tY3s90DdFOBT9Vm/OHmD6rxvHrKRnlKgs5cao8csI7M=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Fearless+Concurrency+/+Using+Threads+to+Run+Code+Simultaneously+/+Join+All+Handles
+status: Unchecked
+record: -1

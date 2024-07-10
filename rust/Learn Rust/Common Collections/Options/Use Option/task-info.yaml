@@ -1,0 +1,40 @@
+type: edu
+custom_name: "Task: Want Some Ice Cream?"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 231
+        length: 26
+        placeholder_text: "// TODO: Return an Option!"
+        initial_state:
+          length: 26
+          offset: 231
+        initialized_from_dependency: false
+        encrypted_possible_answer: jdCqSEEPoNkcnGbqRUNZ7FiR7yw3TOAq1I2RfLPwfTbYw87Q5xE8nt0UCDqnzbfFN0qegu9Lf07wowLhmlFD+cLbR3H6FFlV8Hs5NbUVRT8xUQFXbG8cQabPNv4+QqW4YoruTGvx1AHqc7IEvg9SZ/SiS1+r7FwPsqqlzHKDi70=
+        selected: false
+        status: Unchecked
+      - offset: 343
+        length: 79
+        placeholder_text: "/* TODO: Fix this test. How do you get at the value contained\
+      \ in the Option? */"
+        initial_state:
+          length: 79
+          offset: 343
+        initialized_from_dependency: false
+        encrypted_possible_answer: RHAUFXHwYRU+8QdVdJJxiaMxVzGOLl9L7BXxZIHn2eY=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+  - name: runConfigurations/Test.run.xml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Collections+/+Options+/+Use+Option
+status: Unchecked
+record: -1

@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Compute Factorial"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 40
+        length: 29
+        placeholder_text: //Implement the function here
+        initial_state:
+          length: 29
+          offset: 40
+        initialized_from_dependency: false
+        encrypted_possible_answer: Y9g+TI49PQ1SxkxAyEfVgjEUp3kiRd6L5VUfYmwXqzo=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Iterators+/+Factorial
+status: Unchecked
+record: -1

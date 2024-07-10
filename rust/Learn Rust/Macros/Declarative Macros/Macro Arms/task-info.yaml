@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Macro Arms"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 82
+        length: 34
+        placeholder_text: /*separate the "macro arms" here*/
+        initial_state:
+          length: 34
+          offset: 82
+        initialized_from_dependency: false
+        encrypted_possible_answer: Ucrn/+bWxPWbkyv9LUu4gQ==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Macros+/+Declarative+Macros+/+Macro+Arms
+status: Unchecked
+record: -1

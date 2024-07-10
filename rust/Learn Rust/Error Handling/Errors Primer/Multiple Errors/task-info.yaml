@@ -1,0 +1,29 @@
+type: edu
+custom_name: "Task: Multiple Errors"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 153
+        length: 13
+        placeholder_text: ParseIntError
+        initial_state:
+          length: 13
+          offset: 153
+        initialized_from_dependency: false
+        encrypted_possible_answer: fnfVSDgRkozm0YSh1yNIjQ==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Error+Handling+/+Errors+Primer+/+Multiple+Errors
+status: Unchecked
+record: -1

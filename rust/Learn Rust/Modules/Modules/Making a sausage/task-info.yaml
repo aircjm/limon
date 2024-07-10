@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Making a Sausage"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 160
+        length: 55
+        placeholder_text: /*insert the keyword here to make the function public*/
+        initial_state:
+          length: 55
+          offset: 160
+        initialized_from_dependency: false
+        encrypted_possible_answer: Ek5n1xVO6F+uh3wYJynyng==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Modules+/+Modules+/+Making+a+sausage
+status: Unchecked
+record: -1

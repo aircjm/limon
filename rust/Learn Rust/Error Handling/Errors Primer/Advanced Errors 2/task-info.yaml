@@ -1,0 +1,81 @@
+type: edu
+custom_name: "Task: Advanced Errors 2"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 793
+        length: 31
+        placeholder_text: "// TODO: Complete this function"
+        initial_state:
+          length: 31
+          offset: 793
+        initialized_from_dependency: false
+        encrypted_possible_answer: fY7T+2sg9Oby+ydUTyMJ4B7pegnHq2YsRtrQwguWNZ4=
+        selected: false
+        status: Unchecked
+      - offset: 834
+        length: 108
+        placeholder_text: |-
+          // TODO: Make ParseClimateError suitable for propagating errors in main.
+          // See hints if you are in trouble.
+        initial_state:
+          length: 108
+          offset: 834
+        initialized_from_dependency: false
+        encrypted_possible_answer: gYmmppv7WlMHq3kKxYBU5lAp3kChakE2QaD+/zN200nhnj32DWTrH9f4F4mUAHat
+        selected: false
+        status: Unchecked
+      - offset: 1439
+        length: 33
+        placeholder_text: /* Complete the implementation */
+        initial_state:
+          length: 33
+          offset: 1439
+        initialized_from_dependency: false
+        encrypted_possible_answer: qTDgByRTGA1GkjrJ60jHVuId4MTmCXyDgK5sD0fRR0H/jDupSoQ5WmfK1RsmI8tVlYhFFSz20LQqCBkRYYFsLWZrtr5QyuAUSwQLbR5tG6WfexKuZ7/HgpjfhK5juA4xh4+gEXPM496D6Y3/M4h5GxC8jcOFy8vBZzVY8/l3352O5LLkNBdTkCCtHsPJ7hr3Lry0heVXa0tZNIxODTPpzwrGrE/3pIe7sP4KN1gExOA=
+        selected: false
+        status: Unchecked
+      - offset: 2067
+        length: 21
+        placeholder_text: /* Add a condition */
+        initial_state:
+          length: 21
+          offset: 2067
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9Er4EI09/w2eAowgiqoaaGhAcor++UBRFioZU2M7Puk=
+        selected: false
+        status: Unchecked
+      - offset: 2136
+        length: 47
+        placeholder_text: /* Return an error if the city name is empty */
+        initial_state:
+          length: 47
+          offset: 2136
+        initialized_from_dependency: false
+        encrypted_possible_answer: OV8t/vMQJ6wHQMnoUHiiAbn6sVVvCKXAznmp/ok1nHqY8WC2xG90zox+m+ZQlp/TAQqvDznbIySsvHLVuONIRNGL6fEucVLIZa6uzzK1AQA=
+        selected: false
+        status: Unchecked
+      - offset: 2196
+        length: 44
+        placeholder_text: /* Return an error if the string is empty */
+        initial_state:
+          length: 44
+          offset: 2196
+        initialized_from_dependency: false
+        encrypted_possible_answer: DluMSxQYt6exEnDTMXzydeDOtK1FxQLgI9o3ymxwFP7sTRFnCTipSC0XLPdscaDDw+ZodHNQTajfGlUZ9mqjXIakN6mc8gCPp5gAhegYRME=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Error+Handling+/+Errors+Primer+/+Advanced+Errors+2
+status: Unchecked
+record: -1

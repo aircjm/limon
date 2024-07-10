@@ -1,0 +1,46 @@
+type: edu
+custom_name: "Task: Returning Result"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 46
+        length: 14
+        placeholder_text: Option<String>
+        initial_state:
+          length: 14
+          offset: 46
+        initialized_from_dependency: false
+        encrypted_possible_answer: aVz0abIXw8dx4icFflKwN8NEB0r+Wi+GCI5ysDeHRy4=
+        selected: false
+        status: Unchecked
+      - offset: 95
+        length: 4
+        placeholder_text: Some
+        initial_state:
+          length: 4
+          offset: 95
+        initialized_from_dependency: false
+        encrypted_possible_answer: bc2B+quslAh78GJ5ih6t5w==
+        selected: false
+        status: Unchecked
+      - offset: 238
+        length: 4
+        placeholder_text: None
+        initial_state:
+          length: 4
+          offset: 238
+        initialized_from_dependency: false
+        encrypted_possible_answer: S0nX075knx3Q0zKbFN24oPorl28tpwtAm/TmIca8aV2J7vVDSylr8OomU9FnSLcT5NVQUKN91Ha9FBHB4wBPzA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Error+Handling+/+Error+Handling+/+Returning+Result
+status: Unchecked
+record: -1

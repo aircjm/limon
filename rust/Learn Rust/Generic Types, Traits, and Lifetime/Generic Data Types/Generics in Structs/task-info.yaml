@@ -1,0 +1,69 @@
+type: edu
+custom_name: "Task: Generics in Structs"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 18
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 18
+        initialized_from_dependency: false
+        encrypted_possible_answer: TtHqopb3p2QJdVXzih7eSQ==
+        selected: false
+        status: Unchecked
+      - offset: 61
+        length: 3
+        placeholder_text: u32
+        initial_state:
+          length: 3
+          offset: 61
+        initialized_from_dependency: false
+        encrypted_possible_answer: v3ZkPzTVOIMmYksW8RSPlA==
+        selected: false
+        status: Unchecked
+      - offset: 73
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 73
+        initialized_from_dependency: false
+        encrypted_possible_answer: TtHqopb3p2QJdVXzih7eSQ==
+        selected: false
+        status: Unchecked
+      - offset: 106
+        length: 25
+        placeholder_text: /* Something goes here */
+        initial_state:
+          length: 25
+          offset: 106
+        initialized_from_dependency: false
+        encrypted_possible_answer: TtHqopb3p2QJdVXzih7eSQ==
+        selected: false
+        status: Unchecked
+      - offset: 156
+        length: 3
+        placeholder_text: u32
+        initial_state:
+          length: 3
+          offset: 156
+        initialized_from_dependency: false
+        encrypted_possible_answer: v3ZkPzTVOIMmYksW8RSPlA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Generic+Types+Traits+and+Lifetime+/+Generic+Data+Types+/+Generics+in+Structs
+status: Unchecked
+record: -1

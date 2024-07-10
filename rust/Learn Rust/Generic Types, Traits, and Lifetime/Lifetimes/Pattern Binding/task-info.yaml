@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Pattern Binding"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 141
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 141
+        initialized_from_dependency: false
+        encrypted_possible_answer: Ac1NvB/ST28WE9KzNKVEwg==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Generic+Types+Traits+and+Lifetime+/+Lifetimes+/+Pattern+Binding
+status: Unchecked
+record: -1

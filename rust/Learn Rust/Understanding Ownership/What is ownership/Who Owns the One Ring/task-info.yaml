@@ -1,0 +1,136 @@
+type: output
+custom_name: "Task: Who Owns the One Ring?"
+files:
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 172
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 172
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 206
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 206
+        initialized_from_dependency: false
+        encrypted_possible_answer: BPrPxsoPO0ddRfXxWyDgbA==
+        selected: false
+        status: Unchecked
+      - offset: 242
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 242
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 276
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 276
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 386
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 386
+        initialized_from_dependency: false
+        encrypted_possible_answer: BPrPxsoPO0ddRfXxWyDgbA==
+        selected: false
+        status: Unchecked
+      - offset: 420
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 420
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 456
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 456
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 490
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 490
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 619
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 619
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 653
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 653
+        initialized_from_dependency: false
+        encrypted_possible_answer: BPrPxsoPO0ddRfXxWyDgbA==
+        selected: false
+        status: Unchecked
+      - offset: 689
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 689
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+      - offset: 723
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 723
+        initialized_from_dependency: false
+        encrypted_possible_answer: 9gHhNfdFwWo/juJtahEseQ==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Understanding+Ownership+/+What+is+ownership+/+Who+Owns+the+One+Ring
+status: Unchecked
+record: -1

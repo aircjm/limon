@@ -1,0 +1,86 @@
+type: output
+custom_name: "Task: Home Alone at Day X"
+files:
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 0
+        length: 29
+        placeholder_text: /* Add use statements here */
+        initial_state:
+          length: 29
+          offset: 0
+        initialized_from_dependency: false
+        encrypted_possible_answer: Cy55l4A5Hl+I7c8CzfSSn8zUzR2MMfJAd+1jyDbOvRELM+RQBhdd6pUmvewzLCmlH3Yx5OsbiOsollDa88XCQ6/L/RTchIfeeD0MTS95QCrokpefZYpMeji6RF0Ioxydeu2prYHLlaGHbGhHQQGX8mAAwY5uRuNWcxTULr6W29HSVW0eL5CBzqZ0IsjF6ovt/XjWXKsE249+dT0QT7C9pQsyMHpX1Aso/uy6fHE4nKA=
+        selected: false
+        status: Unchecked
+      - offset: 137
+        length: 30
+        placeholder_text: /* What's Alice doing here? */
+        initial_state:
+          length: 30
+          offset: 137
+        initialized_from_dependency: false
+        encrypted_possible_answer: 44q96sd5Yzk1SxMEbCvqlPtgE9fqkpFVLMcRzrq0/cSqHMsQdDss9cGpD0OZ1DGL
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/ground_floor/big_hall.rs
+    visible: true
+    learner_created: false
+  - name: src/ground_floor/kitchen.rs
+    visible: true
+    learner_created: false
+  - name: src/first_floor/master_bedroom.rs
+    visible: true
+    learner_created: false
+  - name: src/first_floor/guest_bedroom.rs
+    visible: true
+    learner_created: false
+  - name: src/second_floor/library.rs
+    visible: true
+    learner_created: false
+  - name: src/second_floor/office.rs
+    visible: true
+    learner_created: false
+  - name: src/second_floor/astronomy_tower.rs
+    visible: true
+    learner_created: false
+  - name: src/ground_floor/storage_room.rs
+    visible: true
+    learner_created: false
+  - name: src/first_floor/toys_room.rs
+    visible: true
+    placeholders:
+      - offset: 0
+        length: 9
+        placeholder_text: /* ??? */
+        initial_state:
+          length: 9
+          offset: 0
+        initialized_from_dependency: false
+        encrypted_possible_answer: Ek5n1xVO6F+uh3wYJynyng==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/ground_floor.rs
+    visible: true
+    learner_created: false
+  - name: src/first_floor.rs
+    visible: true
+    learner_created: false
+  - name: src/second_floor.rs
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Modules+/+Modules+/+Home+Alone+at+Day+X
+status: Unchecked
+record: -1

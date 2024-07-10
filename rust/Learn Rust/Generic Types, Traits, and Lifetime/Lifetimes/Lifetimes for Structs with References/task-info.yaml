@@ -1,0 +1,46 @@
+type: output
+custom_name: "Task: Lifetimes for Structs with References"
+files:
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 11
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 11
+        initialized_from_dependency: false
+        encrypted_possible_answer: qMgrDZ+Ooe1FUphmzH6Jtg==
+        selected: false
+        status: Unchecked
+      - offset: 27
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 27
+        initialized_from_dependency: false
+        encrypted_possible_answer: WBat4okiK+5Zv/gl88LSQw==
+        selected: false
+        status: Unchecked
+      - offset: 44
+        length: 0
+        placeholder_text: ""
+        initial_state:
+          length: 0
+          offset: 44
+        initialized_from_dependency: false
+        encrypted_possible_answer: WBat4okiK+5Zv/gl88LSQw==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/output.txt
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Generic+Types+Traits+and+Lifetime+/+Lifetimes+/+Lifetimes+for+Structs+with+References
+status: Unchecked
+record: -1

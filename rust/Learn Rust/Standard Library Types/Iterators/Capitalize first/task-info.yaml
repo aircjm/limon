@@ -1,0 +1,49 @@
+type: edu
+custom_name: "Task: Capitalize First"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 155
+        length: 3
+        placeholder_text: ???
+        initial_state:
+          length: 3
+          offset: 155
+        initialized_from_dependency: false
+        encrypted_possible_answer: cbQ+xaTqYn04MrmPw/Wkl7Iv4Rr4J8lx/Co8relGUSdNY2dK/KbLmF3anzNiZS6T06Q/DBia9zj7HUwvJFqVWQ==
+        selected: false
+        status: Unchecked
+      - offset: 248
+        length: 6
+        placeholder_text: "vec![]"
+        initial_state:
+          length: 6
+          offset: 248
+        initialized_from_dependency: false
+        encrypted_possible_answer: flneeDNm1Lgl9EDpoJzGC2gi9A0IOtb03B5Lu3J4Q86I12Rs41UvUA9U75RM+gkKPi+qx2A+fIGk8LCQLFDtjrQOgsevF8S/G74MXOERKZWiJtHLD1XiMflFUMsFCmqZ
+        selected: false
+        status: Unchecked
+      - offset: 618
+        length: 13
+        placeholder_text: String::new()
+        initial_state:
+          length: 13
+          offset: 618
+        initialized_from_dependency: false
+        encrypted_possible_answer: flneeDNm1Lgl9EDpoJzGC2gi9A0IOtb03B5Lu3J4Q86I12Rs41UvUA9U75RM+gkKPi+qx2A+fIGk8LCQLFDtjjRxQsFwNc4kZrFyVARTxjY=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Iterators+/+Capitalize+first
+status: Unchecked
+record: -1

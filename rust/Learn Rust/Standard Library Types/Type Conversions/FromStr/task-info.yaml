@@ -1,0 +1,73 @@
+type: edu
+custom_name: "Task: Implement FromStr"
+files:
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 753
+        length: 33
+        placeholder_text: /* Return am appropriate error */
+        initial_state:
+          length: 33
+          offset: 753
+        initialized_from_dependency: false
+        encrypted_possible_answer: xJSu6E3KBeOipSm7UZ0hmyUG/ZLbY3L74WmmSuC6envfUTottAAjJyfLtICUSLhv
+        selected: false
+        status: Unchecked
+      - offset: 860
+        length: 106
+        placeholder_text: /* Add a condition for the cases when there is a wrong number
+          of fields and return an appropriate error */
+        initial_state:
+          length: 106
+          offset: 860
+        initialized_from_dependency: false
+        encrypted_possible_answer: vZCIoxMFDzUZTIPXSZSC73cc7mdFBTLyZvuagpB6Rv1nDOPKa4Q50dm6zJwr5P1mgH/V21ypyEjjzueD7o1UlMOfjphPyKOEgkA4BJVqWit043R/dyS1pb2RLF01iCMpzezRJOfDkKRf65T9ZsVvEw==
+        selected: false
+        status: Unchecked
+      - offset: 975
+        length: 131
+        placeholder_text: /* Extract the first element from the split operation and use
+          it as the name. Return an appropriate error if the field is empty. */
+        initial_state:
+          length: 131
+          offset: 975
+        initialized_from_dependency: false
+        encrypted_possible_answer: UbysJxFO4oDUlh8wjZ2+fp84Y/Z5gJu/SEmCGLcjBtvVFQyEbMd+aOBQETHihTmNTk+TiuAGTkbd+HSJsAPaq0++y3RgI/4+5e4sa9eRbJNTb7IoNT5NAi3BpRQ9yWEmbMYZsoO7/qHNBmodePz7J6hHKTsMz0bGJL1u1Gt2oqseHo8PXGpQcbOaMchnX3TF
+        selected: false
+        status: Unchecked
+      - offset: 1115
+        length: 120
+        placeholder_text: /* Extract the other element from the split and parse it as
+          age. Return an appropriate error if something goes wrong. */
+        initial_state:
+          length: 120
+          offset: 1115
+        initialized_from_dependency: false
+        encrypted_possible_answer: orynRTv39WyVWNiMHPnkqp4ypEGa0xdlL8u0YIf4rGeRu9EWReGMajjPJx5+rUax
+        selected: false
+        status: Unchecked
+      - offset: 1245
+        length: 65
+        placeholder_text: /* Return a Result of a Person object if everything goes well.
+          */
+        initial_state:
+          length: 65
+          offset: 1245
+        initialized_from_dependency: false
+        encrypted_possible_answer: wqix5Z3+nHKfufDpAfEvrg4sQlqliJSiU8pWE6ps+rU=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    learner_created: false
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Standard+Library+Types+/+Type+Conversions+/+FromStr
+status: Unchecked
+record: -1

@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Use a Tuple Index"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 81
+        length: 65
+        placeholder_text: /*Access the second element of the tuple here using tuple index*/
+        initial_state:
+          length: 65
+          offset: 81
+        initialized_from_dependency: false
+        encrypted_possible_answer: QKn6HuqfkBzEBdHbUXMatA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Programming+Concepts+/+Tuples+and+Arrays+/+Tuple+Index
+status: Unchecked
+record: -1

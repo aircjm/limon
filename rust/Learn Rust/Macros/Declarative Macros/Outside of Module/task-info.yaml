@@ -1,0 +1,26 @@
+type: edu
+custom_name: "Task: Outside of Module"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: src/main.rs
+    visible: true
+    placeholders:
+      - offset: 0
+        length: 6
+        placeholder_text: //TODO
+        initial_state:
+          length: 6
+          offset: 0
+        initialized_from_dependency: false
+        encrypted_possible_answer: GIayfFKoCTMCKrKSUK/xng==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Macros+/+Declarative+Macros+/+Outside+of+Module
+status: Unchecked
+record: -1

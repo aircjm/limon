@@ -1,0 +1,46 @@
+type: edu
+custom_name: "Task: Calculate Price"
+files:
+  - name: Cargo.toml
+    visible: false
+    learner_created: false
+  - name: tests/tests.rs
+    visible: false
+    learner_created: false
+  - name: src/lib.rs
+    visible: true
+    placeholders:
+      - offset: 23
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 23
+        initialized_from_dependency: false
+        encrypted_possible_answer: cQgiopiCmiERWAPUNkS7ncSNIFZD4lhnJwLBa+Xnals=
+        selected: false
+        status: Unchecked
+      - offset: 35
+        length: 8
+        placeholder_text: /*TODO*/
+        initial_state:
+          length: 8
+          offset: 35
+        initialized_from_dependency: false
+        encrypted_possible_answer: 7HeDh3/EQrxj0zw7D/Yppw==
+        selected: false
+        status: Unchecked
+      - offset: 50
+        length: 28
+        placeholder_text: /*write your solution here*/
+        initial_state:
+          length: 28
+          offset: 50
+        initialized_from_dependency: false
+        encrypted_possible_answer: V+f2qgnmxGVBvC8XJA6QSJnTV3gXqRBoXgT6QLgZds055vCB4dkphExsVYCwXWSy0AUkDJ4asPF6aIQvbDM0SLIoUmsD3846Nn3z3Uf7yf58nrRwrcFtmO6RnQJITknM
+        selected: false
+        status: Unchecked
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSdfJQgjsbDA4pPGpklj3vJnKNspd9wmEHzAgh6EkoJy2IiRuw/viewform?usp=pp_url&entry.2103429047=Common+Programming+Concepts+/+Variables+Functions+and+Conditions+Test+/+Calculate+Price
+status: Unchecked
+record: -1
