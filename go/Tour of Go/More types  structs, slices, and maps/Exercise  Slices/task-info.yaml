@@ -1,0 +1,28 @@
+type: output
+custom_name: "Exercise: Slices"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 80
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 80
+        initialized_from_dependency: false
+        encrypted_possible_answer: PW/m1tR/MtDFNzoo9M/QKs1SQbSO3IxYbar1uW13U8fDYxQqXNDWzqmxaLIJmqmTzOnnyW0FlfFycAN+s51jir8ge7l3ndGMO5aib+wX7+lhdiyfcHI/2teJB7J5iU+NaR1allWk+jIW5QJDkbsYHGbZUnxYx1idpthKvlvpQ1fpWBi7kKNqpykGvh/bMGLsHQaDZrcj/CxO1PSR9TpTtvJHJfk6luyvwVEttbQrSr0=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+  - name: go.sum
+    visible: true
+    learner_created: false
+status: Unchecked
+record: -1

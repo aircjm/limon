@@ -1,0 +1,26 @@
+type: output
+custom_name: "Exercise: Stringers"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 49
+        length: 126
+        placeholder_text: "// TODO: Add a \"String\" method that is defined on values\
+      \ of type \"IPAddr\" (with \"ip\" being the receiver) and returns a string."
+        initial_state:
+          length: 126
+          offset: 49
+        initialized_from_dependency: false
+        encrypted_possible_answer: jb8va7/mPZvZsInUrZKNH/QVr0AnDel78JhkC6Dam9g2QkZHtRcyxqmyjpkrtFwzxXthTH6SnAq7RkvdTJqRS4Ll5uUuffspsnuive5zI/XbXvHg3qOp2wWHjqCTITM53JUEUzObH9L9ijX8fJDfTg==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+status: Unchecked
+record: -1

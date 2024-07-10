@@ -1,0 +1,28 @@
+type: output
+custom_name: "Exercise: Maps"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 93
+        length: 29
+        placeholder_text: "return map[string]int{\"x\": 1}"
+        initial_state:
+          length: 29
+          offset: 93
+        initialized_from_dependency: false
+        encrypted_possible_answer: Z+t+KXSjxHps7KbTu1Gvi6JIPj0ZTfF6mPd6cH5CSARpG9E6ADACnFFg7Sy8hpn0P2O8kpoHGJ+QK03FVD2S6qqkjx7T90clULqb/0/IoLqYmaP+Wff9h5QxoXOrX/UC
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+  - name: go.sum
+    visible: true
+    learner_created: false
+status: Unchecked
+record: -1

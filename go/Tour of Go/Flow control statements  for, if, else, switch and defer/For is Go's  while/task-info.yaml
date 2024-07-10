@@ -1,0 +1,12 @@
+type: theory
+custom_name: For is Go's "while"
+files:
+  - name: task.go
+    visible: true
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+status: Unchecked
+record: -1
+post_submission_on_open: true

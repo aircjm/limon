@@ -1,0 +1,28 @@
+custom_name: "More types: structs, slices, and maps"
+content:
+  - Pointers
+  - Structs
+  - Struct Fields
+  - Pointers to structs
+  - Struct Literals
+  - Arrays
+  - Slices
+  - Slices are like references to arrays
+  - Slice literals
+  - Slice defaults
+  - Slice length and capacity
+  - Nil slices
+  - Creating a slice with make
+  - Slices of slices
+  - Appending to a slice
+  - Range
+  - Range continued
+  - Exercise  Slices
+  - Maps
+  - Map literals
+  - Map literals continued
+  - Mutating Maps
+  - Exercise  Maps
+  - Function values
+  - Function closures
+  - Exercise  Fibonacci closure

@@ -1,0 +1,48 @@
+type: output
+custom_name: "Exercise: Images"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 96
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 96
+        initialized_from_dependency: false
+        encrypted_possible_answer: hgxPILZEf2fI4eNQ1u/Q2V3l91mJke3U6qzY87U6qAw=
+        selected: false
+        status: Unchecked
+      - offset: 110
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 110
+        initialized_from_dependency: false
+        encrypted_possible_answer: 8T3oc1kOdbH9tUDtCMqKjxO4tPrR+V84HOXm762JP/fuk7TxdvsVHAjtmLLNwgi1b3aCFkiSvajGPrApqrVD/gLCkvwQkm7CPRFNCgbz1IUMfHJIjSU5yMLZ8kbVLK74xEt8HtmZu1NAv33xAVGruIg2OrL2IaR97/n5gm+kh3dFectXXAfAosXHOpSDZRWCGN3x5j/++G0eNhKt8l2p6h35c8PhhuNaN54zKkP5nXaSS3p1nWOM+oxWQcx1DSGKBdk7qOdlkQdbdd5W6Hw/aGxny6kFpWl3qNWD/JzRwkUS7wur89ySK0nFTb3GZlWvMATPe8YU/aNGEpFKLwkHHA==
+        selected: false
+        status: Unchecked
+      - offset: 148
+        length: 54
+        placeholder_text: "/* Insert dimensions here (for example, \"256, 256\") */"
+        initial_state:
+          length: 54
+          offset: 148
+        initialized_from_dependency: false
+        encrypted_possible_answer: NPe7R03690gmkQJ6IlX6Pg==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+  - name: go.sum
+    visible: true
+    learner_created: false
+status: Unchecked
+record: -1

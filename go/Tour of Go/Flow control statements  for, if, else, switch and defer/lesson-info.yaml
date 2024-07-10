@@ -1,0 +1,15 @@
+custom_name: "Flow control statements: for, if, else, switch and defer"
+content:
+  - For
+  - For continued
+  - For is Go's  while
+  - Forever
+  - If
+  - If with a short statement
+  - If and else
+  - Exercise  Loops and Functions
+  - Switch
+  - Switch evaluation order
+  - Switch with no condition
+  - Defer
+  - Stacking defers

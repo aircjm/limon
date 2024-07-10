@@ -1,0 +1,11 @@
+type: theory
+files:
+  - name: main.go
+    visible: true
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+status: Solved
+record: -1
+post_submission_on_open: true

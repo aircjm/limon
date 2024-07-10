@@ -1,0 +1,35 @@
+type: output
+custom_name: "Exercise: Errors"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 41
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 41
+        initialized_from_dependency: false
+        encrypted_possible_answer: TH1vcV1+Ya8/2KYyseG7JwhCgjT+K4yudUI2+IHHyCyjQqpPi6lnaOTalu88ueC7+ztUC9oaNaw6jf1EwTNKINKBTK4am2FzJMu807S8VS004Y+X9B7pG5GlE1FjxoKM8q2CUuxtppXv8OudGs7O9CN91LG6KMsXo6v5tVvJqNDd5rFCqMiy4dbOgY0pYAqEoI4KXw0v60Y0+5B4ZCRtWw==
+        selected: false
+        status: Unchecked
+      - offset: 94
+        length: 13
+        placeholder_text: "return 0, nil"
+        initial_state:
+          length: 13
+          offset: 94
+        initialized_from_dependency: false
+        encrypted_possible_answer: K33dGtUWtSeoURh8ldvclTLxuFrBhP1+RBvt13pgUqFlb410SKPVSCFr9VSS6EXJRVOPi4FSXX+zQ4qddvpJnYduKQEeN2zYRhkrM+cIHcLSUcF8Mhz+xzwrXrvwBWgX9VGB14YGIGmfh9jxKlvgSyHaMh65YitDtxji4qBOnRcXD9Kx8HYn3yTTDOCQy56S0jiE0IjsRAqpNdxOVlkvxA==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+status: Unchecked
+record: -1

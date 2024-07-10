@@ -1,0 +1,52 @@
+type: output
+custom_name: "Exercise: Equivalent Binary Trees"
+files:
+  - name: task.go
+    visible: true
+    placeholders:
+      - offset: 103
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 103
+        initialized_from_dependency: false
+        encrypted_possible_answer: 6qJLMdTvEYiZrn7/TBUg60e3jNcwI2v1WuhBSV//dBgyvhkA77eJIFmjuUtqS6XT86Hba70UWPbrTOclVdNKFMKoWE8fYLxUROxC3lJ4Yxv4jgn0QgXEsJFReQenU0Nd
+        selected: false
+        status: Unchecked
+      - offset: 237
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 237
+        initialized_from_dependency: false
+        encrypted_possible_answer: PHv8u7CwyYnB6n8jJL5xOddOqfunbQsEgJ/FI1XK1GPy6Zu4l9dd2Ti2OjLVj8qrqfzgBgoagXeJGNSuMXgBIQ==
+        selected: false
+        status: Unchecked
+      - offset: 363
+        length: 10
+        placeholder_text: /* TODO */
+        initial_state:
+          length: 10
+          offset: 363
+        initialized_from_dependency: false
+        encrypted_possible_answer: r5oMzuF1ti86Jk6dQ4FlOp2pQZx/sJ6iJY083Alb41RU/FQG/s7bcpLsg6rT8lTxJATMPP/DbgUFXNnKUrN8FAEFW5ZY+TW2gJbXFnD3kvNYdsdFe9hg2EdM2goLhpGK3XlSYvoVba43k34aOILc3iokdzBBHAe9GKUDm9gvZfattdC+RjkQTSwYIzbnlO85bEmlh9WUYb5Zh9qSagonEUzQBI6mP4bRPcSvwnKRryOuEKgAEAkZBEUTzcOGxfEms52e4Iyijmzrz0r1Aw21xw==
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: go.mod
+    visible: false
+    learner_created: false
+  - name: tree.png
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: test/output.txt
+    visible: false
+    learner_created: false
+  - name: go.sum
+    visible: true
+    learner_created: false
+status: Unchecked
+record: -1
