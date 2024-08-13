@@ -206,6 +206,7 @@ mod tests {
         body::Body,
         http::{Request, Method},
     };
+    use axum::response::Response;
     use tower::ServiceExt; // for `oneshot` and `ready`
 
     #[tokio::test]
@@ -221,9 +222,12 @@ mod tests {
             .unwrap();
 
         // 发送请求并获取响应
-        let response = app.oneshot(request).await.unwrap();
+        let response:Response = app.oneshot(request).await.unwrap();
 
         // 断言响应状态码为200
         assert_eq!(response.status(), StatusCode::OK);
+
+        // let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
+        // assert_eq!(body, Bytes::new());
     }
 }
