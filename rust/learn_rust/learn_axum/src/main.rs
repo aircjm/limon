@@ -196,3 +196,34 @@ struct User {
 struct DemoResponse {
     id: Uuid
 }
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use axum::{
+        body::Body,
+        http::{Request, Method},
+    };
+    use tower::ServiceExt; // for `oneshot` and `ready`
+
+    #[tokio::test]
+    async fn test_health_check() {
+        // 创建一个路由器
+        let app = Router::new().route("/health_check", get(health_check));
+
+        // 创建一个请求
+        let request = Request::builder()
+            .method(Method::GET)
+            .uri("/health_check")
+            .body(Body::empty())
+            .unwrap();
+
+        // 发送请求并获取响应
+        let response = app.oneshot(request).await.unwrap();
+
+        // 断言响应状态码为200
+        assert_eq!(response.status(), StatusCode::OK);
+    }
+}
