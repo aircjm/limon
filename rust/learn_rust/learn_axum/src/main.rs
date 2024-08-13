@@ -11,6 +11,7 @@ static mut PTT_KEYS: Vec<String> = Vec::new();
 
 use device_query::{DeviceQuery, DeviceState, Keycode};
 use std::{thread, thread::sleep, time::{Duration, Instant}};
+use serde_json::json;
 
 #[derive(serde::Serialize, serde::Deserialize, Clone)]
 pub struct PTTEvent {
@@ -120,12 +121,13 @@ async fn main() {
     // initialize tracing
     tracing_subscriber::fmt::init();
 
-    start_hotkey_watcher();
+    // start_hotkey_watcher();
 
     // build our application with a route
     let app = Router::new()
         // `GET /` goes to `root`
         .route("/", get(root))
+        .route("/health_check", get(health_check))
         .route("/test/uuid_new", get(test_uuid_new))
         // `POST /users` goes to `create_user`
         .route("/users", post(create_user));
@@ -170,6 +172,10 @@ async fn test_uuid_new(
     (StatusCode::OK, Json(DemoResponse {
         id: uuid,
     }))
+}
+
+async fn health_check() -> impl IntoResponse {
+    (StatusCode::OK, Json(()))
 }
 
 // the input to our `create_user` handler
