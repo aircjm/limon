@@ -16,3 +16,4 @@ tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 axum = "0.7.5"
 uuid = {version = "1.9.1", features = ["v4", "v7", "fast-rng", "macro-diagnostics", "serde"]}
+device_query = "2.1.0"

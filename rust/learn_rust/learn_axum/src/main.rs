@@ -6,11 +6,121 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use uuid::{Timestamp, Uuid};
+static mut PTT_ENABLED: bool = false;
+static mut PTT_KEYS: Vec<String> = Vec::new();
+
+use device_query::{DeviceQuery, DeviceState, Keycode};
+use std::{thread, thread::sleep, time::{Duration, Instant}};
+
+#[derive(serde::Serialize, serde::Deserialize, Clone)]
+pub struct PTTEvent {
+    pub state: bool,
+}
+
+
+
+pub fn start_hotkey_watcher() {
+    let mut ptt_state = false;
+    thread::spawn(move || {
+        let device_state = DeviceState::new();
+        loop {
+            // if unsafe { !PTT_ENABLED } {
+            //     thread::sleep(Duration::from_millis(20));
+            //     continue;
+            // }
+
+            let ptt_keys = unsafe { PTT_KEYS.clone() };
+            let keys: Vec<Keycode> = device_state.get_keys();
+
+            // Recreate keys as a string vector
+            let mut keys_str: Vec<String> = Vec::new();
+            for key in keys {
+                keys_str.push(key.to_string());
+            }
+
+            println!("keys_str {}", keys_str.join(",").to_string());
+
+            // Check if held keys matches all PTT keys
+            let mut ptt_held = true;
+
+            for key in &ptt_keys {
+                // if the key is "Control" or "Shift", match both L and R version
+                if key == "Control"
+                    && !keys_str.contains(&"LControl".to_string())
+                    && !keys_str.contains(&"RControl".to_string())
+                {
+                    ptt_held = false;
+                }
+
+                if key == "Shift"
+                    && !keys_str.contains(&"LShift".to_string())
+                    && !keys_str.contains(&"RShift".to_string())
+                {
+                    ptt_held = false;
+                }
+
+                // If the key is a single regular character, make sure we are comparing an uppercase version of ptt_key
+                if key.len() == 1 && !keys_str.contains(&key.to_uppercase()) {
+                    ptt_held = false;
+                }
+            }
+
+            // if ptt_held && !ptt_state {
+            //     // Do PTT
+            //     win
+            //         .emit("ptt_toggle", PTTEvent { state: true })
+            //         .unwrap_or_else(|_| log("Error sending PTT event!"));
+            //     ptt_state = true;
+            // } else if ptt_state && !ptt_held {
+            //     // Stop PTT
+            //     win
+            //         .emit("ptt_toggle", PTTEvent { state: false })
+            //         .unwrap_or_else(|_| log("Error sending PTT toggle event!"));
+            //     ptt_state = false;
+            // }
+
+            // Small delay to reduce CPU usage
+            thread::sleep(Duration::from_secs(5));
+        }
+    });
+}
+
+fn print_key() {
+    let mut status = "init";
+    let device_state = DeviceState::new();
+    let mut start_time = Instant::now();
+    println!("请按下F1开始计时");
+    loop {
+        if status == "started" {
+            print!("\r{}", start_time.elapsed().as_millis());
+        }
+        let keys: Vec<Keycode> = device_state.get_keys();
+        if keys.len() == 0 || keys[0] != Keycode::F1 {
+            continue;
+        }
+        // println!("捕捉到输入{:}", keys[0]);
+        match status {
+            "init" => {
+                status = "started";
+                sleep(Duration::from_millis(100)); //不先睡一会的话，下一轮loop会立马捕捉到F1原因不明
+                println!("请按下F1结束计时");
+                start_time = Instant::now();
+            }
+            "started" => {
+                println!("\n经过了：{}毫秒", start_time.elapsed().as_millis());
+                return;
+            }
+            _ => return,
+        }
+    }
+}
 
 #[tokio::main]
 async fn main() {
     // initialize tracing
     tracing_subscriber::fmt::init();
+
+    start_hotkey_watcher();
 
     // build our application with a route
     let app = Router::new()
