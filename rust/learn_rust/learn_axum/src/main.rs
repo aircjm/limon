@@ -133,7 +133,7 @@ async fn main() {
         .route("/users", post(create_user));
 
     // run our app with hyper, listening globally on port 3000
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3003").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:8000").await.unwrap();
     axum::serve(listener, app.into_make_service()).await.unwrap();
 }
 
@@ -175,7 +175,7 @@ async fn test_uuid_new(
 }
 
 async fn health_check() -> impl IntoResponse {
-    (StatusCode::OK, Json(()))
+    (StatusCode::OK)
 }
 
 // the input to our `create_user` handler
