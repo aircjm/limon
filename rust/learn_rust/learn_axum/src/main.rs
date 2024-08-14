@@ -128,6 +128,7 @@ async fn main() {
         // `GET /` goes to `root`
         .route("/", get(root))
         .route("/health_check", get(health_check))
+        .route("/health_check_only_status", get(health_check_only_status))
         .route("/test/uuid_new", get(test_uuid_new))
         // `POST /users` goes to `create_user`
         .route("/users", post(create_user));
@@ -141,6 +142,12 @@ async fn main() {
 async fn root() -> &'static str {
     "Hello, World!"
 }
+
+
+async fn health_check_only_status() -> StatusCode {
+    return StatusCode::OK;
+}
+
 
 async fn create_user(
     // this argument tells axum to parse the request body
