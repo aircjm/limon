@@ -8,7 +8,7 @@ const count = ref(0)
 
 function changeDate(value: number, formatValue: string) {
   console.log("value is "+ value);
-  console.log("formatVaule is "+ formatValue);
+  console.log("formatValue is "+ formatValue);
 }
 
 </script>
