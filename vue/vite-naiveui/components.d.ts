@@ -11,5 +11,7 @@ declare module 'vue' {
     NButton: typeof import('naive-ui')['NButton']
     NSwitch: typeof import('naive-ui')['NSwitch']
     Reactivity: typeof import('./src/components/Reactivity.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
