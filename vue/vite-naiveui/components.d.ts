@@ -9,6 +9,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NButtonGroup: typeof import('naive-ui')['NButtonGroup']
+    NCard: typeof import('naive-ui')['NCard']
+    NFlex: typeof import('naive-ui')['NFlex']
+    NGrid: typeof import('naive-ui')['NGrid']
+    NLayout: typeof import('naive-ui')['NLayout']
     NSwitch: typeof import('naive-ui')['NSwitch']
     Reactivity: typeof import('./src/components/Reactivity.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
