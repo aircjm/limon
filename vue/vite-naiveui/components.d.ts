@@ -12,6 +12,7 @@ declare module 'vue' {
     NButtonGroup: typeof import('naive-ui')['NButtonGroup']
     NCard: typeof import('naive-ui')['NCard']
     NFlex: typeof import('naive-ui')['NFlex']
+    NGi: typeof import('naive-ui')['NGi']
     NGrid: typeof import('naive-ui')['NGrid']
     NLayout: typeof import('naive-ui')['NLayout']
     NSwitch: typeof import('naive-ui')['NSwitch']
