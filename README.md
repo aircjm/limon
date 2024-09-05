@@ -11,7 +11,7 @@
 
 ## Features
 
-this is a project about how to build a project startup.
+this is a project about how to build a startup project in different language.
 
 ### Fast
 
