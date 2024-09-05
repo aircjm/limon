@@ -18,3 +18,5 @@ axum = "0.7.5"
 uuid = {version = "1.9.1", features = ["v4", "v7", "fast-rng", "macro-diagnostics", "serde"]}
 device_query = "2.1.0"
 tower = "0.4.13"
+
+chrono ={version = "0.4.38", features = ["serde"]}

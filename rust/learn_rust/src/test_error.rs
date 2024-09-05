@@ -1,10 +1,7 @@
 use anyhow::Result;
 use std::io::Error;
+use serde_json::Value;
 
-pub fn main() {
-    println!("hello anyhow");
-    // get_cluster_info();
-}
 //
 // pub fn get_cluster_info() -> Result<ClusterMap> {
 //     let config = std::fs::read_to_string("cluster.json")?;
@@ -39,3 +36,16 @@ fn read_file_unwrap(path: &str) -> String { //Result作为结果返回值
     std::fs::read_to_string(path).unwrap() //读取文件内容
 }
 
+
+#[test]
+fn test_error_if_let()  {
+    test_read_file_anyhow();
+}
+
+
+fn test_read_file_anyhow() -> Result<()> {
+    let config = std::fs::read_to_string("cluster.json")?;
+    let map: serde_json::Map<String, Value> = serde_json::from_str(&config)?;
+    println!("cluster info: {:#?}", map);
+    Ok(())
+}

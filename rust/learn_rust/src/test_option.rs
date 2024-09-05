@@ -77,3 +77,10 @@ pub fn test_none_unwrap() {
     // called `Option::unwrap()` on a `None` value
 }
 
+
+
+#[test]
+pub fn test_option_map() {
+
+    let number_option:Option<String> = None;
+}
