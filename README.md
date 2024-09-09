@@ -7,7 +7,15 @@
 
 ## Features
 
-this is a project about how to build a startup project in different language.
+this is a project about a card mgt project in different language.
+
+### backend
+
+Please see [limon-server](./java/README.md).
+
+### frontend
+
+Please see [vite-naiveui](./vue/vite-naiveui/README.md).
 
 ### Fast
 
