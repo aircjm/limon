@@ -7,7 +7,7 @@
 
 ## Features
 
-this is a project about a card mgt project in different language.
+this is a monorepo fullstack project about a card mgt project in different language.
 
 ### backend
 
