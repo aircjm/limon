@@ -1,1 +1,0 @@
-module methodAndPointerIndirection2Main

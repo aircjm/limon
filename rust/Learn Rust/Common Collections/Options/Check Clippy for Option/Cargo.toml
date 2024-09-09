@@ -1,4 +1,0 @@
-[package]
-name = "check_clippy_for_option"
-version = "0.1.0"
-edition = "2021"
