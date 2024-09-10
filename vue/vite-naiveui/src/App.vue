@@ -10,9 +10,12 @@
       <RouterLink to="/css/flex">Go to Css Flex</RouterLink>
     </n-flex>
   </n-button-group>
-  <main>
-    <RouterView />
+  <div>
+  <main class="w-full h-auto flex-grow shrink flex flex-col justify-start items-center">
+      <RouterView/>
   </main>
+  </div>
+
 </template>
 <script setup lang="ts">
 </script>
