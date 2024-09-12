@@ -51,11 +51,7 @@ docker run -it --name limon-mysql -p 3306:3306 -v /d/dockerDrive/mysql:/app -e M
 
 1. **Deploy Using Docker**:
    ```bash
-<<<<<<< HEAD
-   docker run -d -p 8080:8080 --name limon-backend-container limon-backend
-=======
    docker run -d -p 8080:8080 --name limon-server-container limon-server
->>>>>>> e35999d (update md)
    ```
 
 2. **Configure Database**:
