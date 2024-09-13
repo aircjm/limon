@@ -94,7 +94,7 @@ docker exec -i limon-mysql mysql -u root --password=root limon < backup.sql
 - **RuoYi Scaffold**: Thanks to [RuoYi](https://gitee.com/y_project/RuoYi-Vue) for the project scaffold design.
 - **JetBrains Support**: Special thanks to JetBrains for their open-source license support.
 
-  [![jetbrains.svg](jetbrains.svg)](https://www.jetbrains.com/?from=limon)
+![JetBrains logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)
 
 ## License
 
