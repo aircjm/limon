@@ -8,6 +8,7 @@
       <RouterLink to="/about">Go to About</RouterLink>
       <RouterLink to="/layout">Go to Layout</RouterLink>
       <RouterLink to="/css/flex">Go to Css Flex</RouterLink>
+      <RouterLink to="/test">Go to Test</RouterLink>
     </n-flex>
   </n-button-group>
   <div>
