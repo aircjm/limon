@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aircjm.limon.project.mapper.TagMapper">
+  <resultMap id="BaseResultMap" type="com.aircjm.limon.project.domain.Tag">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lm_tag
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aircjm.limon.project.domain.Tag">
+    insert into lm_tag (id, `name`, color, 
+      `status`, create_time, update_time, 
+      creator, modifier, deleted
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.aircjm.limon.project.domain.Tag">
+    update lm_tag
+    set `name` = #{name,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, `name`, color, `status`, create_time, update_time, creator, modifier, 
+    deleted
+    from lm_tag
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, `name`, color, `status`, create_time, update_time, creator, modifier, 
+    deleted
+    from lm_tag
+  </select>
+</mapper>
