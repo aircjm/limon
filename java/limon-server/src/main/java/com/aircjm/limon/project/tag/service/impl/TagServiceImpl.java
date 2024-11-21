@@ -40,7 +40,7 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
     }
 
     @Override
-    public Page<TagDetailResponse> list(GetTagRequest request) {
+    public Page<TagDetailResponse> page(GetTagRequest request) {
         LambdaQueryWrapper<Tag> wrapper = new QueryWrapper<Tag>().lambda()
                 .orderByDesc(Tag::getId)
                 .like(StrUtil.isNotEmpty(request.getName()), Tag::getName, request.getName());

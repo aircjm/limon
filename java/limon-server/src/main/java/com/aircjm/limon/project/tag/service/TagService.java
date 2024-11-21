@@ -21,5 +21,5 @@ public interface TagService {
      * @param request 标签
      * @return 集合
      */
-    Page<TagDetailResponse> list(GetTagRequest request);
+    Page<TagDetailResponse> page(GetTagRequest request);
 }

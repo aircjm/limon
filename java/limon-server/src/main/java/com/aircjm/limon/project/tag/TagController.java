@@ -42,9 +42,9 @@ public class TagController {
      * @param request request
      * @return 列表数据
      */
-    @PostMapping("/list")
+    @PostMapping("/page")
     public Result<Page<TagDetailResponse> > allList(@RequestBody @Valid GetTagRequest request) {
-        Page<TagDetailResponse> list = tagService.list(request);
+        Page<TagDetailResponse> list = tagService.page(request);
         return Result.success(list);
     }
 }
