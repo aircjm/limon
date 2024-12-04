@@ -1,4 +1,4 @@
-package com.aircjm.limon.project.tag.vo;
+package com.aircjm.limon.project.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;

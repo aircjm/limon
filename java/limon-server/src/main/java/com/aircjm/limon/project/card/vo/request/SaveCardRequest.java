@@ -1,7 +1,7 @@
 package com.aircjm.limon.project.card.vo.request;
 
 import cn.hutool.core.util.StrUtil;
-import com.aircjm.limon.project.tag.domain.Tag;
+import com.aircjm.limon.project.domain.Tag;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;

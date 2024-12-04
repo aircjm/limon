@@ -1,11 +1,11 @@
-package com.aircjm.limon.project.tag;
+package com.aircjm.limon.project.controller;
 
 
-import com.aircjm.limon.project.tag.domain.Tag;
-import com.aircjm.limon.project.tag.service.TagService;
-import com.aircjm.limon.project.tag.vo.GetTagRequest;
-import com.aircjm.limon.project.tag.vo.SaveTagRequest;
-import com.aircjm.limon.project.tag.vo.response.TagDetailResponse;
+import com.aircjm.limon.project.domain.Tag;
+import com.aircjm.limon.project.service.TagService;
+import com.aircjm.limon.project.vo.GetTagRequest;
+import com.aircjm.limon.project.vo.SaveTagRequest;
+import com.aircjm.limon.project.vo.response.TagDetailResponse;
 import com.aircjm.limon.system.vo.Result;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jakarta.annotation.Resource;

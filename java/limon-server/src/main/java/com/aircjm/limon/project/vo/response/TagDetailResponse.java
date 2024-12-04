@@ -1,4 +1,4 @@
-package com.aircjm.limon.project.tag.vo.response;
+package com.aircjm.limon.project.vo.response;
 
 import lombok.Data;
 

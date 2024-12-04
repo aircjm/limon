@@ -1,9 +1,9 @@
-package com.aircjm.limon.project.tag.service;
+package com.aircjm.limon.project.service;
 
-import com.aircjm.limon.project.tag.domain.Tag;
-import com.aircjm.limon.project.tag.vo.GetTagRequest;
-import com.aircjm.limon.project.tag.vo.SaveTagRequest;
-import com.aircjm.limon.project.tag.vo.response.TagDetailResponse;
+import com.aircjm.limon.project.domain.Tag;
+import com.aircjm.limon.project.vo.GetTagRequest;
+import com.aircjm.limon.project.vo.SaveTagRequest;
+import com.aircjm.limon.project.vo.response.TagDetailResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 public interface TagService {

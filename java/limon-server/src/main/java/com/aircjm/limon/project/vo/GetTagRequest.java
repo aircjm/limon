@@ -1,6 +1,6 @@
-package com.aircjm.limon.project.tag.vo;
+package com.aircjm.limon.project.vo;
 
-import com.aircjm.limon.project.tag.domain.Tag;
+import com.aircjm.limon.project.domain.Tag;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
